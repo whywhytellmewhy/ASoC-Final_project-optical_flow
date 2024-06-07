@@ -1,0 +1,189 @@
+//  Catapult Ultra Synthesis 2024.1/1091966 (Production Release) Wed Feb 14 09:07:18 PST 2024
+//  
+//          Copyright (c) Siemens EDA, 1996-2024, All Rights Reserved.
+//                        UNPUBLISHED, LICENSED SOFTWARE.
+//             CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//                   PROPERTY OF SIEMENS EDA OR ITS LICENSORS.
+//  
+//  Running on Linux m111061545@ws43:7596 3.10.0-1160.95.1.el7.x86_64 x86_64 aol
+//  
+//  Package information: SIFLIBS v27.1_0.0, HLS_PKGS v27.1_0.0, 
+//                       SIF_TOOLKITS v27.1_0.0, SIF_XILINX v27.1_0.0, 
+//                       SIF_ALTERA v27.1_0.0, CCS_LIBS v27.1_0.0, 
+//                       CDS_PPRO v2023.2_3, CDS_DesignChecker v2024.1, 
+//                       CDS_OASYS v21.1_3.1, CDS_PSR v23.2_0.16, 
+//                       DesignPad v2.78_1.0, DesignAnalyzer 2024.1/1090934
+//  
+//  Start time Fri Jun  7 22:34:17 2024
+# -------------------------------------------------
+# Logging session transcript to file "/tmp/log7596282ca9bc.0"
+# Loading options from '$HOME/.catapult/2024.1-1091966.aol.reg'.
+project load /home/m111/m111061545/ASoC_final_project/optical_flow/catapult_optical_flow/Catapult.ccs
+# Creating project directory '/home/m111/m111061545/ASoC_final_project/optical_flow/catapult_optical_flow/Catapult/'. (PRJ-1)
+# Moving session transcript to file "/home/m111/m111061545/ASoC_final_project/optical_flow/catapult_optical_flow/catapult.log"
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+# File '$PROJECT_HOME/../hls_c/inc/EdgeDetect.h' saved
+solution file remove {$PROJECT_HOME/../hls_c/inc/EdgeDetect.h}
+solution file add ../hls_c/inc/OpticalFlow.h
+# /INPUTFILES/10
+solution file remove {$PROJECT_HOME/../hls_c/inc/optical_flow.h}
+solution file remove {$PROJECT_HOME/../hls_c/inc/typedefs.h}
+solution file remove {$PROJECT_HOME/../hls_c/inc/optical_flow.cpp}
+solution file add ../hls_c/inc/optical_flow_sw.cpp
+# /INPUTFILES/11
+# LAYOUT: can't read "db(V14-TYPE)": no such element in array
+#     while executing
+# "SMDI::DEBUG "L( top / $db($id-TYPE) ): $id""
+#     (procedure "::SMDI::top::get_layout" line 9)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 59)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "::SMDI::top::get_layout" line 14)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 49)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "get_layout" line 14)
+#     invoked from within
+# "get_layout $cid"
+#     (procedure "get_layout" line 17)
+#     invoked from within
+# "get_layout $id"
+#     (procedure "top::get_layout_top" line 15)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+#     (procedure "SaveLayout" line 1)
+#     invoked from within
+# "SaveLayout"
+# File '$PROJECT_HOME/../hls_c/inc/optical_flow_sw.cpp' saved
+quit
+# LAYOUT: can't read "db(V14-TYPE)": no such element in array
+#     while executing
+# "SMDI::DEBUG "L( top / $db($id-TYPE) ): $id""
+#     (procedure "::SMDI::top::get_layout" line 9)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 59)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "::SMDI::top::get_layout" line 14)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 49)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "get_layout" line 14)
+#     invoked from within
+# "get_layout $cid"
+#     (procedure "get_layout" line 17)
+#     invoked from within
+# "get_layout $id"
+#     (procedure "top::get_layout_top" line 15)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+#     (procedure "SaveLayout" line 1)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+# LAYOUT: can't read "db(V14-TYPE)": no such element in array
+#     while executing
+# "SMDI::DEBUG "L( top / $db($id-TYPE) ): $id""
+#     (procedure "::SMDI::top::get_layout" line 9)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 59)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "::SMDI::top::get_layout" line 14)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 49)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "get_layout" line 14)
+#     invoked from within
+# "get_layout $cid"
+#     (procedure "get_layout" line 17)
+#     invoked from within
+# "get_layout $id"
+#     (procedure "top::get_layout_top" line 15)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+#     (procedure "SaveLayout" line 1)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+# LAYOUT: can't read "db(V14-TYPE)": no such element in array
+#     while executing
+# "SMDI::DEBUG "L( top / $db($id-TYPE) ): $id""
+#     (procedure "::SMDI::top::get_layout" line 9)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 59)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "::SMDI::top::get_layout" line 14)
+#     invoked from within
+# "${PNS}::top::get_layout $cid"
+#     (procedure "::SMDI::pane::get_layout" line 49)
+#     invoked from within
+# "$cmd $id"
+#     (procedure "get_layout" line 14)
+#     invoked from within
+# "get_layout $cid"
+#     (procedure "get_layout" line 17)
+#     invoked from within
+# "get_layout $id"
+#     (procedure "top::get_layout_top" line 15)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+#     (procedure "SaveLayout" line 1)
+#     invoked from within
+# "# Compiled -- no source code available
+# error "called a copy of a compiled script""
+// Finish time Fri Jun  7 23:10:40 2024, time elapsed 36:23, peak memory 1.34GB, exit status 0

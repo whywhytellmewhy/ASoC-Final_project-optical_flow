@@ -31,6 +31,7 @@ class OpticalFlow_gradient_y_calc
       
       input_t pix0, pix1, pix2, pix3, pix4;
       ac_int<17> pix0_buf, pix1_buf, pix2_buf, pix3_buf, pix4_buf;
+
       pixel_t gradient_y_value;
 
       Gradient_y_calc_ROW: for (maxHType y=0; ; y++) {
@@ -47,6 +48,7 @@ class OpticalFlow_gradient_y_calc
             wrbuf0_pix.set_slc(0,pix0_buf);
           } else {
             wrbuf0_pix.set_slc(17,pix0_buf);
+
           }
           // Read line buffers into read buffer caches on even iterations of COL loop
           if ( (x&1) == 0 ) {
@@ -73,6 +75,7 @@ class OpticalFlow_gradient_y_calc
             pix2[i] = pix2_buf[i];
             pix1[i] = pix1_buf[i];
           }
+
           // Boundary condition
           // Here we do NOT care about the value of pix0 when "y >= heightIn"
 

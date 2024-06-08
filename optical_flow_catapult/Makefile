@@ -1,4 +1,4 @@
-NAME = SCVerify_EdgeDetect
+NAME = SCVerify_OpticalFlow
 BINDIR = ./bin
 
 ifndef MGC_HOME
@@ -14,7 +14,7 @@ CXX := $(CATAPULT_HOME)/bin/g++
 #LD_LIBRARY_PATH := $(if $(LD_LIBRARY_PATH),$(LD_LIBRARY_PATH):$(CATAPULT_HOME)/lib:$(CATAPULT_HOME)/shared/lib,$(CATAPULT_HOME)/lib:$(CATAPULT_HOME)/shared/lib)
 
 SOURCE_FILE := ./bmpUtil/src/bmp_io.cpp
-SOURCE_FILE += ./hls_c/src/EdgeDetect_tb.cpp
+SOURCE_FILE += ./hls_c/src/OpticalFlow_tb.cpp
 
 INCLUDE_DIR := -I./bmpUtil/inc/
 INCLUDE_DIR += -I./cmodel/inc/

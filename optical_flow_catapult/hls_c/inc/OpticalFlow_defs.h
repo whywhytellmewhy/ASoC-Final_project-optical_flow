@@ -14,6 +14,7 @@ const int MAX_WIDTH = 1024;
 typedef ac_fixed<17,9,true> input_t; // Integer part: 9 ; Decimal part: 8 ; signed
 typedef ac_fixed<34,18,true> input2x_t; // For ping-pong buffer
 typedef ac_fixed<32,13,true> pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
+typedef ac_fixed<64,26,true> pixel2x_t; // For ping-pong buffer
 typedef ac_fixed<32,27,true> outer_pixel_t; // Integer part: 27 ; Decimal part: 5 ; signed
 typedef ac_fixed<64,56,true> calc_pixel_t; // Integer part: 56 ; Decimal part: 8 ; signed
 typedef ac_fixed<32,13,true> vel_pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed

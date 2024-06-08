@@ -26,27 +26,27 @@ public:
   // Function: run
   //   Top interface for data in/out of class.
   // top-level function
-  void run(pixel_t      frame0[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t      frame1[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t      frame2[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           //pixel_t gradient_x[MAX_HEIGHT][MAX_WIDTH],
-           velocity_t   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
+  void run(pixel_t_sw      frame0[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           pixel_t_sw      frame1[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           pixel_t_sw      frame2[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           pixel_t_sw      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           //pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH],
+           velocity_t_sw   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
   {
     // allocate buffers for image data
     ///double *dy = (double *)malloc(maxImageHeight*maxImageWidth*sizeof(double));
     ///double *dx = (double *)malloc(maxImageHeight*maxImageWidth*sizeof(double));
 
     // intermediate arrays
-    static pixel_t gradient_x[MAX_HEIGHT][MAX_WIDTH];
-    static pixel_t gradient_y[MAX_HEIGHT][MAX_WIDTH];
-    static pixel_t gradient_z[MAX_HEIGHT][MAX_WIDTH];
-    static gradient_t y_filtered[MAX_HEIGHT][MAX_WIDTH];
-    static gradient_t filtered_gradient[MAX_HEIGHT][MAX_WIDTH];
-    static outer_t out_product[MAX_HEIGHT][MAX_WIDTH];
-    static tensor_t tensor_y[MAX_HEIGHT][MAX_WIDTH];
-    static tensor_t tensor[MAX_HEIGHT][MAX_WIDTH];
+    static pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH];
+    static pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH];
+    static pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH];
+    static gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH];
+    static gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH];
+    static outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH];
+    static tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH];
+    static tensor_t_sw tensor[MAX_HEIGHT][MAX_WIDTH];
 
     gradient_xy_calc(frame2, gradient_x, gradient_y);
     gradient_z_calc(frame0, frame1, frame2, frame3, frame4, gradient_z);
@@ -64,11 +64,11 @@ public:
   //--------------------------------------------------------------------------
   // Function:
   // compute x, y gradient
-  void gradient_xy_calc(pixel_t frame[MAX_HEIGHT][MAX_WIDTH],
-      pixel_t gradient_x[MAX_HEIGHT][MAX_WIDTH],
-      pixel_t gradient_y[MAX_HEIGHT][MAX_WIDTH])
+  void gradient_xy_calc(pixel_t_sw frame[MAX_HEIGHT][MAX_WIDTH],
+      pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH],
+      pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH])
   {
-    pixel_t x_grad, y_grad;
+    pixel_t_sw x_grad, y_grad;
     for (int r = 0; r < MAX_HEIGHT + 2; r ++ )
     {
       for (int c = 0; c < MAX_WIDTH + 2; c ++)
@@ -96,12 +96,12 @@ public:
   }
 
   // compute z gradient
-  void gradient_z_calc(pixel_t frame0[MAX_HEIGHT][MAX_WIDTH], 
-                      pixel_t frame1[MAX_HEIGHT][MAX_WIDTH],
-                      pixel_t frame2[MAX_HEIGHT][MAX_WIDTH],
-                      pixel_t frame3[MAX_HEIGHT][MAX_WIDTH],
-                      pixel_t frame4[MAX_HEIGHT][MAX_WIDTH],
-                      pixel_t gradient_z[MAX_HEIGHT][MAX_WIDTH])
+  void gradient_z_calc(pixel_t_sw frame0[MAX_HEIGHT][MAX_WIDTH], 
+                      pixel_t_sw frame1[MAX_HEIGHT][MAX_WIDTH],
+                      pixel_t_sw frame2[MAX_HEIGHT][MAX_WIDTH],
+                      pixel_t_sw frame3[MAX_HEIGHT][MAX_WIDTH],
+                      pixel_t_sw frame4[MAX_HEIGHT][MAX_WIDTH],
+                      pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT; r ++)
     {
@@ -119,16 +119,16 @@ public:
   }
 
   // compute y weight
-  void gradient_weight_y(pixel_t gradient_x[MAX_HEIGHT][MAX_WIDTH],
-                        pixel_t gradient_y[MAX_HEIGHT][MAX_WIDTH],
-                        pixel_t gradient_z[MAX_HEIGHT][MAX_WIDTH],
-                        gradient_t filt_grad[MAX_HEIGHT][MAX_WIDTH])
+  void gradient_weight_y(pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH],
+                        pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH],
+                        pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH],
+                        gradient_t_sw filt_grad[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT + 3; r ++)
     {
       for (int c = 0; c < MAX_WIDTH; c ++)
       {
-        gradient_t acc;
+        gradient_t_sw acc;
         acc.x = 0;
         acc.y = 0;
         acc.z = 0;
@@ -151,14 +151,14 @@ public:
   }
 
   // compute x weight
-  void gradient_weight_x(gradient_t y_filt[MAX_HEIGHT][MAX_WIDTH],
-                        gradient_t filt_grad[MAX_HEIGHT][MAX_WIDTH])
+  void gradient_weight_x(gradient_t_sw y_filt[MAX_HEIGHT][MAX_WIDTH],
+                        gradient_t_sw filt_grad[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT; r ++)
     {
       for (int c = 0; c < MAX_WIDTH + 3; c ++)
       {
-        gradient_t acc;
+        gradient_t_sw acc;
         acc.x = 0;
         acc.y = 0;
         acc.z = 0;
@@ -181,15 +181,15 @@ public:
   }
   
   // outer product
-  void outer_product(gradient_t gradient[MAX_HEIGHT][MAX_WIDTH],
-                    outer_t outer_product[MAX_HEIGHT][MAX_WIDTH])
+  void outer_product(gradient_t_sw gradient[MAX_HEIGHT][MAX_WIDTH],
+                    outer_t_sw outer_product[MAX_HEIGHT][MAX_WIDTH])
   { 
     for (int r = 0; r < MAX_HEIGHT; r ++)
     {
       for (int c = 0; c < MAX_WIDTH; c ++)
       {
-        gradient_t grad = gradient[r][c];
-        outer_t out;
+        gradient_t_sw grad = gradient[r][c];
+        outer_t_sw out;
         out.val[0] = grad.x * grad.x;
         out.val[1] = grad.y * grad.y;
         out.val[2] = grad.z * grad.z;
@@ -202,14 +202,14 @@ public:
   }
 
   // tensor weight y
-  void tensor_weight_y(outer_t outer[MAX_HEIGHT][MAX_WIDTH],
-                      tensor_t tensor_y[MAX_HEIGHT][MAX_WIDTH])
+  void tensor_weight_y(outer_t_sw outer[MAX_HEIGHT][MAX_WIDTH],
+                      tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT + 1; r ++)
     {
       for(int c = 0; c < MAX_WIDTH; c ++)
       {
-        tensor_t acc;
+        tensor_t_sw acc;
         for (int k = 0; k < 6; k ++)
         {
           acc.val[k] = 0;
@@ -234,14 +234,14 @@ public:
   }
 
   // tensor weight x
-  void tensor_weight_x(tensor_t tensor_y[MAX_HEIGHT][MAX_WIDTH],
-                      tensor_t tensor[MAX_HEIGHT][MAX_WIDTH])
+  void tensor_weight_x(tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH],
+                      tensor_t_sw tensor[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT; r ++)
     {
       for (int c = 0; c < MAX_WIDTH + 1; c ++)
       {
-        tensor_t acc;
+        tensor_t_sw acc;
         for(int k = 0; k < 6; k++)
         {
           acc.val[k] = 0;
@@ -265,8 +265,8 @@ public:
   }
 
   // compute flow
-  void flow_calc(tensor_t tensors[MAX_HEIGHT][MAX_WIDTH],
-                velocity_t output[MAX_HEIGHT][MAX_WIDTH])
+  void flow_calc(tensor_t_sw tensors[MAX_HEIGHT][MAX_WIDTH],
+                velocity_t_sw output[MAX_HEIGHT][MAX_WIDTH])
   {
     for(int r = 0; r < MAX_HEIGHT; r ++)
     {
@@ -274,7 +274,7 @@ public:
       {
         if (r >= 2 && r < MAX_HEIGHT - 2 && c >= 2 && c < MAX_WIDTH - 2)
         {
-          pixel_t denom = tensors[r][c].val[0] * tensors[r][c].val[1] -
+          pixel_t_sw denom = tensors[r][c].val[0] * tensors[r][c].val[1] -
                           tensors[r][c].val[3] * tensors[r][c].val[3];
           output[r][c].x = (tensors[r][c].val[5] * tensors[r][c].val[3] -
                             tensors[r][c].val[4] * tensors[r][c].val[1]) / denom;

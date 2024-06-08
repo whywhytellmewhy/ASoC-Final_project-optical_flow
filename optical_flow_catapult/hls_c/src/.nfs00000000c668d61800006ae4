@@ -99,7 +99,7 @@ CCS_MAIN(int argc, char *argv[])
   static float frame4[iH][iW];
   static float frame5[iH][iW];
   //static float gradient_x[iH][iW];
-  static velocity_t output_algorithm[iH][iW];
+  static velocity_t_sw output_algorithm[iH][iW];
 
   unsigned  cnt = 0;
   for (int y = 0; y < iH; y++) {
@@ -140,7 +140,7 @@ CCS_MAIN(int argc, char *argv[])
   for (int y = 0; y < heightIn; y++) {
     for (int x = 0; x < iW; x++) {
       //velocity_t algorithm = *(output_algorithm+cnt);
-      velocity_t algorithm = output_algorithm[y][x];
+      velocity_t_sw algorithm = output_algorithm[y][x];
       ///////////////////////////////velocity_t HLS = output_HLS_channel.read()
       float u_algorithm = (double)(algorithm.x);
       ///////////////////////////////float u_HLS = (HLS.x).to_double();

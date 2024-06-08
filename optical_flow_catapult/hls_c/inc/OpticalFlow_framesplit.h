@@ -21,7 +21,7 @@ class OpticalFlow_framesplit
                         maxHType             heightIn)
     {
       frames_t input_frame;
-      // stream in and split the input frames into 6 channels
+      // stream in and split the input frames into 7 channels
       Framesplit_ROW: for (maxHType y=0; ; y++) {
         Framesplit_COLUMN: for (maxWType x=0; ; x++) {
           // read input channel

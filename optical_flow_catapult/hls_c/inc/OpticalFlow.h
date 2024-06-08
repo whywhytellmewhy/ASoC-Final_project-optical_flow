@@ -15,12 +15,6 @@
 
 #include <mc_scverify.h>
 
-// convolution filters
-/////const int GRAD_WEIGHTS[] =  {1,-8,0,8,-1};
-const input_t GRAD_WEIGHTS[] =  {1/12,-8/12,0/12,8/12,-1/12};
-const pixel_t GRAD_FILTER[] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
-const pixel_t TENSOR_FILTER[] = {0.3243, 0.3513, 0.3243};
-
 // top-level kernel function
 #pragma hls_design top
   class OpticalFlow_Top

@@ -50,8 +50,81 @@ class OpticalFlow_gradient_weight_y
 
       gradient_t acc_value;
 
-      Gradient_weight_y_ROW: for (int r = 0; r < MAX_HEIGHT + 3; r ++) {
-        Gradient_weight_y_COLUMN: for (int c = 0; c < MAX_WIDTH; c ++) {
+      Gradient_weight_y_ROW: for (maxHType y=0; ; y++) {
+        Gradient_weight_y_COLUMN: for (maxWType x=0; ; x++) {
+          // read input channel
+          if (y <= heightIn-1) {
+            Ix0 = gradient_x.read();
+            Iy0 = gradient_y.read();
+            Iz0 = gradient_z.read();
+          }
+          // Write data cache, write lower 32 on even iterations of COL loop, upper 32 on odd
+          if ( (x&1) == 0 ) {
+            wrbuf0_Ix.set_slc(0,Ix0);
+            wrbuf0_Iy.set_slc(0,Iy0);
+            wrbuf0_Iz.set_slc(0,Iz0);
+          } else {
+            wrbuf0_Ix.set_slc(32,Ix0);
+            wrbuf0_Iy.set_slc(32,Iy0);
+            wrbuf0_Iz.set_slc(32,Iz0);
+          }
+          // Read line buffers into read buffer caches on even iterations of COL loop
+          if ( (x&1) == 0 ) {
+            // vertical window of pixels
+            rdbuf6_Ix = line_buf6_Ix[x/2];
+            rdbuf5_Ix = line_buf5_Ix[x/2];
+            rdbuf4_Ix = line_buf4_Ix[x/2];
+            rdbuf3_Ix = line_buf3_Ix[x/2];
+            rdbuf2_Ix = line_buf2_Ix[x/2];
+            rdbuf1_Ix = line_buf1_Ix[x/2];
+            rdbuf0_Ix = line_buf0_Ix[x/2];
+            rdbuf6_Iy = line_buf6_Iy[x/2];
+            rdbuf5_Iy = line_buf5_Iy[x/2];
+            rdbuf4_Iy = line_buf4_Iy[x/2];
+            rdbuf3_Iy = line_buf3_Iy[x/2];
+            rdbuf2_Iy = line_buf2_Iy[x/2];
+            rdbuf1_Iy = line_buf1_Iy[x/2];
+            rdbuf0_Iy = line_buf0_Iy[x/2];
+            rdbuf6_Iz = line_buf6_Iz[x/2];
+            rdbuf5_Iz = line_buf5_Iz[x/2];
+            rdbuf4_Iz = line_buf4_Iz[x/2];
+            rdbuf3_Iz = line_buf3_Iz[x/2];
+            rdbuf2_Iz = line_buf2_Iz[x/2];
+            rdbuf1_Iz = line_buf1_Iz[x/2];
+            rdbuf0_Iz = line_buf0_Iz[x/2];
+          } else { // Write line buffer caches on odd iterations of COL loop
+            line_buf6_Ix[x/2] = rdbuf5_Ix; // copy previous line
+            line_buf5_Ix[x/2] = rdbuf4_Ix; // copy previous line
+            line_buf4_Ix[x/2] = rdbuf3_Ix; // copy previous line
+            line_buf3_Ix[x/2] = rdbuf2_Ix; // copy previous line
+            line_buf2_Ix[x/2] = rdbuf1_Ix; // copy previous line
+            line_buf1_Ix[x/2] = rdbuf0_Ix; // copy previous line
+            line_buf0_Ix[x/2] = wrbuf0_Ix; // store current line
+            line_buf6_Iy[x/2] = rdbuf5_Iy; // copy previous line
+            line_buf5_Iy[x/2] = rdbuf4_Iy; // copy previous line
+            line_buf4_Iy[x/2] = rdbuf3_Iy; // copy previous line
+            line_buf3_Iy[x/2] = rdbuf2_Iy; // copy previous line
+            line_buf2_Iy[x/2] = rdbuf1_Iy; // copy previous line
+            line_buf1_Iy[x/2] = rdbuf0_Iy; // copy previous line
+            line_buf0_Iy[x/2] = wrbuf0_Iy; // store current line
+            line_buf6_Iz[x/2] = rdbuf5_Iz; // copy previous line
+            line_buf5_Iz[x/2] = rdbuf4_Iz; // copy previous line
+            line_buf4_Iz[x/2] = rdbuf3_Iz; // copy previous line
+            line_buf3_Iz[x/2] = rdbuf2_Iz; // copy previous line
+            line_buf2_Iz[x/2] = rdbuf1_Iz; // copy previous line
+            line_buf1_Iz[x/2] = rdbuf0_Iz; // copy previous line
+            line_buf0_Iz[x/2] = wrbuf0_Iz; // store current line
+          }
+          // Get 17-bit data from read buffer caches, lower 17 on even iterations of COL loop
+          pix4 = ((x&1)==0) ? rdbuf3_pix.slc<17>(0) : rdbuf3_pix.slc<17>(17);
+          pix3 = ((x&1)==0) ? rdbuf2_pix.slc<17>(0) : rdbuf2_pix.slc<17>(17);
+          pix2 = ((x&1)==0) ? rdbuf1_pix.slc<17>(0) : rdbuf1_pix.slc<17>(17);
+          pix1 = ((x&1)==0) ? rdbuf0_pix.slc<17>(0) : rdbuf0_pix.slc<17>(17);
+
+
+
+
+
           
           
           if (r >= 6 && r < MAX_HEIGHT)
@@ -66,6 +139,15 @@ class OpticalFlow_gradient_weight_y
           {
             filt_grad[r-3][c] = acc;
           }
+
+          // programmable width exit condition
+          if (x == widthIn-1) {
+            break;
+          }
+        }
+        // programmable height exit condition
+        if (y == heightIn+2) {
+          break;
         }
       }
     }

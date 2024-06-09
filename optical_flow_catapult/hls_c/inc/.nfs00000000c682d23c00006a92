@@ -55,6 +55,9 @@ class OpticalFlow_gradient_x_calc
           // read input value
           if (x <= widthIn-1) {
             pix0 = frame3_b.read(); // Read from input stream
+            //if (x==50) {
+            //  cout << pix0 << ", ";
+            //}
           } else {
             pix0 = pix_buf0;
           }
@@ -66,6 +69,9 @@ class OpticalFlow_gradient_x_calc
 
           // Calculate Ix
           gradient_x_value = pix0*GRAD_WEIGHTS[4] + pix1*GRAD_WEIGHTS[3] + pix2*GRAD_WEIGHTS[2] + pix3*GRAD_WEIGHTS[1] + pix4*GRAD_WEIGHTS[0];
+          //cout << pix0 << ", ";
+          //cout << GRAD_WEIGHTS[4] << ", ";
+          //cout << pix0*GRAD_WEIGHTS[4] << endl;
 
           pix_buf3 = pix_buf2;
           pix_buf2 = pix_buf1;
@@ -75,6 +81,7 @@ class OpticalFlow_gradient_x_calc
           // Write output Ix streaming interface
           if ((x >= 4) && (x < widthIn)) {
             gradient_x.write(gradient_x_value);
+            //cout << "HLS: " << gradient_x_value << endl;
           } else if (x >= 2) {
             gradient_x.write(0);
           }

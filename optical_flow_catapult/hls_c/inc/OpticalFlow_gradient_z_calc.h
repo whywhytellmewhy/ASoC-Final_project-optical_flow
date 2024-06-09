@@ -36,7 +36,7 @@ class OpticalFlow_gradient_z_calc
           frame5_value = frame5_a.read();
 
           // Calculate Iz
-          gradient_z_value = frame1_value*GRAD_WEIGHTS[0] + frame2_value*GRAD_WEIGHTS[1] + frame3_value*GRAD_WEIGHTS[2] + frame4_value*GRAD_WEIGHTS[3] + frame5_value*GRAD_WEIGHTS[4];
+          gradient_z_value = (frame1_value*GRAD_WEIGHTS[0] + frame2_value*GRAD_WEIGHTS[1] + frame3_value*GRAD_WEIGHTS[2] + frame4_value*GRAD_WEIGHTS[3] + frame5_value*GRAD_WEIGHTS[4]) / 12.0;
 
           // Write output Iz streaming interface
           gradient_z.write(gradient_z_value);

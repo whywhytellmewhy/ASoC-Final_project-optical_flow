@@ -31,7 +31,7 @@ public:
            pixel_t_sw      frame2[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           //pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH],
+           pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH], // <-----------------------------------------------------------------------------------
            velocity_t_sw   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
   {
     // allocate buffers for image data
@@ -39,7 +39,7 @@ public:
     ///double *dx = (double *)malloc(maxImageHeight*maxImageWidth*sizeof(double));
 
     // intermediate arrays
-    static pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH];
+    //static pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH]; // <-----------------------------------------------------------------------------------
     static pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH];
     static pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH];
     static gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH];
@@ -79,12 +79,13 @@ public:
         {
           for (int i = 0; i < 5; i++)
           {
-            x_grad += frame[r-2][c-i] * GRAD_WEIGHTS[4-i];
-            y_grad += frame[r-i][c-2] * GRAD_WEIGHTS[4-i];
+            x_grad += frame[r-2][c-i] * GRAD_WEIGHTS_SW[4-i];
+            y_grad += frame[r-i][c-2] * GRAD_WEIGHTS_SW[4-i];
           }
           gradient_x[r-2][c-2] = x_grad / 12;
           gradient_y[r-2][c-2] = y_grad / 12;
           //cout << gradient_x[r-2][c-2] << ", ";
+          //cout << "algorihm: " << gradient_x[r-2][c-2] << endl;
         }
         else if (r >= 2 && c >= 2)
         {
@@ -108,11 +109,11 @@ public:
       for (int c = 0; c < MAX_WIDTH; c ++)
       {
         gradient_z[r][c] = 0.0f;
-        gradient_z[r][c] += frame0[r][c] * GRAD_WEIGHTS[0]; 
-        gradient_z[r][c] += frame1[r][c] * GRAD_WEIGHTS[1]; 
-        gradient_z[r][c] += frame2[r][c] * GRAD_WEIGHTS[2]; 
-        gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS[3]; 
-        gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS[4]; 
+        gradient_z[r][c] += frame0[r][c] * GRAD_WEIGHTS_SW[0]; 
+        gradient_z[r][c] += frame1[r][c] * GRAD_WEIGHTS_SW[1]; 
+        gradient_z[r][c] += frame2[r][c] * GRAD_WEIGHTS_SW[2]; 
+        gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS_SW[3]; 
+        gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS_SW[4]; 
         gradient_z[r][c] /= 12.0f;
       }
     }
@@ -136,9 +137,9 @@ public:
         { 
           for (int i = 0; i < 7; i ++)
           {
-            acc.x += gradient_x[r-i][c] * GRAD_FILTER[i];
-            acc.y += gradient_y[r-i][c] * GRAD_FILTER[i];
-            acc.z += gradient_z[r-i][c] * GRAD_FILTER[i];
+            acc.x += gradient_x[r-i][c] * GRAD_FILTER_SW[i];
+            acc.y += gradient_y[r-i][c] * GRAD_FILTER_SW[i];
+            acc.z += gradient_z[r-i][c] * GRAD_FILTER_SW[i];
           }
           filt_grad[r-3][c] = acc;            
         }
@@ -166,9 +167,9 @@ public:
         {
           for (int i = 0; i < 7; i ++)
           {
-            acc.x += y_filt[r][c-i].x * GRAD_FILTER[i];
-            acc.y += y_filt[r][c-i].y * GRAD_FILTER[i];
-            acc.z += y_filt[r][c-i].z * GRAD_FILTER[i];
+            acc.x += y_filt[r][c-i].x * GRAD_FILTER_SW[i];
+            acc.y += y_filt[r][c-i].y * GRAD_FILTER_SW[i];
+            acc.z += y_filt[r][c-i].z * GRAD_FILTER_SW[i];
           }
           filt_grad[r][c-3] = acc;
         }
@@ -221,7 +222,7 @@ public:
           {
             for(int component = 0; component < 6; component ++)
             {
-              acc.val[component] += outer[r-i][c].val[component] * TENSOR_FILTER[i];
+              acc.val[component] += outer[r-i][c].val[component] * TENSOR_FILTER_SW[i];
             }
           }
         }
@@ -252,7 +253,7 @@ public:
           {
             for (int component = 0; component < 6; component ++)
             {
-              acc.val[component] += tensor_y[r][c-i].val[component] * TENSOR_FILTER[i];
+              acc.val[component] += tensor_y[r][c-i].val[component] * TENSOR_FILTER_SW[i];
             }
           }
         }

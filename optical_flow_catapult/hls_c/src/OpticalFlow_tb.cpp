@@ -11,24 +11,23 @@ using namespace std;
 #include <cmath>
 #include <mc_scverify.h>
 
+//////////////// When doing only "algorithm" simulaion, without HLS simulation //////////////////////
+//#include "OpticalFlow_defs.h"
+//////////////////////////////////////
+
+#include "OpticalFlow.h"
 #include "OpticalFlow_Algorithm.h"
-/////////////#include "OpticalFlow.h"
 
 
-////////////////////////////////////// !!!!!!!!
-#include <ac_int.h>
-#include <ac_fixed.h>
-#include <ac_channel.h>
-typedef ac_int<ac::nbits<MAX_WIDTH+1>::val,false> maxWType;
-typedef ac_int<ac::nbits<MAX_HEIGHT+1>::val,false> maxHType;
-////////////////////////////////////// !!!!!!!!
+
+
 
 CCS_MAIN(int argc, char *argv[])
 {
   const int iW = 1024;
   const int iH = 436;
   OpticalFlow_Algorithm<iW,iH> ref_inst;
-  /////////////#OpticalFlow_Top               dut;
+  OpticalFlow_Top               dut;
 
   unsigned long int width = iW;
   long int height         = iH;
@@ -86,19 +85,21 @@ CCS_MAIN(int argc, char *argv[])
   assert(width==iW);
   assert(height==iH);
 
-  ///////////////////////////////ac_channel<input_t> frame1_channel;
-  ///////////////////////////////ac_channel<input_t> frame2_channel;
-  ///////////////////////////////ac_channel<input_t> frame3_channel;
-  ///////////////////////////////ac_channel<input_t> frame4_channel;
-  ///////////////////////////////ac_channel<input_t> frame5_channel;
-  ///////////////////////////////ac_channel<velocity_t> output_HLS_channel;
+  //ac_channel<input_t> frame1_channel;
+  //ac_channel<input_t> frame2_channel;
+  //ac_channel<input_t> frame3_channel;
+  //ac_channel<input_t> frame4_channel;
+  //ac_channel<input_t> frame5_channel;
+  ac_channel<frames_t> frames_channel;
+  ac_channel<pixel_t> gradient_x_HLS; // <-----------------------------------------------------------------------------------
+  ac_channel<velocity_t> output_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
   static float frame3[iH][iW];
   static float frame4[iH][iW];
   static float frame5[iH][iW];
-  //static float gradient_x[iH][iW];
+  static float gradient_x_algorithm[iH][iW]; // <-----------------------------------------------------------------------------------
   static velocity_t_sw output_algorithm[iH][iW];
 
   unsigned  cnt = 0;
@@ -110,7 +111,14 @@ CCS_MAIN(int argc, char *argv[])
       ///////////////////////////////frame3_channel.write((input_t)(rarray3[cnt]));
       ///////////////////////////////frame4_channel.write((input_t)(rarray4[cnt]));
       ///////////////////////////////frame5_channel.write((input_t)(rarray5[cnt]));
-
+      frames_channel.write((((frames_t)rarray5[cnt]) << 32) + (((frames_t)rarray4[cnt]) << 24) + (((frames_t)rarray3[cnt]) << 16) + (((frames_t)rarray2[cnt]) << 8) + (frames_t)rarray1[cnt]);
+      //printf("%x\n", rarray1[cnt]);
+      //printf("%x\n", rarray2[cnt]);
+      //printf("%x\n", rarray3[cnt]);
+      //printf("%x\n", rarray4[cnt]);
+      //printf("%x\n", rarray5[cnt]);
+      //printf("%x\n", (((frames_t)rarray5[cnt]) << 32) + (((frames_t)rarray4[cnt]) << 24) + (((frames_t)rarray3[cnt]) << 16) + (((frames_t)rarray2[cnt]) << 8) + (frames_t)rarray1[cnt]);
+      
       // input for algorithm
       frame1[y][x] = float(rarray1[cnt]);
       frame2[y][x] = float(rarray2[cnt]);
@@ -130,9 +138,10 @@ CCS_MAIN(int argc, char *argv[])
 
   cout << "Running" << endl;
 
-  ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
-  //ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x,output_algorithm);
-  ///////////////////////////////dut.run(frame1_channel,frame2_channel,frame3_channel,frame4_channel,frame5_channel,output_HLS_channel);
+  //ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
+  ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
+  //dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
+  dut.run(frames_channel,widthIn,heightIn,gradient_x_HLS,output_HLS_channel); // <-----------------------------------------------------------------------------------
 
   cnt = 0;
   float sumErr_u = 0;
@@ -159,7 +168,14 @@ CCS_MAIN(int argc, char *argv[])
       garray1[cnt] = (int)u_algorithm;  // repurposing 'green' array to the original algorithmic output
       garray2[cnt] = (int)v_algorithm;
       garray3[cnt] = (int)magnitude_algorithm;
-      cout << magnitude_algorithm << ", ";
+
+      //cout << magnitude_algorithm << ", ";
+      //if (x==50) {
+      //  printf("%f, ", frame3[y][x]);
+      //}
+      //printf("[algorithm] gradient_x = %f\n", gradient_x_algorithm[y][x]);
+      //printf("[   HLS   ] gradient_x = %f\n", gradient_x_HLS.read().to_double());
+      printf("(algorithm, HLS) = (%f, %f)\n", gradient_x_algorithm[y][x], gradient_x_HLS.read().to_double()); // <-----------------------------------------------------------------------------------
     }
   }
 

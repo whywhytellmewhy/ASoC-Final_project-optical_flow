@@ -80,7 +80,7 @@ class OpticalFlow_gradient_y_calc
           // Here we do NOT care about the value of pix0 when "y >= heightIn"
 
           // Calculate Iy
-          gradient_y_value = pix0*GRAD_WEIGHTS[4] + pix1*GRAD_WEIGHTS[3] + pix2*GRAD_WEIGHTS[2] + pix3*GRAD_WEIGHTS[1] + pix4*GRAD_WEIGHTS[0];
+          gradient_y_value = (pix0*GRAD_WEIGHTS[4] + pix1*GRAD_WEIGHTS[3] + pix2*GRAD_WEIGHTS[2] + pix3*GRAD_WEIGHTS[1] + pix4*GRAD_WEIGHTS[0]) / 12.0;
 
           // Write output Iy streaming interface
           if ((y >= 4) && (y < heightIn)) {

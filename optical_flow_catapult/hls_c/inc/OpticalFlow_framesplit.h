@@ -26,15 +26,24 @@ class OpticalFlow_framesplit
         Framesplit_COLUMN: for (maxWType x=0; ; x++) {
           // read input channel
           input_frame = input_frames.read();
-
+          
           // assign values to different stream channels (FIFO)
-          frame1_a.write((input_t)(input_frame(7 ,  0)) >> 8);
-          frame2_a.write((input_t)(input_frame(15,  8)) >> 8);
-          frame3_a.write((input_t)(input_frame(23, 16)) >> 8);
-          frame3_b.write((input_t)(input_frame(23, 16)) >> 8);
-          frame3_c.write((input_t)(input_frame(23, 16)) >> 8);
-          frame4_a.write((input_t)(input_frame(31, 24)) >> 8);
-          frame5_a.write((input_t)(input_frame(39, 32)) >> 8);
+          frame1_a.write((input_t)(input_frame.slc<8>(0)));
+          frame2_a.write((input_t)(input_frame.slc<8>(8)));
+          frame3_a.write((input_t)(input_frame.slc<8>(16)));
+          frame3_b.write((input_t)(input_frame.slc<8>(16)));
+          frame3_c.write((input_t)(input_frame.slc<8>(16)));
+          frame4_a.write((input_t)(input_frame.slc<8>(24)));
+          frame5_a.write((input_t)(input_frame.slc<8>(32)));
+          //printf("%x\n", input_frame);
+          //printf("%x\n", (input_t)(input_frame.slc<8>(0)));
+          //printf("%x\n", (input_t)(input_frame.slc<8>(8)));
+          //printf("%x\n", (input_t)(input_frame.slc<8>(16)));
+          //printf("%x\n", (input_t)(input_frame.slc<8>(24)));
+          //cout << (input_t)(input_frame.slc<8>(0)) << ", ";
+          //cout << (input_t)(input_frame.slc<8>(8)) << ", ";
+          //cout << (input_t)(input_frame.slc<8>(16)) << ", ";
+          //cout << (input_t)(input_frame.slc<8>(24)) << ", ";
 
           // programmable width exit condition
           if (x == widthIn-1) {

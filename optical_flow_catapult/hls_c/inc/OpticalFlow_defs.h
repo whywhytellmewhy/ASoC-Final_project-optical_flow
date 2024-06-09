@@ -10,10 +10,11 @@
 const int MAX_HEIGHT = 436;
 const int MAX_WIDTH = 1024;
 const int INPUT_T_BIT_WIDTH = 17;
+const int INPUT_T_INTEGER_PART = 9;
 
 
 // basic typedefs
-typedef ac_fixed<INPUT_T_BIT_WIDTH, 9, true, AC_TRN, AC_WRAP> input_t; // Integer part: 9 ; Decimal part: 8 ; signed
+typedef ac_fixed<INPUT_T_BIT_WIDTH, INPUT_T_INTEGER_PART, false, AC_TRN, AC_WRAP> input_t; // Integer part: 9 ; Decimal part: 8 ; signed
 //typedef ac_fixed<34,18, true, AC_TRN, AC_WRAP> input2x_t; // For ping-pong buffer
 typedef ac_int<INPUT_T_BIT_WIDTH*2> input2x_t; // For ping-pong buffer
 typedef ac_fixed<32,13, true, AC_TRN, AC_WRAP> pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
@@ -43,15 +44,15 @@ typedef struct{
 }velocity_t;
 
 // for data packing
-typedef ac_int<64> frames_t;
+typedef ac_int<64, false> frames_t;
 
 // Compute number of bits for max image size count, used internally and in testbench
 typedef ac_int<ac::nbits<MAX_WIDTH+1>::val,false> maxWType;
 typedef ac_int<ac::nbits<MAX_HEIGHT+1>::val,false> maxHType;
 
 // convolution filters
-/////const int GRAD_WEIGHTS[] =  {1,-8,0,8,-1};
-const input_t GRAD_WEIGHTS[5] =  {1/12,-8/12,0/12,8/12,-1/12};
+//const int GRAD_WEIGHTS[7] =  {1,-8,0,8,-1};
+const ac_fixed<INPUT_T_BIT_WIDTH, 2, true, AC_TRN, AC_WRAP> GRAD_WEIGHTS[5] =  {0.0833,-0.6667,0,0.6667,-0.0833}; //{1/12,-8/12,0/12,8/12,-1/12};
 const pixel_t GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
 const pixel_t TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
 

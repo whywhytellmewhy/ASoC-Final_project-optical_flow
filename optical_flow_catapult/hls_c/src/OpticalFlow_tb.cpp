@@ -175,7 +175,13 @@ CCS_MAIN(int argc, char *argv[])
       //}
       //printf("[algorithm] gradient_x = %f\n", gradient_x_algorithm[y][x]);
       //printf("[   HLS   ] gradient_x = %f\n", gradient_x_HLS.read().to_double());
-      printf("(algorithm, HLS) = (%f, %f)\n", gradient_x_algorithm[y][x], gradient_x_HLS.read().to_double()); // <-----------------------------------------------------------------------------------
+      double test = gradient_x_HLS.read().to_double();
+      //if (gradient_x_algorithm[y][x]==0 && (test<-1)) {
+        printf("(%d, %d), ", x, y);
+        //cout << frame3[y-2][x] << ", " << frame3[y-1][x] << ", " << frame3[y][x] << ", " << frame3[y+1][x] << ", " << frame3[y+2][x] << endl;
+        printf("(algorithm, HLS) = (%f, %f)\n", gradient_x_algorithm[y][x], test); // <-----------------------------------------------------------------------------------
+        
+      //}
     }
   }
 

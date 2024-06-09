@@ -16,6 +16,7 @@ const int INPUT_T_INTEGER_PART = 9;
 // basic typedefs
 typedef ac_fixed<INPUT_T_BIT_WIDTH, INPUT_T_INTEGER_PART, false, AC_TRN, AC_WRAP> input_t; // Integer part: 9 ; Decimal part: 8 ; signed
 //typedef ac_fixed<34,18, true, AC_TRN, AC_WRAP> input2x_t; // For ping-pong buffer
+typedef ac_int<INPUT_T_BIT_WIDTH> input1x_t; // For ping-pong buffer
 typedef ac_int<INPUT_T_BIT_WIDTH*2> input2x_t; // For ping-pong buffer
 typedef ac_fixed<32,13, true, AC_TRN, AC_WRAP> pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
 //typedef ac_fixed<64,26, true, AC_TRN, AC_WRAP> pixel2x_t; // For ping-pong buffer

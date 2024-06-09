@@ -36,7 +36,7 @@ typedef struct{
 #include <mc_scverify.h>
 
 // convolution filters
-const float GRAD_WEIGHTS_SW[5] =  {1,-8,0,8,-1};
+const float GRAD_WEIGHTS_SW[5] =  {0.0833,-0.6667,0,0.6667,-0.0833}; //{1,-8,0,8,-1};
 const pixel_t_sw GRAD_FILTER_SW[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
 const pixel_t_sw TENSOR_FILTER_SW[3] = {0.3243, 0.3513, 0.3243};
 

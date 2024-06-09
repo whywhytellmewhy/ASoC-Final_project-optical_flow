@@ -72,6 +72,9 @@ class OpticalFlow_gradient_x_calc
           //cout << pix0 << ", ";
           //cout << GRAD_WEIGHTS[4] << ", ";
           //cout << pix0*GRAD_WEIGHTS[4] << endl;
+          //if ((x==992) && (y==435)){
+          //  cout << "Ix: " << gradient_x_value << endl; 
+          //}
 
           pix_buf3 = pix_buf2;
           pix_buf2 = pix_buf1;

@@ -31,7 +31,8 @@ public:
            pixel_t_sw      frame2[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH], // <-----------------------------------------------------------------------------------
+           /////pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH], // <-----------------------------------------------------------------------------------
+           gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH],
            velocity_t_sw   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
   {
     // allocate buffers for image data
@@ -40,9 +41,9 @@ public:
 
     // intermediate arrays
     static pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH]; // <-----------------------------------------------------------------------------------
-    //static pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH];
+    static pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH];
     static pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH];
-    static gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH];
+    //static gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH];
     static gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH];
     static outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH];
     static tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH];
@@ -82,8 +83,8 @@ public:
             x_grad += frame[r-2][c-i] * GRAD_WEIGHTS_SW[4-i];
             y_grad += frame[r-i][c-2] * GRAD_WEIGHTS_SW[4-i];
           }
-          gradient_x[r-2][c-2] = x_grad;// / 12;
-          gradient_y[r-2][c-2] = y_grad;// / 12;
+          gradient_x[r-2][c-2] = x_grad;///// / 12;
+          gradient_y[r-2][c-2] = y_grad;///// / 12;
           //cout << gradient_x[r-2][c-2] << ", ";
           //cout << "algorihm: " << gradient_x[r-2][c-2] << endl;
           //if (gradient_y[r-2][c-2]==0){
@@ -139,7 +140,7 @@ public:
         gradient_z[r][c] += frame2[r][c] * GRAD_WEIGHTS_SW[2]; 
         gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS_SW[3]; 
         gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS_SW[4]; 
-        gradient_z[r][c] /= 12.0f;
+        /////gradient_z[r][c] /= 12.0f;
       }
     }
   }

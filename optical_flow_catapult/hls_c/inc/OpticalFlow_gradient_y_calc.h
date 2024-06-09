@@ -103,7 +103,6 @@ class OpticalFlow_gradient_y_calc
           //}
 
           // Write output Iy streaming interface
-          /////if ((y >= 4) && (y < heightIn)) {
           if ((y >= 4) && (y < heightIn)) {
             gradient_y.write(gradient_y_value);
           } else if (y >= 2) {

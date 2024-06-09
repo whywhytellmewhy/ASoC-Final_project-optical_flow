@@ -19,9 +19,6 @@ using namespace std;
 #include "OpticalFlow_Algorithm.h"
 
 
-
-
-
 CCS_MAIN(int argc, char *argv[])
 {
   const int iW = 1024;

@@ -32,7 +32,8 @@ public:
            pixel_t_sw      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            /////pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH], // <-----------------------------------------------------------------------------------
-           gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH],
+           /////gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH],
+           outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH],
            velocity_t_sw   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
   {
     // allocate buffers for image data
@@ -44,8 +45,8 @@ public:
     static pixel_t_sw gradient_y[MAX_HEIGHT][MAX_WIDTH];
     static pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH];
     static gradient_t_sw y_filtered[MAX_HEIGHT][MAX_WIDTH];
-    //static gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH];
-    static outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH];
+    static gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH];
+    //static outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH];
     static tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH];
     static tensor_t_sw tensor[MAX_HEIGHT][MAX_WIDTH];
 

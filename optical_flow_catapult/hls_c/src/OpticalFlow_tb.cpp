@@ -89,7 +89,8 @@ CCS_MAIN(int argc, char *argv[])
   //ac_channel<input_t> frame5_channel;
   ac_channel<frames_t> frames_channel;
   /////ac_channel<pixel_t> gradient_x_HLS; // <-----------------------------------------------------------------------------------
-  ac_channel<gradient_t> gradient_x_HLS;
+  /////ac_channel<gradient_t> gradient_x_HLS;
+  ac_channel<outer_t> gradient_x_HLS;
   ac_channel<velocity_t> output_HLS_channel;
 
   static float frame1[iH][iW];
@@ -98,7 +99,8 @@ CCS_MAIN(int argc, char *argv[])
   static float frame4[iH][iW];
   static float frame5[iH][iW];
   /////static float gradient_x_algorithm[iH][iW]; // <-----------------------------------------------------------------------------------
-  static gradient_t_sw gradient_x_algorithm[iH][iW];
+  /////static gradient_t_sw gradient_x_algorithm[iH][iW];
+  static outer_t_sw gradient_x_algorithm[iH][iW];
   static velocity_t_sw output_algorithm[iH][iW];
 
   unsigned  cnt = 0;
@@ -175,14 +177,19 @@ CCS_MAIN(int argc, char *argv[])
       //printf("[algorithm] gradient_x = %f\n", gradient_x_algorithm[y][x]);
       //printf("[   HLS   ] gradient_x = %f\n", gradient_x_HLS.read().to_double());
       
+
       //double test = gradient_x_HLS.read().to_double();
-      gradient_t out_test = gradient_x_HLS.read();
-      double test = out_test.z.to_double();
-      if (abs(gradient_x_algorithm[y][x].z-test) > 0.1) {
+
+      //gradient_t out_test = gradient_x_HLS.read();
+      //double test = out_test.z.to_double();
+
+      outer_t out_test = gradient_x_HLS.read();
+      double test = out_test.val[3].to_double();
+      if (abs(gradient_x_algorithm[y][x].val[3]-test) > 0.1) {
       //if (x== 990 && y==432) {
         printf("(%d, %d), ", x, y);
         //cout << gradient_x_algorithm[y-3][x] << ", " << gradient_x_algorithm[y-2][x] << ", " << gradient_x_algorithm[y-1][x] << ", " << gradient_x_algorithm[y][x] << ", " << gradient_x_algorithm[y+1][x] << ", " << gradient_x_algorithm[y+2][x] << ", " << gradient_x_algorithm[y+3][x] << endl;
-        printf("(algorithm, HLS) = (%f, %f)\n", gradient_x_algorithm[y][x].z, test); // <-----------------------------------------------------------------------------------
+        printf("(algorithm, HLS) = (%f, %f), error = %f\n", gradient_x_algorithm[y][x].val[3], test, abs(gradient_x_algorithm[y][x].val[3]-test)); // <-----------------------------------------------------------------------------------
         
       }
     }

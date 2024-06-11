@@ -10,7 +10,7 @@
 #include "OpticalFlow_gradient_weight_x.h"
 #include "OpticalFlow_outer_product.h"
 #include "OpticalFlow_tensor_weight_y.h"
-/////#include "OpticalFlow_tensor_weight_x.h"
+#include "OpticalFlow_tensor_weight_x.h"
 /////#include "OpticalFlow_flow_calc.h"
 
 #include <mc_scverify.h>
@@ -28,7 +28,7 @@
   OpticalFlow_gradient_weight_x  gradient_weight_x_inst;
   OpticalFlow_outer_product      outer_product_inst;
   OpticalFlow_tensor_weight_y    tensor_weight_y_inst;
-  /////OpticalFlow_tensor_weight_x    tensor_weight_x_inst;
+  OpticalFlow_tensor_weight_x    tensor_weight_x_inst;
   /////OpticalFlow_flow_calc          flow_calc_inst;
 
   // FIFOs connecting the stages
@@ -38,8 +38,8 @@
   ac_channel<gradient_t> y_filtered;
   ac_channel<gradient_t> filtered_gradient;
   ac_channel<outer_t> out_product;
-  //ac_channel<tensor_t> tensor_y;
-  ac_channel<tensor_t> tensor;
+  ac_channel<tensor_t> tensor_y;
+  //ac_channel<tensor_t> tensor;
 
   // FIFOs for streaming in, just for clarity
   ac_channel<input_t> frame1_a;
@@ -66,7 +66,8 @@
                         /////ac_channel<pixel_t> &gradient_x, // <-----------------------------------------------------------------------------------
                         /////ac_channel<gradient_t> &filtered_gradient,
                         /////ac_channel<outer_t> &out_product,
-                        ac_channel<tensor_t> &tensor_y,
+                        /////ac_channel<tensor_t> &tensor_y,
+                        ac_channel<tensor_t> &tensor,
                         ac_channel<velocity_t>  &outputs)
     {
       // compute
@@ -78,7 +79,7 @@
       gradient_weight_x_inst.run(y_filtered, filtered_gradient, widthIn, heightIn);
       outer_product_inst.run(filtered_gradient, out_product, widthIn, heightIn);
       tensor_weight_y_inst.run(out_product, tensor_y, widthIn, heightIn);
-      /////tensor_weight_x_inst.run(tensor_y, tensor, widthIn, heightIn);
+      tensor_weight_x_inst.run(tensor_y, tensor, widthIn, heightIn);
       /////flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
     }
   };

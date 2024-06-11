@@ -21,7 +21,7 @@ class OpticalFlow_gradient_weight_x
       gradient_t gradient_buf3 = {0,0,0};
       gradient_t gradient_buf4 = {0,0,0};
       gradient_t gradient_buf5 = {0,0,0};
-      gradient_t gradient_buf6 = {0,0,0};
+      //gradient_t gradient_buf6 = {0,0,0};
 
       gradient_t gradient0;
       gradient_t gradient1;
@@ -51,7 +51,7 @@ class OpticalFlow_gradient_weight_x
           gradient6 = gradient_buf5;
 
           
-          gradient_buf6 = gradient_buf5;
+          //gradient_buf6 = gradient_buf5;
           gradient_buf5 = gradient_buf4;
           gradient_buf4 = gradient_buf3;
           gradient_buf3 = gradient_buf2;

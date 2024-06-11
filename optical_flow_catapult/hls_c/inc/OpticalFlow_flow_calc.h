@@ -11,13 +11,14 @@ class OpticalFlow_flow_calc
     #pragma hls_design interface
     void CCS_BLOCK(run)(ac_channel<tensor_t> &tensor,
                         ac_channel<velocity_t>  &output,
-                        ac_channel<pixel_t>  &denominator,
+                        ac_channel<vel_pixel_t>  &denominator,
                         maxWType            widthIn,
                         maxHType            heightIn)
     {
       tensor_t tensor_value;
 
-      pixel_t denominator_value;
+      //pixel_t denominator_value;
+      vel_pixel_t denominator_value;
 
       velocity_t total_output_value;
 
@@ -32,8 +33,11 @@ class OpticalFlow_flow_calc
             total_output_value.x = (tensor_value.val[5]*tensor_value.val[3] - tensor_value.val[4]*tensor_value.val[1]); // / denominator_value;
             total_output_value.y = (tensor_value.val[4]*tensor_value.val[3] - tensor_value.val[5]*tensor_value.val[0]); // / denominator_value;
             //if ((x==451) && (y==62)){
-            if ((x==362) && (y==399)){
-              cout << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
+            //if ((x==362) && (y==399)){
+            //if ((x==317) && (y==189)){
+            //if ((x==497) && (y==367)){
+            if ((x==785) && (y==287)){
+              cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
               cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
               cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
               cout << "HLS_tensor_value[3]: " << tensor_value.val[3] << endl;
@@ -42,6 +46,8 @@ class OpticalFlow_flow_calc
               cout << "HLS_denominator_value: " << denominator_value << endl;
               cout << "HLS_total_output_value.x: " << total_output_value.x << endl;
               cout << "HLS_total_output_value.y: " << total_output_value.y << endl;
+              cout << "HLS_total_output_value.x (after division): " << total_output_value.x.to_double()/denominator_value.to_double() << endl;
+              cout << "HLS_total_output_value.y (after division): " << total_output_value.y.to_double()/denominator_value.to_double() << endl;
             }
 
             // Write output optical flow (velocity) streaming interface

@@ -93,7 +93,8 @@ CCS_MAIN(int argc, char *argv[])
   /////ac_channel<outer_t> gradient_x_HLS;
   /////ac_channel<tensor_t> gradient_x_HLS;
   ac_channel<velocity_t> output_HLS_channel;
-  ac_channel<pixel_t> denominator_HLS_channel;
+  //ac_channel<pixel_t> denominator_HLS_channel;
+  ac_channel<vel_pixel_t> denominator_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
@@ -207,7 +208,7 @@ CCS_MAIN(int argc, char *argv[])
       double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
       
       double denominator_HLS = denominator_HLS_channel.read().to_double();
-      /*//printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
+      //printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
       final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
       final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
       //printf("%f\n", final_velocity_x_HLS);
@@ -216,6 +217,7 @@ CCS_MAIN(int argc, char *argv[])
       if ((x==0) && (y==0)) {
         printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
       }
+      if (x>5 && x<1020 && y>5 && y<430) {
       if (abs(output_algorithm[y][x].x-final_velocity_x_HLS) > tolerable_error_threshold) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
         printf("(%d, %d), ", x, y);
         printf("u: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].x, final_velocity_x_HLS, abs(output_algorithm[y][x].x-final_velocity_x_HLS));
@@ -223,7 +225,8 @@ CCS_MAIN(int argc, char *argv[])
       if (abs(output_algorithm[y][x].y-final_velocity_y_HLS) > tolerable_error_threshold) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
         printf("(%d, %d), ", x, y);
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
-      }*/
+      }
+      }
     }
   }
 

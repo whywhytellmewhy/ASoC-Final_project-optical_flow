@@ -68,7 +68,8 @@
                         /////ac_channel<outer_t> &out_product,
                         /////ac_channel<tensor_t> &tensor_y,
                         /////ac_channel<tensor_t> &tensor,
-                        ac_channel<pixel_t>  &denominator,
+                        //ac_channel<pixel_t>  &denominator,
+                        ac_channel<vel_pixel_t>  &denominator,
                         ac_channel<velocity_t>  &outputs)
     {
       // compute

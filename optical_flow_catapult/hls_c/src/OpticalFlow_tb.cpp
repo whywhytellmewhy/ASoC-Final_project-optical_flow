@@ -90,7 +90,8 @@ CCS_MAIN(int argc, char *argv[])
   ac_channel<frames_t> frames_channel;
   /////ac_channel<pixel_t> gradient_x_HLS; // <-----------------------------------------------------------------------------------
   /////ac_channel<gradient_t> gradient_x_HLS;
-  ac_channel<outer_t> gradient_x_HLS;
+  /////ac_channel<outer_t> gradient_x_HLS;
+  ac_channel<tensor_t> gradient_x_HLS;
   ac_channel<velocity_t> output_HLS_channel;
 
   static float frame1[iH][iW];
@@ -100,7 +101,8 @@ CCS_MAIN(int argc, char *argv[])
   static float frame5[iH][iW];
   /////static float gradient_x_algorithm[iH][iW]; // <-----------------------------------------------------------------------------------
   /////static gradient_t_sw gradient_x_algorithm[iH][iW];
-  static outer_t_sw gradient_x_algorithm[iH][iW];
+  /////static outer_t_sw gradient_x_algorithm[iH][iW];
+  static tensor_t_sw gradient_x_algorithm[iH][iW];
   static velocity_t_sw output_algorithm[iH][iW];
 
   unsigned  cnt = 0;
@@ -183,9 +185,12 @@ CCS_MAIN(int argc, char *argv[])
       //gradient_t out_test = gradient_x_HLS.read();
       //double test = out_test.z.to_double();
 
-      outer_t out_test = gradient_x_HLS.read();
+      //outer_t out_test = gradient_x_HLS.read();
+      //double test = out_test.val[3].to_double();
+
+      tensor_t out_test = gradient_x_HLS.read();
       double test = out_test.val[3].to_double();
-      if (abs(gradient_x_algorithm[y][x].val[3]-test) > 0.1) {
+      if (abs(gradient_x_algorithm[y][x].val[3]-test) > 1) { // Ww can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
       //if (x== 990 && y==432) {
         printf("(%d, %d), ", x, y);
         //cout << gradient_x_algorithm[y-3][x] << ", " << gradient_x_algorithm[y-2][x] << ", " << gradient_x_algorithm[y-1][x] << ", " << gradient_x_algorithm[y][x] << ", " << gradient_x_algorithm[y+1][x] << ", " << gradient_x_algorithm[y+2][x] << ", " << gradient_x_algorithm[y+3][x] << endl;

@@ -17,21 +17,21 @@ class OpticalFlow_gradient_weight_y
                         maxHType            heightIn)
     {
       // Line buffers store pixel line history - Mapped to RAM
-      pixel2x_t line_buf6_Ix[MAX_WIDTH/2];
+      //pixel2x_t line_buf6_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf5_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf4_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf3_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf2_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf1_Ix[MAX_WIDTH/2];
       pixel2x_t line_buf0_Ix[MAX_WIDTH/2];
-      pixel2x_t line_buf6_Iy[MAX_WIDTH/2];
+      //pixel2x_t line_buf6_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf5_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf4_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf3_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf2_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf1_Iy[MAX_WIDTH/2];
       pixel2x_t line_buf0_Iy[MAX_WIDTH/2];
-      pixel2x_t line_buf6_Iz[MAX_WIDTH/2];
+      //pixel2x_t line_buf6_Iz[MAX_WIDTH/2];
       pixel2x_t line_buf5_Iz[MAX_WIDTH/2];
       pixel2x_t line_buf4_Iz[MAX_WIDTH/2];
       pixel2x_t line_buf3_Iz[MAX_WIDTH/2];
@@ -39,9 +39,12 @@ class OpticalFlow_gradient_weight_y
       pixel2x_t line_buf1_Iz[MAX_WIDTH/2];
       pixel2x_t line_buf0_Iz[MAX_WIDTH/2];
 
-      pixel2x_t rdbuf0_Ix, rdbuf1_Ix, rdbuf2_Ix, rdbuf3_Ix, rdbuf4_Ix, rdbuf5_Ix, rdbuf6_Ix;
-      pixel2x_t rdbuf0_Iy, rdbuf1_Iy, rdbuf2_Iy, rdbuf3_Iy, rdbuf4_Iy, rdbuf5_Iy, rdbuf6_Iy;
-      pixel2x_t rdbuf0_Iz, rdbuf1_Iz, rdbuf2_Iz, rdbuf3_Iz, rdbuf4_Iz, rdbuf5_Iz, rdbuf6_Iz;
+      //pixel2x_t rdbuf0_Ix, rdbuf1_Ix, rdbuf2_Ix, rdbuf3_Ix, rdbuf4_Ix, rdbuf5_Ix, rdbuf6_Ix;
+      //pixel2x_t rdbuf0_Iy, rdbuf1_Iy, rdbuf2_Iy, rdbuf3_Iy, rdbuf4_Iy, rdbuf5_Iy, rdbuf6_Iy;
+      //pixel2x_t rdbuf0_Iz, rdbuf1_Iz, rdbuf2_Iz, rdbuf3_Iz, rdbuf4_Iz, rdbuf5_Iz, rdbuf6_Iz;
+      pixel2x_t rdbuf0_Ix, rdbuf1_Ix, rdbuf2_Ix, rdbuf3_Ix, rdbuf4_Ix, rdbuf5_Ix;
+      pixel2x_t rdbuf0_Iy, rdbuf1_Iy, rdbuf2_Iy, rdbuf3_Iy, rdbuf4_Iy, rdbuf5_Iy;
+      pixel2x_t rdbuf0_Iz, rdbuf1_Iz, rdbuf2_Iz, rdbuf3_Iz, rdbuf4_Iz, rdbuf5_Iz;
       pixel2x_t wrbuf0_Ix;
       pixel2x_t wrbuf0_Iy;
       pixel2x_t wrbuf0_Iz;
@@ -83,21 +86,21 @@ class OpticalFlow_gradient_weight_y
           // Read line buffers into read buffer caches on even iterations of COL loop
           if ( (x&1) == 0 ) {
             // vertical window of pixels
-            rdbuf6_Ix = line_buf6_Ix[x/2];
+            //rdbuf6_Ix = line_buf6_Ix[x/2];
             rdbuf5_Ix = line_buf5_Ix[x/2];
             rdbuf4_Ix = line_buf4_Ix[x/2];
             rdbuf3_Ix = line_buf3_Ix[x/2];
             rdbuf2_Ix = line_buf2_Ix[x/2];
             rdbuf1_Ix = line_buf1_Ix[x/2];
             rdbuf0_Ix = line_buf0_Ix[x/2];
-            rdbuf6_Iy = line_buf6_Iy[x/2];
+            //rdbuf6_Iy = line_buf6_Iy[x/2];
             rdbuf5_Iy = line_buf5_Iy[x/2];
             rdbuf4_Iy = line_buf4_Iy[x/2];
             rdbuf3_Iy = line_buf3_Iy[x/2];
             rdbuf2_Iy = line_buf2_Iy[x/2];
             rdbuf1_Iy = line_buf1_Iy[x/2];
             rdbuf0_Iy = line_buf0_Iy[x/2];
-            rdbuf6_Iz = line_buf6_Iz[x/2];
+            //rdbuf6_Iz = line_buf6_Iz[x/2];
             rdbuf5_Iz = line_buf5_Iz[x/2];
             rdbuf4_Iz = line_buf4_Iz[x/2];
             rdbuf3_Iz = line_buf3_Iz[x/2];
@@ -105,21 +108,21 @@ class OpticalFlow_gradient_weight_y
             rdbuf1_Iz = line_buf1_Iz[x/2];
             rdbuf0_Iz = line_buf0_Iz[x/2];
           } else { // Write line buffer caches on odd iterations of COL loop
-            line_buf6_Ix[x/2] = rdbuf5_Ix; // copy previous line
+            //line_buf6_Ix[x/2] = rdbuf5_Ix; // copy previous line
             line_buf5_Ix[x/2] = rdbuf4_Ix; // copy previous line
             line_buf4_Ix[x/2] = rdbuf3_Ix; // copy previous line
             line_buf3_Ix[x/2] = rdbuf2_Ix; // copy previous line
             line_buf2_Ix[x/2] = rdbuf1_Ix; // copy previous line
             line_buf1_Ix[x/2] = rdbuf0_Ix; // copy previous line
             line_buf0_Ix[x/2] = wrbuf0_Ix; // store current line
-            line_buf6_Iy[x/2] = rdbuf5_Iy; // copy previous line
+            //line_buf6_Iy[x/2] = rdbuf5_Iy; // copy previous line
             line_buf5_Iy[x/2] = rdbuf4_Iy; // copy previous line
             line_buf4_Iy[x/2] = rdbuf3_Iy; // copy previous line
             line_buf3_Iy[x/2] = rdbuf2_Iy; // copy previous line
             line_buf2_Iy[x/2] = rdbuf1_Iy; // copy previous line
             line_buf1_Iy[x/2] = rdbuf0_Iy; // copy previous line
             line_buf0_Iy[x/2] = wrbuf0_Iy; // store current line
-            line_buf6_Iz[x/2] = rdbuf5_Iz; // copy previous line
+            //line_buf6_Iz[x/2] = rdbuf5_Iz; // copy previous line
             line_buf5_Iz[x/2] = rdbuf4_Iz; // copy previous line
             line_buf4_Iz[x/2] = rdbuf3_Iz; // copy previous line
             line_buf3_Iz[x/2] = rdbuf2_Iz; // copy previous line

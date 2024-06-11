@@ -13,7 +13,7 @@ const int INPUT_T_BIT_WIDTH = 17;
 const int INPUT_T_INTEGER_PART = 9;
 const int PIXEL_T_BIT_WIDTH = 32;
 const int PIXEL_T_INTEGER_PART = 13;
-const int OUTER_PIXEL_T_BIT_WIDTH = 32;
+const int OUTER_PIXEL_T_BIT_WIDTH = 64; //32;
 const int OUTER_PIXEL_T_INTEGER_PART = 27;
 
 

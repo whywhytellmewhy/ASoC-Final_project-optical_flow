@@ -68,6 +68,7 @@
                         /////ac_channel<outer_t> &out_product,
                         /////ac_channel<tensor_t> &tensor_y,
                         /////ac_channel<tensor_t> &tensor,
+                        ac_channel<pixel_t>  &denominator,
                         ac_channel<velocity_t>  &outputs)
     {
       // compute
@@ -80,7 +81,8 @@
       outer_product_inst.run(filtered_gradient, out_product, widthIn, heightIn);
       tensor_weight_y_inst.run(out_product, tensor_y, widthIn, heightIn);
       tensor_weight_x_inst.run(tensor_y, tensor, widthIn, heightIn);
-      flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
+      /////flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
+      flow_calc_inst.run(tensor, outputs, denominator, widthIn, heightIn);
     }
   };
 

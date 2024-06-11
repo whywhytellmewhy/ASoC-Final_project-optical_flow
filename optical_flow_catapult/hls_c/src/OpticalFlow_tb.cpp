@@ -93,6 +93,7 @@ CCS_MAIN(int argc, char *argv[])
   /////ac_channel<outer_t> gradient_x_HLS;
   /////ac_channel<tensor_t> gradient_x_HLS;
   ac_channel<velocity_t> output_HLS_channel;
+  ac_channel<pixel_t> denominator_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
@@ -143,7 +144,8 @@ CCS_MAIN(int argc, char *argv[])
 
   ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
-  dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
+  /////dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
+  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,output_HLS_channel);
   /////dut.run(frames_channel,widthIn,heightIn,gradient_x_HLS,output_HLS_channel); // <-----------------------------------------------------------------------------------
 
   cnt = 0;
@@ -189,21 +191,31 @@ CCS_MAIN(int argc, char *argv[])
       //double test = out_test.val[3].to_double();
 
       //tensor_t out_test = gradient_x_HLS.read();
-      //double test = out_test.val[3].to_double();
-      //if (abs(gradient_x_algorithm[y][x].val[3]-test) > 1) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
-      ////if (x== 990 && y==432) {
-      //  printf("(%d, %d), ", x, y);
-      //  //cout << gradient_x_algorithm[y-3][x] << ", " << gradient_x_algorithm[y-2][x] << ", " << gradient_x_algorithm[y-1][x] << ", " << gradient_x_algorithm[y][x] << ", " << gradient_x_algorithm[y+1][x] << ", " << gradient_x_algorithm[y+2][x] << ", " << gradient_x_algorithm[y+3][x] << endl;
-      //  printf("(algorithm, HLS) = (%f, %f), error = %f\n", gradient_x_algorithm[y][x].val[3], test, abs(gradient_x_algorithm[y][x].val[3]-test)); // <-----------------------------------------------------------------------------------
-      //  
+      //for (int index = 0; index < 6; index++) {
+      //  double test = out_test.val[index].to_double();
+      //  if (abs(gradient_x_algorithm[y][x].val[index]-test) > 1) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
+      //  if (x>5 && x<1020 && y>5 && y<430) {
+      //    printf("(%d, %d), index = %d, ", x, y, index);
+      //    //cout << gradient_x_algorithm[y-3][x] << ", " << gradient_x_algorithm[y-2][x] << ", " << gradient_x_algorithm[y-1][x] << ", " << gradient_x_algorithm[y][x] << ", " << gradient_x_algorithm[y+1][x] << ", " << gradient_x_algorithm[y+2][x] << ", " << gradient_x_algorithm[y+3][x] << endl;
+      //    printf("(algorithm, HLS) = (%f, %f), error = %f\n", gradient_x_algorithm[y][x].val[index], test, abs(gradient_x_algorithm[y][x].val[index]-test)); // <-----------------------------------------------------------------------------------
+      //  }
+      //  }
       //}
 
       velocity_t final_velocity_HLS = output_HLS_channel.read();
       double final_velocity_x_HLS = final_velocity_HLS.x.to_double();
       double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
+      
+      double denominator_HLS = denominator_HLS_channel.read().to_double();
+      /*//printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
+      final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
+      final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
+      //printf("%f\n", final_velocity_x_HLS);
 
       double tolerable_error_threshold = 1;
-      printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
+      if ((x==0) && (y==0)) {
+        printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
+      }
       if (abs(output_algorithm[y][x].x-final_velocity_x_HLS) > tolerable_error_threshold) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
         printf("(%d, %d), ", x, y);
         printf("u: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].x, final_velocity_x_HLS, abs(output_algorithm[y][x].x-final_velocity_x_HLS));
@@ -211,7 +223,7 @@ CCS_MAIN(int argc, char *argv[])
       if (abs(output_algorithm[y][x].y-final_velocity_y_HLS) > tolerable_error_threshold) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
         printf("(%d, %d), ", x, y);
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
-      }
+      }*/
     }
   }
 

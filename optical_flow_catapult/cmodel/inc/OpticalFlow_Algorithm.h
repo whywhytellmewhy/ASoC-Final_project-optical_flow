@@ -310,6 +310,18 @@ public:
                             tensors[r][c].val[4] * tensors[r][c].val[1]) / denom;
           output[r][c].y = (tensors[r][c].val[4] * tensors[r][c].val[3] -
                             tensors[r][c].val[5] * tensors[r][c].val[0]) / denom;
+          //if ((c==451) && (r==62)){
+          if ((c==362) && (r==399)){
+            cout << "Algorithm_tensor_value[0]: " << tensors[r][c].val[0] << endl;
+            cout << "Algorithm_tensor_value[1]: " << tensors[r][c].val[1] << endl;
+            cout << "Algorithm_tensor_value[2]: " << tensors[r][c].val[2] << endl;
+            cout << "Algorithm_tensor_value[3]: " << tensors[r][c].val[3] << endl;
+            cout << "Algorithm_tensor_value[4]: " << tensors[r][c].val[4] << endl;
+            cout << "Algorithm_tensor_value[5]: " << tensors[r][c].val[5] << endl;
+            cout << "Algorithm_denominator_value: " << denom << endl;
+            cout << "Algorithm_total_output_value.x: " << output[r][c].x << endl;
+            cout << "Algorithm_total_output_value.y: " << output[r][c].y << endl;
+          }
         }
         else
         {

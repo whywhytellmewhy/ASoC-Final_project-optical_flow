@@ -13,28 +13,45 @@ class OpticalFlow_flow_calc
                         ac_channel<velocity_t>  &output,
                         maxWType            widthIn,
                         maxHType            heightIn)
-{
-  for(int r = 0; r < MAX_HEIGHT; r ++)
-  {
-    for(int c = 0; c < MAX_WIDTH; c ++)
     {
-      if (r >= 2 && r < MAX_HEIGHT - 2 && c >= 2 && c < MAX_WIDTH - 2)
-      {
-        pixel_t denom = tensors[r][c].val[0] * tensors[r][c].val[1] -
-                        tensors[r][c].val[3] * tensors[r][c].val[3];
-        output[r][c].x = (tensors[r][c].val[5] * tensors[r][c].val[3] -
-                          tensors[r][c].val[4] * tensors[r][c].val[1]) / denom;
-        output[r][c].y = (tensors[r][c].val[4] * tensors[r][c].val[3] -
-                          tensors[r][c].val[5] * tensors[r][c].val[0]) / denom;
-      }
-      else
-      {
-        output[r][c].x = 0;
-        output[r][c].y = 0;
+      tensor_t tensor_value;
+
+      pixel_t denominator;
+
+      velocity_t total_output_value;
+
+      Flow_calc_ROW: for(maxHType y=0; ; y++) {
+        Flow_calc_COLUMN: for(maxWType x=0; ; x++) {
+          // read input channels
+          tensor_value = tensor.read();
+
+          if ((y >= 2) && (y < heightIn-2) && (x >= 2) && (x < widthIn-2)) {
+            // Calculate total_output_value
+            denominator = tensor_value.val[0]*tensor_value.val[1] - tensor_value.val[3]*tensor_value.val[3];
+            total_output_value.x = (tensor_value.val[5]*tensor_value.val[3] - tensor_value.val[4]*tensor_value.val[1]) / denominator;
+            total_output_value.y = (tensor_value.val[4]*tensor_value.val[3] - tensor_value.val[5]*tensor_value.val[0]) / denominator;
+
+            // Write output optical flow (velocity) streaming interface
+            output.write(total_output_value);
+          } else {
+            total_output_value.x = 0;
+            total_output_value.y = 0;
+
+            // Write output optical flow (velocity) streaming interface
+            output.write(total_output_value);
+          }
+
+          // programmable width exit condition
+          if (x == widthIn-1) {
+            break;
+          }
+        }
+        // programmable height exit condition
+        if (y == heightIn-1) {
+          break;
+        }
       }
     }
-  }
-}
 };
 
 

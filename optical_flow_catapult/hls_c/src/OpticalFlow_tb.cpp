@@ -95,6 +95,7 @@ CCS_MAIN(int argc, char *argv[])
   ac_channel<velocity_t> output_HLS_channel;
   //ac_channel<pixel_t> denominator_HLS_channel;
   ac_channel<vel_pixel_t> denominator_HLS_channel;
+  ac_channel<shift_t> shift_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
@@ -146,7 +147,7 @@ CCS_MAIN(int argc, char *argv[])
   ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
   /////dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
-  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,output_HLS_channel);
+  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
   /////dut.run(frames_channel,widthIn,heightIn,gradient_x_HLS,output_HLS_channel); // <-----------------------------------------------------------------------------------
 
   cnt = 0;
@@ -183,6 +184,7 @@ CCS_MAIN(int argc, char *argv[])
       //printf("[   HLS   ] gradient_x = %f\n", gradient_x_HLS.read().to_double());
       
 
+      ////////////////////////////////////////////////////////////////////////////////////// (version 1: test intermediate output values) //////////////////////////////////////////////////////////////////////////////////////
       //double test = gradient_x_HLS.read().to_double();
 
       //gradient_t out_test = gradient_x_HLS.read();
@@ -203,6 +205,7 @@ CCS_MAIN(int argc, char *argv[])
       //  }
       //}
 
+      ////////////////////////////////////////////////////////////////////////////////////// (version 2: output velocity with non-shift) //////////////////////////////////////////////////////////////////////////////////////
       velocity_t final_velocity_HLS = output_HLS_channel.read();
       double final_velocity_x_HLS = final_velocity_HLS.x.to_double();
       double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
@@ -212,7 +215,7 @@ CCS_MAIN(int argc, char *argv[])
       final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
       final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
       //printf("%f\n", final_velocity_x_HLS);
-
+      
       double tolerable_error_threshold = 1;
       if ((x==0) && (y==0)) {
         printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
@@ -227,6 +230,9 @@ CCS_MAIN(int argc, char *argv[])
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
       }
       }
+
+      ////////////////////////////////////////////////////////////////////////////////////// (version 3: output velocity with shift channel) //////////////////////////////////////////////////////////////////////////////////////
+      ///// Use the same testbench as version 2
     }
   }
 

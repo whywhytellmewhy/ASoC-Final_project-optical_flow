@@ -70,6 +70,7 @@
                         /////ac_channel<tensor_t> &tensor,
                         //ac_channel<pixel_t>  &denominator,
                         ac_channel<vel_pixel_t>  &denominator,
+                        ac_channel<shift_t>  &shift,
                         ac_channel<velocity_t>  &outputs)
     {
       // compute
@@ -83,7 +84,8 @@
       tensor_weight_y_inst.run(out_product, tensor_y, widthIn, heightIn);
       tensor_weight_x_inst.run(tensor_y, tensor, widthIn, heightIn);
       /////flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
-      flow_calc_inst.run(tensor, outputs, denominator, widthIn, heightIn);
+      /////flow_calc_inst.run(tensor, outputs, denominator, widthIn, heightIn);
+      flow_calc_inst.run(tensor, outputs, denominator, shift, widthIn, heightIn);
     }
   };
 

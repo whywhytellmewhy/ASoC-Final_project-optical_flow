@@ -14,9 +14,9 @@ const int INPUT_T_INTEGER_PART = 9;
 const int PIXEL_T_BIT_WIDTH = 32;
 const int PIXEL_T_INTEGER_PART = 13;
 const int OUTER_PIXEL_T_BIT_WIDTH = 64; //32;
-const int OUTER_PIXEL_T_INTEGER_PART = 27;
-const int VEL_PIXEL_T_BIT_WIDTH = 64; //32;
-const int VEL_PIXEL_T_INTEGER_PART = 32; //13;
+const int OUTER_PIXEL_T_INTEGER_PART = 32; //27;
+const int VEL_PIXEL_T_BIT_WIDTH = OUTER_PIXEL_T_INTEGER_PART*2; //32;
+//const int VEL_PIXEL_T_INTEGER_PART = 32; //13;
 
 
 // basic typedefs
@@ -33,7 +33,10 @@ typedef ac_fixed<OUTER_PIXEL_T_BIT_WIDTH,OUTER_PIXEL_T_INTEGER_PART, true, AC_TR
 typedef ac_int<OUTER_PIXEL_T_BIT_WIDTH*6> outer1x_t; // For ping-pong buffer, multiplied by "6" is because outer_t type has 6 components of type outer_pixel_t
 typedef ac_int<OUTER_PIXEL_T_BIT_WIDTH*12> outer2x_t; // For ping-pong buffer
 /////typedef ac_fixed<64,56, true, AC_TRN, AC_WRAP> calc_pixel_t; // Integer part: 56 ; Decimal part: 8 ; signed
-typedef ac_fixed<VEL_PIXEL_T_BIT_WIDTH,VEL_PIXEL_T_INTEGER_PART, true, AC_TRN, AC_WRAP> vel_pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
+typedef ac_int<OUTER_PIXEL_T_INTEGER_PART> tensor_int_pixel_t;
+/////typedef ac_fixed<VEL_PIXEL_T_BIT_WIDTH,VEL_PIXEL_T_INTEGER_PART, true, AC_TRN, AC_WRAP> vel_pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
+typedef ac_int<VEL_PIXEL_T_BIT_WIDTH> vel_pixel_t;
+typedef ac_int<ac::nbits<OUTER_PIXEL_T_BIT_WIDTH>::val,false> shift_t;
 
 typedef struct{
 	pixel_t x;
@@ -48,6 +51,10 @@ typedef struct{
 typedef struct{
     outer_pixel_t val[6];
 }tensor_t;
+
+typedef struct{
+    tensor_int_pixel_t val[6];
+}tensor_int_t;
 
 typedef struct{
     vel_pixel_t x;

@@ -315,6 +315,7 @@ public:
           //if ((c==317) && (r==189)){
           //if ((c==497) && (r==367)){
           if ((c==785) && (r==287)){
+          //if ((c==302) && (r==116)){
             cout << endl << "Algorithm_tensor_value[0]: " << tensors[r][c].val[0] << endl;
             cout << "Algorithm_tensor_value[1]: " << tensors[r][c].val[1] << endl;
             cout << "Algorithm_tensor_value[2]: " << tensors[r][c].val[2] << endl;

@@ -37,7 +37,8 @@ class OpticalFlow_flow_calc
           if ((y >= 2) && (y < heightIn-2) && (x >= 2) && (x < widthIn-2)) {
             //if ((x==302) && (y==116)){
             //if ((x==785) && (y==287)){
-            if ((x==354) && (y==277)){
+            //if ((x==354) && (y==277)){
+            if ((x==TARGET_X) && (y==TARGET_Y)){
               cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
               cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
               cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
@@ -109,7 +110,8 @@ class OpticalFlow_flow_calc
             //if ((x==317) && (y==189)){
             //if ((x==497) && (y==367)){
             //if ((x==785) && (y==287)){
-            if ((x==354) && (y==277)){
+            //if ((x==354) && (y==277)){
+            if ((x==TARGET_X) && (y==TARGET_Y)){
               //cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
               //cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
               //cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;

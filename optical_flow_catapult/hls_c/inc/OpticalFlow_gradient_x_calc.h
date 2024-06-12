@@ -90,12 +90,12 @@ class OpticalFlow_gradient_x_calc
           }
 
           if ((x==TARGET_X+2) && (y==TARGET_Y)){
-            cout << pix0 << ", " << pix1 << ", " << pix2 << ", " << pix3 << ", " << pix4 << endl;
+            //cout << pix0 << ", " << pix1 << ", " << pix2 << ", " << pix3 << ", " << pix4 << endl;
             cout << "HLS_Ix: " << gradient_x_value << endl;
-            for (int k=PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-              cout << gradient_x_value[k];
-            }
-            cout << endl;
+            //for (int k=PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+            //  cout << gradient_x_value[k];
+            //}
+            //cout << endl;
           }
           
           // programmable width exit condition

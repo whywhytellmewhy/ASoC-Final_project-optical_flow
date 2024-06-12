@@ -109,6 +109,10 @@ class OpticalFlow_gradient_y_calc
             gradient_y.write(0);
           }
 
+          if ((x==TARGET_X) && (y==TARGET_Y+2)){
+            cout << "HLS_Iy: " << gradient_y_value << endl;
+          }
+
           // programmable width exit condition
           if (x == widthIn-1) {
             break;

@@ -7,8 +7,8 @@
 #include <ac_math/ac_sqrt_pwl.h>
 #include <ac_math/ac_atan2_cordic.h>
 
-#define TARGET_X 354
-#define TARGET_Y 277
+#define TARGET_X 586 //358 // 354
+#define TARGET_Y 150 //250 // 277
 
 const int MAX_HEIGHT = 436;
 const int MAX_WIDTH = 1024;
@@ -73,9 +73,9 @@ typedef ac_int<ac::nbits<MAX_HEIGHT+1>::val,false> maxHType;
 
 // convolution filters
 //const int GRAD_WEIGHTS[7] =  {1,-8,0,8,-1};
-const ac_fixed<32, 2, true, AC_TRN, AC_WRAP> GRAD_WEIGHTS[5] =  {0.0833,-0.6667,0,0.6667,-0.0833}; //{1/12,-8/12,0/12,8/12,-1/12};
+const ac_fixed<32, 2, true, AC_RND, AC_WRAP> GRAD_WEIGHTS[5] =  {0.0833,-0.6667,0,0.6667,-0.0833}; //{1/12,-8/12,0/12,8/12,-1/12};
 //const pixel_t GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
-const ac_fixed<32, 1, false, AC_TRN, AC_WRAP> GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
+const ac_fixed<32, 1, false, AC_RND, AC_WRAP> GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
 //const pixel_t TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
-const ac_fixed<32, 1, false, AC_TRN, AC_WRAP> TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
+const ac_fixed<32, 1, false, AC_RND, AC_WRAP> TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
 

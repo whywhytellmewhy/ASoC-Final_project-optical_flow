@@ -77,6 +77,12 @@ class OpticalFlow_gradient_weight_x
             filtered_gradient.write(filtered_gradient_value);
           }
 
+          if ((x==TARGET_X+3) && (y==TARGET_Y)){
+            cout << "HLS_filtered_gradient.x: " << filtered_gradient_value.x << endl;
+            cout << "HLS_filtered_gradient.y: " << filtered_gradient_value.y << endl;
+            cout << "HLS_filtered_gradient.z: " << filtered_gradient_value.z << endl;
+          }
+
           // programmable width exit condition
           if (x == widthIn+2) {
             break;

@@ -211,7 +211,7 @@ CCS_MAIN(int argc, char *argv[])
       double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
       
       double denominator_HLS = denominator_HLS_channel.read().to_double();
-      /*//printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
+      //printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
       final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
       final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
       //printf("%f\n", final_velocity_x_HLS);
@@ -229,7 +229,7 @@ CCS_MAIN(int argc, char *argv[])
         printf("(%d, %d), ", x, y);
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
       }
-      }*/
+      }
 
       ////////////////////////////////////////////////////////////////////////////////////// (version 3: output velocity with shift channel) //////////////////////////////////////////////////////////////////////////////////////
       ///// Use the same testbench as version 2

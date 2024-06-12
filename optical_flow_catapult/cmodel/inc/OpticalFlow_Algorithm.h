@@ -8,6 +8,9 @@
 // Include constant kernel definition
 #include "OpticalFlow_defs_software.h"
 
+#define TARGET_X 354
+#define TARGET_Y 277
+
 // Template parameters allow configuring the maximum image size
 template <int maxImageWidth, int maxImageHeight>
 class OpticalFlow_Algorithm
@@ -121,6 +124,15 @@ public:
         //  cout << endl;
         //  cout << "algorihm: " << gradient_x[r-2][c-2] << endl;
         //}
+
+        if ((c==TARGET_X+2) && (r==TARGET_Y+2)){
+          //cout << c << "," << r << endl;
+          //for (int i = 0; i < 5; i++){
+          //  cout << frame[r-i][c-2] << ", ";
+          //}
+          cout << "Algorithm_Ix: " << x_grad << endl;
+          cout << "Algorithm_Iy: " << x_grad << endl;
+        }
       }
     }
   }
@@ -144,6 +156,10 @@ public:
         gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS_SW[3]; 
         gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS_SW[4]; 
         /////gradient_z[r][c] /= 12.0f;
+
+        if ((c==TARGET_X) && (r==TARGET_Y)){
+          cout << "Algorithm_Iz: " << gradient_z[r][c] << endl;
+        }
       }
     }
   }
@@ -176,6 +192,12 @@ public:
         {
           filt_grad[r-3][c] = acc;
         }
+
+        if ((c==TARGET_X) && (r==TARGET_Y+3)){
+          cout << "Algorithm_y_filtered.x: " << filt_grad[r-3][c].x << endl;
+          cout << "Algorithm_y_filtered.y: " << filt_grad[r-3][c].y << endl;
+          cout << "Algorithm_y_filtered.z: " << filt_grad[r-3][c].z << endl;
+        }
       }
     }
   }
@@ -206,6 +228,12 @@ public:
         {
           filt_grad[r][c-3] = acc;
         }
+
+        if ((c==TARGET_X+3) && (r==TARGET_Y)){
+          cout << "Algorithm_filtered_gradient.x: " << filt_grad[r][c-3].x << endl;
+          cout << "Algorithm_filtered_gradient.y: " << filt_grad[r][c-3].y << endl;
+          cout << "Algorithm_filtered_gradient.z: " << filt_grad[r][c-3].z << endl;
+        }
       }
     }
   }
@@ -227,6 +255,15 @@ public:
         out.val[4] = grad.x * grad.z;
         out.val[5] = grad.y * grad.z;
         outer_product[r][c] = out;
+
+        if ((c==TARGET_X) && (r==TARGET_Y)){
+          cout << "Algorithm_out_product[0]: " << out.val[0] << endl;
+          cout << "Algorithm_out_product[1]: " << out.val[1] << endl;
+          cout << "Algorithm_out_product[2]: " << out.val[2] << endl;
+          cout << "Algorithm_out_product[3]: " << out.val[3] << endl;
+          cout << "Algorithm_out_product[4]: " << out.val[4] << endl;
+          cout << "Algorithm_out_product[5]: " << out.val[5] << endl;
+        }
       }
     }
   }
@@ -259,6 +296,15 @@ public:
         { 
           tensor_y[r-1][c] = acc;            
         }
+
+        if ((c==TARGET_X) && (r==TARGET_Y+1)){
+          cout << "Algorithm_tensor_y[0]: " << acc.val[0] << endl;
+          cout << "Algorithm_tensor_y[1]: " << acc.val[1] << endl;
+          cout << "Algorithm_tensor_y[2]: " << acc.val[2] << endl;
+          cout << "Algorithm_tensor_y[3]: " << acc.val[3] << endl;
+          cout << "Algorithm_tensor_y[4]: " << acc.val[4] << endl;
+          cout << "Algorithm_tensor_y[5]: " << acc.val[5] << endl;
+        }
       }
     }
   }
@@ -290,6 +336,15 @@ public:
         {
           tensor[r][c-1] = acc;
         }
+
+        if ((c==TARGET_X+1) && (r==TARGET_Y)){
+          cout << "Algorithm_tensor[0]: " << acc.val[0] << endl;
+          cout << "Algorithm_tensor[1]: " << acc.val[1] << endl;
+          cout << "Algorithm_tensor[2]: " << acc.val[2] << endl;
+          cout << "Algorithm_tensor[3]: " << acc.val[3] << endl;
+          cout << "Algorithm_tensor[4]: " << acc.val[4] << endl;
+          cout << "Algorithm_tensor[5]: " << acc.val[5] << endl;
+        }
       }
     }
   }
@@ -314,8 +369,10 @@ public:
           //if ((c==362) && (r==399)){
           //if ((c==317) && (r==189)){
           //if ((c==497) && (r==367)){
-          if ((c==785) && (r==287)){
+          //if ((c==785) && (r==287)){
           //if ((c==302) && (r==116)){
+          //if ((c==354) && (r==277)){
+          if ((c==TARGET_X) && (r==TARGET_Y)){
             cout << endl << "Algorithm_tensor_value[0]: " << tensors[r][c].val[0] << endl;
             cout << "Algorithm_tensor_value[1]: " << tensors[r][c].val[1] << endl;
             cout << "Algorithm_tensor_value[2]: " << tensors[r][c].val[2] << endl;

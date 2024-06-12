@@ -37,43 +37,44 @@ class OpticalFlow_flow_calc
           if ((y >= 2) && (y < heightIn-2) && (x >= 2) && (x < widthIn-2)) {
             //if ((x==302) && (y==116)){
             //if ((x==785) && (y==287)){
-            //  cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
-            //  cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
-            //  cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
-            //  cout << "HLS_tensor_value[3]: " << tensor_value.val[3] << endl;
-            //  cout << "HLS_tensor_value[4]: " << tensor_value.val[4] << endl;
-            //  cout << "HLS_tensor_value[5]: " << tensor_value.val[5] << endl;
-            //
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[0][k];
-            //  }
-            //  printf("\n");
-            //  
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[1][k];
-            //  }
-            //  printf("\n");
-            //  
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[2][k];
-            //  }
-            //  printf("\n");
-            //  
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[3][k];
-            //  }
-            //  printf("\n");
-            //  
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[4][k];
-            //  }
-            //  printf("\n");
-            //  
-            //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
-            //    cout << tensor_value.val[5][k];
-            //  }
-            //  printf("\n");
-            //}
+            if ((x==354) && (y==277)){
+              cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
+              cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
+              cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
+              cout << "HLS_tensor_value[3]: " << tensor_value.val[3] << endl;
+              cout << "HLS_tensor_value[4]: " << tensor_value.val[4] << endl;
+              cout << "HLS_tensor_value[5]: " << tensor_value.val[5] << endl;
+            
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[0][k];
+              }
+              printf("\n");
+              
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[1][k];
+              }
+              printf("\n");
+              
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[2][k];
+              }
+              printf("\n");
+              
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[3][k];
+              }
+              printf("\n");
+              
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[4][k];
+              }
+              printf("\n");
+              
+              for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
+                cout << tensor_value.val[5][k];
+              }
+              printf("\n");
+            }
 
             // shift left until MSB has non-zero value
             while ((tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[1][OUTER_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[1][OUTER_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[3][OUTER_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[3][OUTER_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[4][OUTER_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[4][OUTER_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[5][OUTER_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[5][OUTER_PIXEL_T_BIT_WIDTH-1])) { // if we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-1], then after multiplication and add, it will become 32*2+1=65 bits, but we have only 64 bits, thus overflow may happen. Therefore, here we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-2], then we will have 31*2+1=63 bits after multiplication and add
@@ -107,13 +108,14 @@ class OpticalFlow_flow_calc
             //if ((x==362) && (y==399)){
             //if ((x==317) && (y==189)){
             //if ((x==497) && (y==367)){
-            if ((x==785) && (y==287)){
-              cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
-              cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
-              cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
-              cout << "HLS_tensor_value[3]: " << tensor_value.val[3] << endl;
-              cout << "HLS_tensor_value[4]: " << tensor_value.val[4] << endl;
-              cout << "HLS_tensor_value[5]: " << tensor_value.val[5] << endl;
+            //if ((x==785) && (y==287)){
+            if ((x==354) && (y==277)){
+              //cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
+              //cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
+              //cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
+              //cout << "HLS_tensor_value[3]: " << tensor_value.val[3] << endl;
+              //cout << "HLS_tensor_value[4]: " << tensor_value.val[4] << endl;
+              //cout << "HLS_tensor_value[5]: " << tensor_value.val[5] << endl;
 
               //for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>0;k=k-1){
               //  cout << tensor_value.val[0][k];

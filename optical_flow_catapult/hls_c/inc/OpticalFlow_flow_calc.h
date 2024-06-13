@@ -9,14 +9,15 @@ class OpticalFlow_flow_calc
     OpticalFlow_flow_calc() {}
   
     #pragma hls_design interface
-    void CCS_BLOCK(run)(ac_channel<tensor_t> &tensor,
+    void CCS_BLOCK(run)(//ac_channel<tensor_t> &tensor,
+                        ac_channel<tensor_int_t> &tensor_shift,
                         ac_channel<velocity_t>  &output,
                         ac_channel<vel_pixel_t>  &denominator,
-                        ac_channel<shift_t>  &shift,
+                        ///////ac_channel<shift_t>  &shift,
                         maxWType            widthIn,
                         maxHType            heightIn)
     {
-      tensor_t tensor_value;
+      /////tensor_t tensor_value;
 
       //pixel_t denominator_value;
       vel_pixel_t denominator_value;
@@ -24,21 +25,22 @@ class OpticalFlow_flow_calc
       tensor_int_t tensor_shift_value;
 
       velocity_t total_output_value;
-      shift_t shift_value;
+      /////shift_t shift_value;
 
       Flow_calc_ROW: for(maxHType y=0; ; y++) {
         Flow_calc_COLUMN: for(maxWType x=0; ; x++) {
           // read input channels
-          tensor_value = tensor.read();
+          /////tensor_value = tensor.read();
+          tensor_shift_value = tensor_shift.read();
 
           // reset shift_value
-          shift_value = 0;
+          /////shift_value = 0;
             
           if ((y >= 2) && (y < heightIn-2) && (x >= 2) && (x < widthIn-2)) {
             //if ((x==302) && (y==116)){
             //if ((x==785) && (y==287)){
             //if ((x==354) && (y==277)){
-            if ((x==TARGET_X) && (y==TARGET_Y)){
+            /*if ((x==TARGET_X) && (y==TARGET_Y)){
               cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
               cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
               cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
@@ -99,7 +101,7 @@ class OpticalFlow_flow_calc
             tensor_shift_value.val[2] = tensor_value.val[2].to_int();
             tensor_shift_value.val[3] = tensor_value.val[3].to_int();
             tensor_shift_value.val[4] = tensor_value.val[4].to_int();
-            tensor_shift_value.val[5] = tensor_value.val[5].to_int();
+            tensor_shift_value.val[5] = tensor_value.val[5].to_int();*/
 
             // Calculate total_output_value
             denominator_value = (tensor_shift_value.val[0]*tensor_shift_value.val[1] - tensor_shift_value.val[3]*tensor_shift_value.val[3]);
@@ -157,7 +159,7 @@ class OpticalFlow_flow_calc
               cout << "HLS_tensor_shift_value[5]: " << tensor_shift_value.val[5] << endl;
 
               cout << "HLS_denominator_value: " << denominator_value << endl;
-              cout << "HLS_shift_value: " << shift_value << endl;
+              //cout << "HLS_shift_value: " << shift_value << endl;
               cout << "HLS_total_output_value.x: " << total_output_value.x << endl;
               cout << "HLS_total_output_value.y: " << total_output_value.y << endl;
               cout << "HLS_total_output_value.x (after division): " << total_output_value.x.to_double()/denominator_value.to_double() << endl;
@@ -167,7 +169,7 @@ class OpticalFlow_flow_calc
             // Write output optical flow (velocity) streaming interface
             output.write(total_output_value);
             denominator.write(denominator_value);
-            shift.write(shift_value);
+            ///////shift.write(shift_value);
           } else {
             total_output_value.x = 0;
             total_output_value.y = 0;
@@ -176,7 +178,7 @@ class OpticalFlow_flow_calc
             // Write output optical flow (velocity) streaming interface
             output.write(total_output_value);
             denominator.write(denominator_value);
-            shift.write(shift_value);
+            ///////shift.write(shift_value);
           }
 
           // programmable width exit condition

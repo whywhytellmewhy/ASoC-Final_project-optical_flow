@@ -39,7 +39,7 @@
   ac_channel<gradient_t> filtered_gradient;
   ac_channel<outer_t> out_product;
   ac_channel<tensor_t> tensor_y;
-  ac_channel<tensor_t> tensor;
+  ac_channel<tensor_int_t> tensor_shift;
 
   // FIFOs for streaming in, just for clarity
   ac_channel<input_t> frame1_a;
@@ -70,7 +70,7 @@
                         /////ac_channel<tensor_t> &tensor,
                         //ac_channel<pixel_t>  &denominator,
                         ac_channel<vel_pixel_t>  &denominator,
-                        ac_channel<shift_t>  &shift,
+                        /////ac_channel<shift_t>  &shift,
                         ac_channel<velocity_t>  &outputs)
     {
       // compute
@@ -82,10 +82,10 @@
       gradient_weight_x_inst.run(y_filtered, filtered_gradient, widthIn, heightIn);
       outer_product_inst.run(filtered_gradient, out_product, widthIn, heightIn);
       tensor_weight_y_inst.run(out_product, tensor_y, widthIn, heightIn);
-      tensor_weight_x_inst.run(tensor_y, tensor, widthIn, heightIn);
+      tensor_weight_x_inst.run(tensor_y, tensor_shift, widthIn, heightIn);
       /////flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
-      /////flow_calc_inst.run(tensor, outputs, denominator, widthIn, heightIn);
-      flow_calc_inst.run(tensor, outputs, denominator, shift, widthIn, heightIn);
+      flow_calc_inst.run(tensor_shift, outputs, denominator, widthIn, heightIn);
+      /////flow_calc_inst.run(tensor, outputs, denominator, shift, widthIn, heightIn);
     }
   };
 

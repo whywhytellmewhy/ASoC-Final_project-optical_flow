@@ -7,8 +7,8 @@
 #include <ac_math/ac_sqrt_pwl.h>
 #include <ac_math/ac_atan2_cordic.h>
 
-#define TARGET_X 586 //358 // 354
-#define TARGET_Y 150 //250 // 277
+#define TARGET_X 371 //586 //358 // 354
+#define TARGET_Y 147 //150 //250 // 277
 
 const int MAX_HEIGHT = 436;
 const int MAX_WIDTH = 1024;
@@ -17,7 +17,7 @@ const int INPUT_T_INTEGER_PART = 8; //9;
 const int PIXEL_T_BIT_WIDTH = 32;
 const int PIXEL_T_INTEGER_PART = 13; //13;
 const int OUTER_PIXEL_T_BIT_WIDTH = 64; //32;
-const int OUTER_PIXEL_T_INTEGER_PART = 32; //27;
+const int OUTER_PIXEL_T_INTEGER_PART = 32; //27; // need to be an "even" number because we have "OUTER_PIXEL_T_INTEGER_PART/2"
 const int VEL_PIXEL_T_BIT_WIDTH = OUTER_PIXEL_T_INTEGER_PART*2; //32;
 //const int VEL_PIXEL_T_INTEGER_PART = 32; //13;
 
@@ -37,6 +37,7 @@ typedef ac_int<OUTER_PIXEL_T_BIT_WIDTH*6> outer1x_t; // For ping-pong buffer, mu
 typedef ac_int<OUTER_PIXEL_T_BIT_WIDTH*12> outer2x_t; // For ping-pong buffer
 /////typedef ac_fixed<64,56, true, AC_TRN, AC_WRAP> calc_pixel_t; // Integer part: 56 ; Decimal part: 8 ; signed
 typedef ac_int<OUTER_PIXEL_T_INTEGER_PART> tensor_int_pixel_t;
+typedef ac_int<OUTER_PIXEL_T_INTEGER_PART/2> tensor_int_half_pixel_t;
 /////typedef ac_fixed<VEL_PIXEL_T_BIT_WIDTH,VEL_PIXEL_T_INTEGER_PART, true, AC_TRN, AC_WRAP> vel_pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
 typedef ac_int<VEL_PIXEL_T_BIT_WIDTH> vel_pixel_t;
 typedef ac_int<ac::nbits<OUTER_PIXEL_T_BIT_WIDTH>::val,false> shift_t;
@@ -60,6 +61,10 @@ typedef struct{
 }tensor_int_t;
 
 typedef struct{
+    tensor_int_half_pixel_t val[6];
+}tensor_int_half_t;
+
+typedef struct{
     vel_pixel_t x;
     vel_pixel_t y;
 }velocity_t;
@@ -77,5 +82,6 @@ const ac_fixed<32, 2, true, AC_RND, AC_WRAP> GRAD_WEIGHTS[5] =  {0.0833,-0.6667,
 //const pixel_t GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
 const ac_fixed<32, 1, false, AC_RND, AC_WRAP> GRAD_FILTER[7] = {0.0755, 0.133, 0.1869, 0.2903, 0.1869, 0.133, 0.0755};
 //const pixel_t TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
-const ac_fixed<32, 1, false, AC_RND, AC_WRAP> TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243};
+const ac_fixed<OUTER_PIXEL_T_INTEGER_PART/2, 1, false, AC_RND, AC_WRAP> TENSOR_FILTER[3] = {0.3243, 0.3513, 0.3243}; // Remember that we have TENSOR_FILTER_int_version in OpticalFlow_tensor_weight_x.h. Don't forget to change its bit number !!!
 
+//ac_int<32> TENSOR_FILTER_INT_VERSION[3];

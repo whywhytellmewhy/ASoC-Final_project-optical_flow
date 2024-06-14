@@ -28,6 +28,8 @@ typedef ac_fixed<INPUT_T_BIT_WIDTH, INPUT_T_INTEGER_PART, false, AC_RND, AC_WRAP
 //typedef ac_fixed<34,18, true, AC_TRN, AC_WRAP> input2x_t; // For ping-pong buffer
 typedef ac_int<INPUT_T_BIT_WIDTH> input1x_t; // For ping-pong buffer
 typedef ac_int<INPUT_T_BIT_WIDTH*2> input2x_t; // For ping-pong buffer
+typedef ac_int<INPUT_T_BIT_WIDTH*5> input5x_t; // For ping-pong buffer
+typedef ac_int<INPUT_T_BIT_WIDTH*10> input10x_t; // For ping-pong buffer
 typedef ac_fixed<PIXEL_T_BIT_WIDTH,PIXEL_T_INTEGER_PART, true, AC_RND, AC_WRAP> pixel_t; // Integer part: 13 ; Decimal part: 19 ; signed
 //typedef ac_fixed<64,26, true, AC_TRN, AC_WRAP> pixel2x_t; // For ping-pong buffer
 typedef ac_int<PIXEL_T_BIT_WIDTH> pixel1x_t; // For ping-pong buffer

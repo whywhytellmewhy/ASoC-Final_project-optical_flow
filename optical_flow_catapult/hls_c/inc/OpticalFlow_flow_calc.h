@@ -113,7 +113,7 @@ class OpticalFlow_flow_calc
             //if ((x==497) && (y==367)){
             //if ((x==785) && (y==287)){
             //if ((x==354) && (y==277)){
-            if ((x==TARGET_X) && (y==TARGET_Y)){
+            /*if ((x==TARGET_X) && (y==TARGET_Y)){
               //cout << endl << "HLS_tensor_value[0]: " << tensor_value.val[0] << endl;
               //cout << "HLS_tensor_value[1]: " << tensor_value.val[1] << endl;
               //cout << "HLS_tensor_value[2]: " << tensor_value.val[2] << endl;
@@ -164,7 +164,7 @@ class OpticalFlow_flow_calc
               cout << "HLS_total_output_value.y: " << total_output_value.y << endl;
               cout << "HLS_total_output_value.x (after division): " << total_output_value.x.to_double()/denominator_value.to_double() << endl;
               cout << "HLS_total_output_value.y (after division): " << total_output_value.y.to_double()/denominator_value.to_double() << endl;
-            }
+            }*/
 
             // Write output optical flow (velocity) streaming interface
             output.write(total_output_value);

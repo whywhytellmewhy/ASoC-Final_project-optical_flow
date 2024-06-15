@@ -49,9 +49,9 @@ class OpticalFlow_gradient_z_calc
           // Write output Iz streaming interface
           gradient_z.write(gradient_z_value);
 
-          if ((x==TARGET_X) && (y==TARGET_Y)){
+          /*if ((x==TARGET_X) && (y==TARGET_Y)){
             cout << "HLS_Iz: " << gradient_z_value << endl;
-          }
+          }*/
 
           // programmable width exit condition
           if (x == widthIn-1) {

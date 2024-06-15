@@ -93,14 +93,14 @@ class OpticalFlow_tensor_weight_y
             tensor_y.write(tensor_y_value);
           }
 
-          if ((x==TARGET_X) && (y==TARGET_Y+1)){
+          /*if ((x==TARGET_X) && (y==TARGET_Y+1)){
             cout << "HLS_tensor_y[0]: " << tensor_y_value.val[0] << endl;
             cout << "HLS_tensor_y[1]: " << tensor_y_value.val[1] << endl;
             cout << "HLS_tensor_y[2]: " << tensor_y_value.val[2] << endl;
             cout << "HLS_tensor_y[3]: " << tensor_y_value.val[3] << endl;
             cout << "HLS_tensor_y[4]: " << tensor_y_value.val[4] << endl;
             cout << "HLS_tensor_y[5]: " << tensor_y_value.val[5] << endl;
-          }
+          }*/
 
           // programmable width exit condition
           if (x == widthIn-1) {

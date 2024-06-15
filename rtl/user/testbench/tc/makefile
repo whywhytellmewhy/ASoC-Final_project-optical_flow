@@ -1,37 +1,42 @@
-.PHONY: basic
-
-# for run basic simulation without edge detection
-basic:
-	xvlog -sv -i ../ ../tb_fsic.v -f filelist \
-      -d USE_skywater_SRAM \
-      -d USER_PROJECT_SIDEBAND_SUPPORT 
-	xelab tb_fsic -debug typical --snapshot tb_fsic_xelab --timescale 1ns/1ns
-	xsim tb_fsic_xelab --tclbatch log_wave.tcl
-	mv xvlog.log xvlog.basic.log
-	mv xelab.log xelab.basic.log
-	mv xsim.log xsim.basic.log
-
-.PHONY: edge
-# for run edge detection simulation
-edge:
+.PHONY: all
+# to run optical flow simulation using xsim (modified from /bol-edu/fsic_fpga/rtl/user/testbench/tc/makefile)
+all:
+#	xvlog -sv -i ../ ../tb_fsic.v -f filelist \
+#      -d USE_skywater_SRAM \
+#      -d USE_OPTICAL_FLOW_IP \
+#      -d USER_PROJECT_SIDEBAND_SUPPORT 
 	xvlog -sv -i ../ ../tb_fsic.v -f filelist \
       -d USE_skywater_SRAM \
       -d USE_EDGEDETECT_IP \
       -d USER_PROJECT_SIDEBAND_SUPPORT 
 	xelab tb_fsic -debug typical --snapshot tb_fsic_xelab --timescale 1ns/1ns
 	xsim tb_fsic_xelab --tclbatch log_wave.tcl
-	mv xvlog.log xvlog.edge.log
-	mv xelab.log xelab.edge.log
-	mv xsim.log xsim.edge.log
 
-.PHONY: all
-all : basic edge
+.PHONY: vsim
+# to run optical flow simulation using vsim (modified from /ZheChen-Bill/ASoC_catapult/lab2_edgedetect/fsic/testbench/vsim/run_vsim)
+vsim:
+	rm -rf work
+	# Compile Verilog files using Questa's vlog
+	vlog +define+USER_PROJECT_SIDEBAND_SUPPORT +define+USE_EDGEDETECT_IP -sv -work work ../tb_fsic.v -f filelist
+	
+	#vopt opt is created
+	#vopt tb_fsic -o opt +acc
+	vopt tb_fsic -o opt +acc -debug +designfile
+
+	# rum vsim
+	#vsim opt -do log_wave.tcl
+	vsim opt -c -qwavedb=+signal+memory=4096,1
+
+	#quit
+	#quit -sim
+
+	#view wave form
+	#vsim vsim.wlf
 
 .PHONY: clean
 clean:	
 	- rm *.log *.jou *.wdb
 	- rm -rf xsim.dir
 
-.PHONY: cleanall
-cleanall : clean all
+
 

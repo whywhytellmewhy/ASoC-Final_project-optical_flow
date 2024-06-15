@@ -8,8 +8,8 @@
 // Include constant kernel definition
 #include "OpticalFlow_defs_software.h"
 
-#define TARGET_X 354 //371 //586 //358 // 354
-#define TARGET_Y 277 //147 //150 //250 // 277
+#define TARGET_X 592 //371 //586 //358 // 354
+#define TARGET_Y 223 //147 //150 //250 // 277
 
 // Template parameters allow configuring the maximum image size
 template <int maxImageWidth, int maxImageHeight>
@@ -39,6 +39,7 @@ public:
            /////outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH],
            /////tensor_t_sw tensor_y[MAX_HEIGHT][MAX_WIDTH],
            /////tensor_t_sw tensor[MAX_HEIGHT][MAX_WIDTH],
+           pixel_t_sw denom[MAX_HEIGHT][MAX_WIDTH],
            velocity_t_sw   outputs[MAX_HEIGHT][MAX_WIDTH])   // velocity output
   {
     // allocate buffers for image data
@@ -62,7 +63,8 @@ public:
     outer_product(filtered_gradient, out_product);
     tensor_weight_y(out_product, tensor_y);
     tensor_weight_x(tensor_y, tensor);
-    flow_calc(tensor, outputs);
+    /////flow_calc(tensor, outputs);
+    flow_calc(tensor, denom, outputs);
 
     ///free(dy);
     ///free(dx);
@@ -351,6 +353,7 @@ public:
 
   // compute flow
   void flow_calc(tensor_t_sw tensors[MAX_HEIGHT][MAX_WIDTH],
+                pixel_t_sw denom[MAX_HEIGHT][MAX_WIDTH],
                 velocity_t_sw output[MAX_HEIGHT][MAX_WIDTH])
   {
     for(int r = 0; r < MAX_HEIGHT; r ++)
@@ -359,12 +362,13 @@ public:
       {
         if (r >= 2 && r < MAX_HEIGHT - 2 && c >= 2 && c < MAX_WIDTH - 2)
         {
-          pixel_t_sw denom = tensors[r][c].val[0] * tensors[r][c].val[1] -
+          //pixel_t_sw denom = tensors[r][c].val[0] * tensors[r][c].val[1] -
+          denom[r][c] = tensors[r][c].val[0] * tensors[r][c].val[1] -
                           tensors[r][c].val[3] * tensors[r][c].val[3];
           output[r][c].x = (tensors[r][c].val[5] * tensors[r][c].val[3] -
-                            tensors[r][c].val[4] * tensors[r][c].val[1]) / denom;
+                            tensors[r][c].val[4] * tensors[r][c].val[1]) / denom[r][c];
           output[r][c].y = (tensors[r][c].val[4] * tensors[r][c].val[3] -
-                            tensors[r][c].val[5] * tensors[r][c].val[0]) / denom;
+                            tensors[r][c].val[5] * tensors[r][c].val[0]) / denom[r][c];
           //if ((c==451) && (r==62)){
           //if ((c==362) && (r==399)){
           //if ((c==317) && (r==189)){
@@ -379,7 +383,7 @@ public:
             cout << "Algorithm_tensor_value[3]: " << tensors[r][c].val[3] << endl;
             cout << "Algorithm_tensor_value[4]: " << tensors[r][c].val[4] << endl;
             cout << "Algorithm_tensor_value[5]: " << tensors[r][c].val[5] << endl;
-            cout << "Algorithm_denominator_value: " << denom << endl;
+            cout << "Algorithm_denominator_value: " << denom[r][c] << endl;
             cout << "Algorithm_total_output_value.x: " << output[r][c].x << endl;
             cout << "Algorithm_total_output_value.y: " << output[r][c].y << endl;
           }
@@ -388,6 +392,7 @@ public:
         {
           output[r][c].x = 0;
           output[r][c].y = 0;
+          denom[r][c] = 0;
         }
       }
     }

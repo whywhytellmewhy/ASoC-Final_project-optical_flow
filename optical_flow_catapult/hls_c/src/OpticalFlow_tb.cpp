@@ -95,7 +95,7 @@ CCS_MAIN(int argc, char *argv[])
   ac_channel<velocity_t> output_HLS_channel;
   //ac_channel<pixel_t> denominator_HLS_channel;
   ac_channel<vel_pixel_t> denominator_HLS_channel;
-  /////ac_channel<shift_t> shift_HLS_channel;
+  ac_channel<shift_t> shift_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
@@ -107,6 +107,7 @@ CCS_MAIN(int argc, char *argv[])
   /////static outer_t_sw gradient_x_algorithm[iH][iW];
   /////static tensor_t_sw gradient_x_algorithm[iH][iW];
   static velocity_t_sw output_algorithm[iH][iW];
+  static pixel_t_sw denom_algorithm[iH][iW];
 
   unsigned  cnt = 0;
   for (int y = 0; y < iH; y++) {
@@ -144,38 +145,54 @@ CCS_MAIN(int argc, char *argv[])
 
   cout << "Running" << endl;
 
-  ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
+  /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
+  ref_inst.run(frame1,frame2,frame3,frame4,frame5,denom_algorithm,output_algorithm);
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
   /////dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
-  /////dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
-  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,output_HLS_channel);
+  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
+  /////dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,output_HLS_channel);
   /////dut.run(frames_channel,widthIn,heightIn,gradient_x_HLS,output_HLS_channel); // <-----------------------------------------------------------------------------------
 
   cnt = 0;
-  float sumErr_u = 0;
-  float sumErr_v = 0;
+  float sumErr_magnitude = 0;
+  //double magnitude_algorithm;
   for (int y = 0; y < heightIn; y++) {
     for (int x = 0; x < iW; x++) {
       //velocity_t algorithm = *(output_algorithm+cnt);
-      velocity_t_sw algorithm = output_algorithm[y][x];
+      ///////////////velocity_t_sw algorithm = output_algorithm[y][x];
       ///////////////////////////////velocity_t HLS = output_HLS_channel.read()
-      float u_algorithm = (double)(algorithm.x);
+      ///////////////float u_algorithm = (double)(algorithm.x);
       ///////////////////////////////float u_HLS = (HLS.x).to_double();
       ///////////////////////////////float Absdiff_u = abs(u_algorithm-u_HLS);
       ///////////////////////////////sumErr_u += Absdiff_u;
-      float v_algorithm = (double)(algorithm.y);
+      ///////////////float v_algorithm = (double)(algorithm.y);
       ///////////////////////////////float v_HLS = (HLS.y).to_double();
       ///////////////////////////////float Absdiff_v = abs(v_algorithm-v_HLS);
       ///////////////////////////////sumErr_v += Absdiff_v;
-      cnt++;
-      double magnitude_algorithm = sqrt(u_algorithm*u_algorithm + v_algorithm*v_algorithm);
+      //cnt++;
+      ///////////////double magnitude_algorithm = sqrt(u_algorithm*u_algorithm + v_algorithm*v_algorithm);
+      //if ((u_algorithm == 0.0) && (v_algorithm == 0.0)){
+      //  magnitude_algorithm = 0;
+      //  if ((x==299) && (y==115)) {
+      //    printf("2222222222222\n");
+      //  }
+      //} else {
+      //  magnitude_algorithm = sqrt(u_algorithm*u_algorithm + v_algorithm*v_algorithm); // https://blog.csdn.net/ten_k/article/details/106576818
+      //  if ((x==299) && (y==115)) {
+      //    //printf("%0.32f\n",u_algorithm*u_algorithm+v_algorithm*v_algorithm);
+      //    printf("%0.32f\n",u_algorithm);
+      //    printf("%0.32f\n",v_algorithm);
+      //    cout << (u_algorithm*u_algorithm+v_algorithm*v_algorithm == 0.0) << endl;
+      //  }
+      //}
+      
       ///////////////////////////////double magnitude_HLS = sqrt(u_HLS*u_HLS + v_HLS*v_HLS);
       ///////////////////////////////rarray1[cnt] = (int)u_HLS;   // repurposing 'red' array to the bit-accurate monochrome output
       ///////////////////////////////rarray2[cnt] = (int)v_HLS;
       ///////////////////////////////rarray3[cnt] = (int)magnitude_HLS;
-      garray1[cnt] = (int)u_algorithm;  // repurposing 'green' array to the original algorithmic output
-      garray2[cnt] = (int)v_algorithm;
-      garray3[cnt] = (int)magnitude_algorithm;
+      ///////////////garray1[cnt] = (int)u_algorithm;  // repurposing 'green' array to the original algorithmic output
+      ///////////////garray2[cnt] = (int)v_algorithm;
+      ///////////////garray3[cnt] = (int)magnitude_algorithm;
 
       //cout << magnitude_algorithm << ", ";
       //if (x==50) {
@@ -207,17 +224,31 @@ CCS_MAIN(int argc, char *argv[])
       //}
 
       ////////////////////////////////////////////////////////////////////////////////////// (version 2: output velocity with non-shift) //////////////////////////////////////////////////////////////////////////////////////
+      double tolerable_error_threshold = 1;
+      double denominator_threshold = 1e-15;
+      
       velocity_t final_velocity_HLS = output_HLS_channel.read();
       double final_velocity_x_HLS = final_velocity_HLS.x.to_double();
       double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
       
       double denominator_HLS = denominator_HLS_channel.read().to_double();
+      int shift_HLS = shift_HLS_channel.read().to_int();
+      shift_HLS = shift_HLS*2; // This is because in OpticalFlow_flow_calc.h, we have "tensor_shift_value.val[0]*tensor_shift_value.val[1]," so the effect of shifting will become square.
       //printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
-      final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
-      final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
+      if (abs(denominator_HLS/pow(2,shift_HLS))<denominator_threshold){
+        final_velocity_x_HLS = 0;
+        final_velocity_y_HLS = 0;
+      } else {
+        final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
+        final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
+      }
       //printf("%f\n", final_velocity_x_HLS);
-      
-      double tolerable_error_threshold = 1;
+
+      if (abs(denom_algorithm[y][x])<denominator_threshold){
+        output_algorithm[y][x].x = 0;
+        output_algorithm[y][x].y = 0;
+      }
+
       if ((x==0) && (y==0)) {
         printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
       }
@@ -230,15 +261,48 @@ CCS_MAIN(int argc, char *argv[])
         printf("(%d, %d), ", x, y);
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
       }
+      if ((output_algorithm[y][x].x==0) && (output_algorithm[y][x].y==0) && (final_velocity_x_HLS!=0) && (final_velocity_y_HLS!=0)){
+        printf("denominator: (algorithm, HLS (after shift))  = (%0.32f, %0.32f)\n", denom_algorithm[y][x], denominator_HLS/pow(2,shift_HLS));
       }
+      }
+
+
+      float u_algorithm = (double)(output_algorithm[y][x].x);
+      float v_algorithm = (double)(output_algorithm[y][x].y);
+      double magnitude_algorithm = sqrt(u_algorithm*u_algorithm + v_algorithm*v_algorithm);
+      
+      float u_HLS = final_velocity_x_HLS;
+      float v_HLS = final_velocity_y_HLS;
+      double magnitude_HLS = sqrt(u_HLS*u_HLS + v_HLS*v_HLS);
+
+      float Absdiff_magnitude = abs(magnitude_algorithm-magnitude_HLS);
+      sumErr_magnitude += Absdiff_magnitude;
+      //printf("(%d,%d), sumErr_magnitude = %f\n",x,y,sumErr_magnitude); //299 115
+      //if ((x==299) && (y==115)) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
+      //  printf("(%d, %d), ", x, y);
+      //  printf("u: (algorithm, HLS) = (%0.32f, %f), error = %f\n", output_algorithm[y][x].x, final_velocity_x_HLS, abs(output_algorithm[y][x].x-final_velocity_x_HLS));
+      //  printf("v: (algorithm, HLS) = (%0.32f, %f), error = %f\n", output_algorithm[y][x].y, final_velocity_y_HLS, abs(output_algorithm[y][x].y-final_velocity_y_HLS));
+      //  printf("magnitude: (algorithm, HLS) = (%f, %f)\n", magnitude_algorithm, magnitude_HLS);
+      //  printf("Absdiff_magnitude = %f\n",Absdiff_magnitude);
+      //  printf("sumErr_magnitude = %f\n",sumErr_magnitude);
+      //}
+
+      garray1[cnt] = (int)u_algorithm;  // repurposing 'green' array to the original algorithmic output
+      garray2[cnt] = (int)v_algorithm;
+      garray3[cnt] = (int)magnitude_algorithm;
+
+      rarray1[cnt] = (int)u_HLS;  // repurposing 'red' array to the original HLS output
+      rarray2[cnt] = (int)v_HLS;
+      rarray3[cnt] = (int)magnitude_HLS;
 
       ////////////////////////////////////////////////////////////////////////////////////// (version 3: output velocity with shift channel) //////////////////////////////////////////////////////////////////////////////////////
       ///// Use the same testbench as version 2
+
+      cnt++;
     }
   }
 
-  ///////////////////////////////printf("Magnitude: Manhattan norm per pixel %f\n",sumErr/(iH*iW));
-  ///////////////////////////////printf("Angle: Manhattan norm per pixel %f\n",sumAngErr/(iH*iW));
+  printf("Magnitude: Manhattan norm per pixel %f\n",sumErr_magnitude/(iH*iW));
 
   cout << "Writing algorithmic bitmap output to: " << bmpAlg_u << endl;
   bmp_24_write((char*)bmpAlg_u.c_str(), iW,  iH, garray1, garray1, garray1);
@@ -247,12 +311,12 @@ CCS_MAIN(int argc, char *argv[])
   cout << "Writing algorithmic bitmap output to: " << bmpAlg_magnitude << endl;
   bmp_24_write((char*)bmpAlg_magnitude.c_str(), iW,  iH, garray3, garray3, garray3);
 
-  ///////////////////////////////cout << "Writing bit-accurate bitmap output to: " << bmpHLS_u << endl;
-  ///////////////////////////////bmp_24_write((char*)bmpHLS_u.c_str(), iW,  iH, rarray1, rarray1, rarray1);
-  ///////////////////////////////cout << "Writing bit-accurate bitmap output to: " << bmpHLS_v << endl;
-  ///////////////////////////////bmp_24_write((char*)bmpHLS_v.c_str(), iW,  iH, rarray2, rarray2, rarray2);
-  ///////////////////////////////cout << "Writing bit-accurate bitmap output to: " << bmpHLS_magnitude << endl;
-  ///////////////////////////////bmp_24_write((char*)bmpHLS_magnitude.c_str(), iW,  iH, rarray3, rarray3, rarray3);
+  cout << "Writing bit-accurate bitmap output to: " << bmpHLS_u << endl;
+  bmp_24_write((char*)bmpHLS_u.c_str(), iW,  iH, rarray1, rarray1, rarray1);
+  cout << "Writing bit-accurate bitmap output to: " << bmpHLS_v << endl;
+  bmp_24_write((char*)bmpHLS_v.c_str(), iW,  iH, rarray2, rarray2, rarray2);
+  cout << "Writing bit-accurate bitmap output to: " << bmpHLS_magnitude << endl;
+  bmp_24_write((char*)bmpHLS_magnitude.c_str(), iW,  iH, rarray3, rarray3, rarray3);
 
   //delete (frame1);
   //delete (frame2);

@@ -12,6 +12,7 @@ class OpticalFlow_tensor_weight_x
     void CCS_BLOCK(run)(ac_channel<tensor_t> &tensor_y,
                         //ac_channel<tensor_t> &tensor,
                         ac_channel<tensor_int_t> &tensor_shift,
+                        ac_channel<shift_t>  &shift,
                         maxWType            widthIn,
                         maxHType            heightIn)
     {
@@ -57,99 +58,99 @@ class OpticalFlow_tensor_weight_x
           tensor_buf1 = tensor_buf0;
           tensor_buf0 = tensor0;
 
-          if ((x==TARGET_X+1) && (y==TARGET_Y)){
-            printf("Before shift:\n");
-            printf("tensor0\n");
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[0][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[1][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[2][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[3][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[4][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor0.val[5][k];
-            }
-            printf("\n\n");
-            printf("tensor1\n");
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[0][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[1][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[2][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[3][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[4][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor1.val[5][k];
-            }
-            printf("\n\n");
-            printf("tensor2\n");
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[0][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[1][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[2][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[3][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[4][k];
-            }
-            printf("\n");
-            
-            for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-              cout << tensor2.val[5][k];
-            }
-            printf("\n\n");
-          }
+          //if ((x==TARGET_X+1) && (y==TARGET_Y)){
+          //  printf("Before shift:\n");
+          //  printf("tensor0\n");
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[0][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[1][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[2][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[3][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[4][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor0.val[5][k];
+          //  }
+          //  printf("\n\n");
+          //  printf("tensor1\n");
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[0][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[1][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[2][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[3][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[4][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor1.val[5][k];
+          //  }
+          //  printf("\n\n");
+          //  printf("tensor2\n");
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[0][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[1][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[2][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[3][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[4][k];
+          //  }
+          //  printf("\n");
+          //  
+          //  for (int k=OUTER_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+          //    cout << tensor2.val[5][k];
+          //  }
+          //  printf("\n\n");
+          //}
 
           if ((x >= 2) && (x < widthIn)) {
             // Calculate tensor_shift_value
@@ -160,38 +161,38 @@ class OpticalFlow_tensor_weight_x
             tensor_value.val[4] = tensor0.val[4]*TENSOR_FILTER[0] + tensor1.val[4]*TENSOR_FILTER[1] + tensor2.val[4]*TENSOR_FILTER[2];
             tensor_value.val[5] = tensor0.val[5]*TENSOR_FILTER[0] + tensor1.val[5]*TENSOR_FILTER[1] + tensor2.val[5]*TENSOR_FILTER[2];
 
-            if ((x==TARGET_X+1) && (y==TARGET_Y)){
-              printf("tensor_value\n");
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[0][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[1][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[2][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[3][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[4][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[5][k];
-              }
-              printf("\n");
-            }
+            //if ((x==TARGET_X+1) && (y==TARGET_Y)){
+            //  printf("tensor_value\n");
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[0][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[1][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[2][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[3][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[4][k];
+            //  }
+            //  printf("\n");
+            //
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[5][k];
+            //  }
+            //  printf("\n");
+            //}
 
             // reset shift_value
             shift_value = 0;
@@ -210,38 +211,38 @@ class OpticalFlow_tensor_weight_x
               }
             }
 
-            if ((x==TARGET_X+1) && (y==TARGET_Y)){
-              printf("After shifting:\n");
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[0][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[1][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[2][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[3][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[4][k];
-              }
-              printf("\n");
-
-              for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
-                cout << tensor_value.val[5][k];
-              }
-              printf("\n");
-            }
+            //if ((x==TARGET_X+1) && (y==TARGET_Y)){
+            //  printf("After shifting:\n");
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[0][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[1][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[2][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[3][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[4][k];
+            //  }
+            //  printf("\n");
+//
+            //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
+            //    cout << tensor_value.val[5][k];
+            //  }
+            //  printf("\n");
+            //}
 
             // Transform into 32-bit int
             tensor_shift_value.val[0] = tensor_value.val[0].to_int();
@@ -259,42 +260,43 @@ class OpticalFlow_tensor_weight_x
             //  tensor_shift_value.val[5][OUTER_PIXEL_T_INTEGER_PART-1-k] = tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-k];
             //}
 
-            if ((x==TARGET_X+1) && (y==TARGET_Y)){
-              //printf("After shift and slicing:\n");
-              printf("tensor_shift_value\n");
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[0][k];
-              }
-              printf("\n");
-              
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[1][k];
-              }
-              printf("\n");
-              
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[2][k];
-              }
-              printf("\n");
-              
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[3][k];
-              }
-              printf("\n");
-              
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[4][k];
-              }
-              printf("\n");
-              
-              for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
-                cout << tensor_shift_value.val[5][k];
-              }
-              printf("\n\n");
-            }
+            //if ((x==TARGET_X+1) && (y==TARGET_Y)){
+            //  //printf("After shift and slicing:\n");
+            //  printf("tensor_shift_value\n");
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[0][k];
+            //  }
+            //  printf("\n");
+            //  
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[1][k];
+            //  }
+            //  printf("\n");
+            //  
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[2][k];
+            //  }
+            //  printf("\n");
+            //  
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[3][k];
+            //  }
+            //  printf("\n");
+            //  
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[4][k];
+            //  }
+            //  printf("\n");
+            //  
+            //  for (int k=OUTER_PIXEL_T_INTEGER_PART-1;k>=0;k=k-1){
+            //    cout << tensor_shift_value.val[5][k];
+            //  }
+            //  printf("\n\n");
+            //}
 
             // Write output tensor_shift_value streaming interface
             tensor_shift.write(tensor_shift_value);
+            shift.write(shift_value);
           } else if (x >= 1) {
             // Calculate tensor_shift_value
             tensor_shift_value.val[0] = 0;
@@ -303,9 +305,11 @@ class OpticalFlow_tensor_weight_x
             tensor_shift_value.val[3] = 0;
             tensor_shift_value.val[4] = 0;
             tensor_shift_value.val[5] = 0;
+            shift_value = 0;
 
             // Write output tensor_shift_value streaming interface
             tensor_shift.write(tensor_shift_value);
+            shift.write(shift_value);
           }
 
           if ((x==TARGET_X+1) && (y==TARGET_Y)){

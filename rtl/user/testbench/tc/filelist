@@ -1,7 +1,12 @@
 ../fpga.v
 ../fsic_clock.v
 ../../rtl/fsic.v
-../../axilite_axis/rtl/axil_axis.v
+../../axilite_axis/rtl/axi_ctrl_logic.sv
+../../axilite_axis/rtl/axil_axis.sv
+../../axilite_axis/rtl/axilite_master.sv
+../../axilite_axis/rtl/axilite_slave.sv
+../../axilite_axis/rtl/axis_master.sv
+../../axilite_axis/rtl/axis_slave.sv
 ../../axis_switch/rtl/sw_caravel.v
 ../../config_ctrl/rtl/config_ctrl.v
 ../../fsic_clkrst/rtl/fsic_clkrst.v
@@ -21,8 +26,10 @@
 ../../user_subsys/user_prj/user_prj0/rtl/concat_EdgeDetect_Top_fsic.v
 ../../user_subsys/user_prj/user_prj0/rtl/spram.v
 ../../user_subsys/user_prj/user_prj1/rtl/user_prj1.v
-../../user_subsys/user_prj/user_prj1/rtl/fir.v
-../../user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v
 ../../user_subsys/user_prj/user_prj1/rtl/bram11.v
+../../user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v
+../../user_subsys/user_prj/user_prj1/rtl/fir.v
 ../../user_subsys/user_prj/user_prj2/rtl/user_prj2.v
+../../user_subsys/user_prj/user_prj2/rtl/spram.v
+../../user_subsys/user_prj/user_prj2/rtl/concat_rtl.v
 ../../user_subsys/user_prj/user_prj3/rtl/user_prj3.v

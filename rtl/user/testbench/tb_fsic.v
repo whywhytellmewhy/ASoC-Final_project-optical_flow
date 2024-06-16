@@ -61,7 +61,7 @@ module tb_fsic #( parameter BITS=32,
 /////		localparam CoreClkPhaseLoop	= 4;
 /////`endif
 		/////////////////// Added by me ///////////////////
-		/////localparam DATA_LENGTH=32'd64;
+		localparam DATA_LENGTH=32'd64;
 		///////////////////////////////////////////////////
 
 		localparam UP_BASE=32'h3000_0000;

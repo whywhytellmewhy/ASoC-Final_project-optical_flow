@@ -2174,10 +2174,10 @@ FSIC #(
 		end
 	endtask
 
-        reg        sof;
-        reg        eol;
-        reg [31:0] hcnt;
-        reg [31:0] vcnt;
+        //reg        sof;
+        //reg        eol;
+        //reg [31:0] hcnt;
+        //reg [31:0] vcnt;
 
 	task test002_fpga_axis_req;
 		//input [7:0] compare_data;

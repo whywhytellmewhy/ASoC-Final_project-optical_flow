@@ -21,7 +21,7 @@
 //20230804 1. use #0 for create event to avoid potential race condition. I didn't found issue right now, just update the code to improve it.
 //	reference https://blog.csdn.net/seabeam/article/details/41078023, the source is come from http://www.deepchip.com/items/0466-07.html
 //	 Not using #0 is a good guideline, except for event data types.  In Verilog, there is no way to defer the event triggering to the nonblocking event queue.
-//`define USER_PROJECT_SIDEBAND_SUPPORT 1
+`define USER_PROJECT_SIDEBAND_SUPPORT 1
 //`define USE_EDGEDETECT_IP 0 // Modified
 
 module tb_fsic #( parameter BITS=32,
@@ -61,7 +61,7 @@ module tb_fsic #( parameter BITS=32,
 /////		localparam CoreClkPhaseLoop	= 4;
 /////`endif
 		/////////////////// Added by me ///////////////////
-		localparam DATA_LENGTH=32'd64;
+		/////localparam DATA_LENGTH=32'd64;
 		///////////////////////////////////////////////////
 
 		localparam UP_BASE=32'h3000_0000;
@@ -87,7 +87,8 @@ module tb_fsic #( parameter BITS=32,
 		localparam TID_UP_AA = 2'b01;
 		localparam TID_UP_LA = 2'b10;
 /////`ifdef USE_EDGEDETECT_IP
-		localparam fpga_axis_test_length = TST_TOTAL_PIXEL_NUM / 4; //each pixel is 8 bits //each transaction 
+		/////localparam fpga_axis_test_length = TST_TOTAL_PIXEL_NUM / 4; //each pixel is 8 bits //each transaction 
+		localparam fpga_axis_test_length = TST_TOTAL_PIXEL_NUM;
 /////`else
 /////		localparam fpga_axis_test_length = 16;
 /////`endif		
@@ -155,16 +156,16 @@ module tb_fsic #( parameter BITS=32,
 /////    `ifdef USE_EDGEDETECT_IP	
         reg [31:0] soc_to_fpga_axis_expect_count;
 		`ifdef USER_PROJECT_SIDEBAND_SUPPORT
-			reg [(pUSER_PROJECT_SIDEBAND_WIDTH+4+4+1+32-1):0] soc_to_fpga_axis_expect_value[fpga_axis_test_length-1:0];
+			reg [(pUSER_PROJECT_SIDEBAND_WIDTH+4+4+1+32*3-1):0] soc_to_fpga_axis_expect_value[fpga_axis_test_length-1:0];
 		`else
-			reg [(4+4+1+32-1):0] soc_to_fpga_axis_expect_value[fpga_axis_test_length-1:0];
+			reg [(4+4+1+32*3-1):0] soc_to_fpga_axis_expect_value[fpga_axis_test_length-1:0];
 		`endif
         
         reg [31:0] soc_to_fpga_axis_captured_count;
 		`ifdef USER_PROJECT_SIDEBAND_SUPPORT
-			reg [(pUSER_PROJECT_SIDEBAND_WIDTH+4+4+1+32-1):0] soc_to_fpga_axis_captured[fpga_axis_test_length-1:0];
+			reg [(pUSER_PROJECT_SIDEBAND_WIDTH+4+4+1+32*3-1):0] soc_to_fpga_axis_captured[fpga_axis_test_length-1:0];
 		`else
-			reg [(4+4+1+32-1):0] soc_to_fpga_axis_captured[fpga_axis_test_length-1:0];
+			reg [(4+4+1+32*3-1):0] soc_to_fpga_axis_captured[fpga_axis_test_length-1:0];
 		`endif
 /////    `else
 /////        reg [6:0] soc_to_fpga_axis_expect_count;
@@ -733,9 +734,12 @@ FSIC #(
 	reg [7:0] test_image_in_frame3_buf [TST_TOTAL_PIXEL_NUM];
 	reg [7:0] test_image_in_frame4_buf [TST_TOTAL_PIXEL_NUM];
 	//reg [7:0] test_image_in_frame5_buf [TST_TOTAL_PIXEL_NUM];
-	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
 	/////reg [SHIFT_T_BIT_WIDTH:0] test_image_golden_shift_HLS_buf [TST_TOTAL_PIXEL_NUM];
 
 	/// Configuration address map:
@@ -881,6 +885,7 @@ FSIC #(
 
 	///reg [39:0] input_data;
 	reg [31:0] input_data;
+	reg [95:0] expect_data;
 	reg        sof;
     reg        eol;
     reg [31:0] hcnt;
@@ -921,7 +926,8 @@ FSIC #(
 					index = vcnt * TST_FRAME_WIDTH + hcnt;
 					///input_data = {test_image_in_frame5_buf[index], test_image_in_frame4_buf[index], test_image_in_frame3_buf[index], test_image_in_frame2_buf[index], test_image_in_frame1_buf[index]};
 					input_data = {test_image_in_frame4_buf[index], test_image_in_frame3_buf[index], test_image_in_frame2_buf[index], test_image_in_frame1_buf[index]};
-                    sof = (vcnt==0 && hcnt==0);
+                    expect_data = {test_image_golden_denominator_HLS_buf[index], test_image_golden_u_HLS_buf[index], test_image_golden_v_HLS_buf[index]};
+					sof = (vcnt==0 && hcnt==0);
                     eol = (hcnt== TST_FRAME_WIDTH-1);
 					`ifdef USER_PROJECT_SIDEBAND_SUPPORT
                         upsb = {eol,sof}; 
@@ -931,18 +937,18 @@ FSIC #(
 					`endif
 
 					`ifdef USER_PROJECT_SIDEBAND_SUPPORT
-						if (j==DATA_LENGTH-1) begin
-							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b1, golden_output_data};
+						if ((vcnt==TST_FRAME_HEIGHT-1) && (hcnt==TST_FRAME_WIDTH-1)) begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b1, expect_data};
 						end
 						else begin
-							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b0, golden_output_data};
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b0, expect_data};
 						end
 					`else
-						if (j==DATA_LENGTH-1) begin
-							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b1, golden_output_data};
+						if ((vcnt==TST_FRAME_HEIGHT-1) && (hcnt==TST_FRAME_WIDTH-1)) begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b1, expect_data};
 						end
 						else begin
-							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b0, golden_output_data};
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b0, expect_data};
 						end
 					`endif
 					soc_to_fpga_axis_expect_count <= soc_to_fpga_axis_expect_count+1;
@@ -1723,7 +1729,7 @@ FSIC #(
         soc_to_fpga_axis_captured_count = 0;
         soc_to_fpga_axis_event_triggered = 0;
 		while (1) begin
-			`ifdef USE_EDGEDETECT_IP // added by me
+			/////`ifdef USE_EDGEDETECT_IP // added by me
 				@(posedge fpga_coreclk);
 				`ifdef USER_PROJECT_SIDEBAND_SUPPORT
 					if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_UP && fpga_is_as_tuser == TUSER_AXIS) begin
@@ -1754,7 +1760,7 @@ FSIC #(
 				
 				if (soc_to_fpga_axis_captured_count != fpga_axis_test_length)
 					soc_to_fpga_axis_event_triggered = 0;
-			`else
+			/////`else
 				@(posedge fpga_coreclk);
 				`ifdef USER_PROJECT_SIDEBAND_SUPPORT
 					if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_UP && fpga_is_as_tuser == TUSER_AXIS) begin
@@ -1785,7 +1791,7 @@ FSIC #(
 				
 				if (soc_to_fpga_axis_captured_count != DATA_LENGTH)
 					soc_to_fpga_axis_event_triggered = 0;
-			`endif
+			/////`endif
 
 		end
 	end
@@ -2174,10 +2180,10 @@ FSIC #(
 		end
 	endtask
 
-        //reg        sof;
-        //reg        eol;
-        //reg [31:0] hcnt;
-        //reg [31:0] vcnt;
+        reg        sof;
+        reg        eol;
+        reg [31:0] hcnt;
+        reg [31:0] vcnt;
 
 	task test002_fpga_axis_req;
 		//input [7:0] compare_data;

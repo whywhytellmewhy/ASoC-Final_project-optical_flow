@@ -59,7 +59,7 @@ assign sm_tvalid     = 1'b0; //to be assigned by DUT
 
 
 
-wire [31:0] dat_in_rsc_dat 
+wire [31:0] dat_in_rsc_dat;
 assign dat_in_rsc_dat = ss_tdata;
 
 wire [31:0] dat_out_rsc_dat;

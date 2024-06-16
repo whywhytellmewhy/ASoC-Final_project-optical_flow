@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/rtl/user/testbench/tb_fsic.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_fsic
+ERROR: [VRFC 10-2989] 'golden_output_data' is not declared [/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/rtl/user/testbench/tb_fsic.v:942]
+ERROR: [VRFC 10-2989] 'golden_output_data' is not declared [/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/rtl/user/testbench/tb_fsic.v:945]
+ERROR: [VRFC 10-8530] module 'tb_fsic' is ignored due to previous errors [/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/rtl/user/testbench/tb_fsic.v:27]

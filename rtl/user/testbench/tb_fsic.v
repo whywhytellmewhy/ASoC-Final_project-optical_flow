@@ -21,7 +21,7 @@
 //20230804 1. use #0 for create event to avoid potential race condition. I didn't found issue right now, just update the code to improve it.
 //	reference https://blog.csdn.net/seabeam/article/details/41078023, the source is come from http://www.deepchip.com/items/0466-07.html
 //	 Not using #0 is a good guideline, except for event data types.  In Verilog, there is no way to defer the event triggering to the nonblocking event queue.
-`define USER_PROJECT_SIDEBAND_SUPPORT 1
+//`define USER_PROJECT_SIDEBAND_SUPPORT 1
 //`define USE_EDGEDETECT_IP 0 // Modified
 
 module tb_fsic #( parameter BITS=32,
@@ -61,7 +61,7 @@ module tb_fsic #( parameter BITS=32,
 /////		localparam CoreClkPhaseLoop	= 4;
 /////`endif
 		/////////////////// Added by me ///////////////////
-		/////localparam DATA_LENGTH=32'd64;
+		localparam DATA_LENGTH=32'd64;
 		///////////////////////////////////////////////////
 
 		localparam UP_BASE=32'h3000_0000;
@@ -2174,10 +2174,10 @@ FSIC #(
 		end
 	endtask
 
-        reg        sof;
-        reg        eol;
-        reg [31:0] hcnt;
-        reg [31:0] vcnt;
+        //reg        sof;
+        //reg        eol;
+        //reg [31:0] hcnt;
+        //reg [31:0] vcnt;
 
 	task test002_fpga_axis_req;
 		//input [7:0] compare_data;

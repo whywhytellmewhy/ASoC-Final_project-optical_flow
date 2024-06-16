@@ -1,0 +1,255 @@
+Loading Input File
+Running
+Algorithm_Ix: 0
+Algorithm_Iy: 0
+Algorithm_Iz: 115.592
+Algorithm_y_filtered.x: 0
+Algorithm_y_filtered.y: 0
+Algorithm_y_filtered.z: 125.498
+Algorithm_filtered_gradient.x: -0.0278547
+Algorithm_filtered_gradient.y: 0
+Algorithm_filtered_gradient.z: 108.637
+Algorithm_out_product[0]: 0.000775882
+Algorithm_out_product[1]: 0
+Algorithm_out_product[2]: 11802
+Algorithm_out_product[3]: -0
+Algorithm_out_product[4]: -3.02604
+Algorithm_out_product[5]: 0
+Algorithm_tensor_y[0]: 0.00194416
+Algorithm_tensor_y[1]: 0
+Algorithm_tensor_y[2]: 11709.4
+Algorithm_tensor_y[3]: 0
+Algorithm_tensor_y[4]: -3.81207
+Algorithm_tensor_y[5]: 0
+Algorithm_tensor[0]: 0.132523
+Algorithm_tensor[1]: 2.13424e-07
+Algorithm_tensor[2]: 11105.6
+Algorithm_tensor[3]: 1.3785e-06
+Algorithm_tensor[4]: -25.1951
+Algorithm_tensor[5]: 0.0136548
+
+Algorithm_tensor_value[0]: 0.132523
+Algorithm_tensor_value[1]: 2.13424e-07
+Algorithm_tensor_value[2]: 11105.6
+Algorithm_tensor_value[3]: 1.3785e-06
+Algorithm_tensor_value[4]: -25.1951
+Algorithm_tensor_value[5]: 0.0136548
+Algorithm_denominator_value: 2.82816e-08
+Algorithm_total_output_value.x: 190.797
+Algorithm_total_output_value.y: -65211.8
+
+
+Report those pixels with error value > 1.000000 as following:
+(1019, 17), u: (algorithm, HLS) = (-2.087189, -0.106260), error = 1.980930
+(1019, 17), v: (algorithm, HLS) = (-0.193483, -4.522174), error = 4.328691
+(1019, 19), u: (algorithm, HLS) = (-2.184885, -0.344046), error = 1.840838
+(1019, 20), u: (algorithm, HLS) = (1.319535, 0.131048), error = 1.188487
+(1019, 20), v: (algorithm, HLS) = (-2.978811, -1.670218), error = 1.308593
+(1019, 78), u: (algorithm, HLS) = (-2.638160, -0.296079), error = 2.342082
+(1019, 78), v: (algorithm, HLS) = (-2.098713, -6.993046), error = 4.894333
+(1019, 79), u: (algorithm, HLS) = (-7.361820, 2.236505), error = 9.598325
+(1019, 79), v: (algorithm, HLS) = (11.025569, -11.525210), error = 22.550779
+(1019, 80), u: (algorithm, HLS) = (-6.901169, -0.189298), error = 6.711871
+(1019, 80), v: (algorithm, HLS) = (9.588807, -7.830315), error = 17.419122
+(1019, 81), u: (algorithm, HLS) = (-5.034682, -2.154850), error = 2.879832
+(1019, 81), v: (algorithm, HLS) = (3.696226, -6.224099), error = 9.920325
+(1019, 82), u: (algorithm, HLS) = (-4.887827, -3.182846), error = 1.704982
+(1019, 82), v: (algorithm, HLS) = (-1.266478, -9.824475), error = 8.557997
+(1019, 83), u: (algorithm, HLS) = (-6.122133, -3.821354), error = 2.300779
+(1019, 83), v: (algorithm, HLS) = (-18.218681, -7.999525), error = 10.219156
+(1019, 84), u: (algorithm, HLS) = (-4.301392, -2.289334), error = 2.012058
+(1019, 85), u: (algorithm, HLS) = (-1.771254, -0.330911), error = 1.440343
+(1019, 85), v: (algorithm, HLS) = (-6.340056, -4.499821), error = 1.840235
+(1018, 86), u: (algorithm, HLS) = (-1.007602, 0.234312), error = 1.241915
+(1019, 86), u: (algorithm, HLS) = (5.239059, 0.782667), error = 4.456392
+(1019, 86), v: (algorithm, HLS) = (-14.945836, -4.428664), error = 10.517172
+(1018, 87), u: (algorithm, HLS) = (-3.317264, 0.746645), error = 4.063909
+(1018, 87), v: (algorithm, HLS) = (1.195619, -4.072979), error = 5.268597
+(1019, 87), u: (algorithm, HLS) = (4.621459, 0.872201), error = 3.749259
+(1019, 87), v: (algorithm, HLS) = (-13.093370, -4.283677), error = 8.809693
+(1018, 88), u: (algorithm, HLS) = (-2.718670, 0.057349), error = 2.776018
+(1018, 88), v: (algorithm, HLS) = (0.649312, -3.257349), error = 3.906661
+(1019, 88), v: (algorithm, HLS) = (-5.652151, -3.787188), error = 1.864963
+(1018, 89), u: (algorithm, HLS) = (-2.054447, -0.341960), error = 1.712487
+(1018, 89), v: (algorithm, HLS) = (-0.127760, -2.739392), error = 2.611632
+(1019, 89), v: (algorithm, HLS) = (-5.261744, -3.580829), error = 1.680915
+(1018, 90), u: (algorithm, HLS) = (-1.664819, -0.386614), error = 1.278204
+(1018, 90), v: (algorithm, HLS) = (-0.566220, -2.682660), error = 2.116440
+(1019, 90), u: (algorithm, HLS) = (2.029767, -0.022214), error = 2.051981
+(1019, 90), v: (algorithm, HLS) = (-8.117510, -3.274440), error = 4.843070
+(1018, 91), u: (algorithm, HLS) = (-1.857446, -0.428457), error = 1.428989
+(1018, 91), v: (algorithm, HLS) = (0.010305, -2.550325), error = 2.560630
+(1019, 91), u: (algorithm, HLS) = (-2.721343, -0.352152), error = 2.369192
+(1019, 91), v: (algorithm, HLS) = (1.533097, -2.654469), error = 4.187566
+(1018, 92), v: (algorithm, HLS) = (0.639158, -0.892782), error = 1.531940
+(1019, 92), u: (algorithm, HLS) = (-2.968872, -0.824733), error = 2.144139
+(1019, 92), v: (algorithm, HLS) = (2.138630, -1.734125), error = 3.872755
+(1019, 93), u: (algorithm, HLS) = (-2.209360, -1.126133), error = 1.083227
+(1019, 93), v: (algorithm, HLS) = (0.749584, -1.117124), error = 1.866707
+(343, 128), u: (algorithm, HLS) = (0.000000, 46.775935), error = 46.775935
+(343, 128), v: (algorithm, HLS) = (0.000000, 47.760800), error = 47.760800
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, -0.00000000000000353094088217978635)
+(344, 129), u: (algorithm, HLS) = (0.000000, 33.004442), error = 33.004442
+(344, 129), v: (algorithm, HLS) = (0.000000, 4.108697), error = 4.108697
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, -0.00000000000000516018178351801892)
+(345, 130), u: (algorithm, HLS) = (16.000000, 13.120682), error = 2.879318
+(345, 130), v: (algorithm, HLS) = (-32.000000, -21.773041), error = 10.226959
+(346, 131), u: (algorithm, HLS) = (0.000000, 10.429161), error = 10.429161
+(346, 131), v: (algorithm, HLS) = (0.000000, -6.724933), error = 6.724933
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, -0.00000000000003358029222747584705)
+(347, 132), u: (algorithm, HLS) = (0.000000, -2.057228), error = 2.057228
+(347, 132), v: (algorithm, HLS) = (0.000000, -1.475393), error = 1.475393
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, 0.00000000000000257319670489925919)
+(591, 139), v: (algorithm, HLS) = (-1969.170776, -1974.096417), error = 4.925641
+(591, 140), v: (algorithm, HLS) = (-6539.163086, -6541.646682), error = 2.483596
+(374, 149), v: (algorithm, HLS) = (1071.747803, 1069.987768), error = 1.760035
+(375, 149), v: (algorithm, HLS) = (1303.817993, 1305.082984), error = 1.264991
+(374, 150), u: (algorithm, HLS) = (3495.576416, 3492.177984), error = 3.398432
+(374, 150), v: (algorithm, HLS) = (8512.074219, 8503.977869), error = 8.096350
+(375, 150), u: (algorithm, HLS) = (1382.459351, 1380.029609), error = 2.429742
+(375, 150), v: (algorithm, HLS) = (5975.669434, 5970.447554), error = 5.221880
+(376, 151), u: (algorithm, HLS) = (-7774.244629, -7766.299178), error = 7.945451
+(376, 151), v: (algorithm, HLS) = (-1682.209473, -1680.839848), error = 1.369624
+(377, 151), u: (algorithm, HLS) = (-1810.860718, -1809.210198), error = 1.650519
+(377, 151), v: (algorithm, HLS) = (-1281.373047, -1280.121679), error = 1.251368
+(379, 151), u: (algorithm, HLS) = (2849.868652, 2846.678060), error = 3.190592
+(379, 151), v: (algorithm, HLS) = (2450.640625, 2447.921516), error = 2.719109
+(377, 152), u: (algorithm, HLS) = (-620.635193, -617.727806), error = 2.907387
+(377, 152), v: (algorithm, HLS) = (-1294.804810, -1292.931212), error = 1.873597
+(379, 152), u: (algorithm, HLS) = (2068.688965, 2073.490464), error = 4.801499
+(379, 152), v: (algorithm, HLS) = (1858.633911, 1862.610063), error = 3.976152
+(582, 152), v: (algorithm, HLS) = (18235.078125, 18227.470308), error = 7.607817
+(584, 152), u: (algorithm, HLS) = (-16991.414062, -16977.051213), error = 14.362849
+(584, 152), v: (algorithm, HLS) = (8623.835938, 8619.191914), error = 4.644024
+(378, 153), u: (algorithm, HLS) = (-12449.868164, -12443.395582), error = 6.472582
+(378, 153), v: (algorithm, HLS) = (-19213.722656, -19205.674095), error = 8.048561
+(379, 153), u: (algorithm, HLS) = (1450.386719, 1476.509908), error = 26.123189
+(379, 153), v: (algorithm, HLS) = (1247.281738, 1264.174915), error = 16.893177
+(582, 153), u: (algorithm, HLS) = (-15526.722656, -15532.163572), error = 5.440916
+(583, 153), u: (algorithm, HLS) = (-2900.472656, -2897.373193), error = 3.099463
+(379, 154), u: (algorithm, HLS) = (-99657.031250, -99320.206279), error = 336.824971
+(379, 154), v: (algorithm, HLS) = (-68853.109375, -68666.924980), error = 186.184395
+(380, 155), v: (algorithm, HLS) = (-10409.252930, -10407.436885), error = 1.816045
+(381, 155), v: (algorithm, HLS) = (1553.941528, 1552.390702), error = 1.550826
+(580, 155), u: (algorithm, HLS) = (-2237.247314, -2322.846262), error = 85.598947
+(580, 155), v: (algorithm, HLS) = (217031.453125, 224844.965244), error = 7813.512119
+(373, 156), v: (algorithm, HLS) = (-5028.945312, -5026.777890), error = 2.167422
+(579, 156), u: (algorithm, HLS) = (13630.650391, 13634.519885), error = 3.869494
+(579, 156), v: (algorithm, HLS) = (-32305.910156, -32316.692010), error = 10.781854
+(574, 163), u: (algorithm, HLS) = (0.000000, 250.867295), error = 250.867295
+(574, 163), v: (algorithm, HLS) = (0.000000, -46.585631), error = 46.585631
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000355271367880050093, -0.00000000000000579787276131990548)
+(571, 167), u: (algorithm, HLS) = (0.000000, -53.933614), error = 53.933614
+(571, 167), v: (algorithm, HLS) = (0.000000, -28.918402), error = 28.918402
+denominator: (algorithm, HLS (after shift))  = (-0.00000000000000000260208521396521, 0.00000000000000282337741540506372)
+(569, 169), u: (algorithm, HLS) = (0.000000, 105.904766), error = 105.904766
+(569, 169), v: (algorithm, HLS) = (0.000000, 63.753186), error = 63.753186
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, 0.00000000000000448113188096759939)
+(568, 170), u: (algorithm, HLS) = (0.000000, -17.668462), error = 17.668462
+(568, 170), v: (algorithm, HLS) = (0.000000, 302.755074), error = 302.755074
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000088817841970012523, 0.00000000000000173561476639555543)
+(1019, 170), v: (algorithm, HLS) = (-3.782409, -2.517533), error = 1.264876
+(567, 171), u: (algorithm, HLS) = (0.000000, 6.762859), error = 6.762859
+(567, 171), v: (algorithm, HLS) = (0.000000, 388.149277), error = 388.149277
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000005551115123125783, -0.00000000000000258716155222577394)
+(562, 176), v: (algorithm, HLS) = (10589.887695, 10592.805185), error = 2.917489
+(373, 191), v: (algorithm, HLS) = (139678.109375, 140020.720413), error = 342.611038
+(373, 192), u: (algorithm, HLS) = (177.947617, 183.072097), error = 5.124480
+(373, 192), v: (algorithm, HLS) = (131519.671875, 134566.025504), error = 3046.353629
+(372, 196), v: (algorithm, HLS) = (7951.589844, 7953.846658), error = 2.256814
+(587, 197), v: (algorithm, HLS) = (11827.214844, 11835.770236), error = 8.555392
+(588, 197), v: (algorithm, HLS) = (8857.869141, 8860.577488), error = 2.708347
+(588, 200), v: (algorithm, HLS) = (-2637.746094, -2639.531153), error = 1.785060
+(591, 208), u: (algorithm, HLS) = (-9132.077148, -9134.000625), error = 1.923477
+(589, 209), v: (algorithm, HLS) = (18156.841797, 18553.177452), error = 396.335656
+(590, 209), v: (algorithm, HLS) = (18947.361328, 18988.606516), error = 41.245188
+(591, 209), u: (algorithm, HLS) = (-8039.859375, -8041.283133), error = 1.423758
+(362, 212), v: (algorithm, HLS) = (5474.099121, 5472.096260), error = 2.002862
+(369, 213), v: (algorithm, HLS) = (-6750.885254, -6755.844042), error = 4.958789
+(370, 213), v: (algorithm, HLS) = (-10971.228516, -10975.689718), error = 4.461202
+(590, 214), u: (algorithm, HLS) = (278.492157, 280.443028), error = 1.950871
+(590, 214), v: (algorithm, HLS) = (-130166.453125, -132970.840066), error = 2804.386941
+(590, 215), u: (algorithm, HLS) = (405.974121, 408.358548), error = 2.384427
+(590, 215), v: (algorithm, HLS) = (-120296.796875, -120965.686440), error = 668.889565
+(593, 215), v: (algorithm, HLS) = (-7150.534180, -7149.451203), error = 1.082977
+(591, 219), v: (algorithm, HLS) = (-21331.548828, -21390.870356), error = 59.321528
+(591, 220), v: (algorithm, HLS) = (10960.724609, 10961.738154), error = 1.013545
+(594, 220), v: (algorithm, HLS) = (-7537.378418, -7538.438211), error = 1.059793
+(592, 223), v: (algorithm, HLS) = (-65211.800781, -66719.246480), error = 1507.445699
+(593, 223), v: (algorithm, HLS) = (-22484.250000, -22480.965309), error = 3.284691
+(369, 224), v: (algorithm, HLS) = (3987.902832, 4084.785479), error = 96.882647
+(592, 224), v: (algorithm, HLS) = (12316.750000, 12317.907763), error = 1.157763
+(368, 226), v: (algorithm, HLS) = (-8239.756836, -9093.058904), error = 853.302068
+(774, 230), u: (algorithm, HLS) = (68.770432, 65.715566), error = 3.054865
+(366, 233), v: (algorithm, HLS) = (-8841.334961, -8900.970637), error = 59.635676
+(367, 233), v: (algorithm, HLS) = (14846.357422, 14847.839159), error = 1.481737
+(753, 249), v: (algorithm, HLS) = (0.000000, -2.827275), error = 2.827275
+denominator: (algorithm, HLS (after shift))  = (0.00000000000000000000000000000000, 0.00000000000000191438453078555965)
+(359, 250), v: (algorithm, HLS) = (-3463.336670, -3461.983390), error = 1.353280
+(356, 252), u: (algorithm, HLS) = (-7798.443848, -7963.603325), error = 165.159477
+(357, 252), u: (algorithm, HLS) = (-2118.125000, -2125.410865), error = 7.285865
+(764, 266), v: (algorithm, HLS) = (-3363.344727, -3366.035931), error = 2.691205
+(962, 277), v: (algorithm, HLS) = (387.362427, 391.672930), error = 4.310503
+(361, 279), v: (algorithm, HLS) = (-4346.485352, -4351.893959), error = 5.408607
+(1019, 284), u: (algorithm, HLS) = (-1.320755, 0.470088), error = 1.790843
+(1019, 285), u: (algorithm, HLS) = (-0.710740, 0.740498), error = 1.451237
+(1019, 286), u: (algorithm, HLS) = (-1.281015, 1.209208), error = 2.490223
+(1019, 287), u: (algorithm, HLS) = (-2.540423, 1.235802), error = 3.776225
+(1019, 287), v: (algorithm, HLS) = (-0.797228, 0.304131), error = 1.101360
+(1019, 288), u: (algorithm, HLS) = (-2.149329, 0.018044), error = 2.167373
+(1019, 296), u: (algorithm, HLS) = (-1.768087, -0.695754), error = 1.072333
+(1019, 297), u: (algorithm, HLS) = (-2.119253, -1.054213), error = 1.065040
+(1019, 339), v: (algorithm, HLS) = (-3.361166, -2.356808), error = 1.004358
+(1019, 356), u: (algorithm, HLS) = (-1.303006, -0.209121), error = 1.093885
+(1019, 357), u: (algorithm, HLS) = (-2.283715, -0.447858), error = 1.835857
+(1019, 357), v: (algorithm, HLS) = (-1.207480, 0.491392), error = 1.698872
+(1019, 358), u: (algorithm, HLS) = (-1.994268, 0.963528), error = 2.957796
+(1019, 358), v: (algorithm, HLS) = (-0.868566, 1.849248), error = 2.717814
+(1019, 359), u: (algorithm, HLS) = (-2.473367, 2.046175), error = 4.519542
+(1019, 359), v: (algorithm, HLS) = (-1.279269, 2.854875), error = 4.134144
+(1018, 360), u: (algorithm, HLS) = (-0.382383, 1.277749), error = 1.660131
+(1018, 360), v: (algorithm, HLS) = (0.474650, 1.994047), error = 1.519397
+(1019, 360), u: (algorithm, HLS) = (-3.967379, 2.792358), error = 6.759737
+(1019, 360), v: (algorithm, HLS) = (-2.716997, 3.503831), error = 6.220828
+(1018, 361), u: (algorithm, HLS) = (-1.688108, 1.148220), error = 2.836328
+(1018, 361), v: (algorithm, HLS) = (-0.798294, 1.816220), error = 2.614513
+(1019, 361), u: (algorithm, HLS) = (-5.446690, 3.949774), error = 9.396464
+(1019, 361), v: (algorithm, HLS) = (-4.232167, 4.509111), error = 8.741278
+(1019, 362), u: (algorithm, HLS) = (-5.071995, -0.237606), error = 4.834388
+(1019, 362), v: (algorithm, HLS) = (-3.922409, 0.566890), error = 4.489299
+(1019, 363), u: (algorithm, HLS) = (-3.601889, -0.599511), error = 3.002378
+(1019, 363), v: (algorithm, HLS) = (-2.608454, 0.128157), error = 2.736611
+(1019, 364), u: (algorithm, HLS) = (-3.166526, 0.335350), error = 3.501875
+(1019, 364), v: (algorithm, HLS) = (-2.248932, 0.866540), error = 3.115472
+(1019, 365), u: (algorithm, HLS) = (-3.145484, 1.858265), error = 5.003749
+(1019, 365), v: (algorithm, HLS) = (-2.249273, 2.150851), error = 4.400123
+(1019, 366), u: (algorithm, HLS) = (-3.198709, 0.534545), error = 3.733254
+(1019, 366), v: (algorithm, HLS) = (-2.305631, 1.088302), error = 3.393933
+(1019, 367), u: (algorithm, HLS) = (-2.813260, 0.420573), error = 3.233833
+(1019, 367), v: (algorithm, HLS) = (-1.927441, 1.090458), error = 3.017899
+(1019, 369), u: (algorithm, HLS) = (1.537298, 0.162597), error = 1.374702
+(1019, 369), v: (algorithm, HLS) = (2.561220, 1.024585), error = 1.536635
+(1019, 423), v: (algorithm, HLS) = (0.713522, -0.308273), error = 1.021795
+Magnitude: Manhattan norm per pixel 0.082214
+Writing algorithmic bitmap output to: out_algorithm_u.bmp
+Writing algorithmic bitmap output to: out_algorithm_v.bmp
+Writing algorithmic bitmap output to: out_algorithm_magnitude.bmp
+Writing bit-accurate bitmap output to: out_HLS_u.bmp
+Writing bit-accurate bitmap output to: out_HLS_v.bmp
+Writing bit-accurate bitmap output to: out_HLS_magnitude.bmp
+Finish writing frame1 into frame1.hex
+Finish writing frame2 into frame1.hex
+Finish writing frame3 into frame1.hex
+Finish writing frame4 into frame1.hex
+Finish writing frame5 into frame1.hex
+Finish writing u_algorithm into output_u_algorithm.hex
+Finish writing v_algorithm into output_v_algorithm.hex
+Finish writing magnitude_algorithm into output_magnitude_algorithm.hex
+Finish writing u_HLS into output_u_HLS.hex
+Finish writing v_HLS into output_v_HLS.hex
+Finish writing magnitude_HLS into output_magnitude_HLS.hex
+Finish writing final_velocity_x_HLS into channel_output_u_before_threshold_HLS.hex
+Finish writing final_velocity_y_HLS into channel_output_v_before_threshold_HLS.hex
+Finish writing denominator_HLS into channel_output_denominator_HLS.hex
+Finish writing shift_HLS into channel_output_shift_HLS.hex
+Finished

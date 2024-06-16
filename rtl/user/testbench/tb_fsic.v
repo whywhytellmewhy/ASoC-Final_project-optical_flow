@@ -879,7 +879,8 @@ FSIC #(
 		end
 	endtask
 
-	reg [39:0] input_data;
+	///reg [39:0] input_data;
+	reg [31:0] input_data;
 	reg        sof;
     reg        eol;
     reg [31:0] hcnt;
@@ -899,10 +900,10 @@ FSIC #(
 			///golden_output_data = 0*j+(-10)*(((j-1)<0)? 0:(j-1))+(-9)*(((j-2)<0)? 0:(j-2))+23*(((j-3)<0)? 0:(j-3))+56*(((j-4)<0)? 0:(j-4))+63*(((j-5)<0)? 0:(j-5))+56*(((j-6)<0)? 0:(j-6))+23*(((j-7)<0)? 0:(j-7))+(-9)*(((j-8)<0)? 0:(j-8))+(-10)*(((j-9)<0)? 0:(j-9))+0*(((j-10)<0)? 0:(j-10));
 			///`ifdef USER_PROJECT_SIDEBAND_SUPPORT
 			///	if (j==DATA_LENGTH-1) begin
-			///		soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {j[4:0], 4'b0000, 4'b0000, 1'b1, golden_output_data};
+			///		soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b1, golden_output_data};
 			///	end
 			///	else begin
-			///		soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {j[4:0], 4'b0000, 4'b0000, 1'b0, golden_output_data};
+			///		soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b0, golden_output_data};
 			///	end
 			///`else
 			///	if (j==DATA_LENGTH-1) begin
@@ -918,15 +919,33 @@ FSIC #(
 			for(vcnt=0; vcnt < TST_FRAME_HEIGHT; vcnt += 1) begin
 				for(hcnt=0; hcnt < TST_FRAME_WIDTH; hcnt += 1) begin
 					index = vcnt * TST_FRAME_WIDTH + hcnt;
-					input_data = {test_image_in_frame5_buf[index], test_image_in_frame4_buf[index], test_image_in_frame3_buf[index], test_image_in_frame2_buf[index], test_image_in_frame1_buf[index]};
+					///input_data = {test_image_in_frame5_buf[index], test_image_in_frame4_buf[index], test_image_in_frame3_buf[index], test_image_in_frame2_buf[index], test_image_in_frame1_buf[index]};
+					input_data = {test_image_in_frame4_buf[index], test_image_in_frame3_buf[index], test_image_in_frame2_buf[index], test_image_in_frame1_buf[index]};
                     sof = (vcnt==0 && hcnt==0);
                     eol = (hcnt== TST_FRAME_WIDTH-1);
 					`ifdef USER_PROJECT_SIDEBAND_SUPPORT
                         upsb = {eol,sof}; 
-						fpga_axis_req_modified(input_data, TID_DN_UP, 0, upsb);	//target to User Project
+						fpga_axis_req_modified(input_data, TID_DN_UP, 0, upsb, vcnt, hcnt);	//target to User Project
 					`else
-						fpga_axis_req_modified(input_data, TID_DN_UP, 0);		//target to User Project
+						fpga_axis_req_modified(input_data, TID_DN_UP, 0, vcnt, hcnt);		//target to User Project
 					`endif
+
+					`ifdef USER_PROJECT_SIDEBAND_SUPPORT
+						if (j==DATA_LENGTH-1) begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b1, golden_output_data};
+						end
+						else begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {upsb, 4'b0000, 4'b0000, 1'b0, golden_output_data};
+						end
+					`else
+						if (j==DATA_LENGTH-1) begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b1, golden_output_data};
+						end
+						else begin
+							soc_to_fpga_axis_expect_value[soc_to_fpga_axis_expect_count] <= {4'b0000, 4'b0000, 1'b0, golden_output_data};
+						end
+					`endif
+					soc_to_fpga_axis_expect_count <= soc_to_fpga_axis_expect_count+1;
 				end
 			end
 			
@@ -941,6 +960,8 @@ FSIC #(
 		`ifdef USER_PROJECT_SIDEBAND_SUPPORT
 			input [pUSER_PROJECT_SIDEBAND_WIDTH-1:0] upsb;
 		`endif
+		input [31:0] vcnt;
+		input [31:0] hcnt;
 
 		
 		reg [31:0] tdata;
@@ -965,11 +986,11 @@ FSIC #(
 				tdata = data;
 				`ifdef USER_PROJECT_SIDEBAND_SUPPORT
 					//tupsb = 5'b00000;
-					tupsb = tdata[4:0];
+					tupsb = upsb;
 				`endif
 				tstrb = 4'b0000;
 				tkeep = 4'b0000;
-				if (data==DATA_LENGTH-1) begin
+				if ((vcnt==TST_FRAME_HEIGHT-1) && (hcnt==TST_FRAME_WIDTH-1)) begin
 					tlast = 1'b1;
 				end
 				else begin
@@ -1001,7 +1022,7 @@ FSIC #(
 			/////soc_to_fpga_axis_expect_count <= soc_to_fpga_axis_expect_count+1;
 
 			@ (posedge fpga_coreclk);
-			while (fpga_is_as_tready == 0) begin		// wait util fpga_is_as_tready == 1 then change data
+			while (fpga_is_as_tready == 0) begin		// wait until fpga_is_as_tready == 1 then change data
 					@ (posedge fpga_coreclk);
 			end
 			fpga_as_is_tvalid <= 0;

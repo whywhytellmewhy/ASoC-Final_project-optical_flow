@@ -34,6 +34,8 @@ class OpticalFlow_flow_calc
       velocity_t velocity_value_compare_to_sign_bit;
       vel_pixel_t denominator_value_compare_to_sign_bit;
       vel_pixel_t velocity_value_compare_to_sign_bit_bitwise_OR;
+      vel_pixel_t velocity_value_compare_to_sign_bit_bitwise_OR_complement;
+      vel_pixel_t rightmost_1;
       velocity_t velocity_value_before_threshold;
       velocity_t velocity_value_after_shift;
       output_stream_t output_value;
@@ -139,15 +141,27 @@ class OpticalFlow_flow_calc
               velocity_value_compare_to_sign_bit_bitwise_OR[i] = denominator_value_compare_to_sign_bit[i] | velocity_value_compare_to_sign_bit.x[i] | velocity_value_compare_to_sign_bit.y[i];
             }
 
-            for (shift_t i=2; i<VEL_PIXEL_T_BIT_WIDTH+1; i=i+1) {
-              if ((velocity_value_compare_to_sign_bit_bitwise_OR[VEL_PIXEL_T_BIT_WIDTH-i]==1) || (i==VEL_PIXEL_T_BIT_WIDTH)) {
-                shift_value_here = i-2;
-                denominator_value_before_threshold = denominator_value<<shift_value_here;
-                velocity_value_before_threshold.x = velocity_value.x<<shift_value_here;
-                velocity_value_before_threshold.y = velocity_value.y<<shift_value_here;
-                break;
-              }
+            /// for (shift_t i=2; i<VEL_PIXEL_T_BIT_WIDTH+1; i=i+1) {
+            ///   if ((velocity_value_compare_to_sign_bit_bitwise_OR[VEL_PIXEL_T_BIT_WIDTH-i]==1) || (i==VEL_PIXEL_T_BIT_WIDTH)) {
+            ///     shift_value_here = i-2;
+            ///     denominator_value_before_threshold = denominator_value<<shift_value_here;
+            ///     velocity_value_before_threshold.x = velocity_value.x<<shift_value_here;
+            ///     velocity_value_before_threshold.y = velocity_value.y<<shift_value_here;
+            ///     break;
+            ///   }
+            /// }
+            for (uint i=0; i<VEL_PIXEL_T_BIT_WIDTH; i=i+1) {
+              velocity_value_compare_to_sign_bit_bitwise_OR_complement[i]=velocity_value_compare_to_sign_bit_bitwise_OR[VEL_PIXEL_T_BIT_WIDTH-1-i];
             }
+            rightmost_1 = velocity_value_compare_to_sign_bit_bitwise_OR_complement & (-velocity_value_compare_to_sign_bit_bitwise_OR_complement);
+            for (uint i=1; i<VEL_PIXEL_T_BIT_WIDTH; i=i+1) {
+              shift_value_here = shift_value_here + i*rightmost_1[i];
+            }
+            shift_value_here = shift_value_here-1;
+            //cout << "shift_value_here: " << shift_value_here << endl;
+            denominator_value_before_threshold = denominator_value<<shift_value_here;
+            velocity_value_before_threshold.x = velocity_value.x<<shift_value_here;
+            velocity_value_before_threshold.y = velocity_value.y<<shift_value_here;
 
             // Calculate velocity_value
             if ((shift_value*2 + shift_value_here) > shift_threshold) {

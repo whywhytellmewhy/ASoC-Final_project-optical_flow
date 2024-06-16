@@ -36,6 +36,9 @@ class OpticalFlow_tensor_weight_x
       tensor_long_t tensor_value; // "32" is from the bit number of "TENSOR_FILTER"
       tensor_long_t tensor_value_compare_to_sign_bit;
       tensor_long_pixel_t tensor_value_compare_to_sign_bit_bitwise_OR;
+      tensor_long_pixel_t tensor_value_compare_to_sign_bit_bitwise_OR_complement;
+      tensor_long_pixel_t rightmost_1;
+      //tensor_long_pixel_t LSB_1;
       tensor_int_t tensor_shift_value;
 
       // transform into ac_int type
@@ -198,6 +201,8 @@ class OpticalFlow_tensor_weight_x
 
             // reset shift_value
             shift_value = 0;
+            //LSB_1 = 0;
+            //LSB_1[0] = 1;
 
             ///// // shift left until MSB has non-zero value
             ///// while ((tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1])) { // if we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-1], then after multiplication and add, it will become 32*2+1=65 bits, but we have only 64 bits, thus overflow may happen. Therefore, here we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-2], then we will have 31*2+1=63 bits after multiplication and add
@@ -271,18 +276,34 @@ class OpticalFlow_tensor_weight_x
               tensor_value_compare_to_sign_bit_bitwise_OR[i] = tensor_value_compare_to_sign_bit.val[0][i] | tensor_value_compare_to_sign_bit.val[1][i] | tensor_value_compare_to_sign_bit.val[3][i] | tensor_value_compare_to_sign_bit.val[4][i] | tensor_value_compare_to_sign_bit.val[5][i];
             }
 
-            for (shift_t i=2; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH+1; i=i+1) {
-              if ((tensor_value_compare_to_sign_bit_bitwise_OR[TENSOR_LONG_PIXEL_T_BIT_WIDTH-i]==1) || (i==TENSOR_LONG_PIXEL_T_BIT_WIDTH)) {
-                shift_value = i-2;
-                tensor_shift_value.val[0] = (tensor_value.val[0]<<shift_value).to_int();
-                tensor_shift_value.val[1] = (tensor_value.val[1]<<shift_value).to_int();
-                tensor_shift_value.val[3] = (tensor_value.val[3]<<shift_value).to_int();
-                tensor_shift_value.val[4] = (tensor_value.val[4]<<shift_value).to_int();
-                tensor_shift_value.val[5] = (tensor_value.val[5]<<shift_value).to_int();
-                break;
-              }
+            /// for (shift_t i=2; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH+1; i=i+1) {
+            ///   if ((tensor_value_compare_to_sign_bit_bitwise_OR[TENSOR_LONG_PIXEL_T_BIT_WIDTH-i]==1) || (i==TENSOR_LONG_PIXEL_T_BIT_WIDTH)) {
+            ///     shift_value = i-2;
+            ///     tensor_shift_value.val[0] = (tensor_value.val[0]<<shift_value).to_int();
+            ///     tensor_shift_value.val[1] = (tensor_value.val[1]<<shift_value).to_int();
+            ///     tensor_shift_value.val[3] = (tensor_value.val[3]<<shift_value).to_int();
+            ///     tensor_shift_value.val[4] = (tensor_value.val[4]<<shift_value).to_int();
+            ///     tensor_shift_value.val[5] = (tensor_value.val[5]<<shift_value).to_int();
+            ///     break;
+            ///   }
+            /// }
+            /// tensor_shift_value.val[2] = tensor_value.val[2].to_int();
+            for (uint i=0; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH; i=i+1) {
+              tensor_value_compare_to_sign_bit_bitwise_OR_complement[i]=tensor_value_compare_to_sign_bit_bitwise_OR[TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-i];
             }
+
+            rightmost_1 = tensor_value_compare_to_sign_bit_bitwise_OR_complement & (-tensor_value_compare_to_sign_bit_bitwise_OR_complement);
+            for (uint i=1; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH; i=i+1) {
+              shift_value = shift_value + i*rightmost_1[i];
+            }
+            shift_value = shift_value-1;
+            //cout << "shift_value: " << shift_value << endl;
+            tensor_shift_value.val[0] = (tensor_value.val[0]<<shift_value).to_int();
+            tensor_shift_value.val[1] = (tensor_value.val[1]<<shift_value).to_int();
             tensor_shift_value.val[2] = tensor_value.val[2].to_int();
+            tensor_shift_value.val[3] = (tensor_value.val[3]<<shift_value).to_int();
+            tensor_shift_value.val[4] = (tensor_value.val[4]<<shift_value).to_int();
+            tensor_shift_value.val[5] = (tensor_value.val[5]<<shift_value).to_int();
 
             //if ((x==TARGET_X+1) && (y==TARGET_Y)){
             //  //printf("After shift and slicing:\n");

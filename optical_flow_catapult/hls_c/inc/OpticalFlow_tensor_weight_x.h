@@ -34,6 +34,8 @@ class OpticalFlow_tensor_weight_x
 
       /////tensor_t tensor_value;
       tensor_long_t tensor_value; // "32" is from the bit number of "TENSOR_FILTER"
+      tensor_long_t tensor_value_compare_to_sign_bit;
+      tensor_long_pixel_t tensor_value_compare_to_sign_bit_bitwise_OR;
       tensor_int_t tensor_shift_value;
 
       // transform into ac_int type
@@ -197,20 +199,20 @@ class OpticalFlow_tensor_weight_x
             // reset shift_value
             shift_value = 0;
 
-            // shift left until MSB has non-zero value
-            while ((tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1])) { // if we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-1], then after multiplication and add, it will become 32*2+1=65 bits, but we have only 64 bits, thus overflow may happen. Therefore, here we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-2], then we will have 31*2+1=63 bits after multiplication and add
-              tensor_value.val[0] = tensor_value.val[0]<<1;
-              tensor_value.val[1] = tensor_value.val[1]<<1;
-              tensor_value.val[3] = tensor_value.val[3]<<1;
-              tensor_value.val[4] = tensor_value.val[4]<<1;
-              tensor_value.val[5] = tensor_value.val[5]<<1;
-              shift_value = shift_value + 1;
-              //cout << x << "," << y << " :" << shift_value <<endl;
-              if (shift_value==TENSOR_LONG_PIXEL_T_BIT_WIDTH-1){
-                break;
-              }
-            }
-
+            ///// // shift left until MSB has non-zero value
+            ///// while ((tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]) && (tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-2]==tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1])) { // if we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-1], then after multiplication and add, it will become 32*2+1=65 bits, but we have only 64 bits, thus overflow may happen. Therefore, here we choose tensor_value.val[0][OUTER_PIXEL_T_BIT_WIDTH-2], then we will have 31*2+1=63 bits after multiplication and add
+            /////   tensor_value.val[0] = tensor_value.val[0]<<1;
+            /////   tensor_value.val[1] = tensor_value.val[1]<<1;
+            /////   tensor_value.val[3] = tensor_value.val[3]<<1;
+            /////   tensor_value.val[4] = tensor_value.val[4]<<1;
+            /////   tensor_value.val[5] = tensor_value.val[5]<<1;
+            /////   shift_value = shift_value + 1;
+            /////   //cout << x << "," << y << " :" << shift_value <<endl;
+            /////   if (shift_value==TENSOR_LONG_PIXEL_T_BIT_WIDTH-1){
+            /////     break;
+            /////   }
+            ///// }
+            
             //if ((x==TARGET_X+1) && (y==TARGET_Y)){
             //  printf("After shifting:\n");
             //  for (int k=TENSOR_LONG_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
@@ -244,13 +246,13 @@ class OpticalFlow_tensor_weight_x
             //  printf("\n");
             //}
 
-            // Transform into 32-bit int
-            tensor_shift_value.val[0] = tensor_value.val[0].to_int();
-            tensor_shift_value.val[1] = tensor_value.val[1].to_int();
-            tensor_shift_value.val[2] = tensor_value.val[2].to_int();
-            tensor_shift_value.val[3] = tensor_value.val[3].to_int();
-            tensor_shift_value.val[4] = tensor_value.val[4].to_int();
-            tensor_shift_value.val[5] = tensor_value.val[5].to_int();
+            ///// // Transform into 32-bit int
+            ///// tensor_shift_value.val[0] = tensor_value.val[0].to_int();
+            ///// tensor_shift_value.val[1] = tensor_value.val[1].to_int();
+            ///// tensor_shift_value.val[2] = tensor_value.val[2].to_int();
+            ///// tensor_shift_value.val[3] = tensor_value.val[3].to_int();
+            ///// tensor_shift_value.val[4] = tensor_value.val[4].to_int();
+            ///// tensor_shift_value.val[5] = tensor_value.val[5].to_int();
             //for(uint k=0; k<OUTER_PIXEL_T_INTEGER_PART; k++){
             //  tensor_shift_value.val[0][OUTER_PIXEL_T_INTEGER_PART-1-k] = tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-k];
             //  tensor_shift_value.val[1][OUTER_PIXEL_T_INTEGER_PART-1-k] = tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-k];
@@ -259,6 +261,28 @@ class OpticalFlow_tensor_weight_x
             //  tensor_shift_value.val[4][OUTER_PIXEL_T_INTEGER_PART-1-k] = tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-k];
             //  tensor_shift_value.val[5][OUTER_PIXEL_T_INTEGER_PART-1-k] = tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1-k];
             //}
+
+            for (uint i=0; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH; i=i+1) {
+              tensor_value_compare_to_sign_bit.val[0][i] = tensor_value.val[0][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]^tensor_value.val[0][i];
+              tensor_value_compare_to_sign_bit.val[1][i] = tensor_value.val[1][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]^tensor_value.val[1][i];
+              tensor_value_compare_to_sign_bit.val[3][i] = tensor_value.val[3][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]^tensor_value.val[3][i];
+              tensor_value_compare_to_sign_bit.val[4][i] = tensor_value.val[4][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]^tensor_value.val[4][i];
+              tensor_value_compare_to_sign_bit.val[5][i] = tensor_value.val[5][TENSOR_LONG_PIXEL_T_BIT_WIDTH-1]^tensor_value.val[5][i];
+              tensor_value_compare_to_sign_bit_bitwise_OR[i] = tensor_value_compare_to_sign_bit.val[0][i] | tensor_value_compare_to_sign_bit.val[1][i] | tensor_value_compare_to_sign_bit.val[3][i] | tensor_value_compare_to_sign_bit.val[4][i] | tensor_value_compare_to_sign_bit.val[5][i];
+            }
+
+            for (shift_t i=2; i<TENSOR_LONG_PIXEL_T_BIT_WIDTH+1; i=i+1) {
+              if ((tensor_value_compare_to_sign_bit_bitwise_OR[TENSOR_LONG_PIXEL_T_BIT_WIDTH-i]==1) || (i==TENSOR_LONG_PIXEL_T_BIT_WIDTH)) {
+                shift_value = i-2;
+                tensor_shift_value.val[0] = (tensor_value.val[0]<<shift_value).to_int();
+                tensor_shift_value.val[1] = (tensor_value.val[1]<<shift_value).to_int();
+                tensor_shift_value.val[3] = (tensor_value.val[3]<<shift_value).to_int();
+                tensor_shift_value.val[4] = (tensor_value.val[4]<<shift_value).to_int();
+                tensor_shift_value.val[5] = (tensor_value.val[5]<<shift_value).to_int();
+                break;
+              }
+            }
+            tensor_shift_value.val[2] = tensor_value.val[2].to_int();
 
             //if ((x==TARGET_X+1) && (y==TARGET_Y)){
             //  //printf("After shift and slicing:\n");

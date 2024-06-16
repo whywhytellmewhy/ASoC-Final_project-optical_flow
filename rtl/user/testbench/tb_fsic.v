@@ -46,6 +46,8 @@ module tb_fsic #( parameter BITS=32,
 		localparam OUTER_PIXEL_T_INTEGER_PART = 32;
 		localparam VEL_PIXEL_T_BIT_WIDTH = OUTER_PIXEL_T_INTEGER_PART*2;
 		localparam SHIFT_T_BIT_WIDTH = 6; // = ac::nbits<OUTER_PIXEL_T_BIT_WIDTH>::val
+
+		localparam shift_threshold = 105;
 		///////////////////////////////////////////////////
 
 /////`ifdef USE_EDGEDETECT_IP
@@ -730,16 +732,17 @@ FSIC #(
 	reg [7:0] test_image_in_frame2_buf [TST_TOTAL_PIXEL_NUM];
 	reg [7:0] test_image_in_frame3_buf [TST_TOTAL_PIXEL_NUM];
 	reg [7:0] test_image_in_frame4_buf [TST_TOTAL_PIXEL_NUM];
-	reg [7:0] test_image_in_frame5_buf [TST_TOTAL_PIXEL_NUM];
+	//reg [7:0] test_image_in_frame5_buf [TST_TOTAL_PIXEL_NUM];
 	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
 	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
 	reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [SHIFT_T_BIT_WIDTH:0] test_image_golden_shift_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	/////reg [SHIFT_T_BIT_WIDTH:0] test_image_golden_shift_HLS_buf [TST_TOTAL_PIXEL_NUM];
 
 	/// Configuration address map:
 	/// 0x00: reset
 	/// 0x04: widthIn
 	/// 0x08: heightIn
+	/// 0x0c: shift_threshold
 
 	task test1_initialization_from_SoC_side;
 		begin
@@ -768,10 +771,12 @@ FSIC #(
 			/////// Program widthIn and heightIn ///////
 			soc_up_cfg_write(12'h04, 4'b1111, TST_FRAME_WIDTH);
 			soc_up_cfg_write(12'h08, 4'b1111, TST_FRAME_HEIGHT);
+			soc_up_cfg_write(12'h0c, 4'b1111, shift_threshold);
 
 			/////// read-back and check ///////
 			soc_UP_configuration_read_and_check(12'h04, 4'b1111, TST_FRAME_WIDTH);
 			soc_UP_configuration_read_and_check(12'h08, 4'b1111, TST_FRAME_HEIGHT);
+			soc_UP_configuration_read_and_check(12'h0c, 4'b1111, shift_threshold);
 
 			/////// Program ap_start = 1 ///////
 			///$display(" Start FIR engine");
@@ -820,11 +825,11 @@ FSIC #(
 				$readmemh("./pattern/frame2.hex", test_image_in_frame2_buf);
 				$readmemh("./pattern/frame3.hex", test_image_in_frame3_buf);
 				$readmemh("./pattern/frame4.hex", test_image_in_frame4_buf);
-				$readmemh("./pattern/frame5.hex", test_image_in_frame5_buf);
+				//$readmemh("./pattern/frame5.hex", test_image_in_frame5_buf);
 				$readmemh("./pattern/channel_output_u_before_threshold_HLS.hex", test_image_golden_u_HLS_buf);
 				$readmemh("./pattern/channel_output_v_before_threshold_HLS.hex", test_image_golden_v_HLS_buf);
 				$readmemh("./pattern/channel_output_denominator_HLS.hex", test_image_golden_denominator_HLS_buf);
-				$readmemh("./pattern/channel_output_shift_HLS.hex", test_image_golden_shift_HLS_buf);
+				/////$readmemh("./pattern/channel_output_shift_HLS.hex", test_image_golden_shift_HLS_buf);
 
 				for (test_loop_count=0;test_loop_count<TST_TOTAL_LOOP_NUM;test_loop_count=test_loop_count+1) begin
 					$display("++++++++++++++++++++ test loop No. %02d ++++++++++++++++++++", test_loop_count);

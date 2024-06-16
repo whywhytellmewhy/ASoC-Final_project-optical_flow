@@ -40,6 +40,7 @@
   ac_channel<outer_t> out_product;
   ac_channel<tensor_t> tensor_y;
   ac_channel<tensor_int_t> tensor_shift;
+  ac_channel<shift_t> shift;
 
   // FIFOs for streaming in, just for clarity
   /////ac_channel<input_t> frame1_a;
@@ -67,15 +68,17 @@
     void CCS_BLOCK(run)(ac_channel<frames_t>    &input_frames,
                         maxWType                widthIn,
                         maxHType                heightIn,
+                        shift_t                 shift_threshold,
                         /////ac_channel<pixel_t> &gradient_x, // <-----------------------------------------------------------------------------------
                         /////ac_channel<gradient_t> &filtered_gradient,
                         /////ac_channel<outer_t> &out_product,
                         /////ac_channel<tensor_t> &tensor_y,
                         /////ac_channel<tensor_t> &tensor,
                         //ac_channel<pixel_t>  &denominator,
-                        ac_channel<vel_pixel_t>  &denominator,
-                        ac_channel<shift_t>  &shift,
-                        ac_channel<velocity_t>  &outputs)
+                        ////////ac_channel<vel_pixel_t>  &denominator,
+                        ////////ac_channel<shift_t>  &shift,
+                        ////////ac_channel<velocity_t>  &outputs)
+                        ac_channel<output_stream_t>  &outputs)
     {
       // compute
       /////framesplit_inst.run(input_frames, frame1_a, frame2_a, frame3_a, frame3_b, frame3_c, frame4_a, frame5_a, widthIn, heightIn);
@@ -92,8 +95,9 @@
       /////tensor_weight_x_inst.run(tensor_y, tensor_shift, widthIn, heightIn);
       tensor_weight_x_inst.run(tensor_y, tensor_shift, shift, widthIn, heightIn);
       /////flow_calc_inst.run(tensor, outputs, widthIn, heightIn);
-      flow_calc_inst.run(tensor_shift, outputs, denominator, widthIn, heightIn);
+      ////////flow_calc_inst.run(tensor_shift, outputs, denominator, widthIn, heightIn);
       /////flow_calc_inst.run(tensor, outputs, denominator, shift, widthIn, heightIn);
+      flow_calc_inst.run(tensor_shift, shift, outputs, widthIn, heightIn, shift_threshold);
     }
   };
 

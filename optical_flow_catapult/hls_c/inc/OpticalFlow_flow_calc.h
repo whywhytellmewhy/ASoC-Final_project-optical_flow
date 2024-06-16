@@ -11,30 +11,40 @@ class OpticalFlow_flow_calc
     #pragma hls_design interface
     void CCS_BLOCK(run)(//ac_channel<tensor_t> &tensor,
                         ac_channel<tensor_int_t> &tensor_shift,
-                        ac_channel<velocity_t>  &output,
-                        ac_channel<vel_pixel_t>  &denominator,
+                        ac_channel<shift_t>  &shift,
+                        ////////ac_channel<velocity_t>  &output,
+                        ac_channel<output_stream_t>  &output,
+                        ////////ac_channel<vel_pixel_t>  &denominator,
                         ///////ac_channel<shift_t>  &shift,
                         maxWType            widthIn,
-                        maxHType            heightIn)
+                        maxHType            heightIn,
+                        shift_t             shift_threshold)
     {
       /////tensor_t tensor_value;
 
       //pixel_t denominator_value;
       vel_pixel_t denominator_value;
+      vel_pixel_t denominator_value_after_shift;
 
       tensor_int_t tensor_shift_value;
 
-      velocity_t total_output_value;
-      /////shift_t shift_value;
+      ////////velocity_t total_output_value;
+      velocity_t velocity_value;
+      velocity_t velocity_value_after_shift;
+      output_stream_t output_value;
+      shift_t shift_value;
+      shift_t shift_value_here;
 
       Flow_calc_ROW: for(maxHType y=0; ; y++) {
         Flow_calc_COLUMN: for(maxWType x=0; ; x++) {
           // read input channels
           /////tensor_value = tensor.read();
           tensor_shift_value = tensor_shift.read();
+          shift_value = shift.read();
 
           // reset shift_value
           /////shift_value = 0;
+          shift_value_here = 0;
             
           if ((y >= 2) && (y < heightIn-2) && (x >= 2) && (x < widthIn-2)) {
             //if ((x==302) && (y==116)){
@@ -103,10 +113,32 @@ class OpticalFlow_flow_calc
             tensor_shift_value.val[4] = tensor_value.val[4].to_int();
             tensor_shift_value.val[5] = tensor_value.val[5].to_int();*/
 
-            // Calculate total_output_value
             denominator_value = (tensor_shift_value.val[0]*tensor_shift_value.val[1] - tensor_shift_value.val[3]*tensor_shift_value.val[3]);
-            total_output_value.x = (tensor_shift_value.val[5]*tensor_shift_value.val[3] - tensor_shift_value.val[4]*tensor_shift_value.val[1]); // / denominator_value;
-            total_output_value.y = (tensor_shift_value.val[4]*tensor_shift_value.val[3] - tensor_shift_value.val[5]*tensor_shift_value.val[0]); // / denominator_value;
+            velocity_value.x = (tensor_shift_value.val[5]*tensor_shift_value.val[3] - tensor_shift_value.val[4]*tensor_shift_value.val[1]); // / denominator_value;
+            velocity_value.y = (tensor_shift_value.val[4]*tensor_shift_value.val[3] - tensor_shift_value.val[5]*tensor_shift_value.val[0]); // / denominator_value;
+
+            while ((denominator_value[VEL_PIXEL_T_BIT_WIDTH-2]==denominator_value[VEL_PIXEL_T_BIT_WIDTH-1]) && (velocity_value.x[VEL_PIXEL_T_BIT_WIDTH-2]==velocity_value.x[VEL_PIXEL_T_BIT_WIDTH-1]) && (velocity_value.y[VEL_PIXEL_T_BIT_WIDTH-2]==velocity_value.y[VEL_PIXEL_T_BIT_WIDTH-1])) {
+              denominator_value = denominator_value<<1;
+              velocity_value.x = velocity_value.x<<1;
+              velocity_value.y = velocity_value.y<<1;
+              shift_value_here = shift_value_here + 1;
+              //cout << x << "," << y << " :" << shift_value <<endl;
+              if (shift_value_here==VEL_PIXEL_T_BIT_WIDTH-1){
+                break;
+              }
+            }
+            
+            // Calculate velocity_value
+            if ((shift_value*2 + shift_value_here) > shift_threshold) {
+              denominator_value_after_shift = 0;
+              velocity_value_after_shift.x = 0;
+              velocity_value_after_shift.y = 0;
+            } else {
+              denominator_value_after_shift = denominator_value;
+              velocity_value_after_shift.x = velocity_value.x;
+              velocity_value_after_shift.y = velocity_value.y;
+            }
+            
             //if ((x==451) && (y==62)){
             //if ((x==362) && (y==399)){
             //if ((x==317) && (y==189)){
@@ -158,26 +190,41 @@ class OpticalFlow_flow_calc
               cout << "HLS_tensor_shift_value[4]: " << tensor_shift_value.val[4] << endl;
               cout << "HLS_tensor_shift_value[5]: " << tensor_shift_value.val[5] << endl;
 
-              cout << "HLS_denominator_value: " << denominator_value << endl;
-              //cout << "HLS_shift_value: " << shift_value << endl;
-              cout << "HLS_total_output_value.x: " << total_output_value.x << endl;
-              cout << "HLS_total_output_value.y: " << total_output_value.y << endl;
-              cout << "HLS_total_output_value.x (after division): " << total_output_value.x.to_double()/denominator_value.to_double() << endl;
-              cout << "HLS_total_output_value.y (after division): " << total_output_value.y.to_double()/denominator_value.to_double() << endl;
+              cout << "HLS_denominator_value_after_shift: " << denominator_value_after_shift << endl;
+              cout << "HLS_shift_value: " << shift_value << endl;
+              cout << "HLS_shift_value_in_flow_calc: " << shift_value_here << endl;
+              cout << "HLS_total_shift_value: " << shift_value*2+shift_value_here << endl;
+              cout << "HLS_velocity_value_after_shift.x: " << velocity_value_after_shift.x << endl;
+              cout << "HLS_velocity_value_after_shift.y: " << velocity_value_after_shift.y << endl;
+              cout << "HLS_velocity_value_after_shift.x (after division): " << velocity_value_after_shift.x.to_double()/denominator_value_after_shift.to_double() << endl;
+              cout << "HLS_velocity_value_after_shift.y (after division): " << velocity_value_after_shift.y.to_double()/denominator_value_after_shift.to_double() << endl;
             }*/
 
             // Write output optical flow (velocity) streaming interface
-            output.write(total_output_value);
-            denominator.write(denominator_value);
+            output_value = denominator_value_after_shift.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            //printf("HLS_denominator_value_after_shift: %08x\n", output_value.to_int());
+            output.write(output_value);
+            output_value = velocity_value_after_shift.x.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            //printf("HLS_velocity_value_after_shift.x: %08x\n", output_value.to_int());
+            output.write(output_value);
+            output_value = velocity_value_after_shift.y.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            //printf("HLS_velocity_value_after_shift.y: %08x\n", output_value.to_int());
+            output.write(output_value);
+            ////////denominator.write(denominator_value);
             ///////shift.write(shift_value);
           } else {
-            total_output_value.x = 0;
-            total_output_value.y = 0;
-            denominator_value = 0;
+            velocity_value_after_shift.x = 0;
+            velocity_value_after_shift.y = 0;
+            denominator_value_after_shift = 0;
 
             // Write output optical flow (velocity) streaming interface
-            output.write(total_output_value);
-            denominator.write(denominator_value);
+            output_value = denominator_value_after_shift.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            output.write(output_value);
+            output_value = velocity_value_after_shift.x.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            output.write(output_value);
+            output_value = velocity_value_after_shift.y.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
+            output.write(output_value);
+            ////////denominator.write(denominator_value);
             ///////shift.write(shift_value);
           }
 

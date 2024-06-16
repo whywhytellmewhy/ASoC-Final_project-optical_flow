@@ -1,0 +1,163 @@
+Loading Input File
+Running
+Algorithm_Ix: 0
+Algorithm_Iy: 0
+Algorithm_Iz: 0
+Algorithm_y_filtered.x: 0
+Algorithm_y_filtered.y: 0
+Algorithm_y_filtered.z: 0
+Algorithm_filtered_gradient.x: 0
+Algorithm_filtered_gradient.y: 0
+Algorithm_filtered_gradient.z: 0.000474829
+Algorithm_out_product[0]: 0
+Algorithm_out_product[1]: 0
+Algorithm_out_product[2]: 2.25462e-07
+Algorithm_out_product[3]: 0
+Algorithm_out_product[4]: 0
+Algorithm_out_product[5]: 0
+Algorithm_tensor_y[0]: 0
+Algorithm_tensor_y[1]: 0
+Algorithm_tensor_y[2]: 8.54714e-06
+Algorithm_tensor_y[3]: 0
+Algorithm_tensor_y[4]: 0
+Algorithm_tensor_y[5]: 0
+Algorithm_tensor[0]: 9.48436e-08
+Algorithm_tensor[1]: 4.26835e-07
+Algorithm_tensor[2]: 6.48125e-05
+Algorithm_tensor[3]: -1.4227e-07
+Algorithm_tensor[4]: 2.36223e-06
+Algorithm_tensor[5]: -3.54345e-06
+
+Algorithm_tensor_value[0]: 9.48436e-08
+Algorithm_tensor_value[1]: 4.26835e-07
+Algorithm_tensor_value[2]: 6.48125e-05
+Algorithm_tensor_value[3]: -1.4227e-07
+Algorithm_tensor_value[4]: 2.36223e-06
+Algorithm_tensor_value[5]: -3.54345e-06
+Algorithm_denominator_value: 2.02419e-14
+Algorithm_total_output_value.x: -24.9066
+Algorithm_total_output_value.y: 0
+
+
+Report those pixels with error value > 1.000000 as following:
+(1019, 79), v: (algorithm, HLS) = (-0.998531, 0.855385), error = 1.853916
+(1019, 82), v: (algorithm, HLS) = (0.310199, -0.846633), error = 1.156832
+(1019, 86), u: (algorithm, HLS) = (1.768284, 0.465605), error = 1.302679
+(1019, 86), v: (algorithm, HLS) = (-4.047789, -1.116486), error = 2.931302
+(1019, 88), u: (algorithm, HLS) = (-1.030326, 0.263820), error = 1.294146
+(1019, 88), v: (algorithm, HLS) = (0.602874, -1.123548), error = 1.726422
+(1018, 89), v: (algorithm, HLS) = (0.516886, -0.679200), error = 1.196086
+(1019, 89), u: (algorithm, HLS) = (-1.127961, 0.309584), error = 1.437544
+(1019, 89), v: (algorithm, HLS) = (0.942537, -1.294696), error = 2.237232
+(1018, 90), u: (algorithm, HLS) = (-1.168788, 0.006828), error = 1.175617
+(1018, 90), v: (algorithm, HLS) = (1.404909, -0.757867), error = 2.162776
+(1019, 90), u: (algorithm, HLS) = (-1.545780, 0.386499), error = 1.932279
+(1019, 90), v: (algorithm, HLS) = (1.851788, -1.546914), error = 3.398702
+(1018, 91), u: (algorithm, HLS) = (-1.707085, 0.026652), error = 1.733737
+(1018, 91), v: (algorithm, HLS) = (2.424565, -0.866157), error = 3.290722
+(1019, 91), v: (algorithm, HLS) = (-0.742654, -2.040358), error = 1.297704
+(1018, 92), u: (algorithm, HLS) = (-1.227341, -0.045206), error = 1.182135
+(1018, 92), v: (algorithm, HLS) = (1.383813, -0.795784), error = 2.179596
+(1019, 92), u: (algorithm, HLS) = (0.149195, 1.324733), error = 1.175539
+(1019, 92), v: (algorithm, HLS) = (-1.459732, -3.314565), error = 1.854833
+(1019, 93), u: (algorithm, HLS) = (0.118390, 1.648152), error = 1.529762
+(1019, 93), v: (algorithm, HLS) = (-1.389708, -3.874268), error = 2.484560
+(1019, 94), v: (algorithm, HLS) = (-1.239056, -2.524690), error = 1.285633
+(345, 130), v: (algorithm, HLS) = (8.000000, 0.000000), error = 8.000000
+(591, 139), v: (algorithm, HLS) = (-1976.888428, -1981.823439), error = 4.935012
+(591, 140), v: (algorithm, HLS) = (-6546.304199, -6548.806204), error = 2.502005
+(377, 152), u: (algorithm, HLS) = (564.058350, 562.777244), error = 1.281106
+(582, 152), v: (algorithm, HLS) = (18235.078125, 18227.533512), error = 7.544613
+(584, 152), u: (algorithm, HLS) = (-16995.396484, -16981.128599), error = 14.267885
+(584, 152), v: (algorithm, HLS) = (8624.936523, 8620.340865), error = 4.595659
+(378, 153), u: (algorithm, HLS) = (2287.164062, 2285.643862), error = 1.520201
+(378, 153), v: (algorithm, HLS) = (3343.235352, 3341.449891), error = 1.785460
+(379, 153), u: (algorithm, HLS) = (-187.500153, -190.989869), error = 3.489716
+(379, 153), v: (algorithm, HLS) = (-158.316330, -160.572373), error = 2.256043
+(582, 153), u: (algorithm, HLS) = (-15526.722656, -15532.224654), error = 5.501998
+(583, 153), u: (algorithm, HLS) = (-2899.090576, -2895.994817), error = 3.095759
+(379, 154), u: (algorithm, HLS) = (14616.552734, 14480.880402), error = 135.672332
+(379, 154), v: (algorithm, HLS) = (9952.260742, 9873.882281), error = 78.378461
+(580, 155), u: (algorithm, HLS) = (-2233.261230, -2318.767694), error = 85.506463
+(580, 155), v: (algorithm, HLS) = (216672.656250, 224478.039353), error = 7805.383103
+(579, 156), u: (algorithm, HLS) = (13603.999023, 13607.966121), error = 3.967098
+(579, 156), v: (algorithm, HLS) = (-32241.501953, -32252.424470), error = 10.922517
+(574, 163), u: (algorithm, HLS) = (0.000000, 250.867295), error = 250.867295
+(574, 163), v: (algorithm, HLS) = (0.000000, -46.585631), error = 46.585631
+(571, 167), u: (algorithm, HLS) = (0.000000, -53.933615), error = 53.933615
+(571, 167), v: (algorithm, HLS) = (0.000000, -28.918402), error = 28.918402
+(569, 169), u: (algorithm, HLS) = (0.000000, 105.904771), error = 105.904771
+(569, 169), v: (algorithm, HLS) = (0.000000, 63.753189), error = 63.753189
+(568, 170), u: (algorithm, HLS) = (0.000000, -17.668464), error = 17.668464
+(568, 170), v: (algorithm, HLS) = (0.000000, 302.755111), error = 302.755111
+(567, 171), u: (algorithm, HLS) = (0.000000, 6.762858), error = 6.762858
+(567, 171), v: (algorithm, HLS) = (0.000000, 388.149182), error = 388.149182
+(562, 176), v: (algorithm, HLS) = (10589.887695, 10592.813339), error = 2.925643
+(373, 191), v: (algorithm, HLS) = (-20391.718750, -20407.185100), error = 15.466350
+(373, 192), v: (algorithm, HLS) = (-19236.683594, -19300.476494), error = 63.792900
+(587, 197), v: (algorithm, HLS) = (11825.548828, 11834.195316), error = 8.646488
+(588, 197), v: (algorithm, HLS) = (8859.022461, 8861.760302), error = 2.737841
+(588, 200), v: (algorithm, HLS) = (-2636.878418, -2638.669968), error = 1.791550
+(591, 208), u: (algorithm, HLS) = (-9129.354492, -9131.285093), error = 1.930601
+(589, 209), v: (algorithm, HLS) = (18156.841797, 18553.199576), error = 396.357779
+(590, 209), v: (algorithm, HLS) = (18947.361328, 18988.683765), error = 41.322437
+(591, 209), u: (algorithm, HLS) = (-8037.305176, -8038.731810), error = 1.426634
+(272, 213), u: (algorithm, HLS) = (-1.000017, 0.000000), error = 1.000017
+(590, 214), u: (algorithm, HLS) = (278.492157, 280.451234), error = 1.959077
+(590, 214), v: (algorithm, HLS) = (-130166.453125, -132974.771635), error = 2808.318510
+(590, 215), u: (algorithm, HLS) = (405.974121, 408.377697), error = 2.403576
+(590, 215), v: (algorithm, HLS) = (-120296.796875, -120971.369314), error = 674.572439
+(593, 215), v: (algorithm, HLS) = (-7143.113770, -7142.062547), error = 1.051223
+(591, 219), v: (algorithm, HLS) = (-21331.548828, -21391.172372), error = 59.623544
+(591, 220), v: (algorithm, HLS) = (10960.724609, 10961.784563), error = 1.059954
+(594, 220), v: (algorithm, HLS) = (-7515.303223, -7516.362348), error = 1.059125
+(351, 221), u: (algorithm, HLS) = (0.000000, 629.955428), error = 629.955428
+(351, 221), v: (algorithm, HLS) = (0.000000, 78.377800), error = 78.377800
+(349, 223), u: (algorithm, HLS) = (-4.499937, 0.000000), error = 4.499937
+(592, 223), v: (algorithm, HLS) = (-65194.363281, -66702.371410), error = 1508.008129
+(593, 223), v: (algorithm, HLS) = (-22495.785156, -22492.693624), error = 3.091532
+(369, 224), v: (algorithm, HLS) = (-605.314941, -608.522826), error = 3.207885
+(592, 224), v: (algorithm, HLS) = (12311.774414, 12312.979252), error = 1.204838
+(368, 226), v: (algorithm, HLS) = (1233.979370, 1251.363103), error = 17.383733
+(774, 230), u: (algorithm, HLS) = (68.770432, 65.715568), error = 3.054863
+(764, 266), v: (algorithm, HLS) = (-3363.344727, -3366.043743), error = 2.699017
+(354, 277), u: (algorithm, HLS) = (2.080689, 0.000000), error = 2.080689
+(354, 277), v: (algorithm, HLS) = (6.000185, 0.000000), error = 6.000185
+(962, 277), v: (algorithm, HLS) = (-5.000135, 0.000000), error = 5.000135
+(288, 281), u: (algorithm, HLS) = (-1.000029, 0.000000), error = 1.000029
+(1019, 287), u: (algorithm, HLS) = (-1.424041, 0.245307), error = 1.669348
+(1019, 360), u: (algorithm, HLS) = (-0.975622, 0.484104), error = 1.459726
+(1019, 360), v: (algorithm, HLS) = (-0.488915, 0.848706), error = 1.337621
+(1019, 361), u: (algorithm, HLS) = (-1.449517, 0.854855), error = 2.304372
+(1019, 361), v: (algorithm, HLS) = (-0.952119, 1.187563), error = 2.139682
+(1019, 362), u: (algorithm, HLS) = (-1.420288, 0.147103), error = 1.567391
+(1019, 362), v: (algorithm, HLS) = (-0.920776, 0.520317), error = 1.441093
+(1019, 363), u: (algorithm, HLS) = (-1.462915, -0.283245), error = 1.179669
+(1019, 363), v: (algorithm, HLS) = (-0.958449, 0.113711), error = 1.072160
+(1019, 364), u: (algorithm, HLS) = (-1.420432, -0.046305), error = 1.374127
+(1019, 364), v: (algorithm, HLS) = (-0.924726, 0.300148), error = 1.224874
+(1019, 365), u: (algorithm, HLS) = (-1.325707, 0.452252), error = 1.777959
+(1019, 365), v: (algorithm, HLS) = (-0.863252, 0.704481), error = 1.567732
+(1019, 366), u: (algorithm, HLS) = (-1.015445, 0.369383), error = 1.384827
+(1019, 366), v: (algorithm, HLS) = (-0.602629, 0.636825), error = 1.239453
+Magnitude: Manhattan norm per pixel 0.063352
+Writing algorithmic bitmap output to: out_algorithm_u.bmp
+Writing algorithmic bitmap output to: out_algorithm_v.bmp
+Writing algorithmic bitmap output to: out_algorithm_magnitude.bmp
+Writing bit-accurate bitmap output to: out_HLS_u.bmp
+Writing bit-accurate bitmap output to: out_HLS_v.bmp
+Writing bit-accurate bitmap output to: out_HLS_magnitude.bmp
+Finish writing frame1 into frame1.hex
+Finish writing frame2 into frame1.hex
+Finish writing frame3 into frame1.hex
+Finish writing frame4 into frame1.hex
+Finish writing u_algorithm into output_u_algorithm.hex
+Finish writing v_algorithm into output_v_algorithm.hex
+Finish writing magnitude_algorithm into output_magnitude_algorithm.hex
+Finish writing u_HLS into output_u_HLS.hex
+Finish writing v_HLS into output_v_HLS.hex
+Finish writing magnitude_HLS into output_magnitude_HLS.hex
+Finish writing final_velocity_x_HLS into channel_output_u_before_threshold_HLS.hex
+Finish writing final_velocity_y_HLS into channel_output_v_before_threshold_HLS.hex
+Finish writing denominator_HLS into channel_output_denominator_HLS.hex
+Finished

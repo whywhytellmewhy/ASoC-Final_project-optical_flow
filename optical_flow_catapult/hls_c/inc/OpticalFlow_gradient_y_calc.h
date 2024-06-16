@@ -18,18 +18,18 @@ class OpticalFlow_gradient_y_calc
                         maxHType            heightIn)
     {
       frames_t input_frames_value;
-      input5x_t input_frames_40bits;
+      ////////input5x_t input_frames_40bits;
 
       // Line buffers store pixel line history - Mapped to RAM
       input2x_t line_buf3[MAX_WIDTH/2];
       input2x_t line_buf2[MAX_WIDTH/2];
-      input10x_t line_buf1[MAX_WIDTH/2];
-      input10x_t line_buf0[MAX_WIDTH/2];
+      input8x_t line_buf1[MAX_WIDTH/2];
+      input8x_t line_buf0[MAX_WIDTH/2];
       
       input2x_t rdbuf2_pix, rdbuf3_pix;
       input2x_t rdbuf1_pix_slice;
-      input10x_t rdbuf0_pix, rdbuf1_pix;
-      input10x_t wrbuf0_pix; //, wrbuf1_pix, wrbuf2_pix, wrbuf3_pix;
+      input8x_t rdbuf0_pix, rdbuf1_pix;
+      input8x_t wrbuf0_pix; //, wrbuf1_pix, wrbuf2_pix, wrbuf3_pix;
       
       input_t pix0, pix1, pix2, pix3, pix4;
       input1x_t pix0_buf, pix1_buf, pix2_buf, pix3_buf, pix4_buf;
@@ -42,8 +42,8 @@ class OpticalFlow_gradient_y_calc
           // read input channel
           if (y <= heightIn-1) {
             input_frames_value = input_frames.read();
-            input_frames_40bits = input_frames_value.slc<40>(0);
-            pix0 = (input_t)(input_frames_value.slc<8>(16));
+            ////////input_frames_40bits = input_frames_value.slc<40>(0);
+            pix0 = (input_t)(input_frames_value.slc<INPUT_T_BIT_WIDTH>(16));
             // transform into ac_int type, in order to set write_data_buffer
             /////for(uint i=0; i<INPUT_T_BIT_WIDTH; i++){
             /////    pix0_buf[i] = pix0[i];
@@ -55,11 +55,13 @@ class OpticalFlow_gradient_y_calc
             
           }
 
-          // Write data cache, write lower 40 on even iterations of COL loop, upper 40 on odd (when "INPUT_T_BIT_WIDTH=8")
+          // Write data cache, write lower 32 on even iterations of COL loop, upper 32 on odd (when "INPUT_T_BIT_WIDTH=8")
           if ( (x&1) == 0 ) {
-            wrbuf0_pix.set_slc(0,input_frames_40bits);
+            ////////wrbuf0_pix.set_slc(0,input_frames_40bits);
+            wrbuf0_pix.set_slc(0,input_frames_value);
           } else {
-            wrbuf0_pix.set_slc(INPUT_T_BIT_WIDTH*5,input_frames_40bits);
+            ////////wrbuf0_pix.set_slc(INPUT_T_BIT_WIDTH*5,input_frames_40bits);
+            wrbuf0_pix.set_slc(INPUT_T_BIT_WIDTH*4,input_frames_value);
           }
           // Read line buffers into read buffer caches on even iterations of COL loop
           if ( (x&1) == 0 ) {
@@ -74,7 +76,7 @@ class OpticalFlow_gradient_y_calc
           } else { // Write line buffer caches on odd iterations of COL loop
             line_buf3[x/2] = rdbuf2_pix; // copy previous line
             rdbuf1_pix_slice.set_slc(0,rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(16));
-            rdbuf1_pix_slice.set_slc(INPUT_T_BIT_WIDTH,rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*5+16));
+            rdbuf1_pix_slice.set_slc(INPUT_T_BIT_WIDTH,rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*4+16));
             line_buf2[x/2] = rdbuf1_pix_slice; // copy previous line
             line_buf1[x/2] = rdbuf0_pix; // copy previous line
             line_buf0[x/2] = wrbuf0_pix; // store current line
@@ -83,13 +85,13 @@ class OpticalFlow_gradient_y_calc
             //}
             
           }
-          // Get 40-bit data from read buffer caches, lower 40 on even iterations of COL loop (when "INPUT_T_BIT_WIDTH=8")
+          // Get 32-bit data from read buffer caches, lower 32 on even iterations of COL loop (when "INPUT_T_BIT_WIDTH=8")
           pix4_buf = ((x&1)==0) ? rdbuf3_pix.slc<INPUT_T_BIT_WIDTH>(0) : rdbuf3_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH);
           pix3_buf = ((x&1)==0) ? rdbuf2_pix.slc<INPUT_T_BIT_WIDTH>(0) : rdbuf2_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH);
-          pix2_buf = ((x&1)==0) ? rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(16) : rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*5+16);
-          pix1_buf = ((x&1)==0) ? rdbuf0_pix.slc<INPUT_T_BIT_WIDTH>(16) : rdbuf0_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*5+16);
+          pix2_buf = ((x&1)==0) ? rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(16) : rdbuf1_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*4+16);
+          pix1_buf = ((x&1)==0) ? rdbuf0_pix.slc<INPUT_T_BIT_WIDTH>(16) : rdbuf0_pix.slc<INPUT_T_BIT_WIDTH>(INPUT_T_BIT_WIDTH*4+16);
 
-          input_frames_delayed_value = ((x&1)==0) ? rdbuf1_pix.slc<INPUT_T_BIT_WIDTH*5>(0) : rdbuf1_pix.slc<INPUT_T_BIT_WIDTH*5>(INPUT_T_BIT_WIDTH*5);
+          input_frames_delayed_value = ((x&1)==0) ? rdbuf1_pix.slc<INPUT_T_BIT_WIDTH*4>(0) : rdbuf1_pix.slc<INPUT_T_BIT_WIDTH*4>(INPUT_T_BIT_WIDTH*4);
           
           // transform back into ac_fixed type
           for(uint i=0; i<INPUT_T_BIT_WIDTH; i++){
@@ -128,6 +130,9 @@ class OpticalFlow_gradient_y_calc
           }
 
           /*if ((x==TARGET_X) && (y==TARGET_Y+2)){
+            //cout << "input_frames_delayed_value: " << input_frames_delayed_value << endl;
+            //cout << "input_frames_value: " << input_frames_value << endl;
+            //cout << pix0 << ", " << pix1 << ", " << pix2 << ", " << pix3 << ", " << pix4 << endl;
             cout << "HLS_Iy: " << gradient_y_value << endl;
           }*/
 

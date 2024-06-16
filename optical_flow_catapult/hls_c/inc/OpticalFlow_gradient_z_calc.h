@@ -23,7 +23,7 @@ class OpticalFlow_gradient_z_calc
       input_t frame2_value;
       input_t frame3_value;
       input_t frame4_value;
-      input_t frame5_value;
+      ////////input_t frame5_value;
       frames_t input_frames_delayed_value;
       
       pixel_t gradient_z_value;
@@ -41,15 +41,17 @@ class OpticalFlow_gradient_z_calc
           frame2_value = (input_t)(input_frames_delayed_value.slc<8>(8));
           frame3_value = (input_t)(input_frames_delayed_value.slc<8>(16));
           frame4_value = (input_t)(input_frames_delayed_value.slc<8>(24));
-          frame5_value = (input_t)(input_frames_delayed_value.slc<8>(32));
+          ////////frame5_value = (input_t)(input_frames_delayed_value.slc<8>(32));
 
           // Calculate Iz
-          gradient_z_value = frame1_value*GRAD_WEIGHTS[0] + frame2_value*GRAD_WEIGHTS[1] + frame3_value*GRAD_WEIGHTS[2] + frame4_value*GRAD_WEIGHTS[3] + frame5_value*GRAD_WEIGHTS[4];
+          ////////gradient_z_value = frame1_value*GRAD_WEIGHTS[0] + frame2_value*GRAD_WEIGHTS[1] + frame3_value*GRAD_WEIGHTS[2] + frame4_value*GRAD_WEIGHTS[3] + frame5_value*GRAD_WEIGHTS[4];
+          gradient_z_value = frame1_value*GRAD_WEIGHTS_Z[0] + frame2_value*GRAD_WEIGHTS_Z[1] + frame3_value*GRAD_WEIGHTS_Z[2] + frame4_value*GRAD_WEIGHTS_Z[3];
 
           // Write output Iz streaming interface
           gradient_z.write(gradient_z_value);
 
           /*if ((x==TARGET_X) && (y==TARGET_Y)){
+            //cout << "input_frames_delayed_value: " << frame4_value << frame3_value << frame2_value << frame1_value << endl;
             cout << "HLS_Iz: " << gradient_z_value << endl;
           }*/
 

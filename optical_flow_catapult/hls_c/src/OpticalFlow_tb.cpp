@@ -31,7 +31,7 @@ CCS_MAIN(int argc, char *argv[])
 
   maxWType widthIn = iW;
   maxHType heightIn = iH;
-  
+  int shift_threshold = 105;
 
   unsigned char *rarray1 = new unsigned char[iH*iW];
   unsigned char *garray1 = new unsigned char[iH*iW];
@@ -92,16 +92,17 @@ CCS_MAIN(int argc, char *argv[])
   /////ac_channel<gradient_t> gradient_x_HLS;
   /////ac_channel<outer_t> gradient_x_HLS;
   /////ac_channel<tensor_t> gradient_x_HLS;
-  ac_channel<velocity_t> output_HLS_channel;
+  ////////ac_channel<velocity_t> output_HLS_channel;
+  ac_channel<output_stream_t> output_HLS_channel;
   //ac_channel<pixel_t> denominator_HLS_channel;
-  ac_channel<vel_pixel_t> denominator_HLS_channel;
-  ac_channel<shift_t> shift_HLS_channel;
+  ////////ac_channel<vel_pixel_t> denominator_HLS_channel;
+  ////////ac_channel<shift_t> shift_HLS_channel;
 
   static float frame1[iH][iW];
   static float frame2[iH][iW];
   static float frame3[iH][iW];
   static float frame4[iH][iW];
-  static float frame5[iH][iW];
+  ////////static float frame5[iH][iW];
   /////static float gradient_x_algorithm[iH][iW]; // <-----------------------------------------------------------------------------------
   /////static gradient_t_sw gradient_x_algorithm[iH][iW];
   /////static outer_t_sw gradient_x_algorithm[iH][iW];
@@ -118,7 +119,8 @@ CCS_MAIN(int argc, char *argv[])
       ///////////////////////////////frame3_channel.write((input_t)(rarray3[cnt]));
       ///////////////////////////////frame4_channel.write((input_t)(rarray4[cnt]));
       ///////////////////////////////frame5_channel.write((input_t)(rarray5[cnt]));
-      frames_channel.write((((frames_t)rarray5[cnt]) << 32) + (((frames_t)rarray4[cnt]) << 24) + (((frames_t)rarray3[cnt]) << 16) + (((frames_t)rarray2[cnt]) << 8) + (frames_t)rarray1[cnt]);
+      ////////frames_channel.write((((frames_t)rarray5[cnt]) << 32) + (((frames_t)rarray4[cnt]) << 24) + (((frames_t)rarray3[cnt]) << 16) + (((frames_t)rarray2[cnt]) << 8) + (frames_t)rarray1[cnt]);
+      frames_channel.write((((frames_t)rarray4[cnt]) << 24) + (((frames_t)rarray3[cnt]) << 16) + (((frames_t)rarray2[cnt]) << 8) + (frames_t)rarray1[cnt]);
       //printf("%x\n", rarray1[cnt]);
       //printf("%x\n", rarray2[cnt]);
       //printf("%x\n", rarray3[cnt]);
@@ -131,7 +133,7 @@ CCS_MAIN(int argc, char *argv[])
       frame2[y][x] = float(rarray2[cnt]);
       frame3[y][x] = float(rarray3[cnt]);
       frame4[y][x] = float(rarray4[cnt]);
-      frame5[y][x] = float(rarray5[cnt]);
+      ////////frame5[y][x] = float(rarray5[cnt]);
       cnt++;
     }
   }
@@ -146,10 +148,12 @@ CCS_MAIN(int argc, char *argv[])
   cout << "Running" << endl;
 
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
-  ref_inst.run(frame1,frame2,frame3,frame4,frame5,denom_algorithm,output_algorithm);
+  ////////ref_inst.run(frame1,frame2,frame3,frame4,frame5,denom_algorithm,output_algorithm);
+  ref_inst.run(frame1,frame2,frame3,frame4,denom_algorithm,output_algorithm);
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
   /////dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
-  dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
+  ////////dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
+  dut.run(frames_channel,widthIn,heightIn,(shift_t)shift_threshold,output_HLS_channel);
   /////dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,output_HLS_channel);
   /////dut.run(frames_channel,widthIn,heightIn,gradient_x_HLS,output_HLS_channel); // <-----------------------------------------------------------------------------------
 
@@ -157,7 +161,7 @@ CCS_MAIN(int argc, char *argv[])
   FILE* file_pointer_frame2;
   FILE* file_pointer_frame3;
   FILE* file_pointer_frame4;
-  FILE* file_pointer_frame5;
+  ////////FILE* file_pointer_frame5;
   FILE* file_pointer_output_u_algorithm;
   FILE* file_pointer_output_v_algorithm;
   FILE* file_pointer_output_magniude_algorithm;
@@ -167,12 +171,12 @@ CCS_MAIN(int argc, char *argv[])
   FILE* file_pointer_channel_output_u_before_threshold_HLS;
   FILE* file_pointer_channel_output_v_before_threshold_HLS;
   FILE* file_pointer_channel_output_denominator_HLS;
-  FILE* file_pointer_channel_output_shift_HLS;
+  ////////FILE* file_pointer_channel_output_shift_HLS;
   file_pointer_frame1 = fopen ("frame1.hex", "w");
   file_pointer_frame2 = fopen ("frame2.hex", "w");
   file_pointer_frame3 = fopen ("frame3.hex", "w");
   file_pointer_frame4 = fopen ("frame4.hex", "w");
-  file_pointer_frame5 = fopen ("frame5.hex", "w");
+  ////////file_pointer_frame5 = fopen ("frame5.hex", "w");
   file_pointer_output_u_algorithm = fopen ("output_u_algorithm.hex", "w");
   file_pointer_output_v_algorithm = fopen ("output_v_algorithm.hex", "w");  
   file_pointer_output_magniude_algorithm = fopen ("output_magniude_algorithm.hex", "w");
@@ -182,7 +186,7 @@ CCS_MAIN(int argc, char *argv[])
   file_pointer_channel_output_u_before_threshold_HLS = fopen ("channel_output_u_before_threshold_HLS.hex", "w");
   file_pointer_channel_output_v_before_threshold_HLS = fopen ("channel_output_v_before_threshold_HLS.hex", "w");
   file_pointer_channel_output_denominator_HLS = fopen ("channel_output_denominator_HLS.hex", "w");
-  file_pointer_channel_output_shift_HLS = fopen ("channel_output_shift_HLS.hex", "w");
+  ////////file_pointer_channel_output_shift_HLS = fopen ("channel_output_shift_HLS.hex", "w");
   
   cnt = 0;
   float sumErr_magnitude = 0;
@@ -257,18 +261,29 @@ CCS_MAIN(int argc, char *argv[])
       ////////////////////////////////////////////////////////////////////////////////////// (version 2: output velocity with non-shift) //////////////////////////////////////////////////////////////////////////////////////
       double tolerable_error_threshold = 1;
       double denominator_threshold = 1e-15;
+      ////////double denominator_threshold = pow(10,(-1)*2*shift_threshold);
       
-      velocity_t final_velocity_HLS = output_HLS_channel.read();
-      double final_velocity_x_HLS = final_velocity_HLS.x.to_double();
-      double final_velocity_y_HLS = final_velocity_HLS.y.to_double();
+      ////////velocity_t final_velocity_HLS = output_HLS_channel.read();
+      output_stream_t final_velocity_HLS = output_HLS_channel.read();
+      double denominator_HLS = final_velocity_HLS.to_double();
+      final_velocity_HLS = output_HLS_channel.read();
+      double final_velocity_x_HLS = final_velocity_HLS.to_double();
+      final_velocity_HLS = output_HLS_channel.read();
+      double final_velocity_y_HLS = final_velocity_HLS.to_double();
       
-      double denominator_HLS = denominator_HLS_channel.read().to_double();
-      int shift_HLS = shift_HLS_channel.read().to_int();
-      int shift2x_HLS = shift_HLS*2; // This is because in OpticalFlow_flow_calc.h, we have "tensor_shift_value.val[0]*tensor_shift_value.val[1]," so the effect of shifting will become square.
+      ////////int shift_HLS = shift_HLS_channel.read().to_int();
+      ////////int shift2x_HLS = shift_HLS*2; // This is because in OpticalFlow_flow_calc.h, we have "tensor_shift_value.val[0]*tensor_shift_value.val[1]," so the effect of shifting will become square.
       //printf("%f * %f --> ", final_velocity_x_HLS,denominator_HLS);
       double thresholded_final_velocity_x_HLS;
       double thresholded_final_velocity_y_HLS;
-      if (abs(denominator_HLS/pow(2,shift2x_HLS))<denominator_threshold){
+      ////////if (abs(denominator_HLS/pow(2,shift2x_HLS))<denominator_threshold){
+      ////////  thresholded_final_velocity_x_HLS = 0;
+      ////////  thresholded_final_velocity_y_HLS = 0;
+      ////////} else {
+      ////////  thresholded_final_velocity_x_HLS = final_velocity_x_HLS/denominator_HLS;
+      ////////  thresholded_final_velocity_y_HLS = final_velocity_y_HLS/denominator_HLS;
+      ////////}
+      if (denominator_HLS==0){
         thresholded_final_velocity_x_HLS = 0;
         thresholded_final_velocity_y_HLS = 0;
       } else {
@@ -294,9 +309,9 @@ CCS_MAIN(int argc, char *argv[])
         printf("(%d, %d), ", x, y);
         printf("v: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].y, thresholded_final_velocity_y_HLS, abs(output_algorithm[y][x].y-thresholded_final_velocity_y_HLS));
       }
-      if ((output_algorithm[y][x].x==0) && (output_algorithm[y][x].y==0) && (thresholded_final_velocity_x_HLS!=0) && (thresholded_final_velocity_y_HLS!=0)){
-        printf("denominator: (algorithm, HLS (after shift))  = (%0.32f, %0.32f)\n", denom_algorithm[y][x], denominator_HLS/pow(2,shift2x_HLS));
-      }
+      ////////if ((output_algorithm[y][x].x==0) && (output_algorithm[y][x].y==0) && (thresholded_final_velocity_x_HLS!=0) && (thresholded_final_velocity_y_HLS!=0)){
+      ////////  printf("denominator: (algorithm, HLS (after shift))  = (%0.32f, %0.32f)\n", denom_algorithm[y][x], denominator_HLS/pow(2,shift2x_HLS));
+      ////////}
       }
 
 
@@ -332,17 +347,20 @@ CCS_MAIN(int argc, char *argv[])
       fprintf(file_pointer_frame2, "%x\n", rarray2[cnt]);
       fprintf(file_pointer_frame3, "%x\n", rarray3[cnt]);
       fprintf(file_pointer_frame4, "%x\n", rarray4[cnt]);
-      fprintf(file_pointer_frame5, "%x\n", rarray5[cnt]);
+      ////////fprintf(file_pointer_frame5, "%x\n", rarray5[cnt]);
       fprintf(file_pointer_output_u_algorithm, "%x\n", (int)u_algorithm);
       fprintf(file_pointer_output_v_algorithm, "%x\n", (int)v_algorithm);
       fprintf(file_pointer_output_magniude_algorithm, "%x\n", (int)magnitude_algorithm);
       fprintf(file_pointer_output_u_HLS, "%x\n", (int)u_HLS);
       fprintf(file_pointer_output_v_HLS, "%x\n", (int)v_HLS);
       fprintf(file_pointer_output_magniude_HLS, "%x\n", (int)magnitude_HLS);
-      fprintf(file_pointer_channel_output_u_before_threshold_HLS, "%llx\n", (signed long long int)final_velocity_x_HLS);
-      fprintf(file_pointer_channel_output_v_before_threshold_HLS, "%llx\n", (signed long long int)final_velocity_y_HLS);
-      fprintf(file_pointer_channel_output_denominator_HLS, "%llx\n", (signed long long int)denominator_HLS);
-      fprintf(file_pointer_channel_output_shift_HLS, "%x\n", (int)shift_HLS);
+      ////////fprintf(file_pointer_channel_output_u_before_threshold_HLS, "%llx\n", (signed long long int)final_velocity_x_HLS);
+      ////////fprintf(file_pointer_channel_output_v_before_threshold_HLS, "%llx\n", (signed long long int)final_velocity_y_HLS);
+      ////////fprintf(file_pointer_channel_output_denominator_HLS, "%llx\n", (signed long long int)denominator_HLS);
+      fprintf(file_pointer_channel_output_u_before_threshold_HLS, "%x\n", (int)final_velocity_x_HLS);
+      fprintf(file_pointer_channel_output_v_before_threshold_HLS, "%x\n", (int)final_velocity_y_HLS);
+      fprintf(file_pointer_channel_output_denominator_HLS, "%x\n", (int)denominator_HLS);
+      ////////fprintf(file_pointer_channel_output_shift_HLS, "%x\n", (int)shift_HLS);
 
       ////////////////////////////////////////////////////////////////////////////////////// (version 3: output velocity with shift channel) //////////////////////////////////////////////////////////////////////////////////////
       ///// Use the same testbench as version 2
@@ -371,7 +389,7 @@ CCS_MAIN(int argc, char *argv[])
   cout << "Finish writing frame2 into frame1.hex" << endl;
   cout << "Finish writing frame3 into frame1.hex" << endl;
   cout << "Finish writing frame4 into frame1.hex" << endl;
-  cout << "Finish writing frame5 into frame1.hex" << endl;
+  ////////cout << "Finish writing frame5 into frame1.hex" << endl;
   cout << "Finish writing u_algorithm into output_u_algorithm.hex" << endl;
   cout << "Finish writing v_algorithm into output_v_algorithm.hex" << endl;
   cout << "Finish writing magnitude_algorithm into output_magnitude_algorithm.hex" << endl;
@@ -381,13 +399,13 @@ CCS_MAIN(int argc, char *argv[])
   cout << "Finish writing final_velocity_x_HLS into channel_output_u_before_threshold_HLS.hex" << endl;
   cout << "Finish writing final_velocity_y_HLS into channel_output_v_before_threshold_HLS.hex" << endl;
   cout << "Finish writing denominator_HLS into channel_output_denominator_HLS.hex" << endl;
-  cout << "Finish writing shift_HLS into channel_output_shift_HLS.hex" << endl;
+  ////////cout << "Finish writing shift_HLS into channel_output_shift_HLS.hex" << endl;
 
   fclose(file_pointer_frame1);
   fclose(file_pointer_frame2);
   fclose(file_pointer_frame3);
   fclose(file_pointer_frame4);
-  fclose(file_pointer_frame5);
+  ////////fclose(file_pointer_frame5);
   fclose(file_pointer_output_u_algorithm);
   fclose(file_pointer_output_v_algorithm);
   fclose(file_pointer_output_magniude_algorithm);
@@ -397,7 +415,7 @@ CCS_MAIN(int argc, char *argv[])
   fclose(file_pointer_channel_output_u_before_threshold_HLS);
   fclose(file_pointer_channel_output_v_before_threshold_HLS);
   fclose(file_pointer_channel_output_denominator_HLS);
-  fclose(file_pointer_channel_output_shift_HLS);
+  ////////fclose(file_pointer_channel_output_shift_HLS);
 
   //delete (frame1);
   //delete (frame2);

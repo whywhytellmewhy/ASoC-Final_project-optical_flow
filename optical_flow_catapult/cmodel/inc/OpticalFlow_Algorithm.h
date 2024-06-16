@@ -8,8 +8,8 @@
 // Include constant kernel definition
 #include "OpticalFlow_defs_software.h"
 
-#define TARGET_X 592 //371 //586 //358 // 354
-#define TARGET_Y 223 //147 //150 //250 // 277
+#define TARGET_X 372 //343 //25 //592 //371 //586 //358 // 354
+#define TARGET_Y 148 //128 //38 //223 //147 //150 //250 // 277
 
 // Template parameters allow configuring the maximum image size
 template <int maxImageWidth, int maxImageHeight>
@@ -33,7 +33,7 @@ public:
            pixel_t_sw      frame1[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame2[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            pixel_t_sw      frame3[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
-           pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
+           ////////pixel_t_sw      frame4[MAX_HEIGHT][MAX_WIDTH],  // image data (streamed in by pixel)
            /////pixel_t_sw gradient_x[MAX_HEIGHT][MAX_WIDTH], // <-----------------------------------------------------------------------------------
            /////gradient_t_sw filtered_gradient[MAX_HEIGHT][MAX_WIDTH],
            /////outer_t_sw out_product[MAX_HEIGHT][MAX_WIDTH],
@@ -57,7 +57,8 @@ public:
     static tensor_t_sw tensor[MAX_HEIGHT][MAX_WIDTH];
 
     gradient_xy_calc(frame2, gradient_x, gradient_y);
-    gradient_z_calc(frame0, frame1, frame2, frame3, frame4, gradient_z);
+    ////////gradient_z_calc(frame0, frame1, frame2, frame3, frame4, gradient_z);
+    gradient_z_calc(frame0, frame1, frame2, frame3, gradient_z);
     gradient_weight_y(gradient_x, gradient_y, gradient_z, y_filtered);
     gradient_weight_x(y_filtered, filtered_gradient);
     outer_product(filtered_gradient, out_product);
@@ -133,7 +134,7 @@ public:
           //  cout << frame[r-i][c-2] << ", ";
           //}
           cout << "Algorithm_Ix: " << x_grad << endl;
-          cout << "Algorithm_Iy: " << x_grad << endl;
+          cout << "Algorithm_Iy: " << y_grad << endl;
         }
       }
     }
@@ -144,7 +145,7 @@ public:
                       pixel_t_sw frame1[MAX_HEIGHT][MAX_WIDTH],
                       pixel_t_sw frame2[MAX_HEIGHT][MAX_WIDTH],
                       pixel_t_sw frame3[MAX_HEIGHT][MAX_WIDTH],
-                      pixel_t_sw frame4[MAX_HEIGHT][MAX_WIDTH],
+                      ////////pixel_t_sw frame4[MAX_HEIGHT][MAX_WIDTH],
                       pixel_t_sw gradient_z[MAX_HEIGHT][MAX_WIDTH])
   {
     for (int r = 0; r < MAX_HEIGHT; r ++)
@@ -152,14 +153,15 @@ public:
       for (int c = 0; c < MAX_WIDTH; c ++)
       {
         gradient_z[r][c] = 0.0f;
-        gradient_z[r][c] += frame0[r][c] * GRAD_WEIGHTS_SW[0]; 
-        gradient_z[r][c] += frame1[r][c] * GRAD_WEIGHTS_SW[1]; 
-        gradient_z[r][c] += frame2[r][c] * GRAD_WEIGHTS_SW[2]; 
-        gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS_SW[3]; 
-        gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS_SW[4]; 
+        gradient_z[r][c] += frame0[r][c] * GRAD_WEIGHTS_Z_SW[0]; 
+        gradient_z[r][c] += frame1[r][c] * GRAD_WEIGHTS_Z_SW[1]; 
+        gradient_z[r][c] += frame2[r][c] * GRAD_WEIGHTS_Z_SW[2]; 
+        gradient_z[r][c] += frame3[r][c] * GRAD_WEIGHTS_Z_SW[3]; 
+        ////////gradient_z[r][c] += frame4[r][c] * GRAD_WEIGHTS_SW[4]; 
         /////gradient_z[r][c] /= 12.0f;
 
         if ((c==TARGET_X) && (r==TARGET_Y)){
+          //printf("Algorithm_input_frames_delayed_value: %d, %d, %d, %d\n",(int)frame3[r][c],(int)frame2[r][c],(int)frame1[r][c],(int)frame0[r][c]);
           cout << "Algorithm_Iz: " << gradient_z[r][c] << endl;
         }
       }

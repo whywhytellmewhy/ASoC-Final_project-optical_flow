@@ -95,27 +95,26 @@ module userdma_streamtoparallelwithburst (
         out_memory_read
 );
 
-parameter    ap_ST_fsm_state1 = 21'd1;
-parameter    ap_ST_fsm_state2 = 21'd2;
-parameter    ap_ST_fsm_state3 = 21'd4;
-parameter    ap_ST_fsm_state4 = 21'd8;
-parameter    ap_ST_fsm_state5 = 21'd16;
-parameter    ap_ST_fsm_state6 = 21'd32;
-parameter    ap_ST_fsm_state7 = 21'd64;
-parameter    ap_ST_fsm_state8 = 21'd128;
-parameter    ap_ST_fsm_state9 = 21'd256;
-parameter    ap_ST_fsm_state10 = 21'd512;
-parameter    ap_ST_fsm_state11 = 21'd1024;
-parameter    ap_ST_fsm_state12 = 21'd2048;
-parameter    ap_ST_fsm_state13 = 21'd4096;
-parameter    ap_ST_fsm_state14 = 21'd8192;
-parameter    ap_ST_fsm_state15 = 21'd16384;
-parameter    ap_ST_fsm_state16 = 21'd32768;
-parameter    ap_ST_fsm_state17 = 21'd65536;
-parameter    ap_ST_fsm_state18 = 21'd131072;
-parameter    ap_ST_fsm_state19 = 21'd262144;
-parameter    ap_ST_fsm_state20 = 21'd524288;
-parameter    ap_ST_fsm_state21 = 21'd1048576;
+parameter    ap_ST_fsm_state1 = 20'd1;
+parameter    ap_ST_fsm_state2 = 20'd2;
+parameter    ap_ST_fsm_state3 = 20'd4;
+parameter    ap_ST_fsm_state4 = 20'd8;
+parameter    ap_ST_fsm_state5 = 20'd16;
+parameter    ap_ST_fsm_state6 = 20'd32;
+parameter    ap_ST_fsm_state7 = 20'd64;
+parameter    ap_ST_fsm_state8 = 20'd128;
+parameter    ap_ST_fsm_state9 = 20'd256;
+parameter    ap_ST_fsm_state10 = 20'd512;
+parameter    ap_ST_fsm_state11 = 20'd1024;
+parameter    ap_ST_fsm_state12 = 20'd2048;
+parameter    ap_ST_fsm_state13 = 20'd4096;
+parameter    ap_ST_fsm_state14 = 20'd8192;
+parameter    ap_ST_fsm_state15 = 20'd16384;
+parameter    ap_ST_fsm_state16 = 20'd32768;
+parameter    ap_ST_fsm_state17 = 20'd65536;
+parameter    ap_ST_fsm_state18 = 20'd131072;
+parameter    ap_ST_fsm_state19 = 20'd262144;
+parameter    ap_ST_fsm_state20 = 20'd524288;
 
 input   ap_clk;
 input   ap_rst;
@@ -230,7 +229,7 @@ reg m_axi_gmem0_BREADY;
 reg out_memory_read;
 
 reg    ap_done_reg;
-(* fsm_encoding = "none" *) reg   [20:0] ap_CS_fsm;
+(* fsm_encoding = "none" *) reg   [19:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg   [0:0] out_sts;
 reg   [31:0] final_s2m_len_V;
@@ -243,21 +242,20 @@ reg    gmem0_blk_n_AW;
 wire    ap_CS_fsm_state3;
 reg    gmem0_blk_n_B;
 wire    ap_CS_fsm_state19;
-reg   [0:0] icmp_ln23_reg_299;
+reg   [0:0] in_en_clrsts_read_reg_272;
+reg   [0:0] icmp_ln23_reg_300;
 reg    out_memory_blk_n;
-reg   [63:0] out_memory_read_reg_266;
+reg   [63:0] out_memory_read_reg_267;
 wire   [0:0] in_en_clrsts_read_read_fu_98_p2;
-reg   [0:0] in_en_clrsts_read_reg_271;
-reg   [31:0] in_s2m_len_read_reg_275;
-reg  signed [31:0] tmp_reg_291;
-wire   [0:0] icmp_ln23_fu_180_p2;
-reg   [61:0] trunc_ln_reg_303;
-wire   [30:0] trunc_ln23_fu_217_p1;
-reg   [30:0] trunc_ln23_reg_314;
+reg   [31:0] in_s2m_len_read_reg_276;
+reg  signed [31:0] tmp_reg_292;
+wire   [0:0] icmp_ln23_fu_181_p2;
+reg   [61:0] trunc_ln_reg_304;
+wire   [30:0] trunc_ln23_fu_218_p1;
+reg   [30:0] trunc_ln23_reg_315;
 wire    ap_CS_fsm_state4;
 reg   [0:0] grp_load_fu_159_p1;
-reg   [0:0] out_sts_load_1_reg_322;
-wire    ap_CS_fsm_state21;
+wire    ap_CS_fsm_state20;
 wire    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start;
 wire    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_done;
 wire    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_idle;
@@ -297,25 +295,25 @@ wire    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem
 wire    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem0_BREADY;
 reg   [0:0] ap_phi_mux_storemerge_phi_fu_139_p4;
 reg   [0:0] storemerge_reg_136;
-wire    ap_CS_fsm_state20;
+reg    ap_predicate_op68_writeresp_state19;
+reg    ap_block_state19;
+wire   [0:0] icmp_ln1073_fu_257_p2;
 reg    grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start_reg;
 wire    ap_CS_fsm_state5;
-wire  signed [63:0] sext_ln23_fu_207_p1;
-reg    ap_block_state19;
-wire   [0:0] icmp_ln1065_fu_245_p2;
+wire  signed [63:0] sext_ln23_fu_208_p1;
+wire   [0:0] icmp_ln1065_fu_246_p2;
 reg   [0:0] ap_sig_allocacmp_out_sts_load_1;
 reg    ap_block_state1;
 wire   [0:0] sts_clear_read_read_fu_110_p2;
-wire   [31:0] add_ln886_fu_234_p2;
+wire   [31:0] add_ln886_fu_235_p2;
 reg   [63:0] idx_fu_88;
-wire   [63:0] add_ln28_fu_224_p2;
-wire   [0:0] icmp_ln1073_fu_256_p2;
+wire   [63:0] add_ln28_fu_225_p2;
 reg   [0:0] s2m_buf_sts_preg;
-wire  signed [31:0] icmp_ln23_fu_180_p0;
-wire   [63:0] shl_ln23_fu_186_p2;
-wire   [63:0] add_ln23_fu_192_p2;
-wire  signed [63:0] sext_ln28_fu_221_p1;
-reg   [20:0] ap_NS_fsm;
+wire  signed [31:0] icmp_ln23_fu_181_p0;
+wire   [63:0] shl_ln23_fu_187_p2;
+wire   [63:0] add_ln23_fu_193_p2;
+wire  signed [63:0] sext_ln28_fu_222_p1;
+reg   [19:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 reg    ap_ST_fsm_state2_blk;
 reg    ap_ST_fsm_state3_blk;
@@ -336,13 +334,12 @@ wire    ap_ST_fsm_state17_blk;
 wire    ap_ST_fsm_state18_blk;
 reg    ap_ST_fsm_state19_blk;
 wire    ap_ST_fsm_state20_blk;
-wire    ap_ST_fsm_state21_blk;
 wire    ap_ce_reg;
 
 // power-on initialization
 initial begin
 #0 ap_done_reg = 1'b0;
-#0 ap_CS_fsm = 21'd1;
+#0 ap_CS_fsm = 20'd1;
 #0 out_sts = 1'd0;
 #0 final_s2m_len_V = 32'd0;
 #0 grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start_reg = 1'b0;
@@ -407,8 +404,8 @@ userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 grp_streamtoparallelw
     .m_axi_gmem0_BRESP(m_axi_gmem0_BRESP),
     .m_axi_gmem0_BID(m_axi_gmem0_BID),
     .m_axi_gmem0_BUSER(m_axi_gmem0_BUSER),
-    .sext_ln23(trunc_ln_reg_303),
-    .trunc_ln23_1(trunc_ln23_reg_314)
+    .sext_ln23(trunc_ln_reg_304),
+    .trunc_ln23_1(trunc_ln23_reg_315)
 );
 
 always @ (posedge ap_clk) begin
@@ -425,7 +422,7 @@ always @ (posedge ap_clk) begin
     end else begin
         if ((ap_continue == 1'b1)) begin
             ap_done_reg <= 1'b0;
-        end else if ((1'b1 == ap_CS_fsm_state20)) begin
+        end else if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
             ap_done_reg <= 1'b1;
         end
     end
@@ -447,7 +444,7 @@ always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
         s2m_buf_sts_preg <= 1'd0;
     end else begin
-        if ((1'b1 == ap_CS_fsm_state20)) begin
+        if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
             s2m_buf_sts_preg <= ap_phi_mux_storemerge_phi_fu_139_p4;
         end
     end
@@ -456,65 +453,57 @@ end
 always @ (posedge ap_clk) begin
     if ((~((in_s2m_len_empty_n == 1'b0) | (sts_clear_empty_n == 1'b0) | (in_en_clrsts_empty_n == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0) | (out_memory_empty_n == 1'b0)) & (sts_clear_read_read_fu_110_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1) & (in_en_clrsts_read_read_fu_98_p2 == 1'd1))) begin
         final_s2m_len_V <= 32'd0;
-    end else if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19))) begin
-        final_s2m_len_V <= add_ln886_fu_234_p2;
+    end else if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
+        final_s2m_len_V <= add_ln886_fu_235_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((~((in_s2m_len_empty_n == 1'b0) | (sts_clear_empty_n == 1'b0) | (in_en_clrsts_empty_n == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0) | (out_memory_empty_n == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (in_en_clrsts_read_read_fu_98_p2 == 1'd0))) begin
         idx_fu_88 <= 64'd0;
-    end else if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_256_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19))) begin
-        idx_fu_88 <= add_ln28_fu_224_p2;
+    end else if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_257_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
+        idx_fu_88 <= add_ln28_fu_225_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((~((in_s2m_len_empty_n == 1'b0) | (sts_clear_empty_n == 1'b0) | (in_en_clrsts_empty_n == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0) | (out_memory_empty_n == 1'b0)) & (sts_clear_read_read_fu_110_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1) & (in_en_clrsts_read_read_fu_98_p2 == 1'd1))) begin
         out_sts <= 1'd0;
-    end else if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1065_fu_245_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19))) begin
+    end else if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1065_fu_246_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
         out_sts <= 1'd1;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state20) & (in_en_clrsts_read_reg_271 == 1'd0))) begin
-        storemerge_reg_136 <= out_sts_load_1_reg_322;
-    end else if ((1'b1 == ap_CS_fsm_state21)) begin
-        storemerge_reg_136 <= grp_load_fu_159_p1;
-    end
-end
-
-always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        icmp_ln23_reg_299 <= icmp_ln23_fu_180_p2;
-        tmp_reg_291 <= incount47_dout;
+        icmp_ln23_reg_300 <= icmp_ln23_fu_181_p2;
+        tmp_reg_292 <= incount47_dout;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        in_en_clrsts_read_reg_271 <= in_en_clrsts_dout;
-        in_s2m_len_read_reg_275 <= in_s2m_len_dout;
-        out_memory_read_reg_266 <= out_memory_dout;
+        in_en_clrsts_read_reg_272 <= in_en_clrsts_dout;
+        in_s2m_len_read_reg_276 <= in_s2m_len_dout;
+        out_memory_read_reg_267 <= out_memory_dout;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state19)) begin
-        out_sts_load_1_reg_322 <= grp_load_fu_159_p1;
+    if (((1'b1 == ap_CS_fsm_state20) | (~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_257_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0)))) begin
+        storemerge_reg_136 <= grp_load_fu_159_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state4)) begin
-        trunc_ln23_reg_314 <= trunc_ln23_fu_217_p1;
+        trunc_ln23_reg_315 <= trunc_ln23_fu_218_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd1))) begin
-        trunc_ln_reg_303 <= {{add_ln23_fu_192_p2[63:2]}};
+    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_181_p2 == 1'd1))) begin
+        trunc_ln_reg_304 <= {{add_ln23_fu_193_p2[63:2]}};
     end
 end
 
@@ -537,7 +526,7 @@ assign ap_ST_fsm_state17_blk = 1'b0;
 assign ap_ST_fsm_state18_blk = 1'b0;
 
 always @ (*) begin
-    if (((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0))) begin
+    if (((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0))) begin
         ap_ST_fsm_state19_blk = 1'b1;
     end else begin
         ap_ST_fsm_state19_blk = 1'b0;
@@ -553,8 +542,6 @@ always @ (*) begin
 end
 
 assign ap_ST_fsm_state20_blk = 1'b0;
-
-assign ap_ST_fsm_state21_blk = 1'b0;
 
 always @ (*) begin
     if ((incount47_empty_n == 1'b0)) begin
@@ -591,7 +578,7 @@ assign ap_ST_fsm_state8_blk = 1'b0;
 assign ap_ST_fsm_state9_blk = 1'b0;
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state20)) begin
+    if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
         ap_done = 1'b1;
     end else begin
         ap_done = ap_done_reg;
@@ -607,15 +594,15 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state20) & (in_en_clrsts_read_reg_271 == 1'd0))) begin
-        ap_phi_mux_storemerge_phi_fu_139_p4 = out_sts_load_1_reg_322;
+    if (((icmp_ln1073_fu_257_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
+        ap_phi_mux_storemerge_phi_fu_139_p4 = grp_load_fu_159_p1;
     end else begin
         ap_phi_mux_storemerge_phi_fu_139_p4 = storemerge_reg_136;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state20)) begin
+    if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -623,7 +610,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln1065_fu_245_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19))) begin
+    if (((icmp_ln1065_fu_246_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
         ap_sig_allocacmp_out_sts_load_1 = 1'd1;
     end else begin
         ap_sig_allocacmp_out_sts_load_1 = out_sts;
@@ -639,7 +626,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state19) & (icmp_ln23_reg_299 == 1'd1))) begin
+    if (((1'b1 == ap_CS_fsm_state19) & (icmp_ln23_reg_300 == 1'd1) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
         gmem0_blk_n_B = m_axi_gmem0_BVALID;
     end else begin
         gmem0_blk_n_B = 1'b1;
@@ -647,9 +634,9 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state21)) begin
+    if ((1'b1 == ap_CS_fsm_state20)) begin
         grp_load_fu_159_p1 = out_sts;
-    end else if ((1'b1 == ap_CS_fsm_state19)) begin
+    end else if (((1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
         grp_load_fu_159_p1 = ap_sig_allocacmp_out_sts_load_1;
     end else begin
         grp_load_fu_159_p1 = 'bx;
@@ -714,7 +701,7 @@ end
 
 always @ (*) begin
     if (((m_axi_gmem0_AWREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
-        m_axi_gmem0_AWADDR = sext_ln23_fu_207_p1;
+        m_axi_gmem0_AWADDR = sext_ln23_fu_208_p1;
     end else if (((1'b1 == ap_CS_fsm_state5) | (1'b1 == ap_CS_fsm_state4))) begin
         m_axi_gmem0_AWADDR = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem0_AWADDR;
     end else begin
@@ -748,7 +735,7 @@ end
 
 always @ (*) begin
     if (((m_axi_gmem0_AWREADY == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
-        m_axi_gmem0_AWLEN = tmp_reg_291;
+        m_axi_gmem0_AWLEN = tmp_reg_292;
     end else if (((1'b1 == ap_CS_fsm_state5) | (1'b1 == ap_CS_fsm_state4))) begin
         m_axi_gmem0_AWLEN = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem0_AWLEN;
     end else begin
@@ -815,7 +802,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & (icmp_ln23_reg_299 == 1'd1))) begin
+    if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (ap_predicate_op68_writeresp_state19 == 1'b1) & (1'b1 == ap_CS_fsm_state19))) begin
         m_axi_gmem0_BREADY = 1'b1;
     end else if (((1'b1 == ap_CS_fsm_state5) | (1'b1 == ap_CS_fsm_state4))) begin
         m_axi_gmem0_BREADY = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem0_BREADY;
@@ -849,7 +836,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state20)) begin
+    if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
         s2m_buf_sts = ap_phi_mux_storemerge_phi_fu_139_p4;
     end else begin
         s2m_buf_sts = s2m_buf_sts_preg;
@@ -857,7 +844,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state20)) begin
+    if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
         s2m_buf_sts_ap_vld = 1'b1;
     end else begin
         s2m_buf_sts_ap_vld = 1'b0;
@@ -884,7 +871,7 @@ always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
             if ((~((in_s2m_len_empty_n == 1'b0) | (sts_clear_empty_n == 1'b0) | (in_en_clrsts_empty_n == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0) | (out_memory_empty_n == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (in_en_clrsts_read_read_fu_98_p2 == 1'd1))) begin
-                ap_NS_fsm = ap_ST_fsm_state21;
+                ap_NS_fsm = ap_ST_fsm_state20;
             end else if ((~((in_s2m_len_empty_n == 1'b0) | (sts_clear_empty_n == 1'b0) | (in_en_clrsts_empty_n == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0) | (out_memory_empty_n == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (in_en_clrsts_read_read_fu_98_p2 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
@@ -892,9 +879,9 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd0))) begin
+            if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_181_p2 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state19;
-            end else if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd1))) begin
+            end else if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_181_p2 == 1'd1))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -957,19 +944,16 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state19;
         end
         ap_ST_fsm_state19 : begin
-            if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_256_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19))) begin
+            if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (1'b1 == ap_CS_fsm_state19) & ((icmp_ln1073_fu_257_p2 == 1'd0) | (in_en_clrsts_read_reg_272 == 1'd1)))) begin
+                ap_NS_fsm = ap_ST_fsm_state1;
+            end else if ((~((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_257_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19) & (in_en_clrsts_read_reg_272 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0)) & (icmp_ln1073_fu_256_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state19))) begin
-                ap_NS_fsm = ap_ST_fsm_state20;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state19;
             end
         end
         ap_ST_fsm_state20 : begin
-            ap_NS_fsm = ap_ST_fsm_state1;
-        end
-        ap_ST_fsm_state21 : begin
-            ap_NS_fsm = ap_ST_fsm_state20;
+            ap_NS_fsm = ap_ST_fsm_state19;
         end
         default : begin
             ap_NS_fsm = 'bx;
@@ -977,11 +961,11 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln23_fu_192_p2 = (out_memory_read_reg_266 + shl_ln23_fu_186_p2);
+assign add_ln23_fu_193_p2 = (out_memory_read_reg_267 + shl_ln23_fu_187_p2);
 
-assign add_ln28_fu_224_p2 = ($signed(sext_ln28_fu_221_p1) + $signed(idx_fu_88));
+assign add_ln28_fu_225_p2 = ($signed(sext_ln28_fu_222_p1) + $signed(idx_fu_88));
 
-assign add_ln886_fu_234_p2 = ($signed(final_s2m_len_V) + $signed(tmp_reg_291));
+assign add_ln886_fu_235_p2 = ($signed(final_s2m_len_V) + $signed(tmp_reg_292));
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
@@ -990,8 +974,6 @@ assign ap_CS_fsm_state19 = ap_CS_fsm[32'd18];
 assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
 
 assign ap_CS_fsm_state20 = ap_CS_fsm[32'd19];
-
-assign ap_CS_fsm_state21 = ap_CS_fsm[32'd20];
 
 assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
 
@@ -1004,18 +986,22 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_block_state19 = ((icmp_ln23_reg_299 == 1'd1) & (m_axi_gmem0_BVALID == 1'b0));
+    ap_block_state19 = ((ap_predicate_op68_writeresp_state19 == 1'b1) & (m_axi_gmem0_BVALID == 1'b0));
+end
+
+always @ (*) begin
+    ap_predicate_op68_writeresp_state19 = ((icmp_ln23_reg_300 == 1'd1) & (in_en_clrsts_read_reg_272 == 1'd0));
 end
 
 assign grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start_reg;
 
-assign icmp_ln1065_fu_245_p2 = ((add_ln886_fu_234_p2 == in_s2m_len_read_reg_275) ? 1'b1 : 1'b0);
+assign icmp_ln1065_fu_246_p2 = ((add_ln886_fu_235_p2 == in_s2m_len_read_reg_276) ? 1'b1 : 1'b0);
 
-assign icmp_ln1073_fu_256_p2 = ((add_ln886_fu_234_p2 < in_s2m_len_read_reg_275) ? 1'b1 : 1'b0);
+assign icmp_ln1073_fu_257_p2 = ((add_ln886_fu_235_p2 < in_s2m_len_read_reg_276) ? 1'b1 : 1'b0);
 
-assign icmp_ln23_fu_180_p0 = incount47_dout;
+assign icmp_ln23_fu_181_p0 = incount47_dout;
 
-assign icmp_ln23_fu_180_p2 = (($signed(icmp_ln23_fu_180_p0) > $signed(32'd0)) ? 1'b1 : 1'b0);
+assign icmp_ln23_fu_181_p2 = (($signed(icmp_ln23_fu_181_p0) > $signed(32'd0)) ? 1'b1 : 1'b0);
 
 assign in_en_clrsts_read_read_fu_98_p2 = in_en_clrsts_dout;
 
@@ -1055,14 +1041,14 @@ assign m_axi_gmem0_WSTRB = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_
 
 assign m_axi_gmem0_WUSER = grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_m_axi_gmem0_WUSER;
 
-assign sext_ln23_fu_207_p1 = $signed(trunc_ln_reg_303);
+assign sext_ln23_fu_208_p1 = $signed(trunc_ln_reg_304);
 
-assign sext_ln28_fu_221_p1 = tmp_reg_291;
+assign sext_ln28_fu_222_p1 = tmp_reg_292;
 
-assign shl_ln23_fu_186_p2 = idx_fu_88 << 64'd2;
+assign shl_ln23_fu_187_p2 = idx_fu_88 << 64'd2;
 
 assign sts_clear_read_read_fu_110_p2 = sts_clear_dout;
 
-assign trunc_ln23_fu_217_p1 = tmp_reg_291[30:0];
+assign trunc_ln23_fu_218_p1 = tmp_reg_292[30:0];
 
 endmodule //userdma_streamtoparallelwithburst

@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="userdma_userdma,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg400-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.300000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=9,HLS_SYN_DSP=0,HLS_SYN_FF=4316,HLS_SYN_LUT=8143,HLS_VERSION=2022_1}" *)
+(* CORE_GENERATION_INFO="userdma_userdma,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xck26-sfvc784-2LV-c,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.300000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=9,HLS_SYN_DSP=0,HLS_SYN_FF=4248,HLS_SYN_LUT=7999,HLS_VERSION=2022_1}" *)
 
 module userdma (
         s_axi_control_AWVALID,
@@ -1352,5 +1352,17 @@ reg find_kernel_block = 0;
 `include "userdma_hls_deadlock_kernel_monitor_top.vh"
 // synthesis translate_on
 
+
+reg find_df_deadlock = 0;
+// synthesis translate_off
+`include "userdma_hls_deadlock_detector.vh"
+// synthesis translate_on
+
+reg find_kernel_block = 0;
+// synthesis translate_off
+`include "userdma_hls_deadlock_kernel_monitor_top.vh"
+// synthesis translate_on
+
 endmodule //userdma
+
 

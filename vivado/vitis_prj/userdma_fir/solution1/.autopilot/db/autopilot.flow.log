@@ -1,13 +1,13 @@
-INFO-FLOW: Workspace /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1 opened at Mon Jun 17 07:01:54 EDT 2024
+INFO-FLOW: Workspace /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1 opened at Mon Jun 17 09:59:29 EDT 2024
 Execute     ap_set_clock -name default -period 10 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
-Execute     set_part xc7z020-clg400-1 
-Execute       create_platform xc7z020-clg400-1 -board  
+Execute     set_part xck26-sfvc784-2LV-c 
+Execute       create_platform xck26-sfvc784-2LV-c -board  
 DBG:HLSDevice: Trying to load device library: /tools/Xilinx/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
 DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /tools/Xilinx/Vivado/2022.1/data/parts/arch.xml
 DBG:HLSDevice: init success
-INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
-Command       create_platform done; 2.23 sec.
+INFO: [HLS 200-1611] Setting target device to 'xck26-sfvc784-2LV-c'
+Command       create_platform done; 3.77 sec.
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -20,9 +20,10 @@ Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/i
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Command       ap_source done; 0.18 sec.
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info 
 Execute       config_compile -quiet -complex-mul-dsp=0 
-Command     set_part done; 2.38 sec.
+Command     set_part done; 4.04 sec.
 Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Execute     get_config_interface -m_axi_latency 
@@ -36,10 +37,10 @@ Execute     config_export -format=ip_catalog
 Execute     send_msg_by_id INFO @200-1464@%s config_export -rtl=verilog 
 INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
 Execute     config_export -rtl=verilog 
-Command   open_solution done; 2.39 sec.
-Execute   set_part xc7z020-clg400-1 
-INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
-Execute     create_platform xc7z020-clg400-1 -board  
+Command   open_solution done; 4.06 sec.
+Execute   set_part xck26-sfvc784-2LV-c 
+INFO: [HLS 200-1510] Running: set_part xck26-sfvc784-2LV-c 
+Execute     create_platform xck26-sfvc784-2LV-c -board  
 Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -52,9 +53,9 @@ Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info 
 Execute     config_compile -quiet -complex-mul-dsp=0 
-Command   set_part done; 0.22 sec.
+Command   set_part done; 0.24 sec.
 Execute   create_clock -period 10 -name default 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 Execute   config_export -format ip_catalog -rtl verilog 
@@ -77,54 +78,54 @@ Execute     get_config_compile -skip_transform
 Execute     get_config_compile -pre_tcl 
 Execute     get_config_compile -keep_printf 
 Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 462.496 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 462.578 MB.
 INFO: [HLS 200-10] Analyzing design file 'hls_userdma/userdma.cpp' ... 
 INFO-FLOW: Compiling one TU...
 Execute       get_config_compile -pragma_strict_mode 
 INFO-FLOW: Handling hls_userdma/userdma.cpp as C++
-Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info 
 INFO-FLOW: Running: GCC PP 39
 INFO-FLOW: Source preprocessing
-Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang hls_userdma/userdma.cpp -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /tools/Xilinx/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -I /usr/include/x86_64-linux-gnu -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.err.log 
-Command       ap_eval done; 0.24 sec.
+Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang hls_userdma/userdma.cpp -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /tools/Xilinx/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -I /usr/include/x86_64-linux-gnu -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_medium -device-resource-info=BRAM_288.000000_DSP_1248.000000_FF_234240.000000_LUT_117120.000000_SLICE_14640.000000_URAM_64.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.cpp.clang.err.log 
+Command       ap_eval done; 0.2 sec.
 INFO-FLOW: Done: GCC PP 39 time: 0.2 seconds per iteration
 Execute       set_directive_top userdma -name=userdma 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
 INFO-FLOW: Source syntax check for synthesis
-Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.err.log 
-Command       ap_eval done; 0.48 sec.
+Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_medium -device-resource-info=BRAM_288.000000_DSP_1248.000000_FF_234240.000000_LUT_117120.000000_SLICE_14640.000000_URAM_64.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/clang.err.log 
+Command       ap_eval done; 0.45 sec.
 Execute       clang_tidy xilinx-systemc-detector -desc systemc-detector /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp std=gnu++14 -target fpga  -directive=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/.systemc_flag 
 INFO-FLOW: exec /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/.systemc_flag -fix-errors /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.6 sec.
+Command       clang_tidy done; 0.48 sec.
 INFO-FLOW: Running: clang-tidy CDT preprocess 39
 Execute       clang_tidy xilinx-directive2pragma -desc directive2pragma /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp std=gnu++14 -target fpga  -directive=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/all.directive.json 
 INFO-FLOW: exec /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/all.directive.json -fix-errors /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.62 sec.
+Command       clang_tidy done; 0.61 sec.
 Execute       clang_tidy xilinx-remove-assert -desc remove-assert /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp std=gnu++14 -target fpga  
 INFO-FLOW: exec /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-remove-assert -fix-errors /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.4 sec.
+Command       clang_tidy done; 0.41 sec.
 INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 1 seconds per iteration
 INFO-FLOW: Calling xilinx-label-all-loops ... 
 INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
 Execute       clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp std=gnu++14 -target fpga  
 Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang-tidy.loop-label.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang-tidy.loop-label.err.log 
-Command         ap_eval done; 0.74 sec.
+Command         ap_eval done; 0.69 sec.
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/yaml.tcl 
-Command       clang_tidy done; 0.8 sec.
+Command       clang_tidy done; 0.74 sec.
 Execute       get_config_dataflow -strict_mode 
 Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.xilinx-dataflow-lawyer.err.log 
-Command       ap_eval done; 0.47 sec.
+Command       ap_eval done; 0.42 sec.
 WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (hls_userdma/userdma.cpp:209:53)
 WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (hls_userdma/userdma.cpp:210:61)
 WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (hls_userdma/userdma.cpp:212:51)
 Execute       send_msg_by_id WARNING @200-471@%s%s 3 hls_userdma/userdma.cpp 
 WARNING: [HLS 200-471] Dataflow form checks found 3 issue(s) in file hls_userdma/userdma.cpp
-Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info 
 INFO-FLOW: compiling source code to llvm bc
-Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.err.log 
-Command       ap_eval done; 0.51 sec.
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.52 seconds. CPU system time: 0.53 seconds. Elapsed time: 4.39 seconds; current allocated memory: 462.566 MB.
+Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -g -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_medium -device-resource-info=BRAM_288.000000_DSP_1248.000000_FF_234240.000000_LUT_117120.000000_SLICE_14640.000000_URAM_64.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.pp.0.cpp.clang.err.log 
+Command       ap_eval done; 0.52 sec.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.28 seconds. CPU system time: 0.49 seconds. Elapsed time: 4.05 seconds; current allocated memory: 462.578 MB.
 INFO-FLOW: Linking Debug ...
 INFO-FLOW: Linking dut bc code.
 Execute       run_link_or_opt -out /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc -args  "/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.g.bc"  
@@ -132,20 +133,20 @@ Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/
 INFO-FLOW: 
 Execute       run_link_or_opt -opt -out /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc -args /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics 
 Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.diag.yml /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.err.log 
-Command         ap_eval done; 0.15 sec.
+Command         ap_eval done; 0.14 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 0.15 sec.
+Command       run_link_or_opt done; 0.14 sec.
 INFO-FLOW: Linking math bc lib
 Execute       run_link_or_opt -out /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc -args /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libhlsm_39.bc /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libhlsmc++_39.bc 
 Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libhlsm_39.bc /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libhlsmc++_39.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.err.log 
-Command         ap_eval done; 2.16 sec.
+Command         ap_eval done; 2.28 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 2.16 sec.
+Command       run_link_or_opt done; 2.28 sec.
 Execute       run_link_or_opt -opt -out /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc -args /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=userdma -reflow-float-conversion 
 Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.diag.yml /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=userdma -reflow-float-conversion -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.err.log 
-Command         ap_eval done; 0.77 sec.
+Command         ap_eval done; 0.86 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 0.79 sec.
+Command       run_link_or_opt done; 0.86 sec.
 Execute       run_link_or_opt -out /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.4.m2.bc -args /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libfloatconversion_39.bc 
 Execute         ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /tools/Xilinx/Vitis_HLS/2022.1/lnx64/lib/libfloatconversion_39.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.4.m2.bc > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.err.log 
 INFO-FLOW: 
@@ -194,8 +195,8 @@ INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
 Execute       is_m_axi_addr64 
 Execute       get_clock_period -ns -default 
 INFO-FLOW: Doing LTO.
-Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=userdma -mllvm -hls-db-dir -mllvm /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -assume-maxi-align=0 -mllvm -no-unaligned-maxi-accesses -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -x ir /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.5.gdce.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.lto.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.err.log 
-Command       ap_eval done; 0.47 sec.
+Execute       ap_eval exec -ignorestderr /tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=userdma -mllvm -hls-db-dir -mllvm /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -assume-maxi-align=0 -mllvm -no-unaligned-maxi-accesses -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -x ir /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.5.gdce.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.lto.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_medium -device-resource-info=BRAM_288.000000_DSP_1248.000000_FF_234240.000000_LUT_117120.000000_SLICE_14640.000000_URAM_64.000000 > /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.out.log 2> /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.ld.0.bc.clang.err.log 
+Command       ap_eval done; 0.49 sec.
 INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'inbuf' with compact=bit mode in 33-bits (hls_userdma/userdma.cpp:204:32)
 INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'outbuf' with compact=bit mode in 40-bits (hls_userdma/userdma.cpp:206:37)
 INFO: [HLS 214-241] Aggregating maxi variable 'm2sbuf' with compact=none mode in 32-bits
@@ -219,21 +220,21 @@ INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i7.s_struct.ap_uint<
 INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i4.s_struct.ap_uint<4>s' into 'sendoutstream(hls::stream<out_data, 0>&, hls::stream<int, 0>&, ap_uint<1>, bool&, bool, hls::stream<hls::axis<ap_uint<32>, 7ul, 0ul, 0ul>, 0>&) (.1)' (/tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_axi_sdata.h:304:5)
 INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_int<32>s' into 'sendoutstream(hls::stream<out_data, 0>&, hls::stream<int, 0>&, ap_uint<1>, bool&, bool, hls::stream<hls::axis<ap_uint<32>, 7ul, 0ul, 0ul>, 0>&) (.1)' (/tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_axi_sdata.h:304:5)
 INFO-FLOW: DBG:PUTS: copy_raw_kernel_xml ap_link_39: kernel.xml not generated: /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/kernel.internal.xml
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.39 seconds. CPU system time: 0.6 seconds. Elapsed time: 4.13 seconds; current allocated memory: 464.723 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 464.723 MB.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.73 seconds. CPU system time: 0.48 seconds. Elapsed time: 4.38 seconds; current allocated memory: 464.793 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 464.793 MB.
 Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
 Execute         cleanup_all_models 
 INFO: [HLS 200-10] Starting code transformations ...
 INFO-FLOW: Running Standard Transforms...
 Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top userdma -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.0.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
-Command         transform done; 0.13 sec.
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 473.859 MB.
+Command         transform done; 0.14 sec.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 473.902 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO-FLOW: Checking Synthesizability 1/2..
 Execute         transform -hls -syn-check -check-rec-only -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -pag -array-normalize -instcombine -dce -array-seg-normalize -instcombine -dce -data-pack -instcombine -dce -inst-simplify -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -resolve-double-ptr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.1.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.2.prechk.bc -f 
 INFO-FLOW: Checking Synthesizability 2/2..
 Execute         transform -syn-check /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.2.prechk.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.2.bc -f -phase syn-check 
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 485.422 MB.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.16 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 485.465 MB.
 INFO-FLOW: Compiler optimizing ...
 INFO-FLOW: Share syncheck's 1.bc for syn flow: copy /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.g.1.bc to /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.o.1.bc
 INFO-FLOW: Presyn 1...
@@ -250,8 +251,8 @@ INFO-FLOW: Presyn 2...
 Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin2 -bitwidthmin2 -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -barrier -norm-name /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.o.1.tmp.bc -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/a.o.2.bc -f -phase presyn 
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (hls_userdma/userdma.cpp:111:9) to (hls_userdma/userdma.cpp:110:23) in function 'paralleltostreamwithburst'... converting 4 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (hls_userdma/userdma.cpp:51:9) to (hls_userdma/userdma.cpp:75:10) in function 'getinstream'... converting 4 basic blocks.
-Command         transform done; 0.11 sec.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.28 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.3 seconds; current allocated memory: 519.121 MB.
+Command         transform done; 0.12 sec.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.3 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.31 seconds; current allocated memory: 518.785 MB.
 Execute         get_config_compile -enable_auto_rewind 
 Execute         get_config_compile -enable_loop_extract 
 INFO-FLOW: Building ssdm...
@@ -260,11 +261,11 @@ WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_20_1' (/tools/Xilinx/Viti
 WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_153_1' (hls_userdma/userdma.cpp:146:17) in function 'sendoutstream' either the parent loop or sub loop is do-while loop.
 WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_102_1' (hls_userdma/userdma.cpp:103:18) in function 'paralleltostreamwithburst' either the parent loop or sub loop is do-while loop.
 WARNING: [HLS 200-1450] Process getinstream has both a successor and writes an output to its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this output via a successor process.
-Command         transform done; 0.25 sec.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.22 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.26 seconds; current allocated memory: 600.609 MB.
+Command         transform done; 0.27 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.23 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.27 seconds; current allocated memory: 600.648 MB.
 INFO-FLOW: Finish building internal data model.
-Command       opt_and_import_c done; 0.84 sec.
-Command     elaborate done; 9.37 sec.
+Command       opt_and_import_c done; 0.88 sec.
+Command     elaborate done; 9.32 sec.
 Execute     ap_eval exec zip -j /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/dut.hcp $dbDir/a.o.3.bc $dbDir/${topname}.rtl_wrap.cfg.tcl $dbDir/apatb_${topname}.cpp $dbDir/apatb_${topname}_util.cpp $dbDir/apatb_${topname}_ir.ll $dbDir/mapper_${topname}.cpp $dbDir/top-io-fe.xml $dbDir/kernel.internal.xml $workdir/../hls.app 
 Execute     autosyn -from_csynth_design=1 
 INFO: [HLS 200-10] Starting hardware synthesis ...
@@ -364,7 +365,7 @@ Execute       set_default_model entry_proc
 Execute       schedule -model entry_proc 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.09 seconds; current allocated memory: 600.867 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.06 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.14 seconds; current allocated memory: 600.914 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/entry_proc.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -377,7 +378,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 600.910 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 600.926 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/entry_proc.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -392,7 +393,7 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_50_1'.
 INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'VITIS_LOOP_50_1'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 602.160 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 602.160 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream_Pipeline_VITIS_LOOP_50_1.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -405,7 +406,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 602.160 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 602.160 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream_Pipeline_VITIS_LOOP_50_1.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -418,7 +419,7 @@ Execute       set_default_model getinstream
 Execute       schedule -model getinstream 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 602.449 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 602.465 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -431,7 +432,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 602.449 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 602.465 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -446,7 +447,7 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_23_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'VITIS_LOOP_23_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 602.887 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 602.895 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -459,7 +460,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 602.887 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 602.895 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -472,7 +473,7 @@ Execute       set_default_model streamtoparallelwithburst
 Execute       schedule -model streamtoparallelwithburst 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 603.410 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 603.398 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -485,7 +486,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 603.410 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 603.398 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -500,7 +501,7 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_110_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'VITIS_LOOP_110_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 603.875 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 603.859 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -513,7 +514,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 603.875 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 603.859 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -526,7 +527,7 @@ Execute       set_default_model paralleltostreamwithburst
 Execute       schedule -model paralleltostreamwithburst 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 604.461 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 604.488 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -539,7 +540,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 604.461 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.18 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.19 seconds; current allocated memory: 604.488 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -554,7 +555,7 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_155_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_155_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 604.840 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 604.852 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream_Pipeline_VITIS_LOOP_155_2.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -567,7 +568,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 604.840 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 604.852 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream_Pipeline_VITIS_LOOP_155_2.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -580,7 +581,7 @@ Execute       set_default_model sendoutstream
 Execute       schedule -model sendoutstream 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 605.195 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 605.188 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -593,7 +594,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 605.195 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 605.188 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -606,7 +607,7 @@ Execute       set_default_model userdma
 Execute       schedule -model userdma 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 605.629 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 605.617 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -619,11 +620,11 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 605.629 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 605.617 MB.
 Execute       syn_report -verbosereport -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.17 sec.
+Command       syn_report done; 0.18 sec.
 Execute       db_write -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.bind.adb -f 
 INFO-FLOW: Finish binding userdma.
 Execute       get_model_list userdma -filter all-wo-channel 
@@ -648,7 +649,7 @@ Execute       get_config_rtl -module_prefix
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model entry_proc -top_prefix userdma_ -sub_prefix userdma_ -mg_file /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/entry_proc.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'entry_proc'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 605.746 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.21 seconds. CPU system time: 0 seconds. Elapsed time: 0.22 seconds; current allocated memory: 605.723 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl entry_proc -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_entry_proc 
 Execute       gen_rtl entry_proc -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_entry_proc 
@@ -675,7 +676,7 @@ Execute       create_rtl_model getinstream_Pipeline_VITIS_LOOP_50_1 -top_prefix 
 WARNING: [RTGEN 206-101] Register 'width_count' is power-on initialization.
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'getinstream_Pipeline_VITIS_LOOP_50_1' pipeline 'VITIS_LOOP_50_1' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Finished creating RTL model for 'getinstream_Pipeline_VITIS_LOOP_50_1'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 606.582 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 606.570 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl getinstream_Pipeline_VITIS_LOOP_50_1 -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_getinstream_Pipeline_VITIS_LOOP_50_1 
 Execute       gen_rtl getinstream_Pipeline_VITIS_LOOP_50_1 -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_getinstream_Pipeline_VITIS_LOOP_50_1 
@@ -701,7 +702,7 @@ Execute       get_config_rtl -module_auto_prefix
 Execute       create_rtl_model getinstream -top_prefix userdma_ -sub_prefix userdma_ -mg_file /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream.compgen.tcl 
 WARNING: [RTGEN 206-101] Register 'in_len_V' is power-on initialization.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'getinstream'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 608.035 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.19 seconds; current allocated memory: 608.008 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl getinstream -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_getinstream 
 Execute       gen_rtl getinstream -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_getinstream 
@@ -740,7 +741,7 @@ WARNING: [RTGEN 206-101] Setting dangling out port 'streamtoparallelwithburst_Pi
 WARNING: [RTGEN 206-101] Setting dangling out port 'streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2/m_axi_gmem0_AWUSER' to 0.
 WARNING: [RTGEN 206-101] Setting dangling out port 'streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2/m_axi_gmem0_BREADY' to 0.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.2 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 609.297 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.27 seconds; current allocated memory: 609.305 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 
 Execute       gen_rtl streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 
@@ -767,7 +768,7 @@ Execute       create_rtl_model streamtoparallelwithburst -top_prefix userdma_ -s
 WARNING: [RTGEN 206-101] Register 'out_sts' is power-on initialization.
 WARNING: [RTGEN 206-101] Register 'final_s2m_len_V' is power-on initialization.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'streamtoparallelwithburst'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 610.754 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 610.750 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl streamtoparallelwithburst -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_streamtoparallelwithburst 
 Execute       gen_rtl streamtoparallelwithburst -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_streamtoparallelwithburst 
@@ -806,7 +807,7 @@ WARNING: [RTGEN 206-101] Setting dangling out port 'paralleltostreamwithburst_Pi
 WARNING: [RTGEN 206-101] Setting dangling out port 'paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2/m_axi_gmem1_ARREGION' to 0.
 WARNING: [RTGEN 206-101] Setting dangling out port 'paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2/m_axi_gmem1_ARUSER' to 0.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.19 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 612.574 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.23 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.26 seconds; current allocated memory: 612.504 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 
 Execute       gen_rtl paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 
@@ -833,7 +834,7 @@ Execute       create_rtl_model paralleltostreamwithburst -top_prefix userdma_ -s
 WARNING: [RTGEN 206-101] Register 'first' is power-on initialization.
 WARNING: [RTGEN 206-101] Register 'm2s_len' is power-on initialization.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'paralleltostreamwithburst'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 614.457 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.28 seconds; current allocated memory: 614.441 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl paralleltostreamwithburst -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_paralleltostreamwithburst 
 Execute       gen_rtl paralleltostreamwithburst -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_paralleltostreamwithburst 
@@ -846,7 +847,7 @@ Execute           get_solution -flow_target
 Execute       syn_report -verbosereport -model paralleltostreamwithburst -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst.verbose.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.11 sec.
+Command       syn_report done; 0.15 sec.
 Execute       db_write -model paralleltostreamwithburst -f -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst.adb 
 Execute       db_write -model paralleltostreamwithburst -bindview -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/design.bindinfo.xml 
 Execute       gen_tb_info paralleltostreamwithburst -p /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst 
@@ -859,7 +860,7 @@ Execute       get_config_rtl -module_prefix
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model sendoutstream_Pipeline_VITIS_LOOP_155_2 -top_prefix userdma_ -sub_prefix userdma_ -mg_file /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream_Pipeline_VITIS_LOOP_155_2.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sendoutstream_Pipeline_VITIS_LOOP_155_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.23 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.25 seconds; current allocated memory: 616.094 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.28 seconds; current allocated memory: 616.047 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl sendoutstream_Pipeline_VITIS_LOOP_155_2 -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2 
 Execute       gen_rtl sendoutstream_Pipeline_VITIS_LOOP_155_2 -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2 
@@ -884,7 +885,7 @@ Execute       get_config_rtl -module_prefix
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model sendoutstream -top_prefix userdma_ -sub_prefix userdma_ -mg_file /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sendoutstream'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 617.172 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 617.125 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl sendoutstream -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma_sendoutstream 
 Execute       gen_rtl sendoutstream -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma_sendoutstream 
@@ -935,7 +936,8 @@ INFO: [RTGEN 206-500] Setting interface mode on port 'userdma/outStreamTop_V_las
 INFO: [RTGEN 206-500] Setting interface mode on function 'userdma' to 's_axilite & ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Bundling port 's2m_buf_sts', 's2m_sts_clear', 's2m_len', 's2m_enb_clrsts', 's2mbuf', 's2m_err', 'Img_width', 'm2sbuf', 'm2s_buf_sts', 'm2s_sts_clear', 'm2s_len', 'm2s_enb_clrsts' to AXI-Lite port control.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'userdma'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.14 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.16 seconds; current allocated memory: 620.047 MB.
+Command       create_rtl_model done; 0.11 sec.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 619.809 MB.
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute       gen_rtl userdma -istop -style xilinx -f -lang vhdl -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/vhdl/userdma 
 Execute       gen_rtl userdma -istop -style xilinx -f -lang vlog -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/verilog/userdma 
@@ -954,7 +956,7 @@ Execute       db_write -model userdma -bindview -o /home/ubuntu/SoC_Design/homew
 Execute       gen_tb_info userdma -p /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma 
 Execute       export_constraint_db -f -tool general -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
 Execute       syn_report -designview -model userdma -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.design.xml 
-Command       syn_report done; 0.23 sec.
+Command       syn_report done; 0.25 sec.
 Execute       syn_report -csynthDesign -model userdma -o /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/syn/report/csynth.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -1169,8 +1171,8 @@ sendoutstream
 userdma
 ' expOnly='0'
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
-Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/entry_proc.compgen.tcl 
@@ -1183,45 +1185,45 @@ Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-op
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream_Pipeline_VITIS_LOOP_155_2.compgen.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.compgen.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.tcl 
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 's2m_sts_clear_c_U(userdma_fifo_w1_d3_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 's2mbuf_c_U(userdma_fifo_w64_d3_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'm2s_sts_clear_c_U(userdma_fifo_w1_d3_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'inbuf_U(userdma_fifo_w33_d1024_A)' using Vivado Default RAMs.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'incount_U(userdma_fifo_w32_d64_A)' using Vivado Default RAMs.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 's2m_len_c_U(userdma_fifo_w32_d2_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 's2m_enb_clrsts_c_U(userdma_fifo_w1_d2_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'outbuf_U(userdma_fifo_w40_d1024_A)' using Vivado Default RAMs.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'outcount_U(userdma_fifo_w32_d64_A)' using Vivado Default RAMs.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'm2s_enb_clrsts_c_U(userdma_fifo_w1_d2_S)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_streamtoparallelwithburst_U0_U(userdma_start_for_streamtoparallelwithburst_U0)' using Shift Registers.
-Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute         ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_sendoutstream_U0_U(userdma_start_for_sendoutstream_U0)' using Shift Registers.
 Execute         source ./control.slave.tcl 
-Command       ap_source done; 0.6 sec.
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.32 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.35 seconds; current allocated memory: 624.902 MB.
+Command       ap_source done; 0.94 sec.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.71 seconds. CPU system time: 0.06 seconds. Elapsed time: 1.78 seconds; current allocated memory: 624.887 MB.
 INFO-FLOW: DBG:PROC: ::HLSREPORTS::create_csynth_xml bind_info_var='bind_info' RtlSubPrefix='userdma_' outfile=''
 INFO-FLOW: Running: create_csynth_xml read xml data
 INFO-FLOW: Done: create_csynth_xml read xml data time: 0 seconds per iteration
@@ -1475,8 +1477,8 @@ Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-op
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.tbgen.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
-Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute       get_solution -flow_target 
 Execute       get_config_rtl -kernel_profile 
 Execute       get_config_rtl -kernel_profile 
@@ -1488,7 +1490,7 @@ Execute       source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-op
 Execute       get_config_export -ip_xdc_file 
 Execute       get_config_export -ip_xdc_ooc_file 
 Execute       get_config_debug -directory 
-INFO-FLOW: DBG:PROC: ::HLSREPORTS::add_csynth_report_sections bind_info_dict='adapter_nodes {{BINDTYPE adapter DISPLAY {bind_adapter axilite} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME control_s_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME control DSP 0 BRAM 0 URAM 0} {BINDTYPE adapter DISPLAY {bind_adapter axi_master} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME gmem0_m_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME gmem0 DSP 0 BRAM 0 URAM 0} {BINDTYPE adapter DISPLAY {bind_adapter axi_master} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME gmem1_m_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME gmem1 DSP 0 BRAM 0 URAM 0}} report_dict {TOPINST userdma MODULE2INSTS {userdma userdma entry_proc entry_proc_U0 getinstream getinstream_U0 getinstream_Pipeline_VITIS_LOOP_50_1 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 paralleltostreamwithburst paralleltostreamwithburst_U0 paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 streamtoparallelwithburst streamtoparallelwithburst_U0 streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 sendoutstream sendoutstream_U0 sendoutstream_Pipeline_VITIS_LOOP_155_2 grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101} INST2MODULE {userdma userdma entry_proc_U0 entry_proc getinstream_U0 getinstream grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 getinstream_Pipeline_VITIS_LOOP_50_1 paralleltostreamwithburst_U0 paralleltostreamwithburst grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 streamtoparallelwithburst_U0 streamtoparallelwithburst grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 sendoutstream_U0 sendoutstream grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101 sendoutstream_Pipeline_VITIS_LOOP_155_2} INSTDATA {userdma {DEPTH 1 CHILDREN {entry_proc_U0 getinstream_U0 paralleltostreamwithburst_U0 streamtoparallelwithburst_U0 sendoutstream_U0}} entry_proc_U0 {DEPTH 2 CHILDREN {}} getinstream_U0 {DEPTH 2 CHILDREN grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132} grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 {DEPTH 3 CHILDREN {}} paralleltostreamwithburst_U0 {DEPTH 2 CHILDREN grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173} grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 {DEPTH 3 CHILDREN {}} streamtoparallelwithburst_U0 {DEPTH 2 CHILDREN grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146} grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 {DEPTH 3 CHILDREN {}} sendoutstream_U0 {DEPTH 2 CHILDREN grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101} grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101 {DEPTH 3 CHILDREN {}}} MODULEDATA {getinstream_Pipeline_VITIS_LOOP_50_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln70_fu_194_p2 SOURCE hls_userdma/userdma.cpp:70 VARIABLE add_ln70 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME count_4_fu_214_p2 SOURCE hls_userdma/userdma.cpp:73 VARIABLE count_4 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_220_p2 SOURCE /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} getinstream {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_i_i52_fu_162_p2 SOURCE {} VARIABLE sub_i_i52 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln50_fu_174_p2 SOURCE hls_userdma/userdma.cpp:50 VARIABLE add_ln50 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln23_fu_110_p2 SOURCE hls_userdma/userdma.cpp:23 VARIABLE add_ln23 LOOP VITIS_LOOP_23_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} streamtoparallelwithburst {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln23_fu_192_p2 SOURCE hls_userdma/userdma.cpp:23 VARIABLE add_ln23 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln28_fu_224_p2 SOURCE hls_userdma/userdma.cpp:28 VARIABLE add_ln28 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_234_p2 SOURCE /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln110_fu_169_p2 SOURCE hls_userdma/userdma.cpp:110 VARIABLE add_ln110 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln127_fu_217_p2 SOURCE hls_userdma/userdma.cpp:127 VARIABLE add_ln127 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln132_fu_237_p2 SOURCE hls_userdma/userdma.cpp:132 VARIABLE add_ln132 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} paralleltostreamwithburst {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_i_i_fu_218_p2 SOURCE {} VARIABLE sub_i_i LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_fu_254_p2 SOURCE hls_userdma/userdma.cpp:90 VARIABLE sub LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln110_fu_272_p2 SOURCE hls_userdma/userdma.cpp:110 VARIABLE add_ln110 LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln135_fu_305_p2 SOURCE hls_userdma/userdma.cpp:135 VARIABLE add_ln135 LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} sendoutstream_Pipeline_VITIS_LOOP_155_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln155_fu_144_p2 SOURCE hls_userdma/userdma.cpp:155 VARIABLE add_ln155 LOOP VITIS_LOOP_155_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} userdma {BINDINFO {{BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME m2s_enb_clrsts_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE m2s_enb_clrsts_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME m2s_sts_clear_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE m2s_sts_clear_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2mbuf_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2mbuf_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_enb_clrsts_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_enb_clrsts_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_len_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_len_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_sts_clear_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_sts_clear_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME inbuf_U SOURCE {} VARIABLE inbuf LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME incount_U SOURCE hls_userdma/userdma.cpp:205 VARIABLE incount LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME outbuf_U SOURCE {} VARIABLE outbuf LOOP {} BUNDLEDNAME {} DSP 0 BRAM 3 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME outcount_U SOURCE hls_userdma/userdma.cpp:207 VARIABLE outcount LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}}} AREA {DSP 0 BRAM 9 URAM 0}} entry_proc {AREA {DSP 0 BRAM 0 URAM 0}} sendoutstream {AREA {DSP 0 BRAM 0 URAM 0}}}}'
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::add_csynth_report_sections bind_info_dict='adapter_nodes {{BINDTYPE adapter DISPLAY {bind_adapter axilite} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME control_s_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME control DSP 0 BRAM 0 URAM 0} {BINDTYPE adapter DISPLAY {bind_adapter axi_master} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME gmem0_m_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME gmem0 DSP 0 BRAM 0 URAM 0} {BINDTYPE adapter DISPLAY {bind_adapter axi_master} ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA yes RTLNAME gmem1_m_axi_U SOURCE {} VARIABLE {} MODULE userdma LOOP {} BUNDLEDNAME gmem1 DSP 0 BRAM 0 URAM 0}} report_dict {TOPINST userdma MODULE2INSTS {userdma userdma entry_proc entry_proc_U0 getinstream getinstream_U0 getinstream_Pipeline_VITIS_LOOP_50_1 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 paralleltostreamwithburst paralleltostreamwithburst_U0 paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 streamtoparallelwithburst streamtoparallelwithburst_U0 streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 sendoutstream sendoutstream_U0 sendoutstream_Pipeline_VITIS_LOOP_155_2 grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101} INST2MODULE {userdma userdma entry_proc_U0 entry_proc getinstream_U0 getinstream grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 getinstream_Pipeline_VITIS_LOOP_50_1 paralleltostreamwithburst_U0 paralleltostreamwithburst grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 streamtoparallelwithburst_U0 streamtoparallelwithburst grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 sendoutstream_U0 sendoutstream grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101 sendoutstream_Pipeline_VITIS_LOOP_155_2} INSTDATA {userdma {DEPTH 1 CHILDREN {entry_proc_U0 getinstream_U0 paralleltostreamwithburst_U0 streamtoparallelwithburst_U0 sendoutstream_U0}} entry_proc_U0 {DEPTH 2 CHILDREN {}} getinstream_U0 {DEPTH 2 CHILDREN grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132} grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132 {DEPTH 3 CHILDREN {}} paralleltostreamwithburst_U0 {DEPTH 2 CHILDREN grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173} grp_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2_fu_173 {DEPTH 3 CHILDREN {}} streamtoparallelwithburst_U0 {DEPTH 2 CHILDREN grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146} grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146 {DEPTH 3 CHILDREN {}} sendoutstream_U0 {DEPTH 2 CHILDREN grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101} grp_sendoutstream_Pipeline_VITIS_LOOP_155_2_fu_101 {DEPTH 3 CHILDREN {}}} MODULEDATA {getinstream_Pipeline_VITIS_LOOP_50_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln70_fu_194_p2 SOURCE hls_userdma/userdma.cpp:70 VARIABLE add_ln70 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME count_4_fu_214_p2 SOURCE hls_userdma/userdma.cpp:73 VARIABLE count_4 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_220_p2 SOURCE /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP VITIS_LOOP_50_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} getinstream {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_i_i52_fu_162_p2 SOURCE {} VARIABLE sub_i_i52 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln50_fu_174_p2 SOURCE hls_userdma/userdma.cpp:50 VARIABLE add_ln50 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln23_fu_110_p2 SOURCE hls_userdma/userdma.cpp:23 VARIABLE add_ln23 LOOP VITIS_LOOP_23_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} streamtoparallelwithburst {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln23_fu_193_p2 SOURCE hls_userdma/userdma.cpp:23 VARIABLE add_ln23 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln28_fu_225_p2 SOURCE hls_userdma/userdma.cpp:28 VARIABLE add_ln28 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_235_p2 SOURCE /tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP VITIS_LOOP_20_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln110_fu_169_p2 SOURCE hls_userdma/userdma.cpp:110 VARIABLE add_ln110 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln127_fu_217_p2 SOURCE hls_userdma/userdma.cpp:127 VARIABLE add_ln127 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln132_fu_237_p2 SOURCE hls_userdma/userdma.cpp:132 VARIABLE add_ln132 LOOP VITIS_LOOP_110_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} paralleltostreamwithburst {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_i_i_fu_218_p2 SOURCE {} VARIABLE sub_i_i LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME sub_fu_254_p2 SOURCE hls_userdma/userdma.cpp:90 VARIABLE sub LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln110_fu_272_p2 SOURCE hls_userdma/userdma.cpp:110 VARIABLE add_ln110 LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln135_fu_305_p2 SOURCE hls_userdma/userdma.cpp:135 VARIABLE add_ln135 LOOP VITIS_LOOP_102_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} sendoutstream_Pipeline_VITIS_LOOP_155_2 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln155_fu_144_p2 SOURCE hls_userdma/userdma.cpp:155 VARIABLE add_ln155 LOOP VITIS_LOOP_155_2 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} userdma {BINDINFO {{BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME m2s_enb_clrsts_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE m2s_enb_clrsts_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME m2s_sts_clear_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE m2s_sts_clear_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2mbuf_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2mbuf_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_enb_clrsts_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_enb_clrsts_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_len_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_len_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL srl LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME s2m_sts_clear_c_U SOURCE hls_userdma/userdma.cpp:202 VARIABLE s2m_sts_clear_c LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME inbuf_U SOURCE {} VARIABLE inbuf LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME incount_U SOURCE hls_userdma/userdma.cpp:205 VARIABLE incount LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME outbuf_U SOURCE {} VARIABLE outbuf LOOP {} BUNDLEDNAME {} DSP 0 BRAM 3 URAM 0 DISPNAME {bind_storage fifo}} {BINDTYPE storage ID {} IMPL memory LATENCY 0 OPTYPE fifo PRAGMA {} RTLNAME outcount_U SOURCE hls_userdma/userdma.cpp:207 VARIABLE outcount LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage fifo}}} AREA {DSP 0 BRAM 9 URAM 0}} entry_proc {AREA {DSP 0 BRAM 0 URAM 0}} sendoutstream {AREA {DSP 0 BRAM 0 URAM 0}}}}'
 INFO-FLOW: DBG:PUTS:      update_csynth_reports json2rpt_hw_sw_interfaces
 Execute       send_msg_by_id INFO @200-1603@%s  and missed bursts 
 INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
@@ -1496,27 +1498,27 @@ INFO-FLOW: Running: gen_csynth_sec_pragma
 INFO-FLOW: Done: gen_csynth_sec_pragma time: 0 seconds per iteration
 INFO-FLOW: DBG:PUTS:      update_csynth_reports wrote xml
 INFO-FLOW: DBG:PUTS:      update_csynth_reports appended to csynth rpt file
-INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.41 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.44 seconds; current allocated memory: 635.652 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.43 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.47 seconds; current allocated memory: 635.449 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for userdma.
 INFO: [VLOG 209-307] Generating Verilog RTL for userdma.
 Execute       syn_report -model userdma -printsummary 
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
-Command     autosyn done; 6.23 sec.
-Command   csynth_design done; 15.64 sec.
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 13.58 seconds. CPU system time: 1.42 seconds. Elapsed time: 15.64 seconds; current allocated memory: 173.340 MB.
-Command ap_source done; 18.26 sec.
+Command     autosyn done; 7.2 sec.
+Command   csynth_design done; 16.58 sec.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 14.48 seconds. CPU system time: 1.36 seconds. Elapsed time: 16.58 seconds; current allocated memory: 173.055 MB.
+Command ap_source done; 20.9 sec.
 Execute cleanup_all 
-INFO-FLOW: Workspace /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1 opened at Mon Jun 17 07:02:29 EDT 2024
+INFO-FLOW: Workspace /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1 opened at Mon Jun 17 10:00:17 EDT 2024
 Execute     ap_set_clock -name default -period 10 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
-Execute     set_part xc7z020-clg400-1 
-Execute       create_platform xc7z020-clg400-1 -board  
+Execute     set_part xck26-sfvc784-2LV-c 
+Execute       create_platform xck26-sfvc784-2LV-c -board  
 DBG:HLSDevice: Trying to load device library: /tools/Xilinx/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
 DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /tools/Xilinx/Vivado/2022.1/data/parts/arch.xml
 DBG:HLSDevice: init success
-INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
-Command       create_platform done; 2.21 sec.
+INFO: [HLS 200-1611] Setting target device to 'xck26-sfvc784-2LV-c'
+Command       create_platform done; 2.26 sec.
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -1528,12 +1530,10 @@ Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/i
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
-Command         ap_source done; 0.21 sec.
 Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Command       ap_source done; 0.24 sec.
-Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info 
 Execute       config_compile -quiet -complex-mul-dsp=0 
-Command     set_part done; 2.54 sec.
+Command     set_part done; 2.39 sec.
 Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Execute     get_config_interface -m_axi_latency 
@@ -1547,10 +1547,10 @@ Execute     config_export -format=ip_catalog
 Execute     send_msg_by_id INFO @200-1464@%s config_export -rtl=verilog 
 INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
 Execute     config_export -rtl=verilog 
-Command   open_solution done; 2.55 sec.
-Execute   set_part xc7z020-clg400-1 
-INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
-Execute     create_platform xc7z020-clg400-1 -board  
+Command   open_solution done; 2.4 sec.
+Execute   set_part xck26-sfvc784-2LV-c 
+INFO: [HLS 200-1510] Running: set_part xck26-sfvc784-2LV-c 
+Execute     create_platform xck26-sfvc784-2LV-c -board  
 Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -1563,9 +1563,9 @@ Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info 
 Execute     config_compile -quiet -complex-mul-dsp=0 
-Command   set_part done; 0.23 sec.
+Command   set_part done; 0.15 sec.
 Execute   create_clock -period 10 -name default 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 Execute   config_export -format ip_catalog -rtl verilog 
@@ -1720,8 +1720,8 @@ Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-opti
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.tbgen.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     get_solution -flow_target 
 Execute     get_config_rtl -kernel_profile 
 Execute     get_config_rtl -kernel_profile 
@@ -1744,10 +1744,10 @@ Execute     get_config_rtl -deadlock_detection
 INFO-FLOW: DBG:PUTS:       copy ip_driver_dir 1_0 /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/driver
 Execute     get_config_export -format 
 INFO-FLOW: DBG:PUTS:       generate_ip_script #gSsdmPorts=0 g_lang=vlog is_sdaccel=false is_sdsoc=true xo_file=
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
 Execute     get_config_interface -s_axilite_interrupt_mode 
@@ -1769,35 +1769,35 @@ Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-opti
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
 Execute     get_config_export -ip_xdc_ooc_file 
 Execute     get_config_export -ip_xdc_file 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
 INFO-FLOW: DBG:PUTS:       generate_ipi_example_script
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO-FLOW: DBG:PUTS:       generate_syn_sh
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
 INFO-FLOW: DBG:PUTS:       generate_imp_constraints
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
 Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
 INFO-FLOW: DBG:PUTS:       delete-temp-dirs (skipped for debug)
-Execute     ap_part_info -name xc7z020-clg400-1 -data names -quiet 
-Execute     ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
 INFO-FLOW: DBG:PUTS: read_platform_lib /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl
 Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
 Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
@@ -1822,7 +1822,325 @@ INFO-FLOW: DBG:PUTS:     IP package: success /home/ubuntu/SoC_Design/homework/AS
 Execute     get_config_export -output 
 Execute     send_msg_by_id INFO @200-802@%s userdma_fir/solution1/impl/export.zip 
 INFO: [HLS 200-802] Generated output file userdma_fir/solution1/impl/export.zip
-Command   export_design done; 22.1 sec.
-INFO: [HLS 200-111] Finished Command export_design CPU user time: 17.81 seconds. CPU system time: 1.93 seconds. Elapsed time: 22.1 seconds; current allocated memory: 11.523 MB.
-Command ap_source done; 24.89 sec.
+Command   export_design done; 20.07 sec.
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 17.05 seconds. CPU system time: 1.37 seconds. Elapsed time: 20.07 seconds; current allocated memory: 11.441 MB.
+Command ap_source done; 22.63 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1 opened at Mon Jun 17 10:02:21 EDT 2024
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xck26-sfvc784-2LV-c 
+Execute       create_platform xck26-sfvc784-2LV-c -board  
+DBG:HLSDevice: Trying to load device library: /tools/Xilinx/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /tools/Xilinx/Vivado/2022.1/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xck26-sfvc784-2LV-c'
+Command       create_platform done; 2.24 sec.
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xck26-sfvc784-2LV-c -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 2.38 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     get_config_interface -m_axi_latency 
+Execute     get_config_interface -m_axi_alignment_byte_size 
+Execute     get_config_interface -m_axi_max_widen_bitwidth 
+Execute     get_config_interface -default_interface 
+Execute     get_config_rtl -register_reset_num 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -format=ip_catalog 
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+Execute     config_export -format=ip_catalog 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -rtl=verilog 
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+Execute     config_export -rtl=verilog 
+Command   open_solution done; 2.39 sec.
+Execute   set_part xck26-sfvc784-2LV-c 
+INFO: [HLS 200-1510] Running: set_part xck26-sfvc784-2LV-c 
+Execute     create_platform xck26-sfvc784-2LV-c -board  
+Command     create_platform done; 0.2 sec.
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.35 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+Execute   source ./userdma_fir/solution1/directives.tcl 
+INFO: [HLS 200-1510] Running: source ./userdma_fir/solution1/directives.tcl
+Execute     set_directive_top -name userdma userdma 
+INFO: [HLS 200-1510] Running: set_directive_top -name userdma userdma 
+Execute   export_design -rtl verilog -format ip_catalog 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog 
+Execute     get_config_export -description 
+Execute     get_config_export -display_name 
+Execute     get_config_export -ipname 
+Execute     get_config_export -library 
+Execute     get_config_export -output 
+Execute     get_config_export -taxonomy 
+Execute     get_config_export -vendor 
+Execute     get_config_export -version 
+Execute     get_config_export -xo 
+Execute     config_export -format=ip_catalog -rtl=verilog 
+INFO-FLOW: DBG:PUTS: export_design_wrap: -format ip_catalog -rtl verilog
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -vivado_clock 
+Execute     get_top 
+Execute     get_config_export -ipname 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_config_rtl -module_auto_prefix 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_solution -flow_target 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+INFO-FLOW: DBG:PUTS:   auto_impl: pack: -export -rtl verilog
+INFO-FLOW: DBG:PROC: ::AESL_AUTOIMPL::auto_impl args='-export -rtl verilog'
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: automg_wrap -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::auto_generate args='-export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag'
+INFO-FLOW: DBG:PUTS:     auto_generate -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_config_export -ip_xdc_file 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: read_platform_lib /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=10.000 (was NA)
+INFO-FLOW: DBG:PUTS:       initCTypeInfo top_module=userdma xml_exists=1
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     get_config_rtl -deadlock_detection 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     get_config_rtl -deadlock_detection 
+Execute     get_config_rtl -deadlock_detection 
+Execute     get_config_rtl -module_prefix 
+INFO-FLOW: DBG:PUTS:       cosim_export_main adding deadlock detection to userdma
+Execute     get_config_rtl -deadlock_detection 
+INFO-FLOW: DBG:PUTS: Skipping loadAnalyze_DB, #g_database=24
+INFO-FLOW: DBG:PUTS:       generate_json generate_bd_files=0 generate_xo_files=false #modelList=38 #gSsdmPorts=0
+INFO-FLOW: DBG:PROC: ::AP::DESIGN_DATA::generate_json generate_bd_files='0' generate_xo_files='false' modelList='userdma_flow_control_loop_pipe_sequential_init
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_flow_control_loop_pipe_sequential_init
+userdma_flow_control_loop_pipe_sequential_init
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_regslice_both
+userdma_fifo_w1_d3_S
+userdma_fifo_w64_d3_S
+userdma_fifo_w1_d3_S
+userdma_fifo_w33_d1024_A
+userdma_fifo_w32_d64_A
+userdma_fifo_w32_d2_S
+userdma_fifo_w1_d2_S
+userdma_fifo_w40_d1024_A
+userdma_fifo_w32_d64_A
+userdma_fifo_w1_d2_S
+userdma_start_for_streamtoparallelwithburst_U0
+userdma_start_for_sendoutstream_U0
+userdma_gmem0_m_axi
+userdma_gmem1_m_axi
+userdma_control_s_axi
+entry_proc
+getinstream_Pipeline_VITIS_LOOP_50_1
+getinstream
+streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2
+streamtoparallelwithburst
+paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2
+paralleltostreamwithburst
+sendoutstream_Pipeline_VITIS_LOOP_155_2
+sendoutstream
+userdma
+' rtl_lang='vlog' bootstrap_tcl='false' outdir='' outfilename=''
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_solution -flow_target 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/top-io-be.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
+Execute     get_config_interface -s_axilite_interrupt_mode 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
+Execute     get_config_export -format 
+Execute     get_config_export -vendor 
+Execute     get_config_export -library 
+Execute     get_config_export -version 
+Execute     get_config_export -ipname 
+Execute     get_config_export -taxonomy 
+Execute     get_config_export -description 
+Execute     get_config_export -display_name 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/entry_proc.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream_Pipeline_VITIS_LOOP_50_1.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/getinstream.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/streamtoparallelwithburst.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/paralleltostreamwithburst.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream_Pipeline_VITIS_LOOP_155_2.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/sendoutstream.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     get_solution -flow_target 
+Execute     get_config_rtl -kernel_profile 
+Execute     get_config_rtl -kernel_profile 
+Execute     get_config_rtl -stall_sig_gen 
+Execute     get_config_rtl -profile 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
+Execute     sc_get_clocks userdma 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -ip_xdc_file 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     get_config_debug -directory 
+Execute     get_config_rtl -deadlock_detection 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     get_config_rtl -deadlock_detection 
+Execute     get_config_rtl -deadlock_detection 
+Execute     get_config_rtl -module_prefix 
+INFO-FLOW: DBG:PUTS:       cosim_export_main adding deadlock detection to userdma
+Execute     get_config_rtl -deadlock_detection 
+INFO-FLOW: DBG:PUTS:       copy ip_driver_dir 1_0 /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/driver
+Execute     get_config_export -format 
+INFO-FLOW: DBG:PUTS:       generate_ip_script #gSsdmPorts=0 g_lang=vlog is_sdaccel=false is_sdsoc=true xo_file=
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
+Execute     get_config_interface -s_axilite_interrupt_mode 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.compgen.dataonly.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_debug -directory 
+INFO-FLOW: DBG:PUTS:       generate_top_info
+INFO-FLOW: DBG:PUTS:       prepArgInfo -> loadAnalyze_DB top_module=userdma
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.rtl_wrap.cfg.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     get_config_export -ip_xdc_file 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
+INFO-FLOW: DBG:PUTS:       generate_ipi_example_script
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+INFO-FLOW: DBG:PUTS:       generate_syn_sh
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:       generate_imp_constraints
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.constraint.tcl 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/userdma.tbgen.tcl 
+INFO-FLOW: DBG:PUTS:       delete-temp-dirs (skipped for debug)
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data names -quiet 
+Execute     ap_part_info -name xck26-sfvc784-2LV-c -data info -quiet 
+INFO-FLOW: DBG:PUTS: read_platform_lib /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /tools/Xilinx/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:PUTS:     IP package: exec /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/impl/ip/pack.sh
+INFO-FLOW: DBG:PUTS:     IP package: success /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/impl/ip/pack.sh
+Execute     get_config_export -output 
+Execute     send_msg_by_id INFO @200-802@%s userdma_fir/solution1/impl/export.zip 
+INFO: [HLS 200-802] Generated output file userdma_fir/solution1/impl/export.zip
+Command   export_design done; 18.64 sec.
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 16.61 seconds. CPU system time: 1.11 seconds. Elapsed time: 18.64 seconds; current allocated memory: 11.461 MB.
+Command ap_source done; 21.39 sec.
 Execute cleanup_all 

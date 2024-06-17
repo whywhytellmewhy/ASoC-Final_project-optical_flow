@@ -35,7 +35,7 @@ void streamtoparallelwithburst(hls::stream<data> &in_stream, hls::stream<int> &i
 		  }
 
 		  buf_sts = out_sts;
-	  } while(final_s2m_len < 3*in_s2m_len); // modified in final project
+	  } while(final_s2m_len < in_s2m_len); // modified in final project
   }
 }
 

@@ -3,7 +3,7 @@
 #include "hls_stream.h"
 
 // #define BUF_LEN 1024
-#define BUF_LEN 64 //360*160	//image is 360*640
+#define BUF_LEN 1024*436 //360*160	//image is 1024*436
 
 typedef ap_axiu<32, 7, 0, 0> trans_pkt;	//tuser is FSIC tuser (2 bits) and user project upsb (5 bits)
 

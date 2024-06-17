@@ -9,7 +9,7 @@ add_files hls_userdma/userdma.h
 add_files hls_userdma/userdma.cpp
 add_files -tb hls_userdma/userdma_test.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1" -flow_target vivado
-set_part {xc7z020-clg400-1}
+set_part {xck26-sfvc784-2LV-c}
 create_clock -period 10 -name default
 config_export -format ip_catalog -rtl verilog
 source "./userdma_fir/solution1/directives.tcl"

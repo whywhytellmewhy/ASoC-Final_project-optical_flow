@@ -4,8 +4,8 @@
     </ReportVersion>
     <UserAssignments>
         <unit>ns</unit>
-        <ProductFamily>zynq</ProductFamily>
-        <Part>xc7z020-clg400-1</Part>
+        <ProductFamily>zynquplus</ProductFamily>
+        <Part>xck26-sfvc784-2LV-c</Part>
         <TopModelName>userdma</TopModelName>
         <TargetClockPeriod>10.00</TargetClockPeriod>
         <ClockUncertainty>2.70</ClockUncertainty>
@@ -33,17 +33,17 @@
     <AreaEstimates>
         <Resources>
             <BRAM_18K>9</BRAM_18K>
-            <FF>4316</FF>
-            <LUT>8143</LUT>
-            <DSP>0</DSP>
+            <FF>4248</FF>
+            <LUT>7999</LUT>
             <URAM>0</URAM>
+            <DSP>0</DSP>
         </Resources>
         <AvailableResources>
-            <BRAM_18K>280</BRAM_18K>
-            <DSP>220</DSP>
-            <FF>106400</FF>
-            <LUT>53200</LUT>
-            <URAM>0</URAM>
+            <BRAM_18K>288</BRAM_18K>
+            <DSP>1248</DSP>
+            <FF>234240</FF>
+            <LUT>117120</LUT>
+            <URAM>64</URAM>
         </AvailableResources>
     </AreaEstimates>
     <InterfaceSummary>
@@ -1572,7 +1572,7 @@
                             <BindInstances>add_ln23_fu_110_p2</BindInstances>
                         </Instance>
                     </InstancesList>
-                    <BindInstances>add_ln23_fu_192_p2 add_ln28_fu_224_p2 add_ln886_fu_234_p2</BindInstances>
+                    <BindInstances>add_ln23_fu_193_p2 add_ln28_fu_225_p2 add_ln886_fu_235_p2</BindInstances>
                 </Instance>
                 <Instance>
                     <InstName>sendoutstream_U0</InstName>
@@ -1600,7 +1600,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>3.634</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>1.838</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>0</Best-caseLatency>
@@ -1616,19 +1616,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>3</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>47</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1642,7 +1642,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>6.613</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.462</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -1670,19 +1670,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>140</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>281</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <LUT>287</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1698,7 +1698,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>6.613</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.447</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -1714,19 +1714,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>244</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>544</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
-                    <UTIL_LUT>1</UTIL_LUT>
+                    <LUT>556</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1772,19 +1772,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>69</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>117</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <LUT>119</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1835,27 +1835,27 @@
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>415</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <FF>413</FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>764</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
-                    <UTIL_LUT>1</UTIL_LUT>
+                    <LUT>758</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln23_fu_192_p2" SOURCE="hls_userdma/userdma.cpp:23" URAM="0" VARIABLE="add_ln23"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln28_fu_224_p2" SOURCE="hls_userdma/userdma.cpp:28" URAM="0" VARIABLE="add_ln28"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_234_p2" SOURCE="/tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln23_fu_193_p2" SOURCE="hls_userdma/userdma.cpp:23" URAM="0" VARIABLE="add_ln23"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln28_fu_225_p2" SOURCE="hls_userdma/userdma.cpp:28" URAM="0" VARIABLE="add_ln28"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_20_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_235_p2" SOURCE="/tools/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
             </BindNodes>
         </Module>
         <Module>
@@ -1895,19 +1895,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>139</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>321</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <LUT>331</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1961,19 +1961,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>514</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>984</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
-                    <UTIL_LUT>1</UTIL_LUT>
+                    <LUT>1003</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -1993,7 +1993,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>4.110</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>1.750</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -2021,19 +2021,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>39</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>143</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <LUT>146</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -2050,7 +2050,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>4.612</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.125</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -2080,19 +2080,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>82</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>237</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
+                    <LUT>240</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -2120,20 +2120,20 @@
             <AreaEstimates>
                 <Resources>
                     <BRAM_18K>9</BRAM_18K>
-                    <AVAIL_BRAM>280</AVAIL_BRAM>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
                     <UTIL_BRAM>3</UTIL_BRAM>
-                    <FF>4316</FF>
-                    <AVAIL_FF>106400</AVAIL_FF>
-                    <UTIL_FF>4</UTIL_FF>
-                    <LUT>8143</LUT>
-                    <AVAIL_LUT>53200</AVAIL_LUT>
-                    <UTIL_LUT>15</UTIL_LUT>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>220</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
+                    <FF>4248</FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
+                    <UTIL_FF>1</UTIL_FF>
+                    <LUT>7999</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
+                    <UTIL_LUT>6</UTIL_LUT>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
                 </Resources>
             </AreaEstimates>
             <BindNodes>

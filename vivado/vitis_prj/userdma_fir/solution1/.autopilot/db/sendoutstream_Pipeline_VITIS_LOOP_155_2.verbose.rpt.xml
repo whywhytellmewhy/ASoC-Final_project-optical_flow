@@ -1,13 +1,13 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'sendoutstream_Pipeline_VITIS_LOOP_155_2'" level="0">
-<item name = "Date">Mon Jun 17 09:59:47 2024
+<item name = "Date">Mon Jun 17 13:08:03 2024
 </item>
 <item name = "Version">2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)</item>
 <item name = "Project">userdma_fir</item>
 <item name = "Solution">solution1 (Vivado IP Flow Target)</item>
-<item name = "Product family">zynquplus</item>
-<item name = "Target device">xck26-sfvc784-2LV-c</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg400-1</item>
 </section>
 
 <section name = "Performance Estimates" level="0">
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00 ns, 1.750 ns, 2.70 ns</column>
+<column name="ap_clk">10.00 ns, 4.110 ns, 2.70 ns</column>
 </table>
 </item>
 </section>
@@ -48,13 +48,13 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 70, -</column>
+<column name="Expression">-, -, 0, 68, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">-, -, -, -, -</column>
-<column name="Multiplexer">-, -, -, 76, -</column>
+<column name="Multiplexer">-, -, -, 75, -</column>
 <column name="Register">-, -, 39, -, -</column>
-<specialColumn name="Available">288, 1248, 234240, 117120, 64</specialColumn>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
 <specialColumn name="Utilization (%)">0, 0, ~0, ~0, 0</specialColumn>
 </table>
 </item>
@@ -82,7 +82,7 @@
 <column name="ap_block_pp0_stage0_01001">and, 0, 0, 2, 1, 1</column>
 <column name="ap_block_pp0_stage0_11001">and, 0, 0, 2, 1, 1</column>
 <column name="ap_block_state3_io">and, 0, 0, 2, 1, 1</column>
-<column name="icmp_ln155_fu_139_p2">icmp, 0, 0, 20, 32, 32</column>
+<column name="icmp_ln155_fu_139_p2">icmp, 0, 0, 18, 32, 32</column>
 <column name="ap_block_state3_pp0_stage0_iter1">or, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
 <column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
@@ -90,7 +90,7 @@
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="ap_NS_fsm">26, 5, 1, 5</column>
+<column name="ap_NS_fsm">25, 5, 1, 5</column>
 <column name="ap_enable_reg_pp0_iter1">14, 3, 1, 3</column>
 <column name="i_fu_66">9, 2, 31, 62</column>
 <column name="outStreamTop_TDATA_blk_n">9, 2, 1, 2</column>

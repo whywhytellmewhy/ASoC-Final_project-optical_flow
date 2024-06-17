@@ -4,4 +4,4 @@
 # Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 # ==============================================================
 
-/tools/Xilinx/Vivado/2022.1/bin/vivado  -notrace -mode batch -source ipi_example.tcl -tclargs xck26-sfvc784-2LV-c ../xilinx_com_hls_userdma_1_0.zip
+/tools/Xilinx/Vivado/2022.1/bin/vivado  -notrace -mode batch -source ipi_example.tcl -tclargs xc7z020-clg400-1 ../xilinx_com_hls_userdma_1_0.zip

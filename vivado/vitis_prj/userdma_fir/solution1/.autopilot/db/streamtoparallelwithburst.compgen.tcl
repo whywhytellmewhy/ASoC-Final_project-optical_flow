@@ -10,7 +10,7 @@ if {${::AESL::PGuard_autoexp_gen}} {
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 38 \
+    id 41 \
     name inbuf \
     type fifo \
     dir I \
@@ -25,22 +25,22 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 39 \
-    name incount40 \
+    id 42 \
+    name incount47 \
     type fifo \
     dir I \
     reset_level 1 \
     sync_rst true \
-    corename dc_incount40 \
+    corename dc_incount47 \
     op interface \
-    ports { incount40_dout { I 32 vector } incount40_num_data_valid { I 7 vector } incount40_fifo_cap { I 7 vector } incount40_empty_n { I 1 bit } incount40_read { O 1 bit } } \
+    ports { incount47_dout { I 32 vector } incount47_num_data_valid { I 7 vector } incount47_fifo_cap { I 7 vector } incount47_empty_n { I 1 bit } incount47_read { O 1 bit } } \
 } "
 }
 
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 40 \
+    id 43 \
     name in_en_clrsts \
     type fifo \
     dir I \
@@ -55,7 +55,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 41 \
+    id 44 \
     name s2m_buf_sts \
     type other \
     dir O \
@@ -70,7 +70,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 42 \
+    id 45 \
     name sts_clear \
     type fifo \
     dir I \
@@ -85,7 +85,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 43 \
+    id 46 \
     name in_s2m_len \
     type fifo \
     dir I \
@@ -100,7 +100,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 44 \
+    id 47 \
     name gmem0 \
     type other \
     dir O \
@@ -115,7 +115,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 45 \
+    id 48 \
     name out_memory \
     type fifo \
     dir I \

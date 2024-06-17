@@ -35,8 +35,8 @@
 
 <AreaEstimates>
 <Resources>
-<FF>177</FF>
-<LUT>409</LUT>
+<FF>244</FF>
+<LUT>544</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP>0</DSP>
 <URAM>0</URAM>
@@ -250,6 +250,17 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
+<name>in_Img_width</name>
+<Object>in_Img_width</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>32</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
 <name>inbuf_din</name>
 <Object>inbuf</Object>
 <Type>pointer</Type>
@@ -305,8 +316,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>incount40_din</name>
-<Object>incount40</Object>
+<name>incount47_din</name>
+<Object>incount47</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -316,8 +327,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>incount40_num_data_valid</name>
-<Object>incount40</Object>
+<name>incount47_num_data_valid</name>
+<Object>incount47</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -327,8 +338,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>incount40_fifo_cap</name>
-<Object>incount40</Object>
+<name>incount47_fifo_cap</name>
+<Object>incount47</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -338,8 +349,8 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>incount40_full_n</name>
-<Object>incount40</Object>
+<name>incount47_full_n</name>
+<Object>incount47</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -349,8 +360,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>incount40_write</name>
-<Object>incount40</Object>
+<name>incount47_write</name>
+<Object>incount47</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>

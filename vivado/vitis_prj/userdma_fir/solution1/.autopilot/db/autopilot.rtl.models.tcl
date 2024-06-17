@@ -14,7 +14,7 @@ set SynModuleInfo {
   {SRCNAME streamtoparallelwithburst MODELNAME streamtoparallelwithburst RTLNAME userdma_streamtoparallelwithburst}
   {SRCNAME paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 MODELNAME paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2 RTLNAME userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2}
   {SRCNAME paralleltostreamwithburst MODELNAME paralleltostreamwithburst RTLNAME userdma_paralleltostreamwithburst}
-  {SRCNAME sendoutstream_Pipeline_VITIS_LOOP_154_2 MODELNAME sendoutstream_Pipeline_VITIS_LOOP_154_2 RTLNAME userdma_sendoutstream_Pipeline_VITIS_LOOP_154_2}
+  {SRCNAME sendoutstream_Pipeline_VITIS_LOOP_155_2 MODELNAME sendoutstream_Pipeline_VITIS_LOOP_155_2 RTLNAME userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2}
   {SRCNAME sendoutstream MODELNAME sendoutstream RTLNAME userdma_sendoutstream}
   {SRCNAME userdma MODELNAME userdma RTLNAME userdma IS_TOP 1
     SUBMODULES {

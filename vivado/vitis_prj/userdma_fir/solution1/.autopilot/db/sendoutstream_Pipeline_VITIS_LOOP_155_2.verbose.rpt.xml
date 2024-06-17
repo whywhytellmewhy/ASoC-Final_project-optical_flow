@@ -1,7 +1,7 @@
 <profile>
 
-<section name = "Vitis HLS Report for 'sendoutstream_Pipeline_VITIS_LOOP_154_2'" level="0">
-<item name = "Date">Sun May 19 03:36:02 2024
+<section name = "Vitis HLS Report for 'sendoutstream_Pipeline_VITIS_LOOP_155_2'" level="0">
+<item name = "Date">Mon Jun 17 07:02:09 2024
 </item>
 <item name = "Version">2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)</item>
 <item name = "Project">userdma_fir</item>
@@ -35,7 +35,7 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- VITIS_LOOP_154_2">?, ?, 2, 1, 1, ?, yes</column>
+<column name="- VITIS_LOOP_155_2">?, ?, 2, 1, 1, ?, yes</column>
 </table>
 </item>
 </section>
@@ -78,11 +78,11 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="add_ln154_fu_144_p2">+, 0, 0, 38, 31, 1</column>
+<column name="add_ln155_fu_144_p2">+, 0, 0, 38, 31, 1</column>
 <column name="ap_block_pp0_stage0_01001">and, 0, 0, 2, 1, 1</column>
 <column name="ap_block_pp0_stage0_11001">and, 0, 0, 2, 1, 1</column>
 <column name="ap_block_state3_io">and, 0, 0, 2, 1, 1</column>
-<column name="icmp_ln154_fu_139_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln155_fu_139_p2">icmp, 0, 0, 18, 32, 32</column>
 <column name="ap_block_state3_pp0_stage0_iter1">or, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
 <column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
@@ -104,7 +104,7 @@
 <column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
 <column name="i_fu_66">31, 0, 31, 0</column>
-<column name="icmp_ln154_reg_197">1, 0, 1, 0</column>
+<column name="icmp_ln155_reg_197">1, 0, 1, 0</column>
 <column name="p_phi_reg_116">1, 0, 1, 0</column>
 </table>
 </item>
@@ -115,12 +115,12 @@
 <section name = "Interface" level="0">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
-<column name="ap_clk">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
-<column name="ap_rst">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
-<column name="ap_start">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
-<column name="ap_done">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
-<column name="ap_idle">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
-<column name="ap_ready">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_154_2, return value</column>
+<column name="ap_clk">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, sendoutstream_Pipeline_VITIS_LOOP_155_2, return value</column>
 <column name="out_val_last_V">in, 1, ap_none, out_val_last_V, scalar</column>
 <column name="tmp">in, 32, ap_none, tmp, scalar</column>
 <column name="outbuf_dout">in, 40, ap_fifo, outbuf, pointer</column>

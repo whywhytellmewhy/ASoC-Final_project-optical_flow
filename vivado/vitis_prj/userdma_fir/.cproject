@@ -171,9 +171,9 @@
                                 								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/include"/>
                                 								
-                                <listOptionValue builtIn="false" value="/home/ubuntu/SoC_Design/homework/ASoC_lab4_FSIC_FPGA/vivado/vitis_prj"/>
-                                								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj"/>
                                 								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/systemc/include"/>
                                 							
@@ -349,9 +349,9 @@
                                 								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/include"/>
                                 								
-                                <listOptionValue builtIn="false" value="/home/ubuntu/SoC_Design/homework/ASoC_lab4_FSIC_FPGA/vivado/vitis_prj"/>
-                                								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/auto_cc/include"/>
+                                								
+                                <listOptionValue builtIn="false" value="/home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj"/>
                                 								
                                 <listOptionValue builtIn="false" value="/tools/Xilinx/Vitis_HLS/2022.1/lnx64/tools/systemc/include"/>
                                 							

@@ -54,6 +54,8 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/bram11.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/user_prj2.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/spram.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj3/rtl/user_prj3.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/rtl/user_project_wrapper.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/rtl/user_subsys.v"]"\
@@ -266,6 +268,8 @@ set files [list \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/bram11.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/user_prj2.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/spram.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj3/rtl/user_prj3.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/rtl/user_project_wrapper.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/rtl/user_subsys.v"] \

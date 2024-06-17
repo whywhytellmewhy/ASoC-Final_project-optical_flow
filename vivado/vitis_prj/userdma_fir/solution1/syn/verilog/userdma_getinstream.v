@@ -26,16 +26,17 @@ module userdma_getinstream (
         in_s2m_len,
         s2m_err,
         s2m_err_ap_vld,
+        in_Img_width,
         inbuf_din,
         inbuf_num_data_valid,
         inbuf_fifo_cap,
         inbuf_full_n,
         inbuf_write,
-        incount40_din,
-        incount40_num_data_valid,
-        incount40_fifo_cap,
-        incount40_full_n,
-        incount40_write,
+        incount47_din,
+        incount47_num_data_valid,
+        incount47_fifo_cap,
+        incount47_full_n,
+        incount47_write,
         s2m_len_c_din,
         s2m_len_c_num_data_valid,
         s2m_len_c_fifo_cap,
@@ -70,16 +71,17 @@ input  [0:0] in_en_clrsts;
 input  [31:0] in_s2m_len;
 output  [0:0] s2m_err;
 output   s2m_err_ap_vld;
+input  [31:0] in_Img_width;
 output  [32:0] inbuf_din;
 input  [10:0] inbuf_num_data_valid;
 input  [10:0] inbuf_fifo_cap;
 input   inbuf_full_n;
 output   inbuf_write;
-output  [31:0] incount40_din;
-input  [6:0] incount40_num_data_valid;
-input  [6:0] incount40_fifo_cap;
-input   incount40_full_n;
-output   incount40_write;
+output  [31:0] incount47_din;
+input  [6:0] incount47_num_data_valid;
+input  [6:0] incount47_fifo_cap;
+input   incount47_full_n;
+output   incount47_write;
 output  [31:0] s2m_len_c_din;
 input  [1:0] s2m_len_c_num_data_valid;
 input  [1:0] s2m_len_c_fifo_cap;
@@ -97,7 +99,7 @@ reg ap_ready;
 reg[0:0] s2m_err;
 reg s2m_err_ap_vld;
 reg inbuf_write;
-reg incount40_write;
+reg incount47_write;
 reg s2m_len_c_write;
 reg s2m_enb_clrsts_c_write;
 
@@ -107,32 +109,41 @@ wire    ap_CS_fsm_state1;
 reg   [31:0] in_len_V;
 reg    s2m_len_c_blk_n;
 reg    s2m_enb_clrsts_c_blk_n;
-wire   [0:0] in_en_clrsts_read_read_fu_82_p2;
-wire   [31:0] umax_fu_151_p3;
-reg   [31:0] umax_reg_212;
-wire   [0:0] icmp_ln1065_fu_165_p2;
-reg   [0:0] icmp_ln1065_reg_218;
+wire   [0:0] in_en_clrsts_read_read_fu_102_p2;
+wire   [32:0] sub_i_i52_fu_162_p2;
+reg   [32:0] sub_i_i52_reg_277;
+wire   [31:0] umax_fu_186_p3;
+reg   [31:0] umax_reg_287;
+wire   [0:0] icmp_ln1065_fu_200_p2;
+reg   [0:0] icmp_ln1065_reg_293;
 wire    ap_CS_fsm_state2;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_done;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_idle;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_ready;
-wire   [32:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_din;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_write;
-wire   [31:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_din;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_write;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inStreamTop_TREADY;
-wire   [2:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_tmp_user_V_out;
-wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_tmp_user_V_out_ap_vld;
-reg    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg;
-reg    ap_block_state1_ignore_call5;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_done;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_idle;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_ready;
+wire   [32:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_din;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_write;
+wire   [31:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_din;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_write;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inStreamTop_TREADY;
+wire   [3:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out_ap_vld;
+wire   [0:0] grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_icmp_ln1065_out;
+wire    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_icmp_ln1065_out_ap_vld;
+reg    grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg;
+reg    ap_block_state1_ignore_call7;
 reg    ap_block_state1;
 wire    ap_CS_fsm_state3;
 reg   [0:0] s2m_err_preg;
-wire   [0:0] xor_ln60_fu_186_p2;
-wire   [31:0] add_ln50_fu_139_p2;
-wire   [0:0] empty_fu_145_p2;
-wire   [0:0] tmp_fu_178_p3;
+wire   [0:0] or_ln64_fu_249_p2;
+wire   [32:0] in_Img_width_cast_fu_158_p1;
+wire   [31:0] add_ln50_fu_174_p2;
+wire   [0:0] empty_fu_180_p2;
+wire   [0:0] tmp_fu_216_p3;
+wire   [0:0] xor_ln1069_fu_224_p2;
+wire   [0:0] tmp_2_fu_236_p3;
+wire   [0:0] and_ln1065_fu_230_p2;
+wire   [0:0] xor_ln60_fu_244_p2;
 reg   [2:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 reg    ap_ST_fsm_state2_blk;
@@ -165,38 +176,41 @@ initial begin
 #0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 3'd1;
 #0 in_len_V = 32'd0;
-#0 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg = 1'b0;
+#0 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg = 1'b0;
 #0 s2m_err_preg = 1'd0;
 end
 
-userdma_getinstream_Pipeline_VITIS_LOOP_50_1 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112(
+userdma_getinstream_Pipeline_VITIS_LOOP_50_1 grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start),
-    .ap_done(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_done),
-    .ap_idle(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_idle),
-    .ap_ready(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_ready),
+    .ap_start(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start),
+    .ap_done(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_done),
+    .ap_idle(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_idle),
+    .ap_ready(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_ready),
     .inStreamTop_TVALID(inStreamTop_TVALID_int_regslice),
-    .inbuf_din(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_din),
+    .inbuf_din(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_din),
     .inbuf_num_data_valid(11'd0),
     .inbuf_fifo_cap(11'd0),
     .inbuf_full_n(inbuf_full_n),
-    .inbuf_write(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_write),
-    .incount40_din(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_din),
-    .incount40_num_data_valid(7'd0),
-    .incount40_fifo_cap(7'd0),
-    .incount40_full_n(incount40_full_n),
-    .incount40_write(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_write),
+    .inbuf_write(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_write),
+    .incount47_din(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_din),
+    .incount47_num_data_valid(7'd0),
+    .incount47_fifo_cap(7'd0),
+    .incount47_full_n(incount47_full_n),
+    .incount47_write(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_write),
     .in_len_V_load(in_len_V),
     .inStreamTop_TDATA(inStreamTop_TDATA_int_regslice),
-    .inStreamTop_TREADY(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inStreamTop_TREADY),
+    .inStreamTop_TREADY(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inStreamTop_TREADY),
     .inStreamTop_TKEEP(inStreamTop_TKEEP_int_regslice),
     .inStreamTop_TSTRB(inStreamTop_TSTRB_int_regslice),
     .inStreamTop_TUSER(inStreamTop_TUSER_int_regslice),
     .inStreamTop_TLAST(inStreamTop_TLAST_int_regslice),
+    .sub_i_i52(sub_i_i52_reg_277),
     .in_s2m_len(in_s2m_len),
-    .tmp_user_V_out(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_tmp_user_V_out),
-    .tmp_user_V_out_ap_vld(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_tmp_user_V_out_ap_vld)
+    .tmp_user_V_out(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out),
+    .tmp_user_V_out_ap_vld(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out_ap_vld),
+    .icmp_ln1065_out(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_icmp_ln1065_out),
+    .icmp_ln1065_out_ap_vld(grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_icmp_ln1065_out_ap_vld)
 );
 
 userdma_regslice_both #(
@@ -291,12 +305,12 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg <= 1'b0;
+        grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg <= 1'b0;
     end else begin
-        if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-            grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg <= 1'b1;
-        end else if ((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_ready == 1'b1)) begin
-            grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg <= 1'b0;
+        if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg <= 1'b1;
+        end else if ((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_ready == 1'b1)) begin
+            grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg <= 1'b0;
         end
     end
 end
@@ -305,31 +319,32 @@ always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
         s2m_err_preg <= 1'd0;
     end else begin
-        if (((in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3))) begin
-            s2m_err_preg <= xor_ln60_fu_186_p2;
-        end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        if (((in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3))) begin
+            s2m_err_preg <= or_ln64_fu_249_p2;
+        end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
             s2m_err_preg <= 1'd0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
         in_len_V <= 32'd0;
-    end else if (((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
-        in_len_V <= umax_reg_212;
+    end else if (((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        in_len_V <= umax_reg_287;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        icmp_ln1065_reg_218 <= icmp_ln1065_fu_165_p2;
+        icmp_ln1065_reg_293 <= icmp_ln1065_fu_200_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-        umax_reg_212 <= umax_fu_151_p3;
+    if (((in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        sub_i_i52_reg_277 <= sub_i_i52_fu_162_p2;
+        umax_reg_287 <= umax_fu_186_p3;
     end
 end
 
@@ -342,7 +357,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_done == 1'b0)) begin
+    if ((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_done == 1'b0)) begin
         ap_ST_fsm_state2_blk = 1'b1;
     end else begin
         ap_ST_fsm_state2_blk = 1'b0;
@@ -377,7 +392,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        inStreamTop_TREADY_int_regslice = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inStreamTop_TREADY;
+        inStreamTop_TREADY_int_regslice = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inStreamTop_TREADY;
     end else begin
         inStreamTop_TREADY_int_regslice = 1'b0;
     end
@@ -385,7 +400,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        inbuf_write = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_write;
+        inbuf_write = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_write;
     end else begin
         inbuf_write = 1'b0;
     end
@@ -393,9 +408,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        incount40_write = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_write;
+        incount47_write = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_write;
     end else begin
-        incount40_write = 1'b0;
+        incount47_write = 1'b0;
     end
 end
 
@@ -416,9 +431,9 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3))) begin
-        s2m_err = xor_ln60_fu_186_p2;
-    end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+    if (((in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3))) begin
+        s2m_err = or_ln64_fu_249_p2;
+    end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
         s2m_err = 1'd0;
     end else begin
         s2m_err = s2m_err_preg;
@@ -426,7 +441,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3)) | (~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if ((((in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state3)) | (~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1)))) begin
         s2m_err_ap_vld = 1'b1;
     end else begin
         s2m_err_ap_vld = 1'b0;
@@ -452,16 +467,16 @@ end
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+            if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
-            end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_82_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1)) & (in_en_clrsts_read_read_fu_102_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+            if (((grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -476,7 +491,9 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln50_fu_139_p2 = (in_len_V + 32'd1);
+assign add_ln50_fu_174_p2 = (in_len_V + 32'd1);
+
+assign and_ln1065_fu_230_p2 = (xor_ln1069_fu_224_p2 & grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_icmp_ln1065_out);
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
@@ -489,31 +506,41 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_block_state1_ignore_call5 = ((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1));
+    ap_block_state1_ignore_call7 = ((ap_start == 1'b0) | (s2m_enb_clrsts_c_full_n == 1'b0) | (s2m_len_c_full_n == 1'b0) | (ap_done_reg == 1'b1));
 end
 
-assign empty_fu_145_p2 = ((add_ln50_fu_139_p2 < in_s2m_len) ? 1'b1 : 1'b0);
+assign empty_fu_180_p2 = ((add_ln50_fu_174_p2 < in_s2m_len) ? 1'b1 : 1'b0);
 
-assign grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_ap_start_reg;
+assign grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_ap_start_reg;
 
-assign icmp_ln1065_fu_165_p2 = ((umax_reg_212 == 32'd1) ? 1'b1 : 1'b0);
+assign icmp_ln1065_fu_200_p2 = ((umax_reg_287 == 32'd1) ? 1'b1 : 1'b0);
 
 assign inStreamTop_TREADY = regslice_both_inStreamTop_V_data_V_U_ack_in;
 
-assign in_en_clrsts_read_read_fu_82_p2 = in_en_clrsts;
+assign in_Img_width_cast_fu_158_p1 = in_Img_width;
 
-assign inbuf_din = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_inbuf_din;
+assign in_en_clrsts_read_read_fu_102_p2 = in_en_clrsts;
 
-assign incount40_din = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_incount40_din;
+assign inbuf_din = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_inbuf_din;
+
+assign incount47_din = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_incount47_din;
+
+assign or_ln64_fu_249_p2 = (xor_ln60_fu_244_p2 | and_ln1065_fu_230_p2);
 
 assign s2m_enb_clrsts_c_din = in_en_clrsts;
 
 assign s2m_len_c_din = in_s2m_len;
 
-assign tmp_fu_178_p3 = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_112_tmp_user_V_out[32'd2];
+assign sub_i_i52_fu_162_p2 = ($signed(in_Img_width_cast_fu_158_p1) + $signed(33'd8589934591));
 
-assign umax_fu_151_p3 = ((empty_fu_145_p2[0:0] == 1'b1) ? in_s2m_len : add_ln50_fu_139_p2);
+assign tmp_2_fu_236_p3 = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out[32'd2];
 
-assign xor_ln60_fu_186_p2 = (tmp_fu_178_p3 ^ icmp_ln1065_reg_218);
+assign tmp_fu_216_p3 = grp_getinstream_Pipeline_VITIS_LOOP_50_1_fu_132_tmp_user_V_out[32'd3];
+
+assign umax_fu_186_p3 = ((empty_fu_180_p2[0:0] == 1'b1) ? in_s2m_len : add_ln50_fu_174_p2);
+
+assign xor_ln1069_fu_224_p2 = (tmp_fu_216_p3 ^ 1'd1);
+
+assign xor_ln60_fu_244_p2 = (tmp_2_fu_236_p3 ^ icmp_ln1065_reg_293);
 
 endmodule //userdma_getinstream

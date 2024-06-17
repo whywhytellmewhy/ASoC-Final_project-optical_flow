@@ -921,17 +921,17 @@ char xlx_stream_elt_last;
     } // end post check logic bolck
   #ifdef USE_BINARY_TV_FILE
 {
-transaction<32> tr(64);
+transaction<32> tr(446464);
 aesl_fh.read(AUTOTB_TVOUT_PC_gmem0, tr.p, tr.tbytes);
 if (little_endian()) { tr.reorder(); }
-tr.send<4>((char*)__xlx_apatb_param_s2mbuf, 64, 0);
+tr.send<4>((char*)__xlx_apatb_param_s2mbuf, 446464, 0);
 }
 #else
 try {
 static PostCheck<32> pc(AUTOTB_TVOUT_PC_gmem0);
 pc.psize = 4;
 pc.param = (char*)__xlx_apatb_param_s2mbuf;
-pc.depth = 64;
+pc.depth = 446464;
 pc.run(AESL_transaction_pc, 0);
 } catch (SimException &e) {
   std::cout << "at line " << e.line << " occurred exception, " << e.msg << "\n";
@@ -1027,13 +1027,13 @@ std::vector<char> __xlx_apatb_param_outStreamTop_V_last_V_stream_buf;
 #ifdef USE_BINARY_TV_FILE
 {
 aesl_fh.touch(AUTOTB_TVIN_gmem0, 'b');
-transaction<32> tr(64);
+transaction<32> tr(446464);
 __xlx_offset_byte_param_s2mbuf = 0*4;
 if (__xlx_apatb_param_s2mbuf) {
-  tr.import<4>((char*)__xlx_apatb_param_s2mbuf, 64, 0);
+  tr.import<4>((char*)__xlx_apatb_param_s2mbuf, 446464, 0);
 }
 aesl_fh.write(AUTOTB_TVIN_gmem0, tr.p, tr.tbytes);
-tcl_file.set_num(64, &tcl_file.gmem0_depth);
+tcl_file.set_num(446464, &tcl_file.gmem0_depth);
 }
 #else
 aesl_fh.touch(AUTOTB_TVIN_gmem0);
@@ -1041,26 +1041,26 @@ aesl_fh.touch(AUTOTB_TVIN_gmem0);
 aesl_fh.write(AUTOTB_TVIN_gmem0, begin_str(AESL_transaction));
 __xlx_offset_byte_param_s2mbuf = 0*4;
 if (__xlx_apatb_param_s2mbuf) {
-for (size_t i = 0; i < 64; ++i) {
+for (size_t i = 0; i < 446464; ++i) {
 unsigned char *pos = (unsigned char*)__xlx_apatb_param_s2mbuf + i * 4;
 std::string s = formatData(pos, 32);
 aesl_fh.write(AUTOTB_TVIN_gmem0, s);
 }
 }
-tcl_file.set_num(64, &tcl_file.gmem0_depth);
+tcl_file.set_num(446464, &tcl_file.gmem0_depth);
 aesl_fh.write(AUTOTB_TVIN_gmem0, end_str());
 }
 #endif
 #ifdef USE_BINARY_TV_FILE
 {
 aesl_fh.touch(AUTOTB_TVIN_gmem1, 'b');
-transaction<32> tr(64);
+transaction<32> tr(446464);
 __xlx_offset_byte_param_m2sbuf = 0*4;
 if (__xlx_apatb_param_m2sbuf) {
-  tr.import<4>((char*)__xlx_apatb_param_m2sbuf, 64, 0);
+  tr.import<4>((char*)__xlx_apatb_param_m2sbuf, 446464, 0);
 }
 aesl_fh.write(AUTOTB_TVIN_gmem1, tr.p, tr.tbytes);
-tcl_file.set_num(64, &tcl_file.gmem1_depth);
+tcl_file.set_num(446464, &tcl_file.gmem1_depth);
 }
 #else
 aesl_fh.touch(AUTOTB_TVIN_gmem1);
@@ -1068,13 +1068,13 @@ aesl_fh.touch(AUTOTB_TVIN_gmem1);
 aesl_fh.write(AUTOTB_TVIN_gmem1, begin_str(AESL_transaction));
 __xlx_offset_byte_param_m2sbuf = 0*4;
 if (__xlx_apatb_param_m2sbuf) {
-for (size_t i = 0; i < 64; ++i) {
+for (size_t i = 0; i < 446464; ++i) {
 unsigned char *pos = (unsigned char*)__xlx_apatb_param_m2sbuf + i * 4;
 std::string s = formatData(pos, 32);
 aesl_fh.write(AUTOTB_TVIN_gmem1, s);
 }
 }
-tcl_file.set_num(64, &tcl_file.gmem1_depth);
+tcl_file.set_num(446464, &tcl_file.gmem1_depth);
 aesl_fh.write(AUTOTB_TVIN_gmem1, end_str());
 }
 #endif
@@ -1468,13 +1468,13 @@ aesl_fh.write(WRAPC_STREAM_SIZE_OUT_outStreamTop_V_last_V, end_str());
 #ifdef USE_BINARY_TV_FILE
 {
 aesl_fh.touch(AUTOTB_TVOUT_gmem0, 'b');
-transaction<32> tr(64);
+transaction<32> tr(446464);
 __xlx_offset_byte_param_s2mbuf = 0*4;
 if (__xlx_apatb_param_s2mbuf) {
-  tr.import<4>((char*)__xlx_apatb_param_s2mbuf, 64, 0);
+  tr.import<4>((char*)__xlx_apatb_param_s2mbuf, 446464, 0);
 }
 aesl_fh.write(AUTOTB_TVOUT_gmem0, tr.p, tr.tbytes);
-tcl_file.set_num(64, &tcl_file.gmem0_depth);
+tcl_file.set_num(446464, &tcl_file.gmem0_depth);
 }
 #else
 aesl_fh.touch(AUTOTB_TVOUT_gmem0);
@@ -1482,13 +1482,13 @@ aesl_fh.touch(AUTOTB_TVOUT_gmem0);
 aesl_fh.write(AUTOTB_TVOUT_gmem0, begin_str(AESL_transaction));
 __xlx_offset_byte_param_s2mbuf = 0*4;
 if (__xlx_apatb_param_s2mbuf) {
-for (size_t i = 0; i < 64; ++i) {
+for (size_t i = 0; i < 446464; ++i) {
 unsigned char *pos = (unsigned char*)__xlx_apatb_param_s2mbuf + i * 4;
 std::string s = formatData(pos, 32);
 aesl_fh.write(AUTOTB_TVOUT_gmem0, s);
 }
 }
-tcl_file.set_num(64, &tcl_file.gmem0_depth);
+tcl_file.set_num(446464, &tcl_file.gmem0_depth);
 aesl_fh.write(AUTOTB_TVOUT_gmem0, end_str());
 }
 #endif

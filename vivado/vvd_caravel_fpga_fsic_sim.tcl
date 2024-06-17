@@ -54,6 +54,8 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/bram11.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/user_prj2.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/spram.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj3/rtl/user_prj3.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/rtl/user_project_wrapper.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_subsys/rtl/user_subsys.v"]"\
@@ -87,7 +89,7 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/header/defines.v"]"\
  "[file normalize "$origin_dir/fsic_defines.v"]"\
  "[file normalize "$origin_dir/fsic.coe"]"\
- "[file normalize "$origin_dir/fsic_tb2.sv"]"\
+ "[file normalize "$origin_dir/fsic_tb.sv"]"\
  "[file normalize "$origin_dir/fsic_tb_behav.wcfg"]"\
   ]
   foreach ifile $files {
@@ -272,6 +274,8 @@ set files [list \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/bram11.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj1/rtl/multiplier_adder.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/user_prj2.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/spram.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj3/rtl/user_prj3.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/rtl/user_project_wrapper.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_subsys/rtl/user_subsys.v"] \
@@ -386,13 +390,13 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 # Set 'sim_1' fileset object
 set obj [get_filesets sim_1]
 set files [list \
- [file normalize "${origin_dir}/fsic_tb2.sv"] \
+ [file normalize "${origin_dir}/fsic_tb.sv"] \
  [file normalize "${origin_dir}/fsic_tb_behav.wcfg"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Set 'sim_1' fileset file properties for remote files
-set file "$origin_dir/fsic_tb2.sv"
+set file "$origin_dir/fsic_tb.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
@@ -405,7 +409,7 @@ set_property -name "used_in_implementation" -value "0" -objects $file_obj
 
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
-set_property -name "top" -value "fsic_tb2" -objects $obj
+set_property -name "top" -value "fsic_tb" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "verilog_define" -value "USER_PROJECT_SIDEBAND_SUPPORT=1 USE_EDGEDETECT_IP=1 pSERIALIO_WIDTH=13" -objects $obj

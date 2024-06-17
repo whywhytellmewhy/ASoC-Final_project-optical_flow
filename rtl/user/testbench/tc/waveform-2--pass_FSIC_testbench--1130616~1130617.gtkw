@@ -1,0 +1,149 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Jun 17 02:39:51 2024
+[*]
+[dumpfile] "(null)"
+[savefile] "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/rtl/user/testbench/tc/waveform-2--pass_FSIC_testbench--1130616~1130617.gtkw"
+[timestart] 2058000000
+[size] 1848 903
+[pos] -1 -1
+*-28.094496 2669000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_fsic.
+[treeopen] tb_fsic.dut.
+[treeopen] tb_fsic.dut.U_USER_SUBSYS0.
+[treeopen] tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.
+[sst_width] 233
+[signals_width] 486
+[sst_expanded] 1
+[sst_vpaned_height] 249
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.axis_clk
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.ss_tready
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.ss_tvalid
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.ss_tdata[31:0]
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.rst
+@24
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.shift_threshold[8:0]
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.outputs_rsc_rdy
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_rdy_n_gradient_y_calc_inst_bud
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_vld
+tb_fsic.fpga_is_as_tready
+tb_fsic.fpga_as_is_tvalid
+tb_fsic.fpga_is_as_tvalid
+@22
+tb_fsic.fpga_is_as_tdata[31:0]
+@28
+tb_fsic.fpga_is_as_tid[1:0]
+tb_fsic.fpga_is_as_tuser[1:0]
+@200
+-
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_rdy
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_vld
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_rdy_n_gradient_y_calc_inst_bud
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_dat[31:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_delayed_rsc_dat_n_gradient_y_calc_inst[31:0]
+@200
+-
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.line_buf0_rsc_we_n_gradient_y_calc_inst_bud
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.line_buf0_rsc_d_n_gradient_y_calc_inst[63:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.tensor_shift_rsc_dat_n_tensor_weight_x_inst[191:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.tensor_y_rsc_dat_n_tensor_weight_y_inst[383:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.y_filtered_rsc_dat_n_gradient_weight_y_inst[95:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.y_filtered_rsc_dat_n_gradient_weight_y_inst[95:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.gradient_z_rsc_dat_n_gradient_weight_y_inst[31:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_rsc_dat[31:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.gradient_y_rsc_dat_n_gradient_y_calc_inst[31:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.frame3_rsc_dat_n_gradient_y_calc_inst[7:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_OpticalFlow.input_frames_delayed_rsc_dat_n_gradient_y_calc_inst[31:0]
+@200
+-
+-
+-RAM3
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_3.en
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_3.we
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_3.d[63:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_3.q[63:0]
+@200
+-
+-RAM2
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_2.en
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_2.we
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_2.d[63:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_2.q[63:0]
+@200
+-
+-RAM1
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_1.en
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_1.we
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_1.d[15:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_1.q[15:0]
+@200
+-
+-RAM0
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_0.en
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_0.we
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_0.d[15:0]
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.U_SPRAM_0.q[15:0]
+@200
+-
+-
+-
+-
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.sm_tready
+tb_fsic.dut.as_is_tready
+tb_fsic.fpga_as_is_tready
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.sm_tvalid
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.sm_tdata[31:0]
+@24
+tb_fsic.check_index[31:0]
+@25
+tb_fsic.output_stream_element_counter[1:0]
+@24
+tb_fsic.soc_to_fpga_axis_captured_count[31:0]
+@28
+tb_fsic.fpga_coreclk
+@24
+tb_fsic.vcnt[31:0]
+tb_fsic.hcnt[31:0]
+@22
+tb_fsic.captured_denominator_buffer[31:0]
+tb_fsic.captured_u_buffer[31:0]
+tb_fsic.captured_v_buffer[31:0]
+@28
+tb_fsic.fpga_is_as_tvalid
+@200
+-
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.arready
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.arvalid
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.araddr[11:0]
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.awready
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.awvalid
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.awaddr[11:0]
+@28
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.wvalid
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.wready
+@22
+tb_fsic.dut.U_USER_SUBSYS0.U_USRPRJ2.wdata[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

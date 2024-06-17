@@ -1,0 +1,14 @@
+#
+# An unexpected error has occurred (6)
+#
+Stack:
+/lib/x86_64-linux-gnu/libc.so.6(+0x43090) [0x7f2cc47b7090]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb) [0x7f2cc47b700b]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0x12b) [0x7f2cc4796859]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8d26e) [0x7f2cc480126e]
+/lib/x86_64-linux-gnu/libc.so.6(+0x952fc) [0x7f2cc48092fc]
+/lib/x86_64-linux-gnu/libc.so.6(+0x96bac) [0x7f2cc480abac]
+/tools/Xilinx/Vivado/2022.1/lib/lnx64.o/librdi_common.so(std::_Rb_tree<ComMsgMgr::MsgMask, std::pair<ComMsgMgr::MsgMask const, std::vector<ComMsgMgr::MsgMask, std::allocator<ComMsgMgr::MsgMask> > >, std::_Select1st<std::pair<ComMsgMgr::MsgMask const, std::vector<ComMsgMgr::MsgMask, std::allocator<ComMsgMgr::MsgMask> > > >, std::less<ComMsgMgr::MsgMask>, std::allocator<std::pair<ComMsgMgr::MsgMask const, std::vector<ComMsgMgr::MsgMask, std::allocator<ComMsgMgr::MsgMask> > > > >::_M_erase(std::_Rb_tree_node<std::pair<ComMsgMgr::MsgMask const, std::vector<ComMsgMgr::MsgMask, std::allocator<ComMsgMgr::MsgMask> > > >*)+0x35) [0x7f2cc5560a75]
+/tools/Xilinx/Vivado/2022.1/lib/lnx64.o/librdi_common.so(+0x7afabc) [0x7f2cc5560abc]
+/lib/x86_64-linux-gnu/libc.so.6(__cxa_finalize+0xce) [0x7f2cc47bafde]
+/tools/Xilinx/Vivado/2022.1/lib/lnx64.o/librdi_common.so(+0x681313) [0x7f2cc5432313]

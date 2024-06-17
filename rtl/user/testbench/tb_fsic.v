@@ -52,16 +52,17 @@ module tb_fsic #( parameter BITS=32,
 
 /////`ifdef USE_EDGEDETECT_IP
 		localparam CoreClkPhaseLoop    = 1;
-        localparam TST_TOTAL_LOOP_NUM = 2;
+        localparam TST_TOTAL_LOOP_NUM = 1; //2;
         localparam TST_FRAME_WIDTH     = 1024;
         localparam TST_FRAME_HEIGHT    = 436;
         localparam TST_TOTAL_PIXEL_NUM = TST_FRAME_WIDTH * TST_FRAME_HEIGHT;
         localparam TST_SW              = 1;
+		localparam TST_TOTAL_FRAME_NUM = 2; // actually not used in Optical flow testbench, only for Edge detection testbench
 /////`else
 /////		localparam CoreClkPhaseLoop	= 4;
 /////`endif
 		/////////////////// Added by me ///////////////////
-		/////localparam DATA_LENGTH=32'd64;
+		localparam DATA_LENGTH=32'd64;
 		///////////////////////////////////////////////////
 
 		localparam UP_BASE=32'h3000_0000;
@@ -88,7 +89,7 @@ module tb_fsic #( parameter BITS=32,
 		localparam TID_UP_LA = 2'b10;
 /////`ifdef USE_EDGEDETECT_IP
 		/////localparam fpga_axis_test_length = TST_TOTAL_PIXEL_NUM / 4; //each pixel is 8 bits //each transaction 
-		localparam fpga_axis_test_length = TST_TOTAL_PIXEL_NUM;
+		localparam fpga_axis_test_length = 10000; //TST_TOTAL_PIXEL_NUM;
 /////`else
 /////		localparam fpga_axis_test_length = 16;
 /////`endif		
@@ -414,6 +415,24 @@ FSIC #(
 	reg [31:0] error_count_test2;
 	reg [31:0] check_count_test1;
 	reg [31:0] check_count_test2;
+	reg [31:0] check_index;
+	reg [31:0] test_loop_count;
+    reg [7:0] test_image_in_frame1_buf [TST_TOTAL_PIXEL_NUM];
+	reg [7:0] test_image_in_frame2_buf [TST_TOTAL_PIXEL_NUM];
+	reg [7:0] test_image_in_frame3_buf [TST_TOTAL_PIXEL_NUM];
+	reg [7:0] test_image_in_frame4_buf [TST_TOTAL_PIXEL_NUM];
+	//reg [7:0] test_image_in_frame5_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	reg [31:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
+	/////reg [SHIFT_T_BIT_WIDTH:0] test_image_golden_shift_HLS_buf [TST_TOTAL_PIXEL_NUM];
+    reg [31:0] hcnt;
+    reg [31:0] vcnt;
+	reg [31:0] index;
+	reg [1:0] output_stream_element_counter;
 	///////////////////////////////////////////////////
 	
     initial begin
@@ -460,7 +479,7 @@ FSIC #(
 		/////// Test#2 – OpticalFlowIP initialization from FPGA side  ///////
 		error_cnt = 0;
 		check_cnt = 0;
-		/////test2_initialization_from_FPGA_side();
+		test2_initialization_from_FPGA_side();
 		error_count_test2 = error_cnt;
 		check_count_test2 = check_cnt;
 
@@ -551,8 +570,8 @@ FSIC #(
 			/////// SoC & FPGA reset ///////
 			test0_initialization();
 
-			/////// Enable user_project_1 (FIR engine)  ///////
-			soc_change_UP_configuration_write(32'h01);
+			/////// Enable user_project_2 (Optical flow engine)  ///////
+			soc_change_UP_configuration_write(32'h02);
 
 			
 			/////// Start to initialize FIR from FPGA side, which is modified from "task test003_fpga_to_soc_cfg_read()" & "task test006_fpga_to_soc_cfg_write()" ///////
@@ -574,84 +593,92 @@ FSIC #(
 			$display("-----------------");
 
 			/// step 2. FPGA issues FPGA-to-SoC configuration read/write request to SoC
-			/////// Check FIR is idle, if not, wait until FIR is idle ///////
-			fpga_axilite_read_req(FPGA_to_SOC_UP_BASE + 32'd0); // or {4'b0000,FPGA_to_SOC_UP_BASE}
-			@(soc_to_fpga_axilite_read_cpl_event);		//wait for FPGA get the read completion
-			while (soc_to_fpga_axilite_read_cpl_captured[2]==0) begin // which means "ap_idle_done_start[2]==0"
-				fpga_axilite_read_req(FPGA_to_SOC_UP_BASE + 32'd0);
-				@(soc_to_fpga_axilite_read_cpl_event);		//wait for FPGA get the read completion
-			end
-
-			/////// Program length, and tap parameters ///////
-			FPGA_to_SoC_configuration_write(28'h10, DATA_LENGTH);
-			FPGA_to_SoC_configuration_write(28'h20, 32'd0);
-			FPGA_to_SoC_configuration_write(28'h24, -32'd10);
-			FPGA_to_SoC_configuration_write(28'h28, -32'd9);
-			FPGA_to_SoC_configuration_write(28'h2C, 32'd23);
-			FPGA_to_SoC_configuration_write(28'h30, 32'd56);
-			FPGA_to_SoC_configuration_write(28'h34, 32'd63);
-			FPGA_to_SoC_configuration_write(28'h38, 32'd56);
-			FPGA_to_SoC_configuration_write(28'h3C, 32'd23);
-			FPGA_to_SoC_configuration_write(28'h40, -32'd9);
-			FPGA_to_SoC_configuration_write(28'h44, -32'd10);
-			FPGA_to_SoC_configuration_write(28'h48, 32'd0);
+			/////// Set rst = 1 (address=0x00) ///////
+			/////fpga_axilite_read_req(FPGA_to_SOC_UP_BASE + 32'd0); // or {4'b0000,FPGA_to_SOC_UP_BASE}
+			/////@(soc_to_fpga_axilite_read_cpl_event);		//wait for FPGA get the read completion
+			/////while (soc_to_fpga_axilite_read_cpl_captured[2]==0) begin // which means "ap_idle_done_start[2]==0"
+			/////	fpga_axilite_read_req(FPGA_to_SOC_UP_BASE + 32'd0);
+			/////	@(soc_to_fpga_axilite_read_cpl_event);		//wait for FPGA get the read completion
+			/////end
+			FPGA_to_SoC_configuration_write(28'h0, 32'd1);
 
 			/////// read-back and check ///////
-			FPGA_to_SoC_configuration_read_and_check(32'h10, DATA_LENGTH);
-			FPGA_to_SoC_configuration_read_and_check(32'h20, 32'd0);
-			FPGA_to_SoC_configuration_read_and_check(32'h24, -32'd10);
-			FPGA_to_SoC_configuration_read_and_check(32'h28, -32'd9);
-			FPGA_to_SoC_configuration_read_and_check(32'h2C, 32'd23);
-			FPGA_to_SoC_configuration_read_and_check(32'h30, 32'd56);
-			FPGA_to_SoC_configuration_read_and_check(32'h34, 32'd63);
-			FPGA_to_SoC_configuration_read_and_check(32'h38, 32'd56);
-			FPGA_to_SoC_configuration_read_and_check(32'h3C, 32'd23);
-			FPGA_to_SoC_configuration_read_and_check(32'h40, -32'd9);
-			FPGA_to_SoC_configuration_read_and_check(32'h44, -32'd10);
-			FPGA_to_SoC_configuration_read_and_check(32'h48, 32'd0);
+			FPGA_to_SoC_configuration_read_and_check(32'h0, 32'd1);
 
+			/////// Set rst = 0 (address=0x00) ///////
+			FPGA_to_SoC_configuration_write(28'h0, 32'd0);
+
+			/////// read-back and check ///////
+			FPGA_to_SoC_configuration_read_and_check(32'h0, 32'd0);
+
+			/////// Program widthIn and heightIn ///////
+			FPGA_to_SoC_configuration_write(28'h04, TST_FRAME_WIDTH);
+			FPGA_to_SoC_configuration_write(28'h08, TST_FRAME_HEIGHT);
+			FPGA_to_SoC_configuration_write(28'h0c, shift_threshold);
+
+			/////// read-back and check ///////
+			FPGA_to_SoC_configuration_read_and_check(32'h04, TST_FRAME_WIDTH);
+			FPGA_to_SoC_configuration_read_and_check(32'h08, TST_FRAME_HEIGHT);
+			FPGA_to_SoC_configuration_read_and_check(32'h0c, shift_threshold);
+			
 			/////// Program ap_start = 1 ///////
-			$display(" Start FIR engine");
-			FPGA_to_SoC_configuration_write(28'h0, 32'd1);
+			/////$display(" Start FIR engine");
+			/////FPGA_to_SoC_configuration_write(28'h0, 32'd1);
 
 			/////// Use Mailbox to notify FPGA side to start X, Y stream transfer ///////
 			/// (No need this part) ///
 			
-			/////// FIR data X, Y stream data from FPGA side ///////
+			/////// Optical flow input stream data from FPGA side ///////
 			test2_reset_some_register();
 			/// modified from test002() ///
-				soc_to_fpga_axis_expect_count = 0;
-				test1_fpga_axis_req();		//target to Axis Switch
-				$display($time, "=> wait for soc_to_fpga_axis_event");
-                @(soc_to_fpga_axis_event);
-                $display($time, "=> soc_to_fpga_axis_expect_count = %d", soc_to_fpga_axis_expect_count);
-                $display($time, "=> soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_captured_count);
-                
-				check_cnt = check_cnt + 1;
-				if ( soc_to_fpga_axis_expect_count != DATA_LENGTH) begin
-                    $display($time, "=> [ERROR] soc_to_fpga_axis_expect_count = %d, soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_expect_count, soc_to_fpga_axis_captured_count);
-					error_cnt = error_cnt + 1;
-				end	
-				else 
-                    $display($time, "=> [PASS] soc_to_fpga_axis_expect_count = %d, soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_expect_count, soc_to_fpga_axis_captured_count);
+				$readmemh("./pattern/frame1.hex", test_image_in_frame1_buf);
+				$readmemh("./pattern/frame2.hex", test_image_in_frame2_buf);
+				$readmemh("./pattern/frame3.hex", test_image_in_frame3_buf);
+				$readmemh("./pattern/frame4.hex", test_image_in_frame4_buf);
+				//$readmemh("./pattern/frame5.hex", test_image_in_frame5_buf);
+				$readmemh("./pattern/channel_output_u_before_threshold_HLS.hex", test_image_golden_u_HLS_buf);
+				$readmemh("./pattern/channel_output_v_before_threshold_HLS.hex", test_image_golden_v_HLS_buf);
+				$readmemh("./pattern/channel_output_denominator_HLS.hex", test_image_golden_denominator_HLS_buf);
+				/////$readmemh("./pattern/channel_output_shift_HLS.hex", test_image_golden_shift_HLS_buf);
 
-				
-                for(j=0; j<DATA_LENGTH; j=j+1)begin	
-					check_cnt = check_cnt + 1;
-                    if (soc_to_fpga_axis_expect_value[j] != soc_to_fpga_axis_captured[j] ) begin
-                        $display($time, "=> [ERROR] index(j)=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", j, j, soc_to_fpga_axis_expect_value[j], j, soc_to_fpga_axis_captured[j]);
-						error_cnt = error_cnt + 1;
+				for (test_loop_count=0;test_loop_count<TST_TOTAL_LOOP_NUM;test_loop_count=test_loop_count+1) begin
+					$display("++++++++++++++++++++ test loop No. %02d ++++++++++++++++++++", test_loop_count);
+					soc_to_fpga_axis_expect_count = 0;
+					test1_fpga_axis_req();		//target to Axis Switch
+					$display($time, "=> wait for soc_to_fpga_axis_event");
+					if (fpga_axis_test_length==TST_TOTAL_PIXEL_NUM) begin
+                		@(soc_to_fpga_axis_event);
 					end
-					else
-                        $display($time, "=> [PASS] index(j)=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", j, j, soc_to_fpga_axis_expect_value[j], j, soc_to_fpga_axis_captured[j]);
-					
-                end
-                //soc_to_fpga_axis_captured_count = 0;		//reset soc_to_fpga_axis_captured_count
-				#200;
+                	$display($time, "=> soc_to_fpga_axis_expect_count = %d", soc_to_fpga_axis_expect_count);
+                	$display($time, "=> soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_captured_count);
+
+					check_cnt = check_cnt + 1;
+					if ( soc_to_fpga_axis_expect_count != fpga_axis_test_length) begin
+                	    $display($time, "=> [ERROR] soc_to_fpga_axis_expect_count = %d, soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_expect_count, soc_to_fpga_axis_captured_count);
+						error_cnt = error_cnt + 1;
+					end	
+					else 
+                	    $display($time, "=> [PASS] soc_to_fpga_axis_expect_count = %d, soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_expect_count, soc_to_fpga_axis_captured_count);
+
+
+                	// Let's move this part to the lines when we receive data from output stream
+					/////for(check_index=0; check_index<fpga_axis_test_length; check_index=check_index+1) begin
+					/////	check_cnt = check_cnt + 1;
+                	/////    if (soc_to_fpga_axis_expect_value[check_index] != soc_to_fpga_axis_captured[check_index] ) begin
+                	/////        $display($time, "=> [ERROR] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+					/////		error_cnt = error_cnt + 1;
+					/////	end
+					/////	else
+                	/////        $display($time, "=> [PASS] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+                	/////end
+
+                	//soc_to_fpga_axis_captured_count = 0;		//reset soc_to_fpga_axis_captured_count
+					#200;
+				end
 				$display("------Finish the data input(AXI-Stream ss) & data output(AXI-Stream sm) with checking------");
 
 				/////// check ap_done = 1 && ap_idle = 1 ///////
-				FPGA_to_SoC_configuration_read_and_check(32'd0, 32'b110);
+				/////FPGA_to_SoC_configuration_read_and_check(32'd0, 32'b110);
 
 				/////// All pass!!! ///////
 				if (error_cnt != 0 ) begin 
@@ -668,12 +695,17 @@ FSIC #(
 	task test2_reset_some_register;
 		begin
 			soc_to_fpga_axis_captured_count=0;
-			for(j=0; j<DATA_LENGTH; j=j+1)begin	
-				soc_to_fpga_axis_expect_value[j] = 0;
-				soc_to_fpga_axis_captured[j] = 0;
+			check_index = 0;
+			output_stream_element_counter = 0;
+			for(vcnt=0; vcnt < TST_FRAME_HEIGHT; vcnt += 1) begin
+				for(hcnt=0; hcnt < TST_FRAME_WIDTH; hcnt += 1) begin
+					index = vcnt * TST_FRAME_WIDTH + hcnt;
+					soc_to_fpga_axis_expect_value[index] = 0;
+					soc_to_fpga_axis_captured[index] = 0;
+				end
             end
 
-			$display("Before starting transfer X & Y data, reset the following register: soc_to_fpga_axis_captured_count, soc_to_fpga_axis_expect_value[0:DATA_LENGTH-1], soc_to_fpga_axis_captured[0:DATA_LENGTH-1]"); 
+			$display("Before starting transfer input data, reset the following register: soc_to_fpga_axis_captured_count, check_index, output_stream_element_counter, soc_to_fpga_axis_expect_value[(all_pixel)], soc_to_fpga_axis_captured[(all_pixel)]"); 
 		end
 	endtask
 
@@ -727,22 +759,7 @@ FSIC #(
 			$display("-----------------");
 		end
 	endtask
-
-	reg [31:0] test_loop_count;
-    reg [7:0] test_image_in_frame1_buf [TST_TOTAL_PIXEL_NUM];
-	reg [7:0] test_image_in_frame2_buf [TST_TOTAL_PIXEL_NUM];
-	reg [7:0] test_image_in_frame3_buf [TST_TOTAL_PIXEL_NUM];
-	reg [7:0] test_image_in_frame4_buf [TST_TOTAL_PIXEL_NUM];
-	//reg [7:0] test_image_in_frame5_buf [TST_TOTAL_PIXEL_NUM];
-	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	////////reg [VEL_PIXEL_T_BIT_WIDTH:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [31:0] test_image_golden_u_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [31:0] test_image_golden_v_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	reg [31:0] test_image_golden_denominator_HLS_buf [TST_TOTAL_PIXEL_NUM];
-	/////reg [SHIFT_T_BIT_WIDTH:0] test_image_golden_shift_HLS_buf [TST_TOTAL_PIXEL_NUM];
-
-	reg [31:0] check_index;
+	
 
 	/// Configuration address map:
 	/// 0x00: reset
@@ -842,7 +859,9 @@ FSIC #(
 					soc_to_fpga_axis_expect_count = 0;
 					test1_fpga_axis_req();		//target to Axis Switch
 					$display($time, "=> wait for soc_to_fpga_axis_event");
-                	@(soc_to_fpga_axis_event);
+					if (fpga_axis_test_length==TST_TOTAL_PIXEL_NUM) begin
+                		@(soc_to_fpga_axis_event);
+					end
                 	$display($time, "=> soc_to_fpga_axis_expect_count = %d", soc_to_fpga_axis_expect_count);
                 	$display($time, "=> soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_captured_count);
 
@@ -855,16 +874,17 @@ FSIC #(
                 	    $display($time, "=> [PASS] soc_to_fpga_axis_expect_count = %d, soc_to_fpga_axis_captured_count = %d", soc_to_fpga_axis_expect_count, soc_to_fpga_axis_captured_count);
 
 
-                	for(check_index=0; check_index<fpga_axis_test_length; check_index=check_index+1) begin
-						check_cnt = check_cnt + 1;
-                	    if (soc_to_fpga_axis_expect_value[check_index] != soc_to_fpga_axis_captured[check_index] ) begin
-                	        $display($time, "=> [ERROR] index(j)=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", j, j, soc_to_fpga_axis_expect_value[j], j, soc_to_fpga_axis_captured[j]);
-							error_cnt = error_cnt + 1;
-						end
-						else
-                	        $display($time, "=> [PASS] index(j)=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", j, j, soc_to_fpga_axis_expect_value[j], j, soc_to_fpga_axis_captured[j]);
+                	// Let's move this part to the lines when we receive data from output stream
+					/////for(check_index=0; check_index<fpga_axis_test_length; check_index=check_index+1) begin
+					/////	check_cnt = check_cnt + 1;
+                	/////    if (soc_to_fpga_axis_expect_value[check_index] != soc_to_fpga_axis_captured[check_index] ) begin
+                	/////        $display($time, "=> [ERROR] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+					/////		error_cnt = error_cnt + 1;
+					/////	end
+					/////	else
+                	/////        $display($time, "=> [PASS] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+                	/////end
 
-                	end
                 	//soc_to_fpga_axis_captured_count = 0;		//reset soc_to_fpga_axis_captured_count
 					#200;
 				end
@@ -890,9 +910,6 @@ FSIC #(
 	reg [95:0] expect_data;
 	reg        sof;
     reg        eol;
-    reg [31:0] hcnt;
-    reg [31:0] vcnt;
-	reg [31:0] index;
 	task test1_fpga_axis_req;
 
 		`ifdef USER_PROJECT_SIDEBAND_SUPPORT
@@ -954,6 +971,12 @@ FSIC #(
 						end
 					`endif
 					soc_to_fpga_axis_expect_count <= soc_to_fpga_axis_expect_count+1;
+					if (vcnt*TST_FRAME_WIDTH+hcnt==fpga_axis_test_length) begin
+						break;
+					end
+				end
+				if (vcnt*TST_FRAME_WIDTH+hcnt==fpga_axis_test_length) begin
+					break;
 				end
 			end
 			
@@ -1729,12 +1752,12 @@ FSIC #(
 	reg [31:0] captured_denominator_buffer;
 	reg [31:0] captured_u_buffer;
 	reg [31:0] captured_v_buffer;
-	reg [1:0] output_stream_element_counter;
 
 	initial begin		//get upstream soc_to_fpga_axis - for loop back test
         soc_to_fpga_axis_captured_count = 0;
         soc_to_fpga_axis_event_triggered = 0;
 		output_stream_element_counter = 0;
+		check_index = 0;
 		while (1) begin
 /////			`ifdef USE_EDGEDETECT_IP // added by me
 				@(posedge fpga_coreclk);
@@ -1742,13 +1765,13 @@ FSIC #(
 					if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_UP && fpga_is_as_tuser == TUSER_AXIS) begin
 						if (output_stream_element_counter==0) begin
 							captured_denominator_buffer = fpga_is_as_tdata;
-							output_stream_element_counter = 1;
+							output_stream_element_counter = output_stream_element_counter+1;
 						end
-						if (output_stream_element_counter==1) begin
+						else if (output_stream_element_counter==1) begin
 							captured_u_buffer = fpga_is_as_tdata;
-							output_stream_element_counter = 2;
+							output_stream_element_counter = output_stream_element_counter+1;
 						end
-						if (output_stream_element_counter==2) begin
+						else if (output_stream_element_counter==2) begin
 							captured_v_buffer = fpga_is_as_tdata;
 							//$display($time, "=> get soc_to_fpga_axis be : soc_to_fpga_axis_captured_count=%d,  soc_to_fpga_axis_captured[%d] =%x, fpga_is_as_tupsb=%x, fpga_is_as_tstrb=%x, fpga_is_as_tkeep=%x , fpga_is_as_tlast=%x, fpga_is_as_tdata=%x", soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count], fpga_is_as_tupsb, fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, fpga_is_as_tdata);
 							soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count] = {fpga_is_as_tupsb, fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, captured_denominator_buffer, captured_u_buffer, captured_v_buffer} ;		//use block assignment
@@ -1756,6 +1779,18 @@ FSIC #(
 							$display($time, "=> get soc_to_fpga_axis : soc_to_fpga_axis_captured_count=%d,  soc_to_fpga_axis_captured[%d] =%x, fpga_is_as_tupsb=%x, fpga_is_as_tstrb=%x, fpga_is_as_tkeep=%x , fpga_is_as_tlast=%x, captured_denominator_buffer=%x, captured_u_buffer=%x, captured_v_buffer=%x", soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count], fpga_is_as_tupsb, fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, captured_denominator_buffer, captured_u_buffer, captured_v_buffer);
 							soc_to_fpga_axis_captured_count = soc_to_fpga_axis_captured_count+1;
 							output_stream_element_counter = 0;
+
+							// Check the result with golden value (expected value) from HLS testbench
+							check_cnt = check_cnt + 1;
+							if (soc_to_fpga_axis_expect_value[check_index][95:0] != soc_to_fpga_axis_captured[check_index][95:0] ) begin
+								$display($time, "=> [ERROR] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+								//$finish;
+								error_cnt = error_cnt + 1;
+							end
+							else begin
+								$display($time, "=> [PASS] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+							end
+							check_index = check_index+1;
 						end
 					end	
 					if ( (soc_to_fpga_axis_captured_count == fpga_axis_test_length) && !soc_to_fpga_axis_event_triggered) begin
@@ -1767,13 +1802,13 @@ FSIC #(
 					if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_UP && fpga_is_as_tuser == TUSER_AXIS) begin
 						if (output_stream_element_counter==0) begin
 							captured_denominator_buffer = fpga_is_as_tdata;
-							output_stream_element_counter = 1;
+							output_stream_element_counter = output_stream_element_counter+1;
 						end
-						if (output_stream_element_counter==1) begin
+						else if (output_stream_element_counter==1) begin
 							captured_u_buffer = fpga_is_as_tdata;
-							output_stream_element_counter = 2;
+							output_stream_element_counter = output_stream_element_counter+1;
 						end
-						if (output_stream_element_counter==2) begin
+						else if (output_stream_element_counter==2) begin
 							captured_v_buffer = fpga_is_as_tdata;
 							//$display($time, "=> get soc_to_fpga_axis be : soc_to_fpga_axis_captured_count=%d,  soc_to_fpga_axis_captured[%d] =%x, fpga_is_as_tstrb=%x, fpga_is_as_tkeep=%x , fpga_is_as_tlast=%x, fpga_is_as_tdata=%x", soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count], fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, fpga_is_as_tdata);
 							soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count] = {fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, captured_denominator_buffer, captured_u_buffer, captured_v_buffer} ;		//use block assignment
@@ -1781,6 +1816,18 @@ FSIC #(
 							$display($time, "=> get soc_to_fpga_axis af : soc_to_fpga_axis_captured_count=%d,  soc_to_fpga_axis_captured[%d] =%x, fpga_is_as_tstrb=%x, fpga_is_as_tkeep=%x , fpga_is_as_tlast=%x, captured_denominator_buffer=%x, captured_u_buffer=%x, captured_v_buffer=%x", soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured_count, soc_to_fpga_axis_captured[soc_to_fpga_axis_captured_count], fpga_is_as_tstrb, fpga_is_as_tkeep , fpga_is_as_tlast, captured_denominator_buffer, captured_u_buffer, captured_v_buffer);
 							soc_to_fpga_axis_captured_count = soc_to_fpga_axis_captured_count+1;
 							output_stream_element_counter = 0;
+
+							// Check the result with golden value (expected value) from HLS testbench
+							check_cnt = check_cnt + 1;
+							if (soc_to_fpga_axis_expect_value[check_index][95:0] != soc_to_fpga_axis_captured[check_index][95:0] ) begin
+								$display($time, "=> [ERROR] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+								//$finish;
+								error_cnt = error_cnt + 1;
+							end
+							else begin
+								$display($time, "=> [PASS] index=%d, soc_to_fpga_axis_expect_value[%d] = %x, soc_to_fpga_axis_captured[%d]  = %x", check_index, check_index, soc_to_fpga_axis_expect_value[check_index], check_index, soc_to_fpga_axis_captured[check_index]);
+							end
+							check_index = check_index+1;
 						end
 					end	
 					if ( (soc_to_fpga_axis_captured_count == fpga_axis_test_length) && !soc_to_fpga_axis_event_triggered) begin
@@ -2213,10 +2260,10 @@ FSIC #(
 		end
 	endtask
 
-        reg        sof;
-        reg        eol;
-        reg [31:0] hcnt;
-        reg [31:0] vcnt;
+        /////reg        sof;
+        /////reg        eol;
+        /////reg [31:0] hcnt;
+        /////reg [31:0] vcnt;
 
 	task test002_fpga_axis_req;
 		//input [7:0] compare_data;

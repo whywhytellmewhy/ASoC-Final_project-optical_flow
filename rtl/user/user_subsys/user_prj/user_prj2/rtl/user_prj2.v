@@ -54,8 +54,8 @@ module USER_PRJ2 #( parameter pUSER_PROJECT_SIDEBAND_WIDTH   = 5,
 );
 
 
-assign ss_tready     = 1'b0; //to be assigned by DUT
-assign sm_tvalid     = 1'b0; //to be assigned by DUT
+//assign ss_tready     = 1'b0; //to be assigned by DUT
+//assign sm_tvalid     = 1'b0; //to be assigned by DUT
 
 
 
@@ -145,6 +145,7 @@ end
 assign sm_tdata  = dat_out_rsc_dat[31: 0]; 
 assign sm_tupsb  = 0;
 assign {sm_tstrb, sm_tkeep, sm_tlast} = 0;
+
 
 wire         ram0_en;
 wire  [15:0] ram0_q;
@@ -434,7 +435,7 @@ OpticalFlow_Top U_OpticalFlow(
 );
 
 //SRAM
-SPRAM #(.data_width(16),.addr_width(9),.depth(128)) U_SPRAM_0(
+SPRAM #(.data_width(16),.addr_width(9),.depth(512)) U_SPRAM_0(
   .adr (ram0_adr ), 
   .d   (ram0_d   ), 
   .en  (ram0_en  ), 
@@ -443,7 +444,7 @@ SPRAM #(.data_width(16),.addr_width(9),.depth(128)) U_SPRAM_0(
   .q   (ram0_q   )
 );
 
-SPRAM #(.data_width(16),.addr_width(9),.depth(128)) U_SPRAM_1(
+SPRAM #(.data_width(16),.addr_width(9),.depth(512)) U_SPRAM_1(
   .adr (ram1_adr ), 
   .d   (ram1_d   ), 
   .en  (ram1_en  ), 
@@ -452,7 +453,7 @@ SPRAM #(.data_width(16),.addr_width(9),.depth(128)) U_SPRAM_1(
   .q   (ram1_q   )
 );
 
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_2(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_2(
   .adr (ram2_adr ), 
   .d   (ram2_d   ), 
   .en  (ram2_en  ), 
@@ -460,7 +461,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_2(
   .clk (axi_clk  ), 
   .q   (ram2_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_3(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_3(
   .adr (ram3_adr ), 
   .d   (ram3_d   ), 
   .en  (ram3_en  ), 
@@ -469,7 +470,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_3(
   .q   (ram3_q   )
 );
 
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_4(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_4(
   .adr (ram4_adr ), 
   .d   (ram4_d   ), 
   .en  (ram4_en  ), 
@@ -477,7 +478,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_4(
   .clk (axi_clk  ), 
   .q   (ram4_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_5(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_5(
   .adr (ram5_adr ), 
   .d   (ram5_d   ), 
   .en  (ram5_en  ), 
@@ -485,7 +486,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_5(
   .clk (axi_clk  ),  
   .q   (ram5_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_6(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_6(
   .adr (ram6_adr ), 
   .d   (ram6_d   ), 
   .en  (ram6_en  ), 
@@ -493,7 +494,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_6(
   .clk (axi_clk  ), 
   .q   (ram6_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_7(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_7(
   .adr (ram7_adr ), 
   .d   (ram7_d   ), 
   .en  (ram7_en  ), 
@@ -501,7 +502,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_7(
   .clk (axi_clk  ),  
   .q   (ram7_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_8(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_8(
   .adr (ram8_adr ), 
   .d   (ram8_d   ), 
   .en  (ram8_en  ), 
@@ -509,7 +510,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_8(
   .clk (axi_clk  ), 
   .q   (ram8_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_9(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_9(
   .adr (ram9_adr ), 
   .d   (ram9_d   ), 
   .en  (ram9_en  ), 
@@ -518,7 +519,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_9(
   .q   (ram9_q   )
 );
 
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_10(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_10(
   .adr (ram10_adr ), 
   .d   (ram10_d   ), 
   .en  (ram10_en  ), 
@@ -526,7 +527,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_10(
   .clk (axi_clk   ), 
   .q   (ram10_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_11(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_11(
   .adr (ram11_adr ), 
   .d   (ram11_d   ), 
   .en  (ram11_en  ), 
@@ -534,7 +535,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_11(
   .clk (axi_clk   ),  
   .q   (ram11_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_12(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_12(
   .adr (ram12_adr ), 
   .d   (ram12_d   ), 
   .en  (ram12_en  ), 
@@ -542,7 +543,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_12(
   .clk (axi_clk   ), 
   .q   (ram12_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_13(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_13(
   .adr (ram13_adr ), 
   .d   (ram13_d   ), 
   .en  (ram13_en  ), 
@@ -550,7 +551,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_13(
   .clk (axi_clk   ),  
   .q   (ram13_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_14(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_14(
   .adr (ram14_adr ), 
   .d   (ram14_d   ), 
   .en  (ram14_en  ), 
@@ -558,7 +559,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_14(
   .clk (axi_clk   ), 
   .q   (ram14_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_15(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_15(
   .adr (ram15_adr ), 
   .d   (ram15_d   ), 
   .en  (ram15_en  ), 
@@ -567,7 +568,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_15(
   .q   (ram15_q   )
 );
 
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_16(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_16(
   .adr (ram16_adr ), 
   .d   (ram16_d   ), 
   .en  (ram16_en  ), 
@@ -575,7 +576,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_16(
   .clk (axi_clk   ), 
   .q   (ram16_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_17(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_17(
   .adr (ram17_adr ), 
   .d   (ram17_d   ), 
   .en  (ram17_en  ), 
@@ -583,7 +584,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_17(
   .clk (axi_clk   ),  
   .q   (ram17_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_18(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_18(
   .adr (ram18_adr ), 
   .d   (ram18_d   ), 
   .en  (ram18_en  ), 
@@ -591,7 +592,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_18(
   .clk (axi_clk   ), 
   .q   (ram18_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_19(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_19(
   .adr (ram19_adr ), 
   .d   (ram19_d   ), 
   .en  (ram19_en  ), 
@@ -599,7 +600,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_19(
   .clk (axi_clk   ),  
   .q   (ram19_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_20(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_20(
   .adr (ram20_adr ), 
   .d   (ram20_d   ), 
   .en  (ram20_en  ), 
@@ -607,7 +608,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_20(
   .clk (axi_clk   ), 
   .q   (ram20_q   )
 );
-SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_21(
+SPRAM #(.data_width(64),.addr_width(9),.depth(512)) U_SPRAM_21(
   .adr (ram21_adr ), 
   .d   (ram21_d   ), 
   .en  (ram21_en  ), 
@@ -616,7 +617,7 @@ SPRAM #(.data_width(64),.addr_width(9),.depth(128)) U_SPRAM_21(
   .q   (ram21_q   )
 );
 
-SPRAM #(.data_width(768),.addr_width(9),.depth(128)) U_SPRAM_22(
+SPRAM #(.data_width(768),.addr_width(9),.depth(512)) U_SPRAM_22(
   .adr (ram22_adr ), 
   .d   (ram22_d   ), 
   .en  (ram22_en  ), 
@@ -625,7 +626,7 @@ SPRAM #(.data_width(768),.addr_width(9),.depth(128)) U_SPRAM_22(
   .q   (ram22_q   )
 );
 
-SPRAM #(.data_width(768),.addr_width(9),.depth(128)) U_SPRAM_23(
+SPRAM #(.data_width(768),.addr_width(9),.depth(512)) U_SPRAM_23(
   .adr (ram23_adr ), 
   .d   (ram23_d   ), 
   .en  (ram23_en  ), 

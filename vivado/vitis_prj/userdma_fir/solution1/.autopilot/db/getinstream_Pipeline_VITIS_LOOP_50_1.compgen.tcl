@@ -136,6 +136,21 @@ eval "cg_default_interface_gen_dc { \
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
     id 14 \
+    name sub_i_i52 \
+    type other \
+    dir I \
+    reset_level 1 \
+    sync_rst true \
+    corename dc_sub_i_i52 \
+    op interface \
+    ports { sub_i_i52 { I 33 vector } } \
+} "
+}
+
+# Direct connection:
+if {${::AESL::PGuard_autoexp_gen}} {
+eval "cg_default_interface_gen_dc { \
+    id 15 \
     name in_s2m_len \
     type other \
     dir I \
@@ -150,22 +165,22 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 15 \
-    name incount40 \
+    id 16 \
+    name incount47 \
     type fifo \
     dir O \
     reset_level 1 \
     sync_rst true \
-    corename dc_incount40 \
+    corename dc_incount47 \
     op interface \
-    ports { incount40_din { O 32 vector } incount40_num_data_valid { I 7 vector } incount40_fifo_cap { I 7 vector } incount40_full_n { I 1 bit } incount40_write { O 1 bit } } \
+    ports { incount47_din { O 32 vector } incount47_num_data_valid { I 7 vector } incount47_fifo_cap { I 7 vector } incount47_full_n { I 1 bit } incount47_write { O 1 bit } } \
 } "
 }
 
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 16 \
+    id 17 \
     name tmp_user_V_out \
     type other \
     dir O \
@@ -173,7 +188,22 @@ eval "cg_default_interface_gen_dc { \
     sync_rst true \
     corename dc_tmp_user_V_out \
     op interface \
-    ports { tmp_user_V_out { O 3 vector } tmp_user_V_out_ap_vld { O 1 bit } } \
+    ports { tmp_user_V_out { O 4 vector } tmp_user_V_out_ap_vld { O 1 bit } } \
+} "
+}
+
+# Direct connection:
+if {${::AESL::PGuard_autoexp_gen}} {
+eval "cg_default_interface_gen_dc { \
+    id 18 \
+    name icmp_ln1065_out \
+    type other \
+    dir O \
+    reset_level 1 \
+    sync_rst true \
+    corename dc_icmp_ln1065_out \
+    op interface \
+    ports { icmp_ln1065_out { O 1 vector } icmp_ln1065_out_ap_vld { O 1 bit } } \
 } "
 }
 

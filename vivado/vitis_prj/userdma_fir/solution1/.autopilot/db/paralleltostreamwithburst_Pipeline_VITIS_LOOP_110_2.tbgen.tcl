@@ -18,6 +18,7 @@ set C_modelArgList {
 	{ trunc_ln int 31 regular  }
 	{ sub int 31 regular  }
 	{ in_m2s_len int 32 regular  }
+	{ sub_i_i int 33 regular  }
 	{ outbuf int 40 regular {fifo 1 volatile }  }
 	{ dec_phi_out int 32 regular {pointer 1}  }
 	{ m2s_len int 32 regular {pointer 2} {global 2}  }
@@ -28,11 +29,12 @@ set C_modelArgMapList {[
  	{ "Name" : "trunc_ln", "interface" : "wire", "bitwidth" : 31, "direction" : "READONLY"} , 
  	{ "Name" : "sub", "interface" : "wire", "bitwidth" : 31, "direction" : "READONLY"} , 
  	{ "Name" : "in_m2s_len", "interface" : "wire", "bitwidth" : 32, "direction" : "READONLY"} , 
+ 	{ "Name" : "sub_i_i", "interface" : "wire", "bitwidth" : 33, "direction" : "READONLY"} , 
  	{ "Name" : "outbuf", "interface" : "fifo", "bitwidth" : 40, "direction" : "WRITEONLY"} , 
  	{ "Name" : "dec_phi_out", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY"} , 
  	{ "Name" : "m2s_len", "interface" : "wire", "bitwidth" : 32, "direction" : "READWRITE", "extern" : 0} ]}
 # RTL Port declarations: 
-set portNum 66
+set portNum 67
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst sc_in sc_logic 1 reset -1 active_high_sync } 
@@ -86,20 +88,21 @@ set portList {
 	{ m_axi_gmem1_BRESP sc_in sc_lv 2 signal 0 } 
 	{ m_axi_gmem1_BID sc_in sc_lv 1 signal 0 } 
 	{ m_axi_gmem1_BUSER sc_in sc_lv 1 signal 0 } 
-	{ outbuf_din sc_out sc_lv 40 signal 5 } 
-	{ outbuf_num_data_valid sc_in sc_lv 11 signal 5 } 
-	{ outbuf_fifo_cap sc_in sc_lv 11 signal 5 } 
-	{ outbuf_full_n sc_in sc_logic 1 signal 5 } 
-	{ outbuf_write sc_out sc_logic 1 signal 5 } 
+	{ outbuf_din sc_out sc_lv 40 signal 6 } 
+	{ outbuf_num_data_valid sc_in sc_lv 11 signal 6 } 
+	{ outbuf_fifo_cap sc_in sc_lv 11 signal 6 } 
+	{ outbuf_full_n sc_in sc_logic 1 signal 6 } 
+	{ outbuf_write sc_out sc_logic 1 signal 6 } 
 	{ sext_ln110 sc_in sc_lv 62 signal 1 } 
 	{ trunc_ln sc_in sc_lv 31 signal 2 } 
 	{ sub sc_in sc_lv 31 signal 3 } 
 	{ in_m2s_len sc_in sc_lv 32 signal 4 } 
-	{ dec_phi_out sc_out sc_lv 32 signal 6 } 
-	{ dec_phi_out_ap_vld sc_out sc_logic 1 outvld 6 } 
-	{ m2s_len_i sc_in sc_lv 32 signal 7 } 
-	{ m2s_len_o sc_out sc_lv 32 signal 7 } 
-	{ m2s_len_o_ap_vld sc_out sc_logic 1 outvld 7 } 
+	{ sub_i_i sc_in sc_lv 33 signal 5 } 
+	{ dec_phi_out sc_out sc_lv 32 signal 7 } 
+	{ dec_phi_out_ap_vld sc_out sc_logic 1 outvld 7 } 
+	{ m2s_len_i sc_in sc_lv 32 signal 8 } 
+	{ m2s_len_o sc_out sc_lv 32 signal 8 } 
+	{ m2s_len_o_ap_vld sc_out sc_logic 1 outvld 8 } 
 }
 set NewPortList {[ 
 	{ "name": "ap_clk", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "clock", "bundle":{"name": "ap_clk", "role": "default" }} , 
@@ -163,6 +166,7 @@ set NewPortList {[
  	{ "name": "trunc_ln", "direction": "in", "datatype": "sc_lv", "bitwidth":31, "type": "signal", "bundle":{"name": "trunc_ln", "role": "default" }} , 
  	{ "name": "sub", "direction": "in", "datatype": "sc_lv", "bitwidth":31, "type": "signal", "bundle":{"name": "sub", "role": "default" }} , 
  	{ "name": "in_m2s_len", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "in_m2s_len", "role": "default" }} , 
+ 	{ "name": "sub_i_i", "direction": "in", "datatype": "sc_lv", "bitwidth":33, "type": "signal", "bundle":{"name": "sub_i_i", "role": "default" }} , 
  	{ "name": "dec_phi_out", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "dec_phi_out", "role": "default" }} , 
  	{ "name": "dec_phi_out_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "dec_phi_out", "role": "ap_vld" }} , 
  	{ "name": "m2s_len_i", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "m2s_len", "role": "i" }} , 
@@ -192,11 +196,13 @@ set RtlHierarchyInfo {[
 			{"Name" : "trunc_ln", "Type" : "None", "Direction" : "I"},
 			{"Name" : "sub", "Type" : "None", "Direction" : "I"},
 			{"Name" : "in_m2s_len", "Type" : "None", "Direction" : "I"},
+			{"Name" : "sub_i_i", "Type" : "None", "Direction" : "I"},
 			{"Name" : "outbuf", "Type" : "Fifo", "Direction" : "O",
 				"BlockSignal" : [
 					{"Name" : "outbuf_blk_n", "Type" : "RtlSignal"}]},
 			{"Name" : "dec_phi_out", "Type" : "Vld", "Direction" : "O"},
-			{"Name" : "m2s_len", "Type" : "OVld", "Direction" : "IO"}],
+			{"Name" : "m2s_len", "Type" : "OVld", "Direction" : "IO"},
+			{"Name" : "Img_width_count", "Type" : "OVld", "Direction" : "IO"}],
 		"Loop" : [
 			{"Name" : "VITIS_LOOP_110_2", "PipelineType" : "UPC",
 				"LoopDec" : {"FSMBitwidth" : "1", "FirstState" : "ap_ST_fsm_pp0_stage0", "FirstStateIter" : "ap_enable_reg_pp0_iter0", "FirstStateBlock" : "ap_block_pp0_stage0_subdone", "LastState" : "ap_ST_fsm_pp0_stage0", "LastStateIter" : "ap_enable_reg_pp0_iter2", "LastStateBlock" : "ap_block_pp0_stage0_subdone", "QuitState" : "ap_ST_fsm_pp0_stage0", "QuitStateIter" : "ap_enable_reg_pp0_iter1", "QuitStateBlock" : "ap_block_pp0_stage0_subdone", "OneDepthLoop" : "0", "has_ap_ctrl" : "1", "has_continue" : "0"}}]},
@@ -210,9 +216,11 @@ set ArgLastReadFirstWriteLatency {
 		trunc_ln {Type I LastRead 0 FirstWrite -1}
 		sub {Type I LastRead 0 FirstWrite -1}
 		in_m2s_len {Type I LastRead 0 FirstWrite -1}
+		sub_i_i {Type I LastRead 0 FirstWrite -1}
 		outbuf {Type O LastRead -1 FirstWrite 2}
 		dec_phi_out {Type O LastRead -1 FirstWrite 1}
-		m2s_len {Type IO LastRead 0 FirstWrite 0}}}
+		m2s_len {Type IO LastRead 0 FirstWrite 0}
+		Img_width_count {Type IO LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 
@@ -231,6 +239,7 @@ set Spec2ImplPortList {
 	trunc_ln { ap_none {  { trunc_ln in_data 0 31 } } }
 	sub { ap_none {  { sub in_data 0 31 } } }
 	in_m2s_len { ap_none {  { in_m2s_len in_data 0 32 } } }
+	sub_i_i { ap_none {  { sub_i_i in_data 0 33 } } }
 	outbuf { ap_fifo {  { outbuf_din fifo_port_we 1 40 }  { outbuf_num_data_valid fifo_status_num_data_valid 0 11 }  { outbuf_fifo_cap fifo_update 0 11 }  { outbuf_full_n fifo_status 0 1 }  { outbuf_write fifo_data 1 1 } } }
 	dec_phi_out { ap_vld {  { dec_phi_out out_data 1 32 }  { dec_phi_out_ap_vld out_vld 1 1 } } }
 	m2s_len { ap_ovld {  { m2s_len_i in_data 0 32 }  { m2s_len_o out_data 1 32 }  { m2s_len_o_ap_vld out_vld 1 1 } } }

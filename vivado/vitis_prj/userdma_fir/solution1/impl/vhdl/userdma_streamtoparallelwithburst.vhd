@@ -23,11 +23,11 @@ port (
     inbuf_fifo_cap : IN STD_LOGIC_VECTOR (10 downto 0);
     inbuf_empty_n : IN STD_LOGIC;
     inbuf_read : OUT STD_LOGIC;
-    incount40_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-    incount40_num_data_valid : IN STD_LOGIC_VECTOR (6 downto 0);
-    incount40_fifo_cap : IN STD_LOGIC_VECTOR (6 downto 0);
-    incount40_empty_n : IN STD_LOGIC;
-    incount40_read : OUT STD_LOGIC;
+    incount47_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+    incount47_num_data_valid : IN STD_LOGIC_VECTOR (6 downto 0);
+    incount47_fifo_cap : IN STD_LOGIC_VECTOR (6 downto 0);
+    incount47_empty_n : IN STD_LOGIC;
+    incount47_read : OUT STD_LOGIC;
     in_en_clrsts_dout : IN STD_LOGIC_VECTOR (0 downto 0);
     in_en_clrsts_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
     in_en_clrsts_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -152,7 +152,7 @@ attribute shreg_extract : string;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
     signal out_sts : STD_LOGIC_VECTOR (0 downto 0) := "0";
     signal final_s2m_len_V : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
-    signal incount40_blk_n : STD_LOGIC;
+    signal incount47_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal in_en_clrsts_blk_n : STD_LOGIC;
@@ -502,7 +502,7 @@ begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state2)) then
                 icmp_ln23_reg_299 <= icmp_ln23_fu_180_p2;
-                tmp_reg_291 <= incount40_dout;
+                tmp_reg_291 <= incount47_dout;
             end if;
         end if;
     end process;
@@ -541,7 +541,7 @@ begin
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, incount40_empty_n, in_en_clrsts_empty_n, sts_clear_empty_n, in_s2m_len_empty_n, m_axi_gmem0_AWREADY, m_axi_gmem0_BVALID, out_memory_empty_n, ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state19, icmp_ln23_reg_299, in_en_clrsts_read_read_fu_98_p2, icmp_ln23_fu_180_p2, grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_done, ap_CS_fsm_state5, icmp_ln1073_fu_256_p2)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, incount47_empty_n, in_en_clrsts_empty_n, sts_clear_empty_n, in_s2m_len_empty_n, m_axi_gmem0_AWREADY, m_axi_gmem0_BVALID, out_memory_empty_n, ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state19, icmp_ln23_reg_299, in_en_clrsts_read_read_fu_98_p2, icmp_ln23_fu_180_p2, grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_done, ap_CS_fsm_state5, icmp_ln1073_fu_256_p2)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -553,9 +553,9 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if (((incount40_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln23_fu_180_p2 = ap_const_lv1_0))) then
+                if (((incount47_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln23_fu_180_p2 = ap_const_lv1_0))) then
                     ap_NS_fsm <= ap_ST_fsm_state19;
-                elsif (((incount40_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln23_fu_180_p2 = ap_const_lv1_1))) then
+                elsif (((incount47_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln23_fu_180_p2 = ap_const_lv1_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state2;
@@ -659,9 +659,9 @@ begin
     ap_ST_fsm_state20_blk <= ap_const_logic_0;
     ap_ST_fsm_state21_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state2_blk_assign_proc : process(incount40_empty_n)
+    ap_ST_fsm_state2_blk_assign_proc : process(incount47_empty_n)
     begin
-        if ((incount40_empty_n = ap_const_logic_0)) then 
+        if ((incount47_empty_n = ap_const_logic_0)) then 
             ap_ST_fsm_state2_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state2_blk <= ap_const_logic_0;
@@ -790,7 +790,7 @@ begin
     grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start <= grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146_ap_start_reg;
     icmp_ln1065_fu_245_p2 <= "1" when (add_ln886_fu_234_p2 = in_s2m_len_read_reg_275) else "0";
     icmp_ln1073_fu_256_p2 <= "1" when (unsigned(add_ln886_fu_234_p2) < unsigned(in_s2m_len_read_reg_275)) else "0";
-    icmp_ln23_fu_180_p0 <= incount40_dout;
+    icmp_ln23_fu_180_p0 <= incount47_dout;
     icmp_ln23_fu_180_p2 <= "1" when (signed(icmp_ln23_fu_180_p0) > signed(ap_const_lv32_0)) else "0";
 
     in_en_clrsts_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, in_en_clrsts_empty_n)
@@ -844,22 +844,22 @@ begin
     end process;
 
 
-    incount40_blk_n_assign_proc : process(incount40_empty_n, ap_CS_fsm_state2)
+    incount47_blk_n_assign_proc : process(incount47_empty_n, ap_CS_fsm_state2)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            incount40_blk_n <= incount40_empty_n;
+            incount47_blk_n <= incount47_empty_n;
         else 
-            incount40_blk_n <= ap_const_logic_1;
+            incount47_blk_n <= ap_const_logic_1;
         end if; 
     end process;
 
 
-    incount40_read_assign_proc : process(incount40_empty_n, ap_CS_fsm_state2)
+    incount47_read_assign_proc : process(incount47_empty_n, ap_CS_fsm_state2)
     begin
-        if (((incount40_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            incount40_read <= ap_const_logic_1;
+        if (((incount47_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+            incount47_read <= ap_const_logic_1;
         else 
-            incount40_read <= ap_const_logic_0;
+            incount47_read <= ap_const_logic_0;
         end if; 
     end process;
 

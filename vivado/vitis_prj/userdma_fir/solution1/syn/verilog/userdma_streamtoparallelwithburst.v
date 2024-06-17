@@ -20,11 +20,11 @@ module userdma_streamtoparallelwithburst (
         inbuf_fifo_cap,
         inbuf_empty_n,
         inbuf_read,
-        incount40_dout,
-        incount40_num_data_valid,
-        incount40_fifo_cap,
-        incount40_empty_n,
-        incount40_read,
+        incount47_dout,
+        incount47_num_data_valid,
+        incount47_fifo_cap,
+        incount47_empty_n,
+        incount47_read,
         in_en_clrsts_dout,
         in_en_clrsts_num_data_valid,
         in_en_clrsts_fifo_cap,
@@ -129,11 +129,11 @@ input  [10:0] inbuf_num_data_valid;
 input  [10:0] inbuf_fifo_cap;
 input   inbuf_empty_n;
 output   inbuf_read;
-input  [31:0] incount40_dout;
-input  [6:0] incount40_num_data_valid;
-input  [6:0] incount40_fifo_cap;
-input   incount40_empty_n;
-output   incount40_read;
+input  [31:0] incount47_dout;
+input  [6:0] incount47_num_data_valid;
+input  [6:0] incount47_fifo_cap;
+input   incount47_empty_n;
+output   incount47_read;
 input  [0:0] in_en_clrsts_dout;
 input  [1:0] in_en_clrsts_num_data_valid;
 input  [1:0] in_en_clrsts_fifo_cap;
@@ -207,7 +207,7 @@ reg ap_done;
 reg ap_idle;
 reg ap_ready;
 reg inbuf_read;
-reg incount40_read;
+reg incount47_read;
 reg in_en_clrsts_read;
 reg[0:0] s2m_buf_sts;
 reg s2m_buf_sts_ap_vld;
@@ -234,7 +234,7 @@ reg    ap_done_reg;
 wire    ap_CS_fsm_state1;
 reg   [0:0] out_sts;
 reg   [31:0] final_s2m_len_V;
-reg    incount40_blk_n;
+reg    incount47_blk_n;
 wire    ap_CS_fsm_state2;
 reg    in_en_clrsts_blk_n;
 reg    sts_clear_blk_n;
@@ -488,7 +488,7 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
         icmp_ln23_reg_299 <= icmp_ln23_fu_180_p2;
-        tmp_reg_291 <= incount40_dout;
+        tmp_reg_291 <= incount47_dout;
     end
 end
 
@@ -557,7 +557,7 @@ assign ap_ST_fsm_state20_blk = 1'b0;
 assign ap_ST_fsm_state21_blk = 1'b0;
 
 always @ (*) begin
-    if ((incount40_empty_n == 1'b0)) begin
+    if ((incount47_empty_n == 1'b0)) begin
         ap_ST_fsm_state2_blk = 1'b1;
     end else begin
         ap_ST_fsm_state2_blk = 1'b0;
@@ -698,17 +698,17 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        incount40_blk_n = incount40_empty_n;
+        incount47_blk_n = incount47_empty_n;
     end else begin
-        incount40_blk_n = 1'b1;
+        incount47_blk_n = 1'b1;
     end
 end
 
 always @ (*) begin
-    if (((incount40_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
-        incount40_read = 1'b1;
+    if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        incount47_read = 1'b1;
     end else begin
-        incount40_read = 1'b0;
+        incount47_read = 1'b0;
     end
 end
 
@@ -892,9 +892,9 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((incount40_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd0))) begin
+            if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state19;
-            end else if (((incount40_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd1))) begin
+            end else if (((incount47_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2) & (icmp_ln23_fu_180_p2 == 1'd1))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -1013,7 +1013,7 @@ assign icmp_ln1065_fu_245_p2 = ((add_ln886_fu_234_p2 == in_s2m_len_read_reg_275)
 
 assign icmp_ln1073_fu_256_p2 = ((add_ln886_fu_234_p2 < in_s2m_len_read_reg_275) ? 1'b1 : 1'b0);
 
-assign icmp_ln23_fu_180_p0 = incount40_dout;
+assign icmp_ln23_fu_180_p0 = incount47_dout;
 
 assign icmp_ln23_fu_180_p2 = (($signed(icmp_ln23_fu_180_p0) > $signed(32'd0)) ? 1'b1 : 1'b0);
 

@@ -354,38 +354,6 @@ VITIS_LOOP_50_1:7 %call_ln886 = call void @getinstream_Pipeline_VITIS_LOOP_50_1,
 </operation>
 
 <operation id="25" st_id="1" stage="1" lat="1">
-<core>Cmp</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
-<or_exp><and_exp><literal name="in_en_clrsts_read" val="0"/>
-</and_exp></or_exp>
-</condition>
-
-<Node id="43" bw="1" op_0_bw="32" op_1_bw="32">
-<![CDATA[
-VITIS_LOOP_50_1:13 %icmp_ln1065 = icmp_eq  i32 %umax, i32 1
-
-]]></Node>
-<StgValue><ssdm name="icmp_ln1065"/></StgValue>
-</operation>
-
-<operation id="26" st_id="1" stage="1" lat="1">
-<core>NULL</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
-<or_exp><and_exp><literal name="in_en_clrsts_read" val="0"/>
-</and_exp></or_exp>
-</condition>
-
-<Node id="48" bw="0" op_0_bw="32" op_1_bw="32" op_2_bw="0">
-<![CDATA[
-VITIS_LOOP_50_1:18 %store_ln886 = store i32 %umax, i32 %in_len_V
-
-]]></Node>
-<StgValue><ssdm name="store_ln886"/></StgValue>
-</operation>
-
-<operation id="27" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -401,7 +369,7 @@ if.else39:0 %store_ln81 = store i32 0, i32 %in_len_V
 <StgValue><ssdm name="store_ln81"/></StgValue>
 </operation>
 
-<operation id="28" st_id="1" stage="1" lat="1">
+<operation id="26" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -417,7 +385,7 @@ if.else39:1 %write_ln82 = write void @_ssdm_op_Write.ap_auto.i1P0A, i1 %s2m_err,
 <StgValue><ssdm name="write_ln82"/></StgValue>
 </operation>
 
-<operation id="29" st_id="1" stage="1" lat="1">
+<operation id="27" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -436,7 +404,7 @@ if.else39:2 %br_ln0 = br void %if.end41
 
 <state id="2" st_id="2">
 
-<operation id="30" st_id="2" stage="1" lat="2">
+<operation id="28" st_id="2" stage="1" lat="2">
 <core></core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -449,6 +417,36 @@ VITIS_LOOP_50_1:7 %call_ln886 = call void @getinstream_Pipeline_VITIS_LOOP_50_1,
 
 ]]></Node>
 <StgValue><ssdm name="call_ln886"/></StgValue>
+</operation>
+
+<operation id="29" st_id="2" stage="1" lat="1">
+<core>Cmp</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="-1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<Node id="43" bw="1" op_0_bw="32" op_1_bw="32">
+<![CDATA[
+VITIS_LOOP_50_1:13 %icmp_ln1065 = icmp_eq  i32 %umax, i32 1
+
+]]></Node>
+<StgValue><ssdm name="icmp_ln1065"/></StgValue>
+</operation>
+
+<operation id="30" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="-1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<Node id="48" bw="0" op_0_bw="32" op_1_bw="32" op_2_bw="0">
+<![CDATA[
+VITIS_LOOP_50_1:18 %store_ln886 = store i32 %umax, i32 %in_len_V
+
+]]></Node>
+<StgValue><ssdm name="store_ln886"/></StgValue>
 </operation>
 </state>
 

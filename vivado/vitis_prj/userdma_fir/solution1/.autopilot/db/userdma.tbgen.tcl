@@ -585,7 +585,7 @@ set RtlHierarchyInfo {[
 			{"Name" : "final_s2m_len_V", "Type" : "OVld", "Direction" : "IO"}],
 		"Loop" : [
 			{"Name" : "VITIS_LOOP_20_1", "PipelineType" : "no",
-				"LoopDec" : {"FSMBitwidth" : "20", "FirstState" : "ap_ST_fsm_state2", "LastState" : ["ap_ST_fsm_state19"], "QuitState" : ["ap_ST_fsm_state2"], "PreState" : ["ap_ST_fsm_state1"], "PostState" : ["ap_ST_fsm_state1"], "OneDepthLoop" : "0", "OneStateBlock": ""}}]},
+				"LoopDec" : {"FSMBitwidth" : "21", "FirstState" : "ap_ST_fsm_state2", "LastState" : ["ap_ST_fsm_state19"], "QuitState" : ["ap_ST_fsm_state19"], "PreState" : ["ap_ST_fsm_state1"], "PostState" : ["ap_ST_fsm_state20"], "OneDepthLoop" : "0", "OneStateBlock": ""}}]},
 	{"ID" : "14", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.streamtoparallelwithburst_U0.grp_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2_fu_146", "Parent" : "13", "Child" : ["15"],
 		"CDFG" : "streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2",
 		"Protocol" : "ap_ctrl_hs",
@@ -796,7 +796,7 @@ set ArgLastReadFirstWriteLatency {
 		inStreamTop_V_strb_V {Type I LastRead 1 FirstWrite -1}
 		inStreamTop_V_user_V {Type I LastRead 1 FirstWrite -1}
 		inStreamTop_V_last_V {Type I LastRead 1 FirstWrite -1}
-		s2m_buf_sts {Type O LastRead -1 FirstWrite 18}
+		s2m_buf_sts {Type O LastRead -1 FirstWrite 19}
 		s2m_sts_clear {Type I LastRead 1 FirstWrite -1}
 		s2m_len {Type I LastRead 1 FirstWrite -1}
 		s2m_enb_clrsts {Type I LastRead 1 FirstWrite -1}
@@ -861,7 +861,7 @@ set ArgLastReadFirstWriteLatency {
 		inbuf {Type I LastRead 1 FirstWrite -1}
 		incount47 {Type I LastRead 1 FirstWrite -1}
 		in_en_clrsts {Type I LastRead 0 FirstWrite -1}
-		s2m_buf_sts {Type O LastRead -1 FirstWrite 18}
+		s2m_buf_sts {Type O LastRead -1 FirstWrite 19}
 		sts_clear {Type I LastRead 0 FirstWrite -1}
 		in_s2m_len {Type I LastRead 0 FirstWrite -1}
 		gmem0 {Type O LastRead 5 FirstWrite 2}

@@ -354,38 +354,6 @@ VITIS_LOOP_50_1:7 %call_ln886 = call void @getinstream_Pipeline_VITIS_LOOP_50_1,
 </operation>
 
 <operation id="25" st_id="1" stage="1" lat="1">
-<core>Cmp</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
-<or_exp><and_exp><literal name="in_en_clrsts_read" val="0"/>
-</and_exp></or_exp>
-</condition>
-
-<Node id="43" bw="1" op_0_bw="32" op_1_bw="32">
-<![CDATA[
-VITIS_LOOP_50_1:13 %icmp_ln1065 = icmp_eq  i32 %umax, i32 1
-
-]]></Node>
-<StgValue><ssdm name="icmp_ln1065"/></StgValue>
-</operation>
-
-<operation id="26" st_id="1" stage="1" lat="1">
-<core>NULL</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
-<or_exp><and_exp><literal name="in_en_clrsts_read" val="0"/>
-</and_exp></or_exp>
-</condition>
-
-<Node id="48" bw="0" op_0_bw="32" op_1_bw="32" op_2_bw="0">
-<![CDATA[
-VITIS_LOOP_50_1:18 %store_ln886 = store i32 %umax, i32 %in_len_V
-
-]]></Node>
-<StgValue><ssdm name="store_ln886"/></StgValue>
-</operation>
-
-<operation id="27" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -401,7 +369,7 @@ if.else39:0 %store_ln81 = store i32 0, i32 %in_len_V
 <StgValue><ssdm name="store_ln81"/></StgValue>
 </operation>
 
-<operation id="28" st_id="1" stage="1" lat="1">
+<operation id="26" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -417,7 +385,7 @@ if.else39:1 %write_ln82 = write void @_ssdm_op_Write.ap_auto.i1P0A, i1 %s2m_err,
 <StgValue><ssdm name="write_ln82"/></StgValue>
 </operation>
 
-<operation id="29" st_id="1" stage="1" lat="1">
+<operation id="27" st_id="1" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -436,7 +404,7 @@ if.else39:2 %br_ln0 = br void %if.end41
 
 <state id="2" st_id="2">
 
-<operation id="30" st_id="2" stage="1" lat="2">
+<operation id="28" st_id="2" stage="1" lat="2">
 <core></core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
@@ -449,6 +417,36 @@ VITIS_LOOP_50_1:7 %call_ln886 = call void @getinstream_Pipeline_VITIS_LOOP_50_1,
 
 ]]></Node>
 <StgValue><ssdm name="call_ln886"/></StgValue>
+</operation>
+
+<operation id="29" st_id="2" stage="1" lat="1">
+<core>Cmp</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="-1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<Node id="43" bw="1" op_0_bw="32" op_1_bw="32">
+<![CDATA[
+VITIS_LOOP_50_1:13 %icmp_ln1065 = icmp_eq  i32 %umax, i32 1
+
+]]></Node>
+<StgValue><ssdm name="icmp_ln1065"/></StgValue>
+</operation>
+
+<operation id="30" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="-1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<Node id="48" bw="0" op_0_bw="32" op_1_bw="32" op_2_bw="0">
+<![CDATA[
+VITIS_LOOP_50_1:18 %store_ln886 = store i32 %umax, i32 %in_len_V
+
+]]></Node>
+<StgValue><ssdm name="store_ln886"/></StgValue>
 </operation>
 </state>
 
@@ -962,51 +960,51 @@ if.end41:0 %ret_ln84 = ret
 </dataflow>
 <dataflow id="221" from="width_count" to="call_ln886" fromId="60" toId="24">
 </dataflow>
-<dataflow id="222" from="umax" to="icmp_ln1065" fromId="22" toId="25">
+<dataflow id="222" from="StgValue_77" to="store_ln81" fromId="77" toId="25">
 </dataflow>
-<dataflow id="223" from="StgValue_174" to="icmp_ln1065" fromId="174" toId="25">
+<dataflow id="223" from="in_len_V" to="store_ln81" fromId="59" toId="25">
 </dataflow>
-<dataflow id="224" from="umax" to="store_ln886" fromId="22" toId="26">
+<dataflow id="225" from="_ssdm_op_Write.ap_auto.i1P0A" to="write_ln82" fromId="224" toId="26">
 </dataflow>
-<dataflow id="225" from="in_len_V" to="store_ln886" fromId="59" toId="26">
+<dataflow id="226" from="s2m_err" to="write_ln82" fromId="53" toId="26">
 </dataflow>
-<dataflow id="226" from="StgValue_77" to="store_ln81" fromId="77" toId="27">
+<dataflow id="228" from="StgValue_227" to="write_ln82" fromId="227" toId="26">
 </dataflow>
-<dataflow id="227" from="in_len_V" to="store_ln81" fromId="59" toId="27">
+<dataflow id="229" from="getinstream_Pipeline_VITIS_LOOP_50_1" to="call_ln886" fromId="207" toId="28">
 </dataflow>
-<dataflow id="229" from="_ssdm_op_Write.ap_auto.i1P0A" to="write_ln82" fromId="228" toId="28">
+<dataflow id="230" from="in_len_V_load" to="call_ln886" fromId="19" toId="28">
 </dataflow>
-<dataflow id="230" from="s2m_err" to="write_ln82" fromId="53" toId="28">
+<dataflow id="231" from="inStreamTop_V_data_V" to="call_ln886" fromId="46" toId="28">
 </dataflow>
-<dataflow id="232" from="StgValue_231" to="write_ln82" fromId="231" toId="28">
+<dataflow id="232" from="inStreamTop_V_keep_V" to="call_ln886" fromId="47" toId="28">
 </dataflow>
-<dataflow id="233" from="getinstream_Pipeline_VITIS_LOOP_50_1" to="call_ln886" fromId="207" toId="30">
+<dataflow id="233" from="inStreamTop_V_strb_V" to="call_ln886" fromId="48" toId="28">
 </dataflow>
-<dataflow id="234" from="in_len_V_load" to="call_ln886" fromId="19" toId="30">
+<dataflow id="234" from="inStreamTop_V_user_V" to="call_ln886" fromId="49" toId="28">
 </dataflow>
-<dataflow id="235" from="inStreamTop_V_data_V" to="call_ln886" fromId="46" toId="30">
+<dataflow id="235" from="inStreamTop_V_last_V" to="call_ln886" fromId="50" toId="28">
 </dataflow>
-<dataflow id="236" from="inStreamTop_V_keep_V" to="call_ln886" fromId="47" toId="30">
+<dataflow id="236" from="inbuf" to="call_ln886" fromId="55" toId="28">
 </dataflow>
-<dataflow id="237" from="inStreamTop_V_strb_V" to="call_ln886" fromId="48" toId="30">
+<dataflow id="237" from="sub_i_i52" to="call_ln886" fromId="18" toId="28">
 </dataflow>
-<dataflow id="238" from="inStreamTop_V_user_V" to="call_ln886" fromId="49" toId="30">
+<dataflow id="238" from="in_s2m_len_read" to="call_ln886" fromId="5" toId="28">
 </dataflow>
-<dataflow id="239" from="inStreamTop_V_last_V" to="call_ln886" fromId="50" toId="30">
+<dataflow id="239" from="incount47" to="call_ln886" fromId="56" toId="28">
 </dataflow>
-<dataflow id="240" from="inbuf" to="call_ln886" fromId="55" toId="30">
+<dataflow id="240" from="tmp_user_V_loc" to="call_ln886" fromId="8" toId="28">
 </dataflow>
-<dataflow id="241" from="sub_i_i52" to="call_ln886" fromId="18" toId="30">
+<dataflow id="241" from="icmp_ln1065_loc" to="call_ln886" fromId="7" toId="28">
 </dataflow>
-<dataflow id="242" from="in_s2m_len_read" to="call_ln886" fromId="5" toId="30">
+<dataflow id="242" from="width_count" to="call_ln886" fromId="60" toId="28">
 </dataflow>
-<dataflow id="243" from="incount47" to="call_ln886" fromId="56" toId="30">
+<dataflow id="243" from="umax" to="icmp_ln1065" fromId="22" toId="29">
 </dataflow>
-<dataflow id="244" from="tmp_user_V_loc" to="call_ln886" fromId="8" toId="30">
+<dataflow id="244" from="StgValue_174" to="icmp_ln1065" fromId="174" toId="29">
 </dataflow>
-<dataflow id="245" from="icmp_ln1065_loc" to="call_ln886" fromId="7" toId="30">
+<dataflow id="245" from="umax" to="store_ln886" fromId="22" toId="30">
 </dataflow>
-<dataflow id="246" from="width_count" to="call_ln886" fromId="60" toId="30">
+<dataflow id="246" from="in_len_V" to="store_ln886" fromId="59" toId="30">
 </dataflow>
 <dataflow id="247" from="tmp_user_V_loc" to="tmp_user_V_loc_load" fromId="8" toId="31">
 </dataflow>
@@ -1034,13 +1032,13 @@ if.end41:0 %ret_ln84 = ret
 </dataflow>
 <dataflow id="262" from="tmp_2" to="xor_ln60" fromId="36" toId="37">
 </dataflow>
-<dataflow id="263" from="icmp_ln1065" to="xor_ln60" fromId="25" toId="37">
+<dataflow id="263" from="icmp_ln1065" to="xor_ln60" fromId="29" toId="37">
 </dataflow>
 <dataflow id="264" from="and_ln1065" to="or_ln64" fromId="35" toId="38">
 </dataflow>
 <dataflow id="265" from="xor_ln60" to="or_ln64" fromId="37" toId="38">
 </dataflow>
-<dataflow id="266" from="_ssdm_op_Write.ap_auto.i1P0A" to="write_ln65" fromId="228" toId="39">
+<dataflow id="266" from="_ssdm_op_Write.ap_auto.i1P0A" to="write_ln65" fromId="224" toId="39">
 </dataflow>
 <dataflow id="267" from="s2m_err" to="write_ln65" fromId="53" toId="39">
 </dataflow>

@@ -41,7 +41,7 @@ set ExportMCPathFlag 0
 set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
-set TargetInfo xck26:-sfvc784:-2LV-c
+set TargetInfo xc7z020:-clg400:-1
 set SourceFiles {sc {} c ../../hls_userdma/userdma.cpp}
 set SourceFlags {sc {} c {{}}}
 set DirectiveFile /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/solution1.directive
@@ -61,5 +61,5 @@ set DefaultPlatform DefaultPlatform
 set multiClockList {}
 set SCPortClockMap {}
 set intNbAccess 0
-set PlatformFiles {{DefaultPlatform {xilinx/zynquplus/zynquplus}}}
+set PlatformFiles {{DefaultPlatform {xilinx/zynq/zynq}}}
 set HPFPO 0

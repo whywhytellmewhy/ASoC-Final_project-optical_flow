@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Mon Jun 17 10:02:27 2024
-# Process ID: 596095
+# Start of session at: Mon Jun 17 13:09:10 2024
+# Process ID: 618717
 # Current directory: /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/impl/ip
 # Command line: vivado -notrace -mode batch -source run_ippack.tcl
 # Log file: /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vitis_prj/userdma_fir/solution1/impl/ip/vivado.log
@@ -11,8 +11,8 @@
 # Running On: ubuntu2004, OS: Linux, CPU Frequency: 3393.628 MHz, CPU Physical cores: 4, Host memory: 12538 MB
 #-----------------------------------------------------------
 source run_ippack.tcl -notrace
-ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2908.406 ; gain = 0.023 ; free physical = 2532 ; free virtual = 4582
+ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2911.375 ; gain = 0.023 ; free physical = 1024 ; free virtual = 3671
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.1/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Mon Jun 17 10:02:39 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 17 13:09:24 2024...

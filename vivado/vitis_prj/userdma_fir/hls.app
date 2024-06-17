@@ -6,8 +6,8 @@
     </Simulation>
     <files xmlns="">
         <file name="../../hls_userdma/userdma_test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
-        <file name="hls_userdma/userdma.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="hls_userdma/userdma.h" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="hls_userdma/userdma.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
     <solutions xmlns="">
         <solution name="solution1" status="active"/>

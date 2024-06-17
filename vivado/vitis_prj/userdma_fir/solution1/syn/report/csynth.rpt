@@ -4,12 +4,12 @@
 == Synthesis Summary Report of 'userdma'
 ================================================================
 + General Information: 
-    * Date:           Mon Jun 17 09:59:48 2024
+    * Date:           Mon Jun 17 13:08:04 2024
     * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
     * Project:        userdma_fir
     * Solution:       solution1 (Vivado IP Flow Target)
-    * Product family: zynquplus
-    * Target device:  xck26-sfvc784-2LV-c
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
     
 
 + Performance & Resource Estimates: 
@@ -19,22 +19,22 @@
     |                          Modules                         | Issue|      | Latency | Latency| Iteration|         | Trip |          |        |    |           |            |     |
     |                          & Loops                         | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM  | DSP|     FF    |     LUT    | URAM|
     +----------------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+--------+----+-----------+------------+-----+
-    |+ userdma*                                                |     -|  0.00|        -|       -|         -|        -|     -|  dataflow|  9 (3%)|   -|  4248 (1%)|   7999 (6%)|    -|
-    | + entry_proc                                             |     -|  5.46|        0|   0.000|         -|        0|     -|        no|       -|   -|    3 (~0%)|    47 (~0%)|    -|
-    | + getinstream                                            |     -|  3.85|        -|       -|         -|        -|     -|        no|       -|   -|  244 (~0%)|   556 (~0%)|    -|
-    |  + getinstream_Pipeline_VITIS_LOOP_50_1                  |     -|  4.84|        -|       -|         -|        -|     -|        no|       -|   -|  140 (~0%)|   287 (~0%)|    -|
+    |+ userdma*                                                |     -|  0.00|        -|       -|         -|        -|     -|  dataflow|  9 (3%)|   -|  4316 (4%)|  8143 (15%)|    -|
+    | + entry_proc                                             |     -|  3.67|        0|   0.000|         -|        0|     -|        no|       -|   -|    3 (~0%)|    47 (~0%)|    -|
+    | + getinstream                                            |     -|  0.69|        -|       -|         -|        -|     -|        no|       -|   -|  244 (~0%)|    544 (1%)|    -|
+    |  + getinstream_Pipeline_VITIS_LOOP_50_1                  |     -|  0.69|        -|       -|         -|        -|     -|        no|       -|   -|  140 (~0%)|   281 (~0%)|    -|
     |   o VITIS_LOOP_50_1                                      |     -|  7.30|        -|       -|         2|        1|     -|       yes|       -|   -|          -|           -|    -|
-    | + paralleltostreamwithburst                              |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  514 (~0%)|  1003 (~0%)|    -|
+    | + paralleltostreamwithburst                              |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  514 (~0%)|    984 (1%)|    -|
     |  o VITIS_LOOP_102_1                                      |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|   -|          -|           -|    -|
-    |   + paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2  |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  139 (~0%)|   331 (~0%)|    -|
+    |   + paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2  |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  139 (~0%)|   321 (~0%)|    -|
     |    o VITIS_LOOP_110_2                                    |     -|  7.30|        -|       -|         3|        1|     -|       yes|       -|   -|          -|           -|    -|
-    | + streamtoparallelwithburst                              |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  413 (~0%)|   758 (~0%)|    -|
+    | + streamtoparallelwithburst                              |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|  415 (~0%)|    764 (1%)|    -|
     |  o VITIS_LOOP_20_1                                       |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|   -|          -|           -|    -|
-    |   + streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2   |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|   69 (~0%)|   119 (~0%)|    -|
+    |   + streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2   |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|   -|   69 (~0%)|   117 (~0%)|    -|
     |    o VITIS_LOOP_23_2                                     |     -|  7.30|        -|       -|         3|        1|     -|       yes|       -|   -|          -|           -|    -|
-    | + sendoutstream                                          |     -|  5.17|        -|       -|         -|        -|     -|        no|       -|   -|   82 (~0%)|   240 (~0%)|    -|
+    | + sendoutstream                                          |     -|  2.69|        -|       -|         -|        -|     -|        no|       -|   -|   82 (~0%)|   237 (~0%)|    -|
     |  o VITIS_LOOP_153_1                                      |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|   -|          -|           -|    -|
-    |   + sendoutstream_Pipeline_VITIS_LOOP_155_2              |     -|  5.55|        -|       -|         -|        -|     -|        no|       -|   -|   39 (~0%)|   146 (~0%)|    -|
+    |   + sendoutstream_Pipeline_VITIS_LOOP_155_2              |     -|  3.19|        -|       -|         -|        -|     -|        no|       -|   -|   39 (~0%)|   143 (~0%)|    -|
     |    o VITIS_LOOP_155_2                                    |     -|  7.30|        -|       -|         2|        1|     -|       yes|       -|   -|          -|           -|    -|
     +----------------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+--------+----+-----------+------------+-----+
 
@@ -202,9 +202,9 @@
 |     add_ln127_fu_217_p2                                 | -   |        | add_ln127 | add | fabric | 0       |
 |     add_ln132_fu_237_p2                                 | -   |        | add_ln132 | add | fabric | 0       |
 |  + streamtoparallelwithburst                            | 0   |        |           |     |        |         |
-|    add_ln23_fu_193_p2                                   | -   |        | add_ln23  | add | fabric | 0       |
-|    add_ln28_fu_225_p2                                   | -   |        | add_ln28  | add | fabric | 0       |
-|    add_ln886_fu_235_p2                                  | -   |        | add_ln886 | add | fabric | 0       |
+|    add_ln23_fu_192_p2                                   | -   |        | add_ln23  | add | fabric | 0       |
+|    add_ln28_fu_224_p2                                   | -   |        | add_ln28  | add | fabric | 0       |
+|    add_ln886_fu_234_p2                                  | -   |        | add_ln886 | add | fabric | 0       |
 |   + streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2  | 0   |        |           |     |        |         |
 |     add_ln23_fu_110_p2                                  | -   |        | add_ln23  | add | fabric | 0       |
 |  + sendoutstream                                        | 0   |        |           |     |        |         |

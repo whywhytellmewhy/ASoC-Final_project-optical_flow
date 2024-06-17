@@ -127,6 +127,34 @@ always @(posedge axi_clk or negedge axi_reset_n)  begin
   end
 end
 
+
+// added
+reg [21:0] output_counter;
+reg [21:0] next_output_counter;
+
+assign sm_tlast = (output_counter==3*reg_widthIn*reg_heightIn-1)? 1:0;
+
+always @* begin
+  if (output_counter == 3*reg_widthIn*reg_heightIn-1) begin
+    next_output_counter = 0;
+  end
+  else if (sm_tready & sm_tvalid) begin
+    next_output_counter = output_counter+1;
+  end
+  else begin
+    next_output_counter = output_counter;
+  end
+end
+
+always @(posedge axi_clk or negedge axi_reset_n)  begin
+  if ( !axi_reset_n ) begin
+    output_counter <= 0;
+  end else begin
+    output_counter <= next_output_counter;
+  end
+end
+
+
 //read register
 reg [(pDATA_WIDTH-1) : 0] rdata_tmp;
 assign arready = 1;
@@ -144,7 +172,8 @@ end
 //DUT
 assign sm_tdata  = dat_out_rsc_dat[31: 0]; 
 assign sm_tupsb  = 0;
-assign {sm_tstrb, sm_tkeep, sm_tlast} = 0;
+//assign {sm_tstrb, sm_tkeep, sm_tlast} = 0;
+assign {sm_tstrb, sm_tkeep} = 0;
 
 
 wire         ram0_en;

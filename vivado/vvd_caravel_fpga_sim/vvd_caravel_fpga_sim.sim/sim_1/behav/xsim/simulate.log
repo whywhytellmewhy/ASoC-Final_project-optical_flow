@@ -1,0 +1,208 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: fsic_tb.DUT.design_1_i.axi_vip_0.inst
+XilinxAXIVIP: Found at Path: fsic_tb.DUT.design_1_i.axi_vip_1.inst
+XilinxAXIVIP: Found at Path: fsic_tb.DUT.design_1_i.axi_vip_2.inst
+XilinxAXIVIP: Found at Path: fsic_tb.DUT.design_1_i.axi_vip_3.inst
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module fsic_tb.DUT.design_1_i.blk_mem_gen_0.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_5_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+                 200=> sys_rest = 1
+               28858=> rst_clk_wiz_0_5M_peripheral_aresetn = 1
+              228858=> CaravelSoC resetb_0 = 1
+399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0001
+799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0002
+1199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0003
+1599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0004
+1999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0005
+2399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0006
+2799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0007
+3199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0008
+3599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0009
+3999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0010
+4399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0011
+4799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0012
+5199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0013
+5599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0014
+5999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0015
+6399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0016
+6799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0017
+7199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0018
+7599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0019
+7999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0020
+             8151658=> FW working, caravel_0_mprj_o[37] = 1
+             8151658=> PL_IS enabling...
+             8153858=> AXI4LITE_WRITE_BURST 60007000, value: 0001, resp: 00
+             8165858=> AXI4LITE_WRITE_BURST 60007000, value: 0003, resp: 00
+             8177458=> AXI4LITE_READ_BURST 60007000, value: 0003, resp: 00
+             8177458=> PL_IS enables: = 00000003
+             8177458=> Starting test...
+             8177458=> Starting SocUp2DmaPath() test...
+             8177458=> =======================================================================
+             8177458=> FpgaLocal_Write: PL_UPDMA, s2m exit clear...
+             8179058=> AXI4LITE_WRITE_BURST 60009020, value: 0000, resp: 00
+             8180258=> AXI4LITE_READ_BURST 60009020, value: 0000, resp: 00
+             8180258=> Fpga2Soc_Write PL_UPDMA offset 020 = 00000000, PASS
+             8180258=> FpgaLocal_Write: PL_UPDMA, s2m disable to clear...
+             8181858=> AXI4LITE_WRITE_BURST 60009030, value: 0000, resp: 00
+             8183058=> AXI4LITE_READ_BURST 60009030, value: 0000, resp: 00
+             8183058=> Fpga2Soc_Write PL_UPDMA offset 030 = 00000000, PASS
+             8183058=> FpgaLocal_Write: PL_UPDMA, m2s exit clear...
+             8184658=> AXI4LITE_WRITE_BURST 60009078, value: 0000, resp: 00
+             8185858=> AXI4LITE_READ_BURST 60009078, value: 0000, resp: 00
+             8185858=> Fpga2Soc_Write PL_UPDMA offset 078 = 00000000, PASS
+             8185858=> FpgaLocal_Write: PL_UPDMA, m2s disable to clear...
+             8187458=> AXI4LITE_WRITE_BURST 60009088, value: 0000, resp: 00
+             8188658=> AXI4LITE_READ_BURST 60009088, value: 0000, resp: 00
+             8188658=> Fpga2Soc_Write PL_UPDMA offset 088 = 00000000, PASS
+             8188658=> FpgaLocal_Write: PL_UPDMA, s2m set buffer length...
+             8190258=> AXI4LITE_WRITE_BURST 60009028, value: 7530, resp: 00
+             8191458=> AXI4LITE_READ_BURST 60009028, value: 7530, resp: 00
+             8191458=> Fpga2Soc_Write PL_UPDMA offset 028 = 00007530, PASS
+             8191458=> FpgaLocal_Write: PL_UPDMA, s2m set buffer low...
+             8193058=> AXI4LITE_WRITE_BURST 60009038, value: 45080000, resp: 00
+             8194258=> AXI4LITE_READ_BURST 60009038, value: 45080000, resp: 00
+             8194258=> Fpga2Soc_Write PL_UPDMA offset 038 = 45080000, PASS
+             8194258=> FpgaLocal_Write: PL_UPDMA, s2m set buffer high...
+             8195858=> AXI4LITE_WRITE_BURST 6000903c, value: 0000, resp: 00
+             8197058=> AXI4LITE_READ_BURST 6000903c, value: 0000, resp: 00
+             8197058=> Fpga2Soc_Write PL_UPDMA offset 03c = 00000000, PASS
+             8197058=> FpgaLocal_Write: PL_UPDMA, set image width...
+             8198658=> AXI4LITE_WRITE_BURST 60009054, value: 0400, resp: 00
+             8199858=> AXI4LITE_READ_BURST 60009054, value: 0400, resp: 00
+             8199858=> Fpga2Soc_Write PL_UPDMA offset 054 = 00000400, PASS
+             8199858=> FpgaLocal_Write: PL_UPDMA, m2s set buffer low...
+             8201458=> AXI4LITE_WRITE_BURST 6000905c, value: 45000000, resp: 00
+             8202658=> AXI4LITE_READ_BURST 6000905c, value: 45000000, resp: 00
+             8202658=> Fpga2Soc_Write PL_UPDMA offset 05c = 45000000, PASS
+             8202658=> FpgaLocal_Write: PL_UPDMA, m2s set buffer high...
+             8204258=> AXI4LITE_WRITE_BURST 60009060, value: 0000, resp: 00
+             8205458=> AXI4LITE_READ_BURST 60009060, value: 0000, resp: 00
+             8205458=> Fpga2Soc_Write PL_UPDMA offset 060 = 00000000, PASS
+             8205458=> FpgaLocal_Write: PL_UPDMA, m2s set buffer length...
+             8207058=> AXI4LITE_WRITE_BURST 60009080, value: 6d000, resp: 00
+             8208258=> AXI4LITE_READ_BURST 60009080, value: 6d000, resp: 00
+             8208258=> Fpga2Soc_Write PL_UPDMA offset 080 = 0006d000, PASS
+             8208258=> Fpga2Soc_Write: SOC_CC
+             8210858=> AXI4LITE_WRITE_BURST 60005000, value: 0002, resp: 00
+             8223058=> AXI4LITE_READ_BURST 60005000, value: 0002, resp: 00
+             8223058=> Fpga2Soc_Write SOC_CC offset 000 = 00000002, PASS
+             8223058=> Fpga2Soc_Write: SOC_UP (OpticalFlow IP)
+             8225658=> AXI4LITE_WRITE_BURST 60000000, value: 0001, resp: 00
+             8237858=> AXI4LITE_READ_BURST 60000000, value: 0001, resp: 00
+             8237858=> Fpga2Soc_Write SOC_UP offset 000 = 00000001, PASS
+             8240458=> AXI4LITE_WRITE_BURST 60000000, value: 0000, resp: 00
+             8252658=> AXI4LITE_READ_BURST 60000000, value: 0000, resp: 00
+             8252658=> Fpga2Soc_Write SOC_UP offset 000 = 00000000, PASS
+             8255258=> AXI4LITE_WRITE_BURST 60000004, value: 0400, resp: 00
+             8267458=> AXI4LITE_READ_BURST 60000004, value: 0400, resp: 00
+             8267458=> Fpga2Soc_Write SOC_CC offset 004 = 00000400, PASS
+             8270058=> AXI4LITE_WRITE_BURST 60000008, value: 01b4, resp: 00
+             8282258=> AXI4LITE_READ_BURST 60000008, value: 01b4, resp: 00
+             8282258=> Fpga2Soc_Write SOC_CC offset 008 = 000001b4, PASS
+             8284858=> AXI4LITE_WRITE_BURST 6000000c, value: 0069, resp: 00
+             8297058=> AXI4LITE_READ_BURST 6000000c, value: 0069, resp: 00
+             8297058=> Fpga2Soc_Write SOC_CC offset 00c = 00000069, PASS
+             8297058=> FpgaLocal_Write: PL_UPDMA, set ap_start...
+             8298658=> AXI4LITE_WRITE_BURST 60009000, value: 0001, resp: 00
+             8298658=> Starting CheckuserDMADone()...
+             8298658=> =======================================================================
+             8298658=> FpgaLocal_Read: PL_UPDMA
+             8298658=> Wating buffer transfer done...
+8399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0021
+8799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0022
+9199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0023
+9599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0024
+9999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0025
+10399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0026
+10799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0027
+11199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0028
+11599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0029
+11999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0030
+12399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0031
+12799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0032
+13199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0033
+13599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0034
+13999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0035
+14399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0036
+14799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0037
+15199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0038
+15599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0039
+15999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0040
+16399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0041
+16799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0042
+17199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0043
+17599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0044
+17999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0045
+18399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0046
+18799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0047
+19199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0048
+19599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0049
+19999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0050
+20399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0051
+20799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0052
+21199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0053
+21599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0054
+21999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0055
+22399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0056
+22799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0057
+23199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0058
+23599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0059
+23999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0060
+24399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0061
+24799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0062
+25199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0063
+25599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0064
+25999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0065
+26399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0066
+26799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0067
+27199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0068
+27599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0069
+27999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0070
+28399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0071
+28799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0072
+29199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0073
+29599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0074
+29999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0075
+30399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0076
+30799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0077
+31199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0078
+31599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0079
+31999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0080
+32399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0081
+32799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0082
+33199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0083
+33599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0084
+33999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0085
+34399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0086
+34799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0087
+35199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0088
+35599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0089
+35999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0090
+36399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0091
+36799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0092
+37199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0093
+37599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0094
+37999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0095
+38399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0096
+38799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0097
+39199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0098
+39599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0099
+39999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0100
+40399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0101
+40799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0102
+41199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0103
+41599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0104
+41999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0105
+            42090658=> Buffer transfer done. offset 010 = 00000001, PASS
+            42090658=> End CheckuserDMADone()...
+            42090658=> =======================================================================
+            42090658=> End SocUp2DmaPath() test...
+            42090658=> =======================================================================
+42399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0106
+            42590658=> End of the test...
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+$finish called at time : 42590658 ns : File "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic_tb.sv" Line 149
+INFO: xsimkernel Simulation Memory Usage: 936088 KB (Peak: 1001624 KB), Simulation CPU Usage: 702460 ms

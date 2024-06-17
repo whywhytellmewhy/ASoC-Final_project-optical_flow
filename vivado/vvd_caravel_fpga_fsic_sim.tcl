@@ -615,7 +615,7 @@ proc cr_bd_design_1 { parentCell } {
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
   set_property -dict [ list \
    CONFIG.Byte_Size {8} \
-CONFIG.Coe_File {/home/ubuntu/SoC_Design/homework/ASoC_lab4_FSIC_FPGA/vivado/fsic.coe} \
+CONFIG.Coe_File {/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic.coe} \
    CONFIG.EN_SAFETY_CKT {true} \
    CONFIG.Enable_32bit_Address {true} \
    CONFIG.Enable_A {Use_ENA_Pin} \

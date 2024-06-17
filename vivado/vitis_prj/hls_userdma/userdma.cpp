@@ -28,14 +28,14 @@ void streamtoparallelwithburst(hls::stream<data> &in_stream, hls::stream<int> &i
 		  out_memory += count;
 		  final_s2m_len += count;
 
-		  //buf_sts=0; // added --> uncomment in final froject
+		  //buf_sts=0; // added --> uncomment in final project
 		  if(final_s2m_len == in_s2m_len){
 			  out_sts = 1;
 			  //buf_sts=1; // added
 		  }
 
 		  buf_sts = out_sts;
-	  } while(final_s2m_len < in_s2m_len);
+	  } while(final_s2m_len < 3*in_s2m_len); // modified in final project
   }
 }
 
@@ -60,7 +60,7 @@ void getinstream(hls::stream<trans_pkt >& in_stream, ap_uint<1> in_en_clrsts, ap
 			  if((in_len!=0)&&(in_val.user(2,2)==1))
 				s2m_err=1;					  
 
-			//////////// Modified --> uncomment in final froject ////////////
+			//////////// Modified --> uncomment in final project ////////////
 			  if((width_count==in_Img_width-1)&&(in_val.user(3,3)!=1))
 				s2m_err=1;
 			 
@@ -119,13 +119,14 @@ void paralleltostreamwithburst(ap_uint<32> *in_memory, ap_uint<1> in_en_clrsts, 
 			  if(m2s_len == in_m2s_len)
 				  out_val.upsb(2,2) = 1;
 
-			  /* Modified
+			  //////////// Modified --> uncomment in final project ////////////
 			  if(Img_width_count == in_Img_width-1){
 				  out_val.upsb(3,3) = 1;
 				  Img_width_count=0; 
 			  }else{
 				  Img_width_count++;
-			  }*/
+			  }
+			  /////////////////////////////////////////////////////////////////
 
 			  out_stream.write(out_val);
 			  m2s_len--;	

@@ -10,6 +10,7 @@ using namespace std;
 #include <cstdlib>
 #include <cmath>
 #include <mc_scverify.h>
+#include <time.h>
 
 //////////////// When doing only "algorithm" simulaion, without HLS simulation //////////////////////
 //#include "OpticalFlow_defs.h"
@@ -32,6 +33,8 @@ CCS_MAIN(int argc, char *argv[])
   maxWType widthIn = iW;
   maxHType heightIn = iH;
   int shift_threshold = 105;
+
+  clock_t start_time_algorithm, stop_time_algorithm;
 
   unsigned char *rarray1 = new unsigned char[iH*iW];
   unsigned char *garray1 = new unsigned char[iH*iW];
@@ -149,7 +152,9 @@ CCS_MAIN(int argc, char *argv[])
 
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,output_algorithm);
   ////////ref_inst.run(frame1,frame2,frame3,frame4,frame5,denom_algorithm,output_algorithm);
+  start_time_algorithm = clock();
   ref_inst.run(frame1,frame2,frame3,frame4,denom_algorithm,output_algorithm);
+  stop_time_algorithm = clock();
   /////ref_inst.run(frame1,frame2,frame3,frame4,frame5,gradient_x_algorithm,output_algorithm); // <-----------------------------------------------------------------------------------
   /////dut.run(frames_channel,widthIn,heightIn,output_HLS_channel);
   ////////dut.run(frames_channel,widthIn,heightIn,denominator_HLS_channel,shift_HLS_channel,output_HLS_channel);
@@ -400,6 +405,11 @@ CCS_MAIN(int argc, char *argv[])
   cout << "Finish writing final_velocity_y_HLS into channel_output_v_before_threshold_HLS.hex" << endl;
   cout << "Finish writing denominator_HLS into channel_output_denominator_HLS.hex" << endl;
   ////////cout << "Finish writing shift_HLS into channel_output_shift_HLS.hex" << endl;
+
+  cout << "+++++++++++++++++++++++ (Report execution timing) +++++++++++++++++++++++ " << endl;
+  printf("algorithm: %lf seconds\n", (stop_time_algorithm-start_time_algorithm)/(double)(CLOCKS_PER_SEC));
+  cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ " << endl;
+
 
   fclose(file_pointer_frame1);
   fclose(file_pointer_frame2);

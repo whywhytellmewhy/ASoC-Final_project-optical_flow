@@ -193,16 +193,19 @@ Block Memory Generator module fsic_tb.DUT.design_1_i.blk_mem_gen_0.inst.\native_
 41199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0103
 41599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0104
 41999998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0105
-            42090658=> Buffer transfer done. offset 010 = 00000001, PASS
-            42090658=> End CheckuserDMADone()...
-            42090658=> =======================================================================
-            42090658=> End SocUp2DmaPath() test...
-            42090658=> =======================================================================
 42399998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0106
-            42590658=> End of the test...
+42799998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0107
+43199998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0108
+            43366658=> Buffer transfer done. offset 010 = 00000001, PASS
+            43366658=> End CheckuserDMADone()...
+            43366658=> =======================================================================
+            43366658=> End SocUp2DmaPath() test...
+            43366658=> =======================================================================
+43599998.000 ns MSG fsic_tb, +100000 cycles, finish_flag=0,  repeat_cnt=0109
+            43866658=> End of the test...
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
-$finish called at time : 42590658 ns : File "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic_tb.sv" Line 149
-INFO: xsimkernel Simulation Memory Usage: 936088 KB (Peak: 1001624 KB), Simulation CPU Usage: 702460 ms
+$finish called at time : 43866658 ns : File "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic_tb.sv" Line 149
+INFO: xsimkernel Simulation Memory Usage: 878924 KB (Peak: 878924 KB), Simulation CPU Usage: 1715430 ms

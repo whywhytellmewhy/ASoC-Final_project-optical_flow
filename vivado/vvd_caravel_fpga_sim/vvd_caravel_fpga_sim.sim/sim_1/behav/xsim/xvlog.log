@@ -99,6 +99,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_flow_calc_run_tensor_shift_rsci
 INFO: [VRFC 10-311] analyzing module OpticalFlow_flow_calc_run
 INFO: [VRFC 10-311] analyzing module OpticalFlow_flow_calc_struct
 INFO: [VRFC 10-311] analyzing module OpticalFlow_flow_calc
+INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x_run_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x_run_shift_rsci_shift_wait_dp
@@ -114,6 +115,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x_struct
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_x
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_6_9_768_512_1_512_768_1_gen
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_5_9_768_512_1_512_768_1_gen
+INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_run_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_tensor_weight_y_run_tensor_y_rsci_tensor_y_wait_dp
@@ -134,6 +136,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_outer_product_run_filtered_grad
 INFO: [VRFC 10-311] analyzing module OpticalFlow_outer_product_run
 INFO: [VRFC 10-311] analyzing module OpticalFlow_outer_product_struct
 INFO: [VRFC 10-311] analyzing module OpticalFlow_outer_product
+INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_x_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_x_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_x_run_filtered_gradient_rsci_filtered_gradient_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_x_run_filtered_gradient_rsci_filtered_gradient_wait_ctrl
@@ -161,6 +164,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_Xilinx_RAMS_B
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_9_9_64_512_1_512_64_1_gen
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_8_9_64_512_1_512_64_1_gen
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_7_9_64_512_1_512_64_1_gen
+INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_run_y_filtered_rsci_y_filtered_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_weight_y_run_y_filtered_rsci_y_filtered_wait_ctrl
@@ -187,6 +191,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_Xilinx_RAMS_BLO
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_9_9_64_512_1_512_64_1_gen
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_8_9_16_512_1_512_16_1_gen
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_Xilinx_RAMS_BLOCK_SPRAM_RBW_rwport_en_7_9_16_512_1_512_16_1_gen
+INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_input_frames_delayed_rsci_input_frames_delayed_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_input_frames_delayed_rsci_input_frames_delayed_wait_ctrl
@@ -201,6 +206,7 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_gradient_y_
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run_input_frames_rsci
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc_run
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_y_calc
+INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run_run_fsm
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run_staller
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run_gradient_x_rsci_gradient_x_wait_dp
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run_gradient_x_rsci_gradient_x_wait_ctrl
@@ -210,11 +216,11 @@ INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run_frame3_b_rs
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc_run
 INFO: [VRFC 10-311] analyzing module OpticalFlow_gradient_x_calc
 INFO: [VRFC 10-311] analyzing module ccs_genreg_v1
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_genreg_v1' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:15371]
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_genreg_v1' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:16120]
 INFO: [VRFC 10-311] analyzing module ccs_fifo_wait_core_v5
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_fifo_wait_core_v5' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:15537]
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_fifo_wait_core_v5' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:16286]
 INFO: [VRFC 10-311] analyzing module ccs_pipe_v6
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_pipe_v6' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:15850]
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'ccs_pipe_v6' [/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/user_subsys/user_prj/user_prj2/rtl/concat_rtl.v:16599]
 INFO: [VRFC 10-311] analyzing module OpticalFlow_Top
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_srcs/caravel_soc/rtl/user/config_ctrl/rtl/config_ctrl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CFG_CTRL
@@ -524,38 +530,38 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_pro
 INFO: [VRFC 10-311] analyzing module design_1_ps_axil_0_0
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.ip_user_files/bd/design_1/ip/design_1_spiflash_0_0/sim/design_1_spiflash_0_0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module design_1_spiflash_0_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_control_s_axi.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_control_s_axi
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_entry_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_entry_proc.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_entry_proc
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w1_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w1_d2_S.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w1_d2_S_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w1_d2_S
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w1_d3_S.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w1_d3_S.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w1_d3_S_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w1_d3_S
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w32_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w32_d2_S.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w32_d2_S_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w32_d2_S
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w32_d64_A.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w32_d64_A.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w32_d64_A_ram
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w32_d64_A
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w33_d1024_A.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w33_d1024_A.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w33_d1024_A_ram
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w33_d1024_A
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w40_d1024_A.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w40_d1024_A.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w40_d1024_A_ram
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w40_d1024_A
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_fifo_w64_d3_S.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_fifo_w64_d3_S.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w64_d3_S_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_fifo_w64_d3_S
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_flow_control_loop_pipe_sequential_init
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_getinstream.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_getinstream.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_getinstream
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_getinstream_Pipeline_VITIS_LOOP_50_1.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_getinstream_Pipeline_VITIS_LOOP_50_1.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_getinstream_Pipeline_VITIS_LOOP_50_1
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_gmem0_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_gmem0_m_axi.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_load
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_store
@@ -567,7 +573,7 @@ INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_reg_slice
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_fifo
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_srl
 INFO: [VRFC 10-311] analyzing module userdma_gmem0_m_axi_mem
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_gmem1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_gmem1_m_axi.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_load
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_store
@@ -579,32 +585,32 @@ INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_reg_slice
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_fifo
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_srl
 INFO: [VRFC 10-311] analyzing module userdma_gmem1_m_axi_mem
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_hls_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_hls_deadlock_detection_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_hls_deadlock_detect_unit
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_hls_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_hls_deadlock_idx0_monitor.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_hls_deadlock_idx0_monitor
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_paralleltostreamwithburst.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_paralleltostreamwithburst.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_paralleltostreamwithburst
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_paralleltostreamwithburst_Pipeline_VITIS_LOOP_110_2
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_regslice_both.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_regslice_both
 INFO: [VRFC 10-311] analyzing module userdma_regslice_both_w1
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_sendoutstream.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_sendoutstream.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_sendoutstream
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_sendoutstream_Pipeline_VITIS_LOOP_155_2
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_start_for_sendoutstream_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_start_for_sendoutstream_U0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_start_for_sendoutstream_U0_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_start_for_sendoutstream_U0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_start_for_streamtoparallelwithburst_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_start_for_streamtoparallelwithburst_U0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_start_for_streamtoparallelwithburst_U0_shiftReg
 INFO: [VRFC 10-311] analyzing module userdma_start_for_streamtoparallelwithburst_U0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_streamtoparallelwithburst.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_streamtoparallelwithburst.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_streamtoparallelwithburst
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma_streamtoparallelwithburst_Pipeline_VITIS_LOOP_23_2
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a8c4/hdl/verilog/userdma.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.gen/sources_1/bd/design_1/ipshared/a6bd/hdl/verilog/userdma.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module userdma
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.ip_user_files/bd/design_1/ip/design_1_userdma_0_0/sim/design_1_userdma_0_0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module design_1_userdma_0_0

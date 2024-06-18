@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "design_1_caravel_0_0_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath /home/ubuntu/SoC_Design/homework/ASOC/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga/vvd_caravel_fpga.gen/sources_1/bd/mref

@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Mon Jun 17 18:33:31 2024
-# Process ID: 14635
+# Start of session at: Tue Jun 18 19:25:36 2024
+# Process ID: 5501
 # Current directory: /home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado
 # Command line: vivado -source vvd_caravel_fpga_fsic_sim.tcl -mode tcl
 # Log file: /home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vivado.log
@@ -2378,8 +2378,8 @@ Compiling module xil_defaultlib.design_1_wrapper
 Compiling module xil_defaultlib.fsic_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot fsic_tb_behav
-execute_script: Time (s): cpu = 00:02:11 ; elapsed = 00:01:14 . Memory (MB): peak = 2965.832 ; gain = 0.000 ; free physical = 2790 ; free virtual = 8660
-INFO: [USF-XSim-69] 'elaborate' step finished in '73' seconds
+execute_script: Time (s): cpu = 00:02:02 ; elapsed = 00:01:10 . Memory (MB): peak = 2937.117 ; gain = 0.000 ; free physical = 2482 ; free virtual = 8449
+INFO: [USF-XSim-69] 'elaborate' step finished in '70' seconds
 INFO: [USF-XSim-4] XSim::Simulate design
 INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/vvd_caravel_fpga_sim/vvd_caravel_fpga_sim.sim/sim_1/behav/xsim'
 INFO: [USF-XSim-98] *** Running xsim
@@ -2480,9 +2480,10 @@ XilinxAXIVIP: Found at Path: fsic_tb.DUT.design_1_i.axi_vip_3.inst
  Block Memory Generator data initialization complete.
 Block Memory Generator module fsic_tb.DUT.design_1_i.blk_mem_gen_0.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_5_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
                  200=> sys_rest = 1
+xsim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 3006.219 ; gain = 63.844 ; free physical = 2084 ; free virtual = 8069
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'fsic_tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:02:37 ; elapsed = 00:01:47 . Memory (MB): peak = 3034.934 ; gain = 69.102 ; free physical = 2403 ; free virtual = 8300
+launch_simulation: Time (s): cpu = 00:02:27 ; elapsed = 00:01:42 . Memory (MB): peak = 3006.219 ; gain = 69.102 ; free physical = 2084 ; free virtual = 8069
 # run all
                28858=> rst_clk_wiz_0_5M_peripheral_aresetn = 1
               228858=> CaravelSoC resetb_0 = 1
@@ -2685,7 +2686,7 @@ Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 $finish called at time : 43866658 ns : File "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic_tb.sv" Line 149
-run: Time (s): cpu = 00:08:50 ; elapsed = 00:28:45 . Memory (MB): peak = 3047.934 ; gain = 13.000 ; free physical = 128 ; free virtual = 7472
+run: Time (s): cpu = 00:05:40 ; elapsed = 00:16:08 . Memory (MB): peak = 3048.219 ; gain = 42.000 ; free physical = 121 ; free virtual = 6989
 # exit
-INFO: xsimkernel Simulation Memory Usage: 878924 KB (Peak: 878924 KB), Simulation CPU Usage: 1715430 ms
-INFO: [Common 17-206] Exiting Vivado at Mon Jun 17 19:04:28 2024...
+INFO: xsimkernel Simulation Memory Usage: 878924 KB (Peak: 878924 KB), Simulation CPU Usage: 954290 ms
+INFO: [Common 17-206] Exiting Vivado at Tue Jun 18 19:43:53 2024...

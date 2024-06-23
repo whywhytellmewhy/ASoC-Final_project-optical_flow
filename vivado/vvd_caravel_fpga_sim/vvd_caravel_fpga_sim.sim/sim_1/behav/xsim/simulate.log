@@ -208,4 +208,4 @@ Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 $finish called at time : 43866658 ns : File "/home/ubuntu/Advanced_SoC/final_project/ASoC-Final_project-optical_flow/vivado/fsic_tb.sv" Line 149
-INFO: xsimkernel Simulation Memory Usage: 878924 KB (Peak: 878924 KB), Simulation CPU Usage: 1715430 ms
+INFO: xsimkernel Simulation Memory Usage: 878924 KB (Peak: 878924 KB), Simulation CPU Usage: 954290 ms

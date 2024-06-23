@@ -50,10 +50,10 @@ class OpticalFlow_gradient_z_calc
           // Write output Iz streaming interface
           gradient_z.write(gradient_z_value);
 
-          /*if ((x==TARGET_X) && (y==TARGET_Y)){
+          if ((x==TARGET_X) && (y==TARGET_Y)){
             //cout << "input_frames_delayed_value: " << frame4_value << frame3_value << frame2_value << frame1_value << endl;
             cout << "HLS_Iz: " << gradient_z_value << endl;
-          }*/
+          }
 
           // programmable width exit condition
           if (x == widthIn-1) {

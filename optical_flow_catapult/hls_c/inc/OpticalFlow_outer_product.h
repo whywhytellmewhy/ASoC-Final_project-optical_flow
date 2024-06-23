@@ -34,14 +34,14 @@ class OpticalFlow_outer_product
           // Write output Iz streaming interface
           out_product.write(out_product_value);
 
-          /*if ((x==TARGET_X) && (y==TARGET_Y)){
+          if ((x==TARGET_X) && (y==TARGET_Y)){
             cout << "HLS_out_product[0]: " << out_product_value.val[0] << endl;
             cout << "HLS_out_product[1]: " << out_product_value.val[1] << endl;
             cout << "HLS_out_product[2]: " << out_product_value.val[2] << endl;
             cout << "HLS_out_product[3]: " << out_product_value.val[3] << endl;
             cout << "HLS_out_product[4]: " << out_product_value.val[4] << endl;
             cout << "HLS_out_product[5]: " << out_product_value.val[5] << endl;
-          }*/
+          }
 
           // programmable width exit condition
           if (x == widthIn-1) {

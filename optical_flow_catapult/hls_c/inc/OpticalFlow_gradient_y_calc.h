@@ -129,12 +129,12 @@ class OpticalFlow_gradient_y_calc
             input_frames_delayed.write(input_frames_delayed_value);
           }
 
-          /*if ((x==TARGET_X) && (y==TARGET_Y+2)){
+          if ((x==TARGET_X) && (y==TARGET_Y+2)){
             //cout << "input_frames_delayed_value: " << input_frames_delayed_value << endl;
             //cout << "input_frames_value: " << input_frames_value << endl;
             //cout << pix0 << ", " << pix1 << ", " << pix2 << ", " << pix3 << ", " << pix4 << endl;
             cout << "HLS_Iy: " << gradient_y_value << endl;
-          }*/
+          }
 
           // programmable width exit condition
           if (x == widthIn-1) {

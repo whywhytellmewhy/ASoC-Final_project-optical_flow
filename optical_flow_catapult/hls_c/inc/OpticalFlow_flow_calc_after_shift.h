@@ -124,7 +124,7 @@ class OpticalFlow_flow_calc
             velocity_value.x = (tensor_shift_value.val[5]*tensor_shift_value.val[3] - tensor_shift_value.val[4]*tensor_shift_value.val[1]); // / denominator_value;
             velocity_value.y = (tensor_shift_value.val[4]*tensor_shift_value.val[3] - tensor_shift_value.val[5]*tensor_shift_value.val[0]); // / denominator_value;
 
-/*            if ((x==TARGET_X) && (y==TARGET_Y)){
+            if ((x==TARGET_X) && (y==TARGET_Y)){
               printf("Before second shift:\n");
               for (int k=VEL_PIXEL_T_BIT_WIDTH-1;k>=0;k=k-1){
                 cout << denominator_value[k];
@@ -190,7 +190,6 @@ class OpticalFlow_flow_calc
               velocity_value_after_shift.x = velocity_value_before_threshold.x;
               velocity_value_after_shift.y = velocity_value_before_threshold.y;
             }
-*/
             
             //if ((x==451) && (y==62)){
             //if ((x==362) && (y==399)){
@@ -271,13 +270,13 @@ class OpticalFlow_flow_calc
             }
 
             // Write output optical flow (velocity) streaming interface
-            output_value = denominator_value.slc<32>(0); //VEL_PIXEL_T_BIT_WIDTH-32);
+            output_value = denominator_value_after_shift.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
             //printf("HLS_denominator_value_after_shift: %08x\n", output_value.to_int());
             output.write(output_value);
-            output_value = velocity_value.x.slc<32>(0); //(VEL_PIXEL_T_BIT_WIDTH-32);
+            output_value = velocity_value_after_shift.x.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
             //printf("HLS_velocity_value_after_shift.x: %08x\n", output_value.to_int());
             output.write(output_value);
-            output_value = velocity_value.y.slc<32>(0); //(VEL_PIXEL_T_BIT_WIDTH-32);
+            output_value = velocity_value_after_shift.y.slc<32>(VEL_PIXEL_T_BIT_WIDTH-32);
             //printf("HLS_velocity_value_after_shift.y: %08x\n", output_value.to_int());
             output.write(output_value);
             ////////denominator.write(denominator_value);

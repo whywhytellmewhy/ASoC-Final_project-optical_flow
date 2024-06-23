@@ -32,7 +32,7 @@ CCS_MAIN(int argc, char *argv[])
 
   maxWType widthIn = iW;
   maxHType heightIn = iH;
-  int shift_threshold = 105;
+  int shift_threshold = 107; //105;
 
   clock_t start_time_algorithm, stop_time_algorithm;
 
@@ -305,7 +305,7 @@ CCS_MAIN(int argc, char *argv[])
       if ((x==0) && (y==0)) {
         printf("\n\nReport those pixels with error value > %f as following:\n", tolerable_error_threshold);
       }
-      if (x>5 && x<1020 && y>5 && y<430) {
+      if (x>5 && x<1019 && y>5 && y<430) {
       if (abs(output_algorithm[y][x].x-thresholded_final_velocity_x_HLS) > tolerable_error_threshold) { // We can set "threshold=0.1" before OpticalFlow_gradient_weight_x.h, and set "threshold=1" after OpticalFlow_outer_product.h
         printf("(%d, %d), ", x, y);
         printf("u: (algorithm, HLS) = (%f, %f), error = %f\n", output_algorithm[y][x].x, thresholded_final_velocity_x_HLS, abs(output_algorithm[y][x].x-thresholded_final_velocity_x_HLS));

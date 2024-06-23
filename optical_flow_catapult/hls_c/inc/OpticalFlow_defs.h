@@ -7,8 +7,8 @@
 #include <ac_math/ac_sqrt_pwl.h>
 #include <ac_math/ac_atan2_cordic.h>
 
-#define TARGET_X 150 //343 //25 //592 //371 //586 //358 // 354
-#define TARGET_Y 150 //128 //38 //223 //147 //150 //250 // 277
+#define TARGET_X 354 //150 //343 //25 //592 //371 //586 //358 // 354
+#define TARGET_Y 277 //150 //128 //38 //223 //147 //150 //250 // 277
 
 const int MAX_HEIGHT = 436;
 const int MAX_WIDTH = 1024;

@@ -11,9 +11,7 @@
 #include "OpticalFlow_outer_product.h"
 #include "OpticalFlow_tensor_weight_y.h"
 #include "OpticalFlow_tensor_weight_x.h"
-/////#include "OpticalFlow_tensor_weight_x_after_shift.h"
 #include "OpticalFlow_flow_calc.h"
-/////#include "OpticalFlow_flow_calc_after_shift.h"
 
 #include <mc_scverify.h>
 

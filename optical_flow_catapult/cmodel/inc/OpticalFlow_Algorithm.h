@@ -8,8 +8,8 @@
 // Include constant kernel definition
 #include "OpticalFlow_defs_software.h"
 
-#define TARGET_X 354 //150 //343 //25 //592 //371 //586 //358 // 354
-#define TARGET_Y 277 //150 //128 //38 //223 //147 //150 //250 // 277
+#define TARGET_X 150 //343 //25 //592 //371 //586 //358 // 354
+#define TARGET_Y 150 //128 //38 //223 //147 //150 //250 // 277
 
 // Template parameters allow configuring the maximum image size
 template <int maxImageWidth, int maxImageHeight>
